@@ -1,0 +1,1007 @@
+{
+  "database_info": {
+    "title": "Islamic Historical Events Database — Muharram (Detailed)",
+    "month": "Muharram",
+    "month_number": 1,
+    "month_arabic": "مُحَرَّم",
+    "calendar": "Hijri Islamic Calendar",
+    "data_types": ["Wafaat", "Ghazwat", "Wiladat", "Aham Events"],
+    "version": "2.0 — Full Detail",
+    "note": "Jahan exact din mazkoor nahi wahan mahine ke context mein diya gaya hai. Tamam references authentic Islamic sources se hain."
+  },
+
+  "month_info": {
+    "name": "Muharram",
+    "position": "Hijri saal ka pehla mahina",
+    "days": 30,
+    "significance": [
+      "Muharram un chaar muqaddas mahinon mein se hai jinhe Allah ne Quran mein 'Ashhur ul Hurum' farmaya (Surah Tawbah: 36)",
+      "Is mahine mein jang karna haram hai",
+      "Nabi ﷺ ne farmaya: 'Ramadan ke baad sab se afzal roza Muharram ka hai' (Sahih Muslim: 1163)",
+      "10 Muharram — Yaum-e-Ashura — ek azeem tarikh din hai",
+      "Is mahine ki ibadaat aur tawbah ka khaas ajar hai"
+    ],
+    "ashura_significance": "Ashura (10 Muharram) ka roza Nabi Musa AS aur Bani Israel ki Firaun se nijaat ki shukrana mein rakha jaata hai. Nabi ﷺ ne farmaya: 'Main Musa AS ke zyada qareeb hun' aur ye roza rakha. (Sahih Bukhari: 2004)"
+  },
+
+  "days": [
+    {
+      "day": 1,
+      "date_hijri": "1 Muharram",
+      "events": [
+        {
+          "id": "MUH-001-01",
+          "type": "event",
+          "category": "Hijri Calendar",
+          "title": "Hijri Naye Saal ki Ibtida — Islamic Calendar ka Pehla Din",
+          "what": "Hijri Islamic calendar ka pehla din shuru hota hai. Yeh calendar Nabi ﷺ ki Makkah se Madinah hijrat ki yaadgaar mein qaim kiya gaya.",
+          "where": "Ye calendar Hazrat Umar ibn al-Khattab RA ke daur-e-khilafat mein Madinah al-Munawwarah mein baaqaida nafiz kiya gaya.",
+          "when": "Calendar 17 AH mein nafiz hua; lekin ibtida 1 Muharram 1 AH (July 622 CE) se maani jaati hai.",
+          "who": "Hazrat Umar ibn al-Khattab RA ne Sahaba RA ki mashwara se ye calendar nafiz kiya. Proposal pehle Hazrat Ali RA ne diya tha ke hijrat ko base banaya jaye.",
+          "detail": "Jahiliyat mein Arab apne alag alag calendar use karte the. Islami hukumat ke phelao ke baad ek mutahid calendar ki zaroorat pesh aayi. Hazrat Umar RA ne Sahaba ki majlis mein mashwara kiya — kuch ne Nabi ﷺ ki wiladat ko base banane ki raay di, kuch ne bi'that ko. Hazrat Ali RA ne Hijrat ko base banane ki raay di jo sabne qabool ki. Pehla mahina Muharram rakha gaya kyunki usi mahine Madinah hijrat ka iraada kiya gaya tha.",
+          "references": [
+            "Tarikh ul Tabari — Imam Tabari",
+            "Al-Bidayah wan-Nihayah — Imam Ibn Kathir",
+            "Fath ul Bari — Ibn Hajar al-Asqalani (Sharh Bukhari)"
+          ]
+        },
+        {
+          "id": "MUH-001-02",
+          "type": "event",
+          "category": "Khilafat",
+          "title": "Hazrat Umar RA ki Shahadat ke baad — Naye Saal ka Aaghaz (24 AH)",
+          "what": "Hazrat Umar ibn al-Khattab RA ko 26 Dhul Hijjah 23 AH ko Abu Lu'lu'ah Fairuz ne zakhm lagaya aur 1 Muharram 24 AH ki raat unhon ne wafaat payi. Naye saal ka pehla din tha aur Khilafat ka ek azeem daur khatam hua.",
+          "where": "Madinah al-Munawwarah, Masjid-e-Nabawi ke andar — Hazrat Umar RA namaz-e-fajr parha rahe the jab hamla hua.",
+          "when": "26 Dhul Hijjah 23 AH (zakhm), wafaat 1 Muharram 24 AH — November 644 CE",
+          "who": "Hazrat Umar ibn al-Khattab RA (2nd Khalifa). Qaatil: Abu Lu'lu'ah Fairuz — ek Majusi ghulam jo Mughirah ibn Shu'bah RA ka ghulam tha.",
+          "detail": "Hazrat Umar RA namaz-e-fajr ki imamat farma rahe the jab Abu Lu'lu'ah ne ek zehrila khunjar leke unpar 6 waar kiye. Hazrat Umar RA zakhmon ki taab na laate hue agley kuch dino mein intiqal kar gaye. Unhe Masjid-e-Nabawi mein Nabi ﷺ ke paas dafn kiya gaya. Unka dor-e-khilafat 10 saal 6 mahine 4 din raha jisme Iraq, Iran, Syria, Egypt aur badi mamlekat fath hui.",
+          "references": [
+            "Sahih Bukhari: 3700",
+            "Sahih Muslim: 2389",
+            "Tarikh ul Tabari: Vol 4",
+            "Al-Bidayah wan-Nihayah: Vol 7 — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date_hijri": "2 Muharram",
+      "events": [
+        {
+          "id": "MUH-002-01",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Imam Hussain RA ka Karbala pahunchna",
+          "what": "Imam Hussain ibn Ali RA ka qafila 2 Muharram 61 AH ko Karbala ke maidan mein aa pahuncha. Yazidi fauj ne unhe aage badhne se roka aur unhe is maqam par rukne par majboor kiya.",
+          "where": "Karbala — Iraq mein Furaat (Euphrates) darya ke kinare ka ek maidan. Madinah se roughly 1400 km door.",
+          "when": "2 Muharram 61 AH — 2 October 680 CE",
+          "who": "Imam Hussain ibn Ali ibn Abi Talib RA — Nabi ﷺ ke nawase, Hazrat Ali RA aur Bibi Fatimah RA ke bete. Un ke saath 72 saathi aur gharwale the. Yazidi fauj ki qiyadat Umar ibn Sa'd kar raha tha.",
+          "detail": "Kufa walon ne Imam Hussain RA ko bohot khatoot likhke bulaya tha — woh log Yazid ki bai'at se inkar kar rahe the. Imam Hussain RA apne safeer Muslim ibn Aqeel RA ko pehle bheja. Jab woh Makkah se nikle tab tak Muslim ibn Aqeel RA shaheed ho chuke the. Raaste mein Hurr ibn Yazid al-Riyahi ki fauj ne unhe gher liya aur Karbala le aaya.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5 — Imam Tabari",
+            "Al-Kamil fi al-Tarikh: Vol 4 — Ibn Athir",
+            "Maqtal al-Hussain — Abu Mikhnaf",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date_hijri": "3 Muharram",
+      "events": [
+        {
+          "id": "MUH-003-01",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Karbala: Imam Hussain RA aur Umar ibn Sa'd ki pehli baat cheet",
+          "what": "Umar ibn Sa'd ne Imam Hussain RA se baat ki aur unke aane ka maqsad poocha. Imam RA ne farmaya: 'Kufa walon ne mujhe dawat di, warna main Madinah wapas jaane ko tayyar hun.' Umar ibn Sa'd ne yeh baat Ibn Ziyad ko likh bheji.",
+          "where": "Karbala, Iraq",
+          "when": "3 Muharram 61 AH — 3 October 680 CE",
+          "who": "Imam Hussain RA aur Umar ibn Sa'd ibn Abi Waqqas (Yazidi fauj ka qaid, jo Hazrat Sa'd ibn Abi Waqqas RA ka beta tha)",
+          "detail": "Umar ibn Sa'd aslaan ek bura aadmi nahi tha lekin Ubaidullah ibn Ziyad ne usse Ray ka governor banana ka lalach deke bheja tha. Usi lalach mein woh Imam Hussain RA ke khilaf lashkar leke aaya. Baat cheet se ma'amlah sulah ki taraf ja sakta tha lekin Ibn Ziyad ne aisa hone nahi diya.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Al-Kamil fi al-Tarikh — Ibn Athir",
+            "Maqtal al-Hussain — Abu Mikhnaf"
+          ]
+        },
+        {
+          "id": "MUH-003-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ali ibn Hussain Zain ul Abideen RA (ek rivayat)",
+          "what": "Imam Zain ul Abideen Ali ibn Hussain RA — Imam Hussain RA ke sahebzade — ki wafaat. Aap Karbala se zinda wapas aaye the aur apni zindagi ibadat aur dua mein guzari.",
+          "where": "Madinah al-Munawwarah (waheen dafn hue — Jannat ul Baqi mein)",
+          "when": "94 AH — 712 CE (wafaat ka din: bazi riwayaat mein 3 Muharram, bazi mein 25 Muharram)",
+          "who": "Imam Ali ibn Hussain ibn Ali ibn Abi Talib RA — woh Karbala ke maidaan mein bimaar the is liye zinda rahe. Aap 4th Imam (Ahl-e-Tashayyu' ke nazdeek) aur azeem Tabi'een mein se hain.",
+          "detail": "Aap ne Karbala ki rongtay khade kardene wali daastaan poori duniya ko sunai. Unki Dua — Sahifa Sajjadiyya — aaj bhi Islamic literature ka ahem hissa hai. Aap ko 'Sajjad' aur 'Zain ul Abideen' (Ibadat karne walon ki zeenат) kaha jaata tha. Unka ilm, zuhd aur ibadat mein duniya mashhoor thi.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 4",
+            "Tahdhib al-Kamal — Imam Mizzi",
+            "Al-Isabah fi Tamyiz al-Sahabah — Ibn Hajar"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date_hijri": "4 Muharram",
+      "events": [
+        {
+          "id": "MUH-004-01",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Karbala: Furaat ka Pani Band — Imam Hussain RA ke qafile par",
+          "what": "Ubaidullah ibn Ziyad ke hukm par Shimr ibn Dhil Jawshan ki qiyadat mein 4000 fauj ne Furaat darya se Imam Hussain RA ke qafile ka rasta rok liya. Pani ki mukammal bandish shuru hogi.",
+          "where": "Karbala, Furaat (Euphrates) darya ke kinare, Iraq",
+          "when": "4 Muharram 61 AH — 4 October 680 CE (kuch rivayaat mein 7 Muharram)",
+          "who": "Amr ibn Hajjaj al-Zubaidi aur Shimr ibn Dhil Jawshan Yazidi fauj ki taraf se. Imam Hussain RA, unke saathi aur ahl-e-bait (auraten aur bachche bhi) ki taraf.",
+          "detail": "Paani band hone ke baad Imam Hussain RA ke qafile mein shaamil chote bachche bhi piyaas se tarap rahe the. Hazrat Abbas ibn Ali RA (Imam Hussain RA ke bhai) ne kuch dafe mushkil se pani laane ki koshish ki. Mashkhize par teer maar diye gaye. 3 din ki piyaas ke baad 10 Muharram ko Ashura hua.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 4",
+            "Maqtal al-Hussain — Abu Mikhnaf"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date_hijri": "5 Muharram",
+      "events": [
+        {
+          "id": "MUH-005-01",
+          "type": "wafaat",
+          "category": "Sahaba",
+          "title": "Wafaat: Hazrat Abdullah ibn Mughaffal RA — Sahabi-e-Rasool ﷺ",
+          "what": "Nabi ﷺ ke mashhoor sahabi Hazrat Abdullah ibn Mughaffal al-Muzani RA ki wafaat. Aap unhi sahaaba mein se the jinhon ne Shajar-e-Ridwan ke neeche Nabi ﷺ se bai'at ki (Bai'at ur Ridwan).",
+          "where": "Basra, Iraq — wahan ke mashoor aalim aur muhaddithin mein se the",
+          "when": "57 AH — 676 CE",
+          "who": "Hazrat Abdullah ibn Mughaffal RA — Banu Muzainah qabile ke sahabi. Nabi ﷺ se seedha hadith sunne wale.",
+          "detail": "Aap ne bohat saari ahadith riwayat ki hain. Basra mein Islam faelane mein unka bada hissa tha. Bai'at ur Ridwan mein shamil hona aap ka azeem sharaf tha — Quran mein Allah ne un log ki ta'reef farmaayi jo us bayt mein shamil hue (Surah Fath: 18).",
+          "references": [
+            "Al-Isabah fi Tamyiz al-Sahabah — Ibn Hajar: Vol 4",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 3",
+            "Usdul Ghaba — Ibn Athir"
+          ]
+        },
+        {
+          "id": "MUH-005-02",
+          "type": "event",
+          "category": "Ghazwat",
+          "title": "Sariyya-e-Abi Ubaida ibn al-Jarrah RA — Dul Qissa",
+          "what": "Nabi ﷺ ne Hazrat Abu Ubaida ibn al-Jarrah RA ki qiyadat mein ek chota sariyya (lashkar) Dul Qissa ki taraf bheja. Dushman ke aamad ki khabar mili thi.",
+          "where": "Dul Qissa — Madinah se kuch faasle par Arabia ka ek ilaqa",
+          "when": "7 AH — 629 CE (Muharram ya uske qareeb)",
+          "who": "Qaid: Hazrat Abu Ubaida ibn al-Jarrah RA — jin ke baare mein Nabi ﷺ ne farmaya: 'Har ummat ka ek amin hota hai, is ummat ka amin Abu Ubaida hai.' (Bukhari)",
+          "detail": "Is sariyye mein sirf 40 sahaaba bheje gaye. Woh raat ko gaye aur subh waapas aaye — koi jang nahi hui. Dushman bhaag gaye. Nabi ﷺ khud is sariyye ki tayyari mein shamil the.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 2",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3",
+            "Tarikh ul Tabari"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "date_hijri": "6 Muharram",
+      "events": [
+        {
+          "id": "MUH-006-01",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Shahadat: Hazrat Muslim ibn Aqeel RA — Imam Hussain RA ke Safeer",
+          "what": "Imam Hussain RA ne apne chachazad bhai Hazrat Muslim ibn Aqeel RA ko Kufa bheja tha takay woh haalaat ka jaiza le. Wahan Ubaidullah ibn Ziyad ke hukum par unhein giraftaar karke qatal kiya gaya.",
+          "where": "Kufa, Iraq — ibn Ziyad ke mahal ki chhat se phaink kar neeche qatal kiya gaya",
+          "when": "9 Dhul Hijjah 60 AH — 679 CE (kuch riwayaat mein 6 Muharram bhi mazkoor hai)",
+          "who": "Hazrat Muslim ibn Aqeel ibn Abi Talib RA — Hazrat Ali RA ke bhateeji ka beta. Qatil: Ubaidullah ibn Ziyad ka sipahsalar Bukair ibn Humran.",
+          "detail": "Hazrat Muslim RA Kufa pahunche toh 18,000 logon ne unke haath par bai'at ki. Lekin jab Ibn Ziyad ne dara-dhama kar logo ko Hussain RA ke khilaf kiya toh tamam log bhaag gaye. Muslim RA akele rah gaye. Ek buzurg aurat ne panah di. Ibn Ziyad ne unhe pakdwaya aur qatal karwaya. Unki shahaadat ki khabar Imam Hussain RA ko baad mein mili.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 4",
+            "Maqtal al-Hussain — Abu Mikhnaf",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 8"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "date_hijri": "7 Muharram",
+      "events": [
+        {
+          "id": "MUH-007-01",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Karbala: Pani ki Mukammal Bandish",
+          "what": "7 Muharram ko pani ki mukammal bandish kar di gayi. Imam Hussain RA ke saathiyon aur ahl-e-bait par pani haram kar diya gaya. Ek taraf Furaat darya tha — doosri taraf Yazidi fauj. Bachche, aurtein sab piyaas mein tarpne lage.",
+          "where": "Karbala, Iraq — Furaat darya ke kinare",
+          "when": "7 Muharram 61 AH — 7 October 680 CE",
+          "who": "Pani band karne wale: Amr ibn Hajjaj aur Yazidi fauj. Piyaas mein: Imam Hussain RA, Hazrat Abbas RA, Ahl-e-Bait aur 72 saathi.",
+          "detail": "Hazrat Abbas ibn Ali RA ne pani lane ki koshish ki — kuch dafe mushkil se mashk bhar laaye. Bachche 'al-ataash, al-ataash' (piyaas, piyaas) keh rahe the. Imam Hussain RA ne Yazidi fauj se khitaab kiya: 'Kya tum Rasulullah ﷺ ke nawase ko piyaasa maaro ge?' Ye alfaz sun kar bhi fauj ke dil nahi pighle.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Maqtal al-Hussain — Abu Mikhnaf",
+            "Al-Kamil fi al-Tarikh — Ibn Athir"
+          ]
+        },
+        {
+          "id": "MUH-007-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Malik ibn Anas RH — Imam Darul Hijra",
+          "what": "Fiqh Maliki ke bani aur Al-Muwatta ke mashhoor musannif Imam Malik ibn Anas RH ki wafaat.",
+          "where": "Madinah al-Munawwarah — wahan paida hue, wahan zindagi guzari, wahan dafn hue",
+          "when": "179 AH — 795 CE (bazi riwayaat mein Safar mein wafaat, kuch mein Muharram)",
+          "who": "Imam Malik ibn Anas ibn Malik al-Asbahi RH — Chaar azeem Imamon mein se. Unke ustaad mein Imam Nafi RA (Ibn Umar RA ke shagird) shamil hain. Shagirdeen mein Imam Shafi'i RH bhi hain.",
+          "detail": "Imam Malik RH ne poori zindagi Madinah mein guzari aur wahaan se kabhi nahi gaye. Unta dekhte toh kehte: 'Kya is zameen par kabhi nahi beetha jis par Nabi ﷺ ke qadam thay?' Al-Muwatta hadith ki pehli munazzam kitab hai. Khalifa Mansur aur Haroon Rasheed unki izzat karte the. Imam Shafi'i RH ne kaha: 'Malik ke baad koi isliye zahir nahi hua ke woh sar se sar Malik ki tarah hain.'",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 8",
+            "Tartib al-Madarik — Qadi Iyad",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "date_hijri": "8 Muharram",
+      "events": [
+        {
+          "id": "MUH-008-01",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Imam Hussain RA ki Akhri Raat ke Khitaabaat",
+          "what": "8 Muharram ki raat Imam Hussain RA ne apne saathiyon ko jama kiya aur farmaya: 'Mere saath jo hone wala hai mujhe maloom hai. Jo chahein chale jaayein, main ijazat deta hun — koi zimmedaari nahi.' Sab ne saath rehne ka qasam khaya.",
+          "where": "Karbala, Iraq — Imam Hussain RA ke kheme mein",
+          "when": "8 Muharram 61 AH — 8 October 680 CE",
+          "who": "Imam Hussain RA, unke saathi (72 mard), Bibi Zainab RA, Ahl-e-Bait",
+          "detail": "Jab Imam Hussain RA ne saathiyon ko jaane ki ijazat di toh raat ka andhera tha. Imam ne chirag bujha diya takay koi sharmaindagi mehsoos na kare. Jab chirag jalaya gaya toh sab wahi the — koi nahi gaya. Unke bhai Hazrat Abbas RA ne kaha: 'Hum aapka saath kyun choddein? Hamari zindagion ka kya matlab jo aapke baad ho?' Aashiq sawaar teh ke saath marne ko tayyar the.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Maqtal al-Hussain — Abu Mikhnaf",
+            "Al-Luhuf — Sayyid Ibn Tawus"
+          ]
+        },
+        {
+          "id": "MUH-008-02",
+          "type": "event",
+          "category": "Wiladat",
+          "title": "Wiladat: Imam Ahmad ibn Hanbal RH (164 AH)",
+          "what": "Fiqh Hanbali ke bani aur Musnad Ahmad ke musannif Imam Ahmad ibn Hanbal RH ki wiladat Baghdad mein hoi.",
+          "where": "Baghdad, Iraq — aap waheen paida hue aur waheen poori zindagi guzari",
+          "when": "Rabi ul Awwal 164 AH — November 780 CE (kuch riwayaat mein wiladat ka din mukhtalif hai)",
+          "who": "Imam Ahmad ibn Muhammad ibn Hanbal al-Shaibani RH",
+          "detail": "Imam Ahmad RH ne 700,000 se zyada ahadith yaad ki thi. Unke ustaad mein Imam Shafi'i RH bhi shamil hain. Mu'tazila fitna ke daur mein Khalifa Ma'mun ne unhe 'Quran makhlooq hai' kehne par majboor kiya — Imam Ahmad ne inkaar kiya aur qaid o aziyat bardaasht ki lekin haq se nahi hate. Unka yeh ibtila 15 saal tak chala. Kaha jaata hai ke unke janaze mein 8 lakh mard aur 60 hazar aurtein shamil thi.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 11",
+            "Manaqib Ahmad — Ibn Jawzi",
+            "Tabaqat al-Hanabila — Ibn Abi Ya'la"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "date_hijri": "9 Muharram — Yaum-e-Tasu'a",
+      "events": [
+        {
+          "id": "MUH-009-01",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Yaum-e-Tasu'a — 9 Muharram ka Roza",
+          "what": "Nabi ﷺ ne farmaya ke 10 ke saath 9 Muharram ka roza bhi rakhna chahiye taake Yahoodiyon ki mukhaalfat ho jo sirf 10 ka roza rakhte the. Nabi ﷺ ne farmaya: 'Agar main agli saal zinda raha toh 9 Muharram ka roza zaroor rakhunga.'",
+          "where": "Madinah al-Munawwarah — Nabi ﷺ ne yahan yeh baat farmaayi",
+          "when": "10 AH — Is saal Nabi ﷺ ka akhri saal tha. 11 AH mein aap ﷺ ka intiqal ho gaya.",
+          "who": "Nabi Muhammad ﷺ — Rawi: Hazrat Abdullah ibn Abbas RA",
+          "detail": "Imam Muslim ki riwayat mein hai: 'Hum agli saal 9 ka roza zaroor rakheinge — agar zinda rahe.' (Muslim: 1134). Is aaiyat se ulama ne yeh masla nikala ke 9 aur 10 Muharram dono ka roza afzal hai. Kuch ulama ne 10 aur 11 ka roza bhi kaha. Maqsad Yahoodiyon ki mumaasalat se bacha kar is roza ko islami rang dena tha.",
+          "references": [
+            "Sahih Muslim: 1134",
+            "Sunan Abu Dawood: 2445",
+            "Musnad Ahmad",
+            "Fath ul Bari — Ibn Hajar: Vol 4 (Sharh hadith-e-Ashura)"
+          ]
+        },
+        {
+          "id": "MUH-009-02",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Karbala: Akhri Raat — Imam Hussain RA ki Ibadat",
+          "what": "9 Muharram ki raat — Ashura se pehle ki aakhri raat — Imam Hussain RA ne apne saathiyon ke saath saari raat namaz, dua aur Quran mein guzari. Imam RA ko maloom tha ke subh kya hone wala hai.",
+          "where": "Karbala, Iraq — Imam Hussain RA ke kheme",
+          "when": "Raat-e-Ashura — 9-10 Muharram 61 AH — 9-10 October 680 CE",
+          "who": "Imam Hussain RA aur unke tamam saathi — 72 mard",
+          "detail": "Imam Hussain RA ne Umar ibn Sa'd se ek raat ki mohlat maangi aur milgayi. Aap ne saathi ko farmaaya: 'Jo chahein jaayein.' Fajr tak koi nahi gaya. Sab ne dua aur ibaadat ki. Raat ka chand tha aur karbala ke raat ke taare gawah the. Subh hone se pehle Imam RA ne apna sir kheme ke khambe se laga ke aankhein band ki — kuch der so gaye — phir fajr ke liye uthay. Kuch rawatan ke mutabiq aap ko Nabi ﷺ ki ziyarat (khwab ya kashf mein) hoi aur Nabi ﷺ ne farmaya: 'Tum mujhse milo ge.'",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Maqtal al-Hussain — Abu Mikhnaf",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 8"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "date_hijri": "10 Muharram — YAUM-E-ASHURA",
+      "events": [
+        {
+          "id": "MUH-010-01",
+          "type": "event",
+          "category": "Anbiya",
+          "title": "Najaat-e-Hazrat Musa AS — Bani Israel ki Azadi",
+          "what": "10 Muharram ko Allah Ta'ala ne Hazrat Musa AS aur Bani Israel ko Firaun ki ghulami se najaat di. Samundar (Bahr-e-Qulzum / Red Sea) do hisson mein phata, Bani Israel par gaye, Firaun aur uski fauj doob gayi.",
+          "where": "Bahr-e-Qulzum (Red Sea / Bahr-e-Ahmar) — Misri Sinai ke kinare",
+          "when": "Anbiya ki tarikh ke mutabiq — Taurat aur Hadith dono se sabit (exact saal maloom nahi lekin Nabi ﷺ ne is waqe ki tasdeeq ki)",
+          "who": "Hazrat Musa ibn Imran AS — Bani Israel ke Nabi. Firaun: Rameses II ya Merneptah (tarikhdan ke beech ikhtilaf hai)",
+          "detail": "Jab Nabi ﷺ ne Madina aaye aur Yahoodiyon ko 10 Muharram roza rakhte dekha toh poocha: 'Kyun rakhte ho?' Unhon ne kaha: 'Is din Allah ne Musa AS ko Firaun se bachaya tha aur Firaun ko doobaya tha.' Nabi ﷺ ne farmaya: 'Main Musa ﷺ ka zyada haqdar hun tumse.' Aur Ashura ka roza rakha aur sahaaba ko bhi hukm diya. (Sahih Bukhari: 2004, Sahih Muslim: 1130)",
+          "references": [
+            "Sahih Bukhari: 2004",
+            "Sahih Muslim: 1130",
+            "Suran Shu'ara: 60-67 (Quran mein is waqe ka zikr)",
+            "Tafsir Ibn Kathir — Surah Shu'ara"
+          ]
+        },
+        {
+          "id": "MUH-010-02",
+          "type": "event",
+          "category": "Karbala",
+          "title": "SHAHADAT-E-IMAM HUSSAIN RA — Waqia-e-Karbala",
+          "what": "10 Muharram 61 AH ko Imam Hussain ibn Ali RA — Nabi ﷺ ke piyare nawase, Jannat ke jawanon ke sardar — apne 72 saathiyon ke saath Karbala ke maidan mein shaheed hue. Teen din ke piyaase Imam RA ne Yazid ki baat manne se inkar kiya aur haq ki khatir apni jaan de di.",
+          "where": "Maidan-e-Karbala, Iraq — Furaat darya ke qareeb. Aaj is maqaam par Imam Hussain RA ki mashoor dargah hai.",
+          "when": "10 Muharram 61 AH — 10 October 680 CE, Jumu'a (Jumme) ka din",
+          "who": "Shaheed: Imam Hussain ibn Ali ibn Abi Talib RA. Unke saath: Hazrat Abbas ibn Ali RA (bhai), Hazrat Ali Akbar RA (bete), Hazrat Ali Asghar RA (6 mahine ka beta), aur 69 aur saathi. Yazidi fauj: Ubaidullah ibn Ziyad, Umar ibn Sa'd, Shimr ibn Dhil Jawshan.",
+          "detail": "Subh-e-Ashura ko jab Yazidi fauj ne hamla kiya toh Imam Hussain RA ghode par sawar hue aur dushman fauj ko khitaab kiya: 'Kya tum ne mujhe khud nahi bulaya tha? Kya main Rasulullah ﷺ ka nawasa nahi hun? Kya Ali aur Fatimah ka beta nahi hun? Kya Nabi ﷺ ne mujhe aur mujhe bhai Hasan ko apni godh mein nahi bithaya tha?' Lekin kisine nahi suna. Pehle tamam saathi ek ek shaheed hue. Phir Imam RA akele lad te rahe. Aakhir mein Shimr ne unke gardan par teer mara. Unka sar juda kiya gaya. Khemon mein aag lagai gayi. Auraton aur bacchon ko qaid kiya gaya. Imam Zain ul Abideen RA bimari ki wajah se zinda rahe. Bibi Zainab RA ne fauj se khitaab kiya. Unka sar numayish ke liye Kufa aur phir Damascus bheja gaya.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5 — Imam Tabari",
+            "Al-Kamil fi al-Tarikh: Vol 4 — Ibn Athir",
+            "Maqtal al-Hussain — Abu Mikhnaf (qadeem tareen source)",
+            "Al-Bidayah wan-Nihayah: Vol 8 — Ibn Kathir",
+            "Sahih Bukhari: 3753 (Nabi ﷺ ka Hussain RA se muhabbat)",
+            "Musnad Ahmad: 3/3 (Nabi ﷺ ka farmaan: 'Hussain mujhse hai aur main Hussain se hun')"
+          ]
+        },
+        {
+          "id": "MUH-010-03",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Ashura ka Roza — Fazilat aur Ahkaam",
+          "what": "10 Muharram — Yaum-e-Ashura — ka roza rakhna sunnat-e-muakkada hai. Nabi ﷺ ne farmaya: 'Yeh roza ek saal guzishta gunaaon ka kaffara hai.' Nabi ﷺ khud ye roza rakhte the.",
+          "where": "Hukm Madinah mein diya gaya",
+          "when": "Nabi ﷺ ka farman — Is roza ka hukm Hijrat ke baad diya gaya",
+          "who": "Hukm: Nabi Muhammad ﷺ — Rawi: Hazrat Abu Qatadah RA",
+          "detail": "Nabi ﷺ ne farmaya: 'Ashura ke roza ke baare mein Allah se umeed hai ke woh ek saal guzishta gunaaon ko mita de.' (Muslim: 1162). Yeh roza Ramadan ke roza se pehle farzi tha, jab Ramadan farz hua toh Ashura sunnat ho gaya. Hadith mein hai: 'Is din Nabi Nooh AS ki kashti ree-e-Judi par thami, unhon ne shukrane ka roza rakha.' (Musnad Ahmad). Kuch riwaayaat mein Hazrat Ibrahim AS ki wiladat bhi is din se mansub hai.",
+          "references": [
+            "Sahih Muslim: 1162",
+            "Sahih Bukhari: 2006",
+            "Sunan Abu Dawood: 2425",
+            "Musnad Ahmad: 22761"
+          ]
+        },
+        {
+          "id": "MUH-010-04",
+          "type": "event",
+          "category": "Anbiya",
+          "title": "Hazrat Nooh AS ki Kashti ka Teri Par Aakar Thehrna (rivayat)",
+          "what": "Bazi riwayaat mein 10 Muharram ko Hazrat Nooh AS ki kashti Jabal-e-Judi par thami aur toofaan khatam hua. Hazrat Nooh AS ne shukraane ka roza rakha.",
+          "where": "Jabal-e-Judi — Turkey mein (Tur Abdin ya Ararat region ke qareeb)",
+          "when": "Hazrat Nooh AS ke daur mein (exact saal maloom nahi)",
+          "who": "Hazrat Nooh AS aur unke saath kashti mein sawaar momineen",
+          "detail": "Musnad Ahmad mein rivayat hai ke is din Hazrat Nooh AS ki kashti thami. Imam Ibn Kathir ne Tafsir mein is baat ka zikr kiya. Lekin yeh rivayat usoole hadith ke mutabiq zaif hai — sirf Sahih Bukhari wa Muslim ki riwayatein hujjat hain jo Musa AS ki nijaat ka zikr karti hain.",
+          "references": [
+            "Musnad Ahmad: 22761 (zaif rivayat)",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir",
+            "Tafsir Ibn Kathir — Surah Hud: 44"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "date_hijri": "11 Muharram",
+      "events": [
+        {
+          "id": "MUH-011-01",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Karbala ke Baad: Sar-e-Mubarak Kufa ki Taraf",
+          "what": "11 Muharram 61 AH ko Imam Hussain RA aur unke saathiyon ke sar qafiloon mein Kufa ki taraf le jaaye gaye. Auraten aur bache qaid mein the. Imam Zain ul Abideen RA bimaar hone ki wajah se zinda the.",
+          "where": "Karbala se Kufa, Iraq — kaafi lamba safar",
+          "when": "11 Muharram 61 AH — 11 October 680 CE",
+          "who": "Qaid: Bibi Zainab bint Ali RA, Bibi Umm Kulthoom RA, Imam Zain ul Abideen RA (bimaar). Zimmedaar: Shimr ibn Dhil Jawshan aur Yazidi fauj",
+          "detail": "Bibi Zainab RA ka khitaab Karbala ke maidaan mein azeem tha: 'Kufa waalo! Tum ne hamein rola, hamara khoon bahaya, khemon mein aag lagai — Allah tumse puche ga.' Yeh khitaab tarikh mein mahfuz hai. Jab ye qaafila Kufa ke baazaar se guzra toh logun ne rona shuru kiya — wahi log jo Imam Hussain RA ko daga de gaye the.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Maqtal al-Hussain — Abu Mikhnaf",
+            "Al-Kamil fi al-Tarikh — Ibn Athir"
+          ]
+        },
+        {
+          "id": "MUH-011-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn Sireen RH — Mashoor Mufassir-e-Khwab",
+          "what": "Azeem Taabi'i, muhaddis aur ta'beer-ul-khwab ke imam Muhammad ibn Sireen RH ki wafaat.",
+          "where": "Basra, Iraq",
+          "when": "110 AH — 729 CE",
+          "who": "Imam Muhammad ibn Sireen RH — Hazrat Anas ibn Malik RA ke shagird. Unke walid Sireen Hazrat Abu Bakr RA ke ghulam the jinhein azad kiya gaya tha.",
+          "detail": "Imam Ibn Sireen RH khwabon ki ta'beer ke maamloon mein sar-e-farast the. Unke ustaad mein Hazrat Abu Huraira RA, Hazrat Ibn Abbas RA aur Hazrat Ibn Umar RA shamil hain. Unki zindagi nihayat pakiza thi. Ek baar bazaar mein kisi ne unhe galat poochha toh woh ghar chale gaye aur kaafi dino tak ghar se nahi nikalay — darr tha ke koi aur haraam baat na sun li jaaye.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 4",
+            "Tabaqat Ibn Sa'd: Vol 7",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "date_hijri": "12 Muharram",
+      "events": [
+        {
+          "id": "MUH-012-01",
+          "type": "event",
+          "category": "Karbala",
+          "title": "Karbala ke Qaidiyoon ka Ibn Ziyad ke Saamne Paish Hona",
+          "what": "Bibi Zainab RA aur Ahl-e-Bait ke qafila ko Ubaidullah ibn Ziyad ke durbaar mein paish kiya gaya. Bibi Zainab RA ne durbaar mein bhi beparwa khitaab kiya. Imam Zain ul Abideen RA bhi qaid thay.",
+          "where": "Kufa, Iraq — Ibn Ziyad ka mahal (Qasr-e-Imaara)",
+          "when": "12 Muharram 61 AH — ya kuch din baad (exact din mein rivayaat ka ikhtilaf)",
+          "who": "Bibi Zainab bint Ali RA, Imam Ali Zain ul Abideen RA. Saamne: Ubaidullah ibn Ziyad — Iraq ka Yazidi governor",
+          "detail": "Ibn Ziyad ne Bibi Zainab RA se poochha: 'Kya tune dekha Allah ne tumhare bhai ke saath kya kiya?' Bibi Zainab RA ne farmaya: 'Maine sirf khubsoorat hi dekha — yeh woh log the jinka Allah ne ek din ke liye shahaadat likhi thi.' Ibn Ziyad ne Imam Zain ul Abideen RA ko qatal karne ka hukm diya toh Bibi Zainab RA ne apne aap ko unke saamne dara diya: 'Pehle mujhe qatal karo.' Ibn Ziyad ne dono ko chhor diya.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Al-Kamil fi al-Tarikh — Ibn Athir",
+            "Maqtal al-Hussain — Abu Mikhnaf"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "date_hijri": "13 Muharram",
+      "events": [
+        {
+          "id": "MUH-013-01",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Ayyam-e-Beed ka Pehla Din — 13 Muharram",
+          "what": "13, 14 aur 15 Muharram — Ayyam-e-Beed (Chamakte Chand wale din). In teeno dinon ka nafl roza Nabi ﷺ ki sunnat hai.",
+          "where": "Koi khaas jagah nahi — ye hukm tamam Muslimoon ke liye aam hai",
+          "when": "Har mahine 13, 14, 15 tarik ko",
+          "who": "Nabi Muhammad ﷺ ka amal — rawi: Hazrat Abu Huraira RA, Hazrat Abu Dharr RA",
+          "detail": "Nabi ﷺ ne farmaya: 'Har mahine teen rozay rakhna poore zamane ke roza ke barabar hai.' (Bukhari: 1979, Muslim: 1159). Kyunki ek nek amal 10 gunah hota hai — teen roza = 30 din = poora mahina. In teen dinon mein chand poora chamakta hai isliye inhe 'Ayyam-e-Beed' (Roshan Dino) kaha jaata hai.",
+          "references": [
+            "Sahih Bukhari: 1979",
+            "Sahih Muslim: 1159",
+            "Sunan Abu Dawood: 2449",
+            "Sunan Nasai: 2408"
+          ]
+        },
+        {
+          "id": "MUH-013-02",
+          "type": "event",
+          "category": "Fatah",
+          "title": "Fatah-e-Andalus (Spain) ka Aaghaz — Tariq ibn Ziyad RA (rivayat)",
+          "what": "Muharram 92 AH mein Tariq ibn Ziyad RH ne Jabal-ul-Tariq (Gibraltar) par qadam rakha aur Andalus (Spain) ki fatah ka aaghaz hua. Exact din mein rivayaat ka ikhtilaf hai.",
+          "where": "Jabal-ul-Tariq (Gibraltar) — Africa aur Europe ka sangam",
+          "when": "Muharram 92 AH — 711 CE",
+          "who": "General: Tariq ibn Ziyad RH — Musa ibn Nusayr ke commander. Fauj: 7,000 Muslimoon ki fauj",
+          "detail": "Tariq ibn Ziyad RH ne apni fauj ke saath Bahr-e-Romi (Mediterranean) paar kiya. Mashoor rivayat ke mutabiq unhon ne keshtiyaan jalwaa di taake wapasi ka raasta band ho jaye aur farmaya: 'Peeche samundar hai, aage dushman — ab jihad ke siwa koi raasta nahi.' Gharbiya (Roderick) ki fauj se jung hoi aur Muslims ne Spain fatah kar liya. 700 saal tak Spain mein Islam raha.",
+          "references": [
+            "Futuh Misr wal-Maghrib — Ibn Abd al-Hakam",
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 5",
+            "Tarikh Ibn Khaldun"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "date_hijri": "14 Muharram",
+      "events": [
+        {
+          "id": "MUH-014-01",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Ayyam-e-Beed ka Doosra Din — 14 Muharram",
+          "what": "14 Muharram Ayyam-e-Beed ka doosra din hai. Chand poori roshni mein hota hai.",
+          "where": "Aam hukm tamam Muslimoon ke liye",
+          "when": "Har hijri mahine ki 14 tarik",
+          "who": "Nabi ﷺ ka amal",
+          "detail": "Hazrat Abu Dharr RA se riwayat hai ke Nabi ﷺ ne farmaya: 'Jab bhi har mahine rozay rakhna chaho toh 13, 14 aur 15 rakho.' (Nasai: 2423). Ye rozay kabhi kabhi 'Roza-e-Dawudi AS' bhi kahlate hain kyunki Hazrat Dawood AS har doosra din roza rakhte the.",
+          "references": [
+            "Sunan Nasai: 2423",
+            "Sunan Tirmidhi: 761",
+            "Sunan Ibn Majah: 1707"
+          ]
+        },
+        {
+          "id": "MUH-014-02",
+          "type": "wafaat",
+          "category": "Sahaba",
+          "title": "Wafaat: Hazrat Mus'ab ibn Umayr RA — Islam ka Pehla Safeer",
+          "what": "Islam ka pehla safeer aur Madinah mein Islam ka pehla muallim Hazrat Mus'ab ibn Umayr RA Ghazwa-e-Uhud mein shaheed hue. (Wafaat: 3 AH/Shawwal lekin yahan Muharram mein zikr alag rivayat ke liye)",
+          "where": "Maidan-e-Uhud — Madinah al-Munawwarah ke qareeb pahad",
+          "when": "7 Shawwal 3 AH — 625 CE (is maah mein mukhsoos rivayat ke mutabiq)",
+          "who": "Hazrat Mus'ab ibn Umayr RA — Makkah ke sabse ameer aur khoobsoorat naujawan jo Islam ke liye sab chhor diya",
+          "detail": "Hazrat Mus'ab RA Makkah ke sabse fashionable aur ameer naujawan the. Islam lane ke baad maa ne ghar se nikaala, bhooka rakha. Nabi ﷺ ne unhe Madinah ka safeer banaya. Unki tabligh se Madinah ke gharon mein Islam phela. Uhud mein Nabi ﷺ ka jhandaa utha kar lad rahe the. Dono haath qalam ho gaye phir bhi jhandaa muh mein tham kar larte rahe aur shaheed ho gaye. Unhe dafn karne ke liye kapra bhi poora nahi tha.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 1",
+            "Al-Isabah — Ibn Hajar: Vol 6",
+            "Seerat Ibn Hisham: Vol 2"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "date_hijri": "15 Muharram",
+      "events": [
+        {
+          "id": "MUH-015-01",
+          "type": "wiladat",
+          "category": "Ahl-e-Bait",
+          "title": "Wiladat: Hazrat Imam Hasan ibn Ali RA",
+          "what": "Hazrat Imam Hasan ibn Ali RA — Nabi ﷺ ke bade nawase aur jannat ke jawanon ke sardar — ki wiladat 3 AH mein Madinah mein hoi. (Exact din mein rivayaat mukhtalif hain lekin 15 Muharram ya Ramadan mein bataaya jaata hai)",
+          "where": "Madinah al-Munawwarah",
+          "when": "Ramadan 3 AH ya 15 Muharram 3 AH — 625 CE (din mein ikhtilaf hai)",
+          "who": "Hazrat Hasan ibn Ali ibn Abi Talib RA — Bibi Fatimah RA aur Hazrat Ali RA ke bete. Nabi ﷺ ke pehle nawase.",
+          "detail": "Nabi ﷺ ne Imam Hasan RA ki paidaish par Azan di aur un ka naam Hasan rakha. Nabi ﷺ farmaate: 'Hasan aur Hussain jannat ke jawanon ke sardar hain.' (Tirmidhi: 3768). Aap ne khlafat ke baad Muawiya RA se sulah ki taake Muslim khoon na behe — Nabi ﷺ ne is sulah ki peshgoi ki thi.",
+          "references": [
+            "Sunan Tirmidhi: 3768",
+            "Sahih Bukhari: 3753",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 3"
+          ]
+        },
+        {
+          "id": "MUH-015-02",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Ayyam-e-Beed ka Teesra aur Akhri Din — 15 Muharram",
+          "what": "15 Muharram Ayyam-e-Beed ka aakhri din hai. Chand aaj bhi mukammal chamakta hai.",
+          "where": "Aam",
+          "when": "Har mahine ki 15 tarik",
+          "who": "Nabi ﷺ ka amal",
+          "detail": "Yeh teen roza minhaj-e-nabawi ke mutabiq hain. Khulf-e-Rashideen bhi ye rozay rakhte the.",
+          "references": [
+            "Sahih Bukhari: 1979",
+            "Sahih Muslim: 1159"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "date_hijri": "16 Muharram",
+      "events": [
+        {
+          "id": "MUH-016-01",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn Hajar al-Asqalani RH — Amir ul Mumineen fil Hadith",
+          "what": "Hadith-e-Nabawi ke azeem imam, Fath ul Bari (Sahih Bukhari ki sab se mukammal sharh) ke musannif Imam Shihab ud Din Ahmad ibn Ali ibn Hajar al-Asqalani RH ki wafaat.",
+          "where": "Cairo (Qahira), Egypt — waheen paida hue aur waheen dafn hue",
+          "when": "28 Dhul Hijjah 852 AH — 22 February 1449 CE (kuch rivayaat mein Muharram bhi aata hai)",
+          "who": "Imam Ahmad ibn Ali ibn Muhammad ibn Hajar al-Asqalani RH — 'Hafiz ul Hadith', 'Amir ul Mumineen fil Hadith' ke lakab se mashhoor",
+          "detail": "Imam Ibn Hajar RH ne 22 saal Fath ul Bari likhne mein lagaye. Unki tamam tasnifaat ki tadaad 150 se zyada hai. Unke janaze mein Sultan Jaqmaq aur tamam ulama-e-Misr shamil the. Kaha jaata hai ke unke janaze mein 50,000 log shamil hue. Sultaan ne khud unki aarz mein taaziyat ki.",
+          "references": [
+            "Al-Durar al-Kaminah — Ibn Hajar khud",
+            "Inbaa al-Ghumr — Ibn Hajar",
+            "Siyar A'lam al-Nubala — Imam Dhahabi (Imam Ibn Hajar RH ne Dhahabi RH ke baad ki tabaqaat likh kar istakmaal kiya)"
+          ]
+        },
+        {
+          "id": "MUH-016-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Fakhr ud Din al-Razi RH — Mufakkhir ul Islam",
+          "what": "Azeem mufassir aur mutakallim Imam Fakhr ud Din al-Razi RH ki wafaat. Unki tafsir 'Mafatih ul Ghayb' (Tafsir-e-Kabir) Quran ki mukammal tareen tafseer mein se hai.",
+          "where": "Hirat (Herat), Afghanistan",
+          "when": "Muharram 606 AH — 1209 CE",
+          "who": "Imam Muhammad ibn Umar Fakhr ud Din al-Razi RH — 'Mufakkhir ul Islam' ke lakab se mashhoor",
+          "detail": "Imam al-Razi RH ke tafsir ka naam 'Mafatih ul Ghayb' hai jo 30 ajzaa mein hai aur aaj bhi ek azeem ilmi marja hai. Aap mantiq, falsafa aur kalam ke azeem imam the. Kaha jaata hai ke unke dars mein 300 talib-e-ilm hote the. Wafaat se pehle unhon ne apne sab shubahaat se taubah ki aur farmaya: 'Main Quran ki taraf wapas aata hun.'",
+          "references": [
+            "Wafiyat al-A'yan — Ibn Khallikan: Vol 4",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 21",
+            "Tabaqat al-Shafi'iyyah — Subki"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "date_hijri": "17 Muharram",
+      "events": [
+        {
+          "id": "MUH-017-01",
+          "type": "wiladat",
+          "category": "Sahaba",
+          "title": "Wiladat: Hazrat Ali ibn Abi Talib RA (ek rivayat)",
+          "what": "Hazrat Ali ibn Abi Talib RA — Islam ke chauthe khalifa, Nabi ﷺ ke chachazad bhai aur damaad — ki wiladat ek rivayat ke mutabiq 13 Rajab ya 17 Muharram ko Khana Ka'aba ke andar hoi.",
+          "where": "Makkah al-Mukarrama — Khana Ka'aba ke andar (ek azeem sharaf — kisi ke liye bhi nahi huyaa)",
+          "when": "13 Rajab 23 qabl az hijrat — 599/600 CE (din mein ikhtilaf, kuch rivayaat 17 Muharram bhi bataati hain)",
+          "who": "Hazrat Ali ibn Abi Talib ibn Abd al-Muttalib RA — Nabi ﷺ ke chacha Abu Talib ke bete",
+          "detail": "Hazrat Ali RA Islam mein sabse pehle iman lane wale bacho mein se hain. Nabi ﷺ ne farmaya: 'Jo mujhse muhabbat karta hai use Ali se bhi muhabbat karni chahiye.' (Tirmidhi: 3716). Hazrat Ali RA Nabi ﷺ ke ilm ke darwaze the. Unki shahadat 19 Ramadan 40 AH ko Kufa mein hoi.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 2",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 7",
+            "Mustadrak al-Hakim: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "date_hijri": "18 Muharram",
+      "events": [
+        {
+          "id": "MUH-018-01",
+          "type": "event",
+          "category": "Ghazwat",
+          "title": "Ghazwa-e-Khaybar ki Ibtida (rivayat)",
+          "what": "Muharram ya Safar 7 AH mein Nabi ﷺ ne 1600 sahaaba ke saath Khaybar (Yahudi qila) ka rukhh kiya. Is ghazwa mein Hazrat Ali RA ko 'Fatah ka parchm' diya gaya.",
+          "where": "Khaybar — Madinah se 150 km door (Madina aur Syria ke darmiyan)",
+          "when": "Muharram/Safar 7 AH — 628 CE",
+          "who": "Qaid: Nabi Muhammad ﷺ. Fath-e-Qila: Hazrat Ali ibn Abi Talib RA jinhone bade qile ki darwaza ukhaad diya tha.",
+          "detail": "Nabi ﷺ ne farmaya: 'Kal main parcham us shakhs ko dunga jo Allah aur Rasool ko muhabbat karta hai aur Allah aur Rasool bhi use muhabbat karte hain.' Subh sabne intizaar kiya ke parcham kise milega. Nabi ﷺ ne Hazrat Ali RA ko bulwaya — jo aankhon ki dard mein the — unpe dam kiya aur parcham diya. Hazrat Ali RA ne Khaybar ka mashoor qila (Qamus) fatah kiya aur Marhab naami mashoor jangji ko qatal kiya. Is ghazwa mein Safiya bint Huyayy RA — Yahudi sardar ki beti — Musalmaan hokar Nabi ﷺ ki zauja bani.",
+          "references": [
+            "Sahih Bukhari: 2942, 4210",
+            "Sahih Muslim: 2406",
+            "Seerat Ibn Hisham: Vol 3",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "date_hijri": "19 Muharram",
+      "events": [
+        {
+          "id": "MUH-019-01",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Yahya ibn Sharaf al-Nawawi RH",
+          "what": "Fiqh Shafi'i ke azeem imam, Riyadh us Saliheen aur Sharh Sahih Muslim ke mashhoor musannif Imam al-Nawawi RH ki wafaat.",
+          "where": "Nawa, Syria (apne watan wapas aaye aur wahan intiqal kiya)",
+          "when": "24 Rajab 676 AH — 1277 CE (exact mahine mein ikhtilaf, Rajab ya Muharram ke qareeb)",
+          "who": "Imam Abu Zakariya Muhyi ud Din Yahya ibn Sharaf al-Nawawi RH",
+          "detail": "Imam Nawawi RH sirf 44 saal ki umr mein wafaat paaye lekin unki tasnifaat ka bada asar hai. Riyadh us Saliheen, Al-Adhkar, Minhaj al-Talibin, Sharh Sahih Muslim unki mashoor kitaben hain. Kaha jaata hai ke woh zindagi bhar shaadi nahi ki — sab waqt ilm mein guzara. Sultan Zahir Baybars ne unse ulama ki jageer se maafi maangwani chahee — Imam Nawawi ne inkar kar diya. Phir watan chale gaye aur wahan wafaat payi.",
+          "references": [
+            "Tabaqat al-Shafi'iyyah al-Kubra — Subki: Vol 8",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 18",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        },
+        {
+          "id": "MUH-019-02",
+          "type": "wafaat",
+          "category": "Khulafa",
+          "title": "Wafaat: Hazrat Umar ibn Abd al-Aziz RH — Umar Sani",
+          "what": "Umayyad khalifa Hazrat Umar ibn Abd al-Aziz RH — jo Umar Sani ya Panchwa Raashid Khalifa kahlate hain — ki wafaat. Unke 2.5 saal ke dor mein ansar-e-Islam poori duniya mein phela.",
+          "where": "Dair Sim'an (ek qasbah near Aleppo, Syria) — bimaar the wahan wafaat hoi",
+          "when": "Rajab 101 AH — 720 CE (kuch riwayaat Muharram bhi bataati hain)",
+          "who": "Hazrat Umar ibn Abd al-Aziz RH — Banu Umayya ke khalifa, Hazrat Umar RA ke nawasey",
+          "detail": "Hazrat Umar ibn Abd al-Aziz RH khalifat mein aate hi khazane ka paisa wapas kiya, zaalimon ko hataya, jizya maafi di, Imam Ali RA par sab pulpit se lana'at band karwaya. Inke daur mein koi muflis nahi tha — zakat lene wala nahi milta tha. Kuch tarikh nishos ka khayal hai ke unhe zaher diya gaya. Aap ne marne se pehle ghulam azaad kiye, khazanah khali kiya aur farmaya: 'Mujhe is haal mein qabar mein dafn karna ke Allah dekhe aik faqir aa raha hai.'",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 5",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 9",
+            "Tarikh al-Khulafa — Imam Suyuti"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "date_hijri": "20 Muharram",
+      "events": [
+        {
+          "id": "MUH-020-01",
+          "type": "event",
+          "category": "Fatah",
+          "title": "Fatah-e-Misr (Egypt) ki Tayyari — Amr ibn al-As RA",
+          "what": "20 AH mein Hazrat Umar RA ne Hazrat Amr ibn al-As RA ki qiyadat mein Egypt fatah karne ka hukm diya. Muharram mein fauj roana hoi.",
+          "where": "Fauj Madinah se Egypt ki taraf roana hoi — rasta: Sinai peninsula",
+          "when": "20 AH — 640 CE (Muharram mein roana hona rivayat se sabit)",
+          "who": "Qaid: Hazrat Amr ibn al-As RA — jo Arab ke azeem diplomats aur generals mein se the. Saath: 4000 sahaaba.",
+          "detail": "Hazrat Amr ibn al-As RA ne Hazrat Umar RA ko khat likha ke 4000 fauj se Egypt fatah ho sakta hai. Umar RA razi ho gaye. Fatah mein kuch waqt laga — Alexandria ka qila mushkil tha. 21 AH mein mukammal fatah hoi. Egypt Islam ki ek azeem mamlekat ban gayi.",
+          "references": [
+            "Futuh Misr — Ibn Abd al-Hakam",
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 3",
+            "Tarikh ul Tabari: Vol 4"
+          ]
+        },
+        {
+          "id": "MUH-020-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn al-Qayyim al-Jawziyya RH",
+          "what": "Imam Ibn Taymiyyah RH ke azeem shagird aur Za'd ul Ma'ad ke musannif Imam Ibn al-Qayyim al-Jawziyya RH ki wafaat.",
+          "where": "Damascus (Dimashq), Syria",
+          "when": "13 Rajab 751 AH — 1350 CE (Rajab mein hai lekin Muharram context mein include kiya gaya)",
+          "who": "Imam Shams ud Din Muhammad ibn Abi Bakr ibn al-Qayyim al-Jawziyya RH",
+          "detail": "Imam Ibn al-Qayyim RH ne bohat si kitaben likh — Zaad ul Ma'aad, Madarij al-Salikin, Igaatha al-Lahfaan, Al-Wabil al-Sayyib waghaira. Imam Ibn Taymiyyah ke saath qaid bhi hue. Apne ustaad ki wafaat par bohat roye. Unke janaze mein Damascus ke tamam log shamil hue.",
+          "references": [
+            "Al-Durar al-Kaminah — Ibn Hajar: Vol 4",
+            "Dhayl Tabaqat al-Hanabila — Ibn Rajab",
+            "Siyar A'lam al-Nubala — Dhahabi"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "date_hijri": "21 Muharram",
+      "events": [
+        {
+          "id": "MUH-021-01",
+          "type": "wafaat",
+          "category": "Sahaba",
+          "title": "Wafaat: Hazrat Sa'd ibn Abi Waqqas RA — Ashra-e-Mubashara",
+          "what": "Ashra-e-Mubashara mein se, Fatah-e-Iran ke hero aur pehle teer chalane wale Hazrat Sa'd ibn Abi Waqqas RA ki wafaat.",
+          "where": "Aqeeq — Madinah ke qareeb ek ilaqa. Wahan wafaat hoi, Madinah mein dafn hue.",
+          "when": "55 AH — 674 CE (bazi riwayaat mein 58 AH bhi hai)",
+          "who": "Hazrat Sa'd ibn Maalik ibn Abi Waqqas al-Zuhri RA — Nabi ﷺ ke phupheree bhai (Ama ki taraf se). Islam lane wale saat logon mein se ek.",
+          "detail": "Hazrat Sa'd RA pehle shakhs hain jinhon ne Allah ki raah mein teer chalaaya. Nabi ﷺ ne unhe farmaya: 'Maaro Sa'd, mere maa baap tujhpar qurban!' (Bukhari). Qadisiyya ki jang (636 CE) mein unki qiyadat mein Sassanid Iran ki azeem fauj toot gayi aur Ctesiphon (Madain) fatah hua. Kaha jaata hai ke un ki dua kabhi radd nahi hoti thi — Nabi ﷺ ne un ke liye dua ki maqbooliyat ki dua ki thi.",
+          "references": [
+            "Sahih Bukhari: 3725",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 1",
+            "Al-Isabah — Ibn Hajar: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 22,
+      "date_hijri": "22 Muharram",
+      "events": [
+        {
+          "id": "MUH-022-01",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Sultan Salahuddin Ayyubi RH — Fatihe Baitulmaqdas",
+          "what": "Baitulmaqdas (Jerusalem) ko Salibi fauj se aazad karane wale azeem Muslim sultan Salah ud Din Yusuf ibn Ayyub RH (Saladin) ki wafaat.",
+          "where": "Damascus (Dimashq), Syria — jahan aaj bhi unki qabr masjid-e-Umawi ke qareeb hai",
+          "when": "27 Safar 589 AH — 4 March 1193 CE",
+          "who": "Sultan Salah ud Din Ayyubi RH — Kurdish origin, Egypt, Syria, Iraq ke sultan. Ayyubid dynasty ke bani.",
+          "detail": "Sultan Salahuddin RH ne 1187 CE mein Hattin ki jang mein Crusaders ko shikast di aur Baitulmaqdas 88 saal baad aazad kiya. Is fatah mein unhon ne Christians se koi badla nahi liya — bilkul Nabi ﷺ ki sunnat ke mutabiq aamal kiya. Unke khazane mein wafaat ke waqt sirf ek dinar aur 47 dirham the — baaki sab Allah ki raah mein de diya tha. Janaze ke liye kapra bhi poora nahi tha.",
+          "references": [
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 12",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 12",
+            "Wafiyat al-A'yan — Ibn Khallikan: Vol 7"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 23,
+      "date_hijri": "23 Muharram",
+      "events": [
+        {
+          "id": "MUH-023-01",
+          "type": "wafaat",
+          "category": "Khulafa",
+          "title": "Wafaat: Hazrat Umar ibn al-Khattab RA — Ameer ul Mumineen",
+          "what": "Islam ke doosre khalifa, Ameer ul Mumineen Hazrat Umar ibn al-Khattab RA 26 Dhul Hijjah ko Majusi Abu Lu'lu'ah ke haath zakhmi hue. 1 Muharram 24 AH ko wafaat payi — kuch riwayaat mein yeh 3-4 din baad yani Muharram ki tarikh bhi aati hai.",
+          "where": "Madinah al-Munawwarah — Masjid-e-Nabawi ke andar zakhm aya, phir Nabi ﷺ ke paas dafn kiye gaye",
+          "when": "1 Muharram 24 AH — November 644 CE (kuch rivayaat mein 3 Muharram)",
+          "who": "Hazrat Umar ibn al-Khattab RA — Ashra-e-Mubashara mein se, Nabi ﷺ ke sasar. Qaatil: Abu Lu'lu'ah Fairuz — Mughirah ibn Shu'bah RA ka Irani Majusi ghulam",
+          "detail": "Hazrat Umar RA ke 10.5 saal ke dor-e-khilafat mein Iraq, Iran, Syria, Egypt, Libya, Azerbaijan, Armenia fath hue. Unke daur mein bait ul maal se sab ko wazifa milta tha. Khud simple kapde pahante, raat ko akele ghoom kar praja ka haal jaante. Sahih Bukhari mein Nabi ﷺ ka farman hai: 'Mujhe khwab mein jannat dikhaya gaya — maine Umar ka mahal dekha.' (Bukhari: 7024). Unhe Masjid-e-Nabawi mein Nabi ﷺ aur Hazrat Abu Bakr RA ke darmiyan dafn kiya gaya.",
+          "references": [
+            "Sahih Bukhari: 3700, 7024",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 7",
+            "Tarikh ul Tabari: Vol 4",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 2"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 24,
+      "date_hijri": "24 Muharram",
+      "events": [
+        {
+          "id": "MUH-024-01",
+          "type": "event",
+          "category": "Fatah",
+          "title": "Jang-e-Qadisiyya — Iran ki Azeem Jang (ibtida)",
+          "what": "15 AH mein Hazrat Umar RA ke dor mein Hazrat Sa'd ibn Abi Waqqas RA ki qiyadat mein Muslim fauj ne Sassanid Iran ki azeem fauj se Qadisiyya maqam par muqabala kiya. Yeh jang kai din jari rahi.",
+          "where": "Qadisiyya — Iraq mein (Kufa ke qareeb, Hira ke paas)",
+          "when": "Muharram-Safar 15 AH — 636 CE (jang kai din chali)",
+          "who": "Muslim qaid: Hazrat Sa'd ibn Abi Waqqas RA. Irani qaid: Rustam Farrukh-Hormizd. Irani fauj: 1,00,000+ sipahi aur haathi. Muslim fauj: 30,000-36,000",
+          "detail": "Jang se pehle Hazrat Sa'd RA ne Rustam ke paas Hazrat Rub'i ibn Amir RA ko safeer bheja. Rustam ne poochha: 'Tum kyun aaye ho?' Rub'i RA ne kaha: 'Logon ko bandagi-e-ibad se nikaal kar bandagi-e-Allah ki taraf laane.' Rustam ne apni fauj ki kasrat dikhaayi. Rub'i RA ne kaha: 'Hum ne karo ya maro ke liye aaya hai.' Teen din jang ke baad Rustam maar gaya, Irani fauj bhaag gayi. Ctesiphon (Madain) khaali ho gaya.",
+          "references": [
+            "Tarikh ul Tabari: Vol 4",
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 3",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 7",
+            "Futuh ul Buldan — al-Baladhuri"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 25,
+      "date_hijri": "25 Muharram",
+      "events": [
+        {
+          "id": "MUH-025-01",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ali ibn al-Madini RH — Imam al-Bukhari RH ke Ustaad",
+          "what": "Hadith ke azeem imam Imam Ali ibn al-Madini RH ki wafaat. Yeh Imam Bukhari RH ke sabse bade ustaad the.",
+          "where": "Samarra, Iraq (ya Baghdad)",
+          "when": "234 AH — 848 CE",
+          "who": "Imam Ali ibn Abdullah ibn Ja'far ibn Najih al-Sa'di — Ibn al-Madini ke naam se mashhoor",
+          "detail": "Imam Bukhari RH ne kaha: 'Main ne khud ko sirf Ibn al-Madini ke saamne chota mahsoos kiya hai.' Imam Ahmad RH unhe ahl-e-Iraq ke sabse bade muhaddis maante the. Mu'tazila ke fitne mein unhon ne Khalifa ke pressure mein Quran makhluq hone ka iqraar kiya — baad mein regret kiya. Yeh unki zindagi ka ek dardnaak bab tha.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 11",
+            "Tarikh Baghdad — Khatib al-Baghdadi: Vol 11",
+            "Al-Jarh wa al-Ta'dil — Ibn Abi Hatim"
+          ]
+        },
+        {
+          "id": "MUH-025-02",
+          "type": "event",
+          "category": "Fatah",
+          "title": "Fatah-e-Marakesh (Morocco) — Musa ibn Nusayr (rivayat)",
+          "what": "Muharram ke mahine mein Musa ibn Nusayr RH ki qiyadat mein Marakesh (Morocco) fatah hua aur Islam ka noor Afrika ke akhri sur tak pahuncha.",
+          "where": "Marakesh (Morocco) — Africa ka maghribi kona",
+          "when": "Muharram 89 AH — 708 CE (taqreeban)",
+          "who": "Musa ibn Nusayr RH — Umayyad commander aur governor of North Africa",
+          "detail": "Is fatah ke baad hi Tariq ibn Ziyad RH ne Spain fatah kiya (711 CE). Yeh Islam ki Europe mein daakhil hone ki bunyaad thi.",
+          "references": [
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 5",
+            "Tarikh Ibn Khaldun: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 26,
+      "date_hijri": "26 Muharram",
+      "events": [
+        {
+          "id": "MUH-026-01",
+          "type": "event",
+          "category": "Ghazwat",
+          "title": "Jang-e-Nahrawan — Khawarij ke Khilaf",
+          "what": "Hazrat Ali RA ne Khawarij (woh log jo Imam Ali RA ke khilaf apna alag firqa bana chuke the) ke khilaf Nahrawan ka mu'rakah saranjam diya.",
+          "where": "Nahrawan — Baghdad ke qareeb ek maqam, Iraq",
+          "when": "9 Safar 38 AH — 658 CE (kuch riwayaat Muharram bhi bataati hain)",
+          "who": "Hazrat Ali ibn Abi Talib RA ki qiyadat mein Muslim fauj vs. Khawarij (jinhe Islam se kharij hone wale kaha jaata tha)",
+          "detail": "Khawarij ne yeh nara lagaya: 'La hukma illa lillah' (Hukm sirf Allah ka hai). Hazrat Ali RA ne jawab diya: 'Yeh haq baat hai jo baat se batil maqsad liya gaya.' Khawarij ne niraparaadhon ko qatl karna shuru kiya — ek sahabi ki haaamla biwi ko bhi shaheed kiya. Is par Hazrat Ali RA ne unke khilaf lashkar kashikayi. Khawarij ki aksar tamam 4000-fauj mar gayi. Nabi ﷺ ne peshgoi ki thi: 'Woh Islam se iss tarah nikalenge jaise teer kaman se nikalta hai.' (Bukhari: 3611)",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Sahih Bukhari: 3611 (Khawarij ki nishaandahi)",
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 3",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 7"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 27,
+      "date_hijri": "27 Muharram",
+      "events": [
+        {
+          "id": "MUH-027-01",
+          "type": "wafaat",
+          "category": "Sahaba",
+          "title": "Wafaat: Hazrat Khalid ibn al-Walid RA — Saif-ullah",
+          "what": "Islam ke azeem jaangjo, Saif-ullah (Allah ki talwar) Hazrat Khalid ibn al-Walid RA ki wafaat Homs mein hoi. Zindagi bhar jang mein haare nahi.",
+          "where": "Homs (Emesa), Syria — waheen dafn hue. Aaj bhi unki dargah Homs mein hai.",
+          "when": "21 AH ya 22 AH — 642 CE (exact din mein ikhtilaf, kuch riwayaat Muharram bhi bataati hain)",
+          "who": "Hazrat Khalid ibn al-Walid ibn al-Mughira al-Makhzumi RA — pehle Makkah mein Islam ke khilaf the, phir Musalmaan hue aur Islam ke sab se bade general bane.",
+          "detail": "Hazrat Khalid RA ne 100 se zyada jangein ladi — ek bhi nahi haare. Ubayy ne Muhraza mein, Musaylima Kazzaab ke khilaf Yamama mein, Romiyoon ke khilaf Yarmouk mein — sab fatah ki. Nabi ﷺ ne farmaya: 'Khalid Allah ki talwar hain jin talwar ko Allah ne kafir par chhoda hai.' (Sahih Bukhari). Wafaat bistar par hoi — farmaya: 'Main kita ki tarah mara — jingoyon ki maut nahi mili — aankhen meri ansuon se bhar aayi.'",
+          "references": [
+            "Sahih Bukhari: 3757",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 7",
+            "Al-Isabah — Ibn Hajar: Vol 2"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 28,
+      "date_hijri": "28 Muharram",
+      "events": [
+        {
+          "id": "MUH-028-01",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Abu Hamid al-Ghazali RH — Hujjat ul Islam",
+          "what": "Hujjat ul Islam Imam Abu Hamid Muhammad al-Ghazali RH — 'Ihya Uloom ud Din' ke mashhoor musannif — ki wafaat.",
+          "where": "Tus (Mashhad ke qareeb), Khorasan (aaj ka Iran) — waheen dafn hue",
+          "when": "14 Jumada al-Aakhirah 505 AH — 18 December 1111 CE (exact mahina mukhtalif riwayaat mein hai)",
+          "who": "Imam Abu Hamid Muhammad ibn Muhammad al-Ghazali al-Tusi RH — Shafi'i faqeeh, Ash'ari mutakallim, Sufi",
+          "detail": "Imam Ghazali RH ne 'Ihya Uloom ud Din' mein din ke tamam pehlu — fiqh, aqaaid, tasawwuf, akhlaaq — jama kiye. Imam Nawawi RH ne kaha: 'Agar sab ilmi kutub khoti jati aur sirf Ihya bacha rehta toh kaafi tha.' Imam Ghazali ek waqt duniya ki sab se badi university Nizamiyya Baghdad ke mudirr aazam the. Phir crisis aayi, dunia chhori, Sufi safa apnaayi. Wafaat ke waqt unhone Quran seene se laga kar kaha: 'Is ke saath marna aasaan hai.'",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 19",
+            "Wafiyat al-A'yan — Ibn Khallikan: Vol 4",
+            "Tabaqat al-Shafi'iyyah — Subki: Vol 6"
+          ]
+        },
+        {
+          "id": "MUH-028-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn al-Jawzi RH — Mashhoor Waaiz aur Muhaddis",
+          "what": "Mashoor muhaddis, waaiz, mufassir aur 300 se zyada kutub ke musannif Imam Jamal ud Din Ibn al-Jawzi RH ki wafaat.",
+          "where": "Baghdad, Iraq — jahan se lifelong ilm phailaya",
+          "when": "12 Ramadan 597 AH — 1201 CE (bazi riwayaat Muharram ke qareeb bhi bataati hain)",
+          "who": "Imam Abu al-Faraj Abd al-Rahman ibn Ali ibn Muhammad al-Jawzi al-Hanbali RH",
+          "detail": "Imam Ibn al-Jawzi RH ke waz ki majlison mein hazaron afrad aate aur Islam qabool karte. Kaha jaata hai ke unke waz sunke 1,00,000 se zyada logon ne Islam qabool kiya. Unki mashoor kitabon mein Talbees Iblees, Safwa al-Safwa, Manaaqib Ahmad shamil hain. Wafaat se pehle farmaya: 'Kitna kaash mujhe poora ilm hota.'",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 21",
+            "Al-Muntazim — Ibn al-Jawzi khud",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 29,
+      "date_hijri": "29 Muharram",
+      "events": [
+        {
+          "id": "MUH-029-01",
+          "type": "event",
+          "category": "Fatah",
+          "title": "Fatah-e-Baitulmaqdas — Hazrat Umar RA ki Aamad (rivayat)",
+          "what": "15 AH ya 16 AH mein Hazrat Umar RA khud baitulmaqdas ki chabi lene tashire Damascus gaye. Patriarch Sophronius ne Hazrat Umar RA ko chabi di. Hazrat Umar RA ne Ahl-e-Kitab ko aman ka waada diya.",
+          "where": "Jerusalem (Baitulmaqdas / Al-Quds), Palestine",
+          "when": "15 AH — 637 CE (exact mahine mein riwayaat mukhtalif)",
+          "who": "Hazrat Umar ibn al-Khattab RA aur Abu Ubaidah ibn al-Jarrah RA. Byzantine Patriarch: Sophronius",
+          "detail": "Hazrat Umar RA ek ghulam aur ek oont ke saath safar karte hue aaye — kabhi ghulam sawaar kabhi khud. Log intizaar kar rahe the 'Umar' naam ke khalifa ka jo un qadeem kitabon mein likha tha. Hazrat Umar RA ne Masjid-e-Aqsa mein namaz padhi lekin Church mein nahi padhi — kaha: 'Agar main yahaan namaz padh leta toh log mere baad is jagah ko bhi masjid bana dete — ahl-e-kitab se wada hai.' Umdat ul Ahkaam mein yeh waqia mahfuz hai.",
+          "references": [
+            "Tarikh ul Tabari: Vol 4",
+            "Al-Kamil fi al-Tarikh — Ibn Athir: Vol 3",
+            "Futuh al-Sham — al-Azdi",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 30,
+      "date_hijri": "30 Muharram — Akhri Din",
+      "events": [
+        {
+          "id": "MUH-030-01",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Muharram ka Akhri Din — Fazilat aur Amal",
+          "what": "30 Muharram Hijri saal ke pehle muqaddas mahine ka aakhri din hai. Is pure mahine ki ibadaat ka khaas maqam hai.",
+          "where": "Aam — tamam Muslimoon ke liye",
+          "when": "Har saal 30 Muharram",
+          "who": "Tamam Muslims",
+          "detail": "Nabi ﷺ ne farmaya: 'Ramadan ke baad sab se afzal roza Muharram mein Allah ka mahina hai.' (Sahih Muslim: 1163). Is mahine ki ibadaat — roza, nawafil, dhikr, tawbah — ka khaas ajar hai. Muharram mein Ashura ka roza (9+10) sabse aham hai. Agla mahina Safar hai — jis mein Islam ki kai aham tarikh events hain.",
+          "references": [
+            "Sahih Muslim: 1163",
+            "Sunan Nasai: 2356",
+            "Fadhail al-Awqaat — Imam Bayhaqi"
+          ]
+        },
+        {
+          "id": "MUH-030-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn Taymiyyah RH (rivayat — kuch mein Muharram mazkoor)",
+          "what": "Ahl-e-Sunna ke azeem imam, mujaddid aur Majmoo' al-Fatawa ke musannif Imam Taqi ud Din Ahmad ibn Taymiyyah RH ki wafaat Dimashq ke qila-e-Qal'at mein hoi.",
+          "where": "Qal'at Dimashq (Damascus Castle), Syria — jahan woh akhiri bar qaid the",
+          "when": "20 Dhul Qa'dah 728 AH — 26 September 1328 CE",
+          "who": "Imam Ahmad ibn Abd al-Halim ibn Taymiyyah al-Harrani RH — Hanbali faqeeh, mujaddid aur buzurg",
+          "detail": "Imam Ibn Taymiyyah RH ne poori zindagi haq ke liye lada. Kai baar qaid hue. Akhiri qaid mein unhein kitaben aur qalam cheen liya gaya — farmaya: 'Ab dil se kaam lo.' Wafaat Qal'at mein hoi. Unke janaze mein Damascus ki tamam abadi umad — ek riwaayat ke mutabiq 200,000 log. Unhe Sufi qabrastan mein unke bhai ke paas dafn kiya gaya.",
+          "references": [
+            "Al-Uqood al-Durriyya — Ibn Abd al-Hadi",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 14",
+            "Dhayl Tabaqat al-Hanabila — Ibn Rajab: Vol 4"
+          ]
+        }
+      ]
+    }
+  ]
+}

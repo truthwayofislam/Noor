@@ -1,0 +1,1134 @@
+{
+  "database_info": {
+    "title": "Islamic Historical Events Database — Rabi ul Awwal (Full Detailed)",
+    "month": "Rabi ul Awwal",
+    "month_number": 3,
+    "month_arabic": "رَبِيعُ الْأَوَّل",
+    "calendar": "Hijri Islamic Calendar",
+    "total_days": 30,
+    "version": "2.0 — Full Detail",
+    "note": "Tamam events authentic Islamic sources se liye gaye hain. Jahan exact din mein rivayaat ka ikhtilaf hai wahan sabse rajih (preferred) rivayat di gayi hai."
+  },
+
+  "month_info": {
+    "name": "Rabi ul Awwal",
+    "name_arabic": "رَبِيعُ الْأَوَّل",
+    "meaning": "Pehli Bahaar — 'Rabi' ka matlab Bahaar aur 'Awwal' ka matlab Pehla hai. Pre-Islamic Arabia mein yeh asli bahaar ka mahina tha.",
+    "position": "Hijri saal ka teesra mahina",
+    "days": 30,
+    "sacred_status": "Yeh char muqaddas mahinon mein shamil nahi — lekin Nabi ﷺ ki wiladat aur wisaal ki wajah se tamam mahino mein khaas maqam rakhta hai.",
+    "significance": [
+      "Nabi Muhammad ﷺ ki wiladat is mahine mein hoi — 8, 9 ya 12 Rabi ul Awwal (scholars mein ikhtilaf)",
+      "Nabi ﷺ ka wisaal (wafaat) bhi 12 Rabi ul Awwal 11 AH ko hua",
+      "Nabi ﷺ ki Makkah se Madinah Hijrat ka mukammal hona — Quba pahunchna 12 Rabi ul Awwal 1 AH",
+      "Masjid Quba — Islam ki pehli masjid — is mahine mein taamir hoi",
+      "Masjid-e-Nabawi ki bunyaad is mahine mein rakhi gayi",
+      "Pehla Jumu'a (Jumme ki namaz) Madinah mein is mahine ada hua",
+      "Hazrat Abu Bakr Siddiq RA ki bai'at-e-khilafat bhi is din hoi"
+    ],
+    "wiladat_ikhtilaf": "Nabi ﷺ ki wiladat ki taareekh mein ulama mein ikhtilaf: Ibn Ishaq: 12 Rabi ul Awwal. Imam Malik RH, Ibn Hazm RH: 8 Rabi ul Awwal. Astronomer Mahmud Pasha: 9 Rabi ul Awwal (570 CE). Shia aqeeda: 17 Rabi ul Awwal. Sabse mashhoor aur mutawatir qoul: 12 Rabi ul Awwal."
+  },
+
+  "days": [
+    {
+      "day": 1,
+      "date_hijri": "1 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-001-01",
+          "type": "event",
+          "category": "Fatah",
+          "title": "Suqoot-e-Granada — Andalus ka Akhri Muslim Saltanat ka Khatima (897 AH)",
+          "what": "1 Rabi ul Awwal 897 AH ko Granada (Gharnaata) — Andalus (Spain) ka akhri Muslim mamlakat — Ispaani Catholik quwwaton (Ferdinand aur Isabella) ke haath mein chala gaya. 800 saal ke Islamic Andalus ka khatima hua.",
+          "where": "Granada (Gharnaata), Andalus (aaj ka Spain)",
+          "when": "1 Rabi ul Awwal 897 AH — 2 January 1492 CE",
+          "who": "Akhri Muslim sultan: Abu Abdullah Muhammad XII (Boabdil). Fatah karne wale: Spanish monarchs Ferdinand II aur Isabella I.",
+          "detail": "Abu Abdullah Muhammad XII — jo 'Boabdil' ke naam se mashhoor tha — Granada ki chabiyan Ferdinand ko de di aur woh pahad ki choti se ek baar Granada ko dekh ke roya. Woh maqam aaj bhi 'El Ultimo Suspiro del Moro' (Moor ka Akhri Aah) kahlaata hai. Is din ke saath 800 saal ka Andalus ka daur khatam hua — jisme Cordoba, Seville aur Toledo mein duniya ki sabse badi library, university aur ilmi markaz the. Islam aur Uropa ka milap Andalus hi tha — isi ke zariye Aristotle, algebra, astronomy Europe pahunchi.",
+          "references": [
+            "Al-Ahkam al-Sultaniyya — Mawardi",
+            "Tarikh Ibn Khaldun: Vol 7",
+            "Wikipedia: Fall of Granada — 2 January 1492"
+          ]
+        },
+        {
+          "id": "RAW-001-02",
+          "type": "event",
+          "category": "Seerat-e-Nabawi — Hijrat",
+          "title": "Nabi ﷺ ka Gufaa-e-Thaur se Madinah ki Taraf Safar ka Aaghaz (1 AH)",
+          "what": "1 Rabi ul Awwal 1 AH ko Nabi ﷺ aur Hazrat Abu Bakr RA Gufaa-e-Thaur se nikle aur Madinah ki taraf roana hue — Abdullah ibn Urayqit unhe raasta dikha raha tha.",
+          "where": "Gufaa-e-Thaur (Makkah ke janub mein pahad) se Madinah ki taraf",
+          "when": "1 Rabi ul Awwal 1 AH — September 622 CE",
+          "who": "Nabi Muhammad ﷺ, Hazrat Abu Bakr RA, Guide: Abdullah ibn Urayqit al-Laysi (kafir tha lekin amanatdaar)",
+          "detail": "Teen raat Gufaa-e-Thaur mein chup rehne ke baad Nabi ﷺ aur Hazrat Abu Bakr RA ne apna safar shuru kiya. Woh seedha Madinah nahi gaye — Quresh ki talaash se bachne ke liye ek lambi aur ghair-roz raah li — Bahr-e-Ahmar (Red Sea) ke saahil ke saath. Hazrat Asma bint Abi Bakr RA ne khana aur khabar ki zaroorat ke waqt apni kamar ki patti faad ke khana baandha — isliye unhe 'Zat ul Nitaqayn' (do pattiyon waali) kaha gaya.",
+          "references": [
+            "Sahih Bukhari: 3905",
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date_hijri": "2 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-002-01",
+          "type": "event",
+          "category": "Ghazwat",
+          "title": "Ghazwa-e-Buwat — Nabi ﷺ ki Doosri Ghazwa (2 AH)",
+          "what": "2 AH mein Nabi ﷺ ne 200 Muhajir Sahaaba ke saath Buwat ki taraf ghazwa kiya — Quresh ke tijaarati qaafale ka peecha karne. Qaafala nikal chuka tha, koi jang nahi hui.",
+          "where": "Buwat — Madinah se 180 km janub-mashriq, Radwa pahad ke qareeb",
+          "when": "Rabi ul Awwal 2 AH — September 623 CE",
+          "who": "Qaid: Nabi Muhammad ﷺ. Mukhaalf (jo nikal gaya): Umayyah ibn Khalaf ka 100 Quresh aur 2500 aount ka qaafila.",
+          "detail": "Nabi ﷺ ne Madinah mein Hazrat Sa'd ibn Mu'adh RA ko qaaim maqam rakha. Quresh ka bada tijaarati qaafila — jiski qiyadat Umayyah ibn Khalaf (Hazrat Bilal RA ka zaalim aaqa) kar raha tha — ka maqsad rokna tha. Qaafala pehle nikal gaya. Nabi ﷺ 15 din baad wapas aaye. Is mein koi jang nahi hui lekin Muslim quwwat ka paighaam dushmanon tak pahuncha.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 2",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3",
+            "Tarikh ul Tabari: Vol 3"
+          ]
+        },
+        {
+          "id": "RAW-002-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Abu al-Hasan al-Ash'ari RH — Aqeeda-e-Sunni ke Imam",
+          "what": "Aqeeda Ahl-e-Sunna wal Jama'a ke azeem imam aur Ash'ari maslak ke bani Imam Abu al-Hasan al-Ash'ari RH ki wafaat.",
+          "where": "Baghdad, Iraq",
+          "when": "324 AH — 935 CE (kuch riwayaat mein Rabi ul Awwal mein wafaat batayi gayi)",
+          "who": "Imam Abu al-Hasan Ali ibn Ismail al-Ash'ari RH — pehle Mu'tazili the, phir Sunni aqeede ki taraf aaye aur us ki azeem khidmat ki.",
+          "detail": "Imam Ash'ari RH ne Mu'tazila ke khilaf bohot mazboot ilmi dalaael likh ke Sunni aqeeda ko mustahkam kiya. Unki mashhoor kitabein: Al-Ibanah an Usul al-Diyanah, Maqalat al-Islamiyyin. Woh pehle Mu'tazili ustaz Jubbai ke shagird the. Phir ek din unhon ne apne ustaz ke sath kuch swalaat ki aur jawab se mutmain nahi hue — Sunni ho gaye. Unka yeh transition Islamic aqeede ki history mein azeem maana rakhta hai.",
+          "references": [
+            "Tabaqat al-Shafi'iyyah — Subki: Vol 3",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 15",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date_hijri": "3 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-003-01",
+          "type": "event",
+          "category": "Seerat-e-Nabawi",
+          "title": "Sariyya-e-Hamza ibn Abd al-Muttalib RA — Pehli Sariyya-e-Islam",
+          "what": "Is din Nabi ﷺ ne apne chacha Hazrat Hamza ibn Abd al-Muttalib RA ko 30 Muhajir Sahaaba ke saath Sayf al-Bahr ki taraf bheja — yeh Islam ki pehli sariyya (lashkar bina Nabi ﷺ ke) thi.",
+          "where": "Sayf al-Bahr (Bahr-e-Ahmar ke sahil ke qareeb) — Madinah ke janub-maghrib mein",
+          "when": "Ramadan 1 AH ya Rabi ul Awwal 1 AH — 622/623 CE (rivayaat mein ikhtilaf)",
+          "who": "Qaid: Hazrat Hamza ibn Abd al-Muttalib RA — Nabi ﷺ ke chacha aur 'Asad-ullah' (Allah ka Sher). Mukhaalf: Abu Jahl ki qiyadat mein 300 Quresh.",
+          "detail": "Dono faujein aamne saamne aayin lekin Majdi ibn Amr al-Juhani (jo dono taraf ka dost tha) ne jang rokwai. Koi khoon nahi baha. Wapas aa gaye. Islami tarikh mein yeh pehli sariyya thi. Hazrat Hamza RA woh sahabi hain jinhein Nabi ﷺ ne 'Sayyid ul Shuhada' (shaheedon ka sardar) farmaya.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 2",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3",
+            "Tarikh ul Tabari: Vol 3"
+          ]
+        },
+        {
+          "id": "RAW-003-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Muhammad ibn Jarir al-Tabari RH — Tarikh ul Tabari ke Musannif",
+          "what": "Islam ki azeem tareen tarikh — Tarikh ul Rusul wal Muluk (Tarikh ul Tabari) — aur mashhoor tafseer — Tafsir al-Tabari (Jami al-Bayan) — ke musannif Imam Muhammad ibn Jarir al-Tabari RH ki wafaat.",
+          "where": "Baghdad, Iraq — waheen paida hue aur waheen poori zindagi guzari aur wafaat payi",
+          "when": "26 Shawwal 310 AH — February 923 CE",
+          "who": "Imam Abu Ja'far Muhammad ibn Jarir al-Tabari RH — Tabaristan (aaj ka Iran) mein paida hue.",
+          "detail": "Imam Tabari RH ne 40 saal ki umr mein Tafsir aur Tarikh likhni shuru ki. Kaha jaata hai ke unhon ne din mein 40 safhe likhe — poori zindagi. Tarikh ul Tabari 30 ajzaa mein hai aur qadeem tareen aur azeem tareen Islamic tarikh ki kitab hai. Tafsir al-Tabari bhi tafseer ke imam ki haisiyat rakhti hai. Imam Nawawi RH ne kaha: 'Ummat ne kissi aise alim par ijma' nahi kiya jitna Ibn Jarir par.'",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 14",
+            "Tarikh Baghdad — Khatib al-Baghdadi: Vol 2",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 11"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date_hijri": "4 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-004-01",
+          "type": "wafaat",
+          "category": "Ahl-e-Bait",
+          "title": "Wafaat: Bibi Fatima Masooma-e-Qom RA (183 AH)",
+          "what": "Imam Musa Kazim RA ki sahebzaadi aur Imam Ali al-Ridha RA ki behen Hazrat Fatima bint Musa RA — jo 'Masooma-e-Qom' ke laqab se mashhoor hain — ki wafaat.",
+          "where": "Qom (Qum), Iran — waheen dafn hain. Aaj bhi Qom ka mashoor shrine unhi ki nisbat se maqbool hai.",
+          "when": "4 Rabi ul Awwal (ya 10 Rabi ul Awwal) 183 AH — 799 CE",
+          "who": "Hazrat Fatima bint Musa ibn Ja'far RA — Ahl-e-Bait ki buzurgwaar khatoon.",
+          "detail": "Bibi Fatima RA apne bhai Imam Ali al-Ridha RA se milne Khorasan ja rahi thi (jahan Khalifa Ma'mun ne Imam RA ko bulwaya tha). Raaste mein Qom mein bimaar padi aur waheen wafaat hoi. Unki qabr par aaj duniya bhar se Muslimaan aate hain. Qom aaj bhi Iran ka sabse bada Shia ilmi markaz hai — isi ki wajah se.",
+          "references": [
+            "Wikishia — Fatima al-Ma'sumah",
+            "Bihar al-Anwar — Allama Majlisi",
+            "Wikipedia: Fatimah bint Musa"
+          ]
+        },
+        {
+          "id": "RAW-004-02",
+          "type": "event",
+          "category": "Ghazwat",
+          "title": "Ghazwa-e-Safwan (Badr Ula) — Pehla Badr ka Maqam (2 AH)",
+          "what": "2 AH mein Karz ibn Jabir al-Fahri ne Madinah ke charaaghah par dhawa bol ke mawashi loote. Nabi ﷺ ne 70 Sahaaba le ke uska Safwan wadi tak peecha kiya lekin woh nikal gaya.",
+          "where": "Safwan wadi — Badr ke qareeb, Madinah se kaafi door",
+          "when": "Rabi ul Awwal 2 AH — 624 CE",
+          "who": "Muslim: Nabi ﷺ. Dushman: Karz ibn Jabir al-Fahri — Quresh ka admi.",
+          "detail": "Yeh ghazwa 'Badr Ula' bhi kahlata hai kyunke Badr ke ilaaqe ka pehla visit tha. Dushman bhaag gaya, koi jang nahi hui. Lekin is ghazwa ka tarikhhi ahem yeh hai ke Nabi ﷺ pehli baar Badr ke ilaaqe se guzre — wahi maqam jahan baad mein Islam ki azeem fatah hui.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 2",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date_hijri": "5 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-005-01",
+          "type": "wafaat",
+          "category": "Ahl-e-Bait",
+          "title": "Wafaat: Imam Hasan ibn Ali RA — ek rivayat (5 Rabi ul Awwal 50 AH)",
+          "what": "Nabi ﷺ ke bade nawase aur Jannat ke jawanon ke sardar Imam Hasan ibn Ali RA ki wafaat — ek rivayat ke mutabiq 5 Rabi ul Awwal 50 AH ko hoi (doosri aur zyada mashhoor rivayat 28 Safar hai).",
+          "where": "Madinah al-Munawwarah — Jannat ul Baqi mein dafn hain",
+          "when": "5 Rabi ul Awwal (ek rivayat) ya 28 Safar 50 AH — 670 CE",
+          "who": "Imam Hasan ibn Ali ibn Abi Talib RA",
+          "detail": "Imam Hasan RA ne Muslimoon mein khana jangi rokne ke liye Muawiya RA se sulah ki. Nabi ﷺ ne farmaya: 'Yeh mera beta sardar hai — Allah iske haath se do bade girohon mein sulah karaayega.' (Bukhari: 2704). Woh 50 AH mein wafaat paaye — zeher ki wajah se bataaya jaata hai. Unhe Masjid-e-Nabawi mein dafn karne nahi diya gaya — Jannat ul Baqi mein hue.",
+          "references": [
+            "Sahih Bukhari: 2704",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 3",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 8"
+          ]
+        },
+        {
+          "id": "RAW-005-02",
+          "type": "wiladat",
+          "category": "Ulama",
+          "title": "Wiladat: Imam Jafar al-Sadiq RA (83 AH) — ek rivayat",
+          "what": "Ahl-e-Bait ke azeem buzurg, fiqh aur hadith ke imam aur Shia Islam ke 6th Imam Hazrat Jafar ibn Muhammad al-Sadiq RA ki wiladat — ek rivayat ke mutabiq Rabi ul Awwal mein.",
+          "where": "Madinah al-Munawwarah",
+          "when": "17 Rabi ul Awwal (Shia rivayat) ya Rabi ul Awwal 83 AH — 702 CE",
+          "who": "Hazrat Jafar ibn Muhammad al-Baqir ibn Ali Zain ul Abideen RA.",
+          "detail": "Imam Jafar al-Sadiq RA ka ilm itna wasi tha ke Imam Abu Hanifa RH ne kaha: 'Main ne Jafar ibn Muhammad se zyada faqeeh koi nahi dekha.' Imam Malik RH bhi unke shagirdeen mein the. Unke zariye Ahl-e-Bait ka ilm duniya mein phela. Wafaat 148 AH mein Madinah mein hoi.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 6",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir",
+            "Tahdhib al-Kamal — Imam Mizzi"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "date_hijri": "6 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-006-01",
+          "type": "wiladat",
+          "category": "Seerat-e-Nabawi",
+          "title": "Wiladat: Nabi Muhammad ﷺ — ek rivayat (6 Rabi ul Awwal)",
+          "what": "Kuch ulama ki rivayat ke mutabiq Nabi ﷺ ki wiladat 6 Rabi ul Awwal ko bhi batayi gayi hai — yeh rivayat Ibn Hazm RH se mansoob hai.",
+          "where": "Makkah al-Mukarrama — Sha'b Bani Hashim mein — 'Bait ul Mawlid' (Nabi ﷺ ka ghar) ke maqaam par",
+          "when": "6 Rabi ul Awwal — 570/571 CE (kuch ulama ki rivayat)",
+          "who": "Nabi Muhammad ibn Abdullah ibn Abd al-Muttalib ﷺ",
+          "detail": "Wiladat ki taareekh mein ulama ka ikhtilaf: Ibn Ishaq — 12, Ibn Hazm — 8, Mahmud Pasha (astronomer) — 9. Lekin sab ka ittifaq ke Nabi ﷺ Rabi ul Awwal mein hi paida hue aur Somwar (Monday) ka din tha. Nabi ﷺ ne khud Somwar ke roza ke baare mein farmaya: 'Us din main paida hua tha.' (Muslim: 1162).",
+          "references": [
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 2",
+            "Sahih Muslim: 1162"
+          ]
+        },
+        {
+          "id": "RAW-006-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn Abi Zayd al-Qayrawani RH — Maliki Fiqh ke Imam",
+          "what": "Fiqh Maliki ke azeem imam aur Al-Risala (Maliki fiqh ki mukhtssar mashhoor kitaab) ke musannif Imam Ibn Abi Zayd al-Qayrawani RH ki wafaat.",
+          "where": "Qayrawan (Kairouan), Tunisia — waheen paida hue aur waheen wafaat payi",
+          "when": "386 AH — 996 CE",
+          "who": "Imam Abu Muhammad Abdullah ibn Abi Zayd al-Qayrawani al-Maliki RH",
+          "detail": "Al-Risala al-Fiqhiyya — Imam Ibn Abi Zayd ki likhee — Maliki fiqh ki sabse padhi jaane wali aur choti kitaab hai jo aaj bhi North Africa aur West Africa mein madrason mein parhai jaati hai. Unhe 'Little Malik' bhi kaha jaata tha. Islam ke maghribi Africa mein phailaane mein unka azeem hissa hai.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 17",
+            "Tartib al-Madarik — Qadi Iyad: Vol 6",
+            "Wafiyat al-A'yan — Ibn Khallikan"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "date_hijri": "7 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-007-01",
+          "type": "event",
+          "category": "Seerat-e-Nabawi — Hijrat",
+          "title": "Nabi ﷺ ka Quba ke Qareeb Pahunchna — Hijrat ka Akhri Hissa (1 AH)",
+          "what": "7 Rabi ul Awwal 1 AH ko Nabi ﷺ aur Hazrat Abu Bakr RA Madinah ke qareeb — Quba ke ilaaqe mein — pahunche. Woh Bani Amr ibn Awf ke qabeelay mein thehray. Ansar ne badi ta'zeem se istaqbal kiya.",
+          "where": "Quba — Madinah ke janub mein ek basti",
+          "when": "7 Rabi ul Awwal 1 AH — September 622 CE",
+          "who": "Nabi ﷺ, Hazrat Abu Bakr RA, Ansar-e-Madinah ne istaqbal kiya.",
+          "detail": "Nabi ﷺ Bani Amr ibn Awf ke ghar — Hazrat Kulthoom ibn Hidm RA ke yahan — thehray. Ansar ki auraten aur bachche khushi mein geet gaa rahi thi. Hazrat Ali RA baad mein Makkah se chal ke aaye aur Quba mein aa mile. Yahan Nabi ﷺ ne Masjid Quba ki bunyaad rakhne ki tayyari shuru ki.",
+          "references": [
+            "Sahih Bukhari: 3906",
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 3"
+          ]
+        },
+        {
+          "id": "RAW-007-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn Hajar al-Haytami RH — Fiqh Shafi'i ke Azeem Imam",
+          "what": "Fiqh Shafi'i ke azeem imam, Al-Zawajir aur Al-Fatawa al-Kubra ke mashhoor musannif Imam Shihab ud Din Ahmad ibn Hajar al-Haytami RH ki wafaat.",
+          "where": "Makkah al-Mukarrama — waheen dafn hue",
+          "when": "974 AH — 1567 CE",
+          "who": "Imam Ahmad ibn Muhammad ibn Ali ibn Hajar al-Haytami al-Makki al-Shafi'i RH",
+          "detail": "Imam Ibn Hajar al-Haytami RH Shafi'i fiqh ke akhiri azeem imamon mein se hain. Unki Al-Fatawa al-Fiqhiyya al-Kubra aaj bhi muftiyaan ke liye reference hai. Makkah mein rehte hue tamam duniya ke sawaalat ka jawab dete. Unki kitab Al-Zawajir an Iqtiraf al-Kabair mein 461 kabiira gunaaon ka bayaan hai.",
+          "references": [
+            "Tabaqat al-Shafi'iyyah — Ibn Qadi Shuhba",
+            "Al-A'lam — Zirikli: Vol 1",
+            "Hadiyat al-Arifin — Ismail Pasha al-Baghdadi"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "date_hijri": "8 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-008-01",
+          "type": "wiladat",
+          "category": "Seerat-e-Nabawi",
+          "title": "Wiladat: Nabi Muhammad ﷺ — Rajih Qoul (8 ya 9 Rabi ul Awwal 53 BH)",
+          "what": "Astronomic research ke mutabiq Mahmud Pasha ne tahqeeq ki ke Nabi ﷺ 9 Rabi ul Awwal ko paida hue. Ibn Hazm RH ka qoul 8 Rabi ul Awwal ka hai. Dono qaul mashoor hain. Islamic Relief UK ke mutabiq: '8th or 9th is the preferred view.'",
+          "where": "Makkah al-Mukarrama — Sha'b Bani Hashim, Bait ul Mawlid. Aaj ke Saudi Arabia mein.",
+          "when": "8 ya 9 Rabi ul Awwal 53 BH — 570/571 CE, Somwar (Monday) ka din",
+          "who": "Walida: Bibi Amina bint Wahb. Walid: Hazrat Abdullah ibn Abd al-Muttalib (wiladat se pehle wafaat). Dada: Hazrat Abd al-Muttalib.",
+          "detail": "Wiladat ke waqt maashoor riwayatein hain: Bibi Amina RA ne noor dekha, Kay'sar ka mahal kaamp utha, Kisra ka aiwan hila, Farsi ke aatash kada bujh gaye. Nabi ﷺ ka naam pehle Muhammad rakha — pehla woh naam tha jis par qabila ne hairat ki ke yeh naam pehle nahi rakh gaye! Nabi ﷺ ke dada Abd al-Muttalib ne Ka'ba mein shukraana ada kiya. Pehle doodh pilaane wali Thuwaybah (Abu Lahab ki baandi) thi — phir Halima Sa'diyah RA ne gosht aur khatir se khayal rakha.",
+          "references": [
+            "Islamic Relief UK: 'preferred view 8th or 9th'",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 2",
+            "Seerat Ibn Hisham: Vol 1"
+          ]
+        },
+        {
+          "id": "RAW-008-02",
+          "type": "wafaat",
+          "category": "Ahl-e-Bait",
+          "title": "Wafaat: Imam Hasan al-Askari RA — 11th Imam (260 AH)",
+          "what": "Shia Islam ke 11th Imam Hazrat Hasan ibn Ali al-Askari RA ki wafaat 8 Rabi ul Awwal 260 AH ko hoi — rivayaat ke mutabiq zeher se.",
+          "where": "Samarra, Iraq — Abbasid Khalifa ke city mein qaid the. Waheen dafn hain — aaj bhi Samarra ka Imam Askari Shrine mashhoor hai.",
+          "when": "8 Rabi ul Awwal 260 AH — 1 January 874 CE",
+          "who": "Imam Abu Muhammad Hasan ibn Ali al-Askari RA — Imam Ali al-Hadi RA ke sahebzade.",
+          "detail": "Imam Hasan al-Askari RA Samarra mein Abbasid khilafat ki nigarani mein rehte the — isliye 'Askari' kaha gaya ('askar' = fauj/camp). Sirf 28 saal ki umr mein wafaat hoi. Unke baad unke bete Imam Muhammad al-Mahdi (Shia ke 12th Imam) ka 'ghayab hona' — jise Shia 'Ghayba' kehte hain. Imam Askari shrine 2006 mein bomb se tabah kiya gaya tha — ek bada haadsa.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 13",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir",
+            "Wikipedia: Hasan al-Askari — 8 Rabi ul Awwal 260 AH"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "date_hijri": "9 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-009-01",
+          "type": "wiladat",
+          "category": "Seerat-e-Nabawi",
+          "title": "Wiladat: Nabi Muhammad ﷺ — Rajih Astronomical Qoul (9 Rabi ul Awwal)",
+          "what": "Mashhoor Muslim astronomer Mahmud Pasha al-Falaki ne detailed astronomical research karke natija nikala ke Nabi ﷺ 9 Rabi ul Awwal 53 BH ko paida hue — Islamic Relief UK is qoul ko 'preferred view' kehti hai.",
+          "where": "Makkah al-Mukarrama",
+          "when": "9 Rabi ul Awwal 53 BH — 19 ya 20 April 571 CE",
+          "who": "Nabi Muhammad ﷺ",
+          "detail": "Mahmud Pasha al-Falaki — 19th century ke Egyptian astronomer — ne Nabi ﷺ ki wiladat ka din Somwar 9 Rabi ul Awwal saabit kiya astronomical calculations se. Islamic Relief UK likhti hai: 'The preferred view is that the Prophet was born on either 8th or 9th Rabi al-Awwal.' Nabi ﷺ ki wiladat ke waqt duniya mein Khusrow Parviz Iran ka baadshah tha. Arabia Amul Fil (Haath waala saal) ke kuch maah baad tha.",
+          "references": [
+            "Islamic Relief UK — 12th Rabi al-Awwal article",
+            "Research of Mahmud Pasha al-Falaki — Egyptian astronomer",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 2"
+          ]
+        },
+        {
+          "id": "RAW-009-02",
+          "type": "event",
+          "category": "Seerat-e-Nabawi — Hijrat",
+          "title": "Masjid Quba ki Bunyaad — Islam ki Pehli Masjid (1 AH)",
+          "what": "9 Rabi ul Awwal 1 AH ko Nabi ﷺ ne Quba mein Islam ki pehli masjid — Masjid Quba — ki bunyaad rakkhi. Nabi ﷺ ne khud pathar uthaa ke rakkhe.",
+          "where": "Quba — Madinah ke janub mein, aaj bhi yahan azeem masjid qaim hai",
+          "when": "9 Rabi ul Awwal 1 AH — September 622 CE",
+          "who": "Nabi Muhammad ﷺ ne bunyaad rakhi. Ansar ne taameer ki. Hazrat Ali RA bhi baad mein aa mile.",
+          "detail": "Quran mein Allah ne Masjid Quba ka zikr farmaya: 'Woh masjid jo takwa ki bunyaad par qaim ki gayi pehle din se...' (Surah Tawbah: 108). Nabi ﷺ ne farmaya: 'Jo apne ghar mein wuzu kare aur Masjid Quba mein namaz padhe — use Umrah ke barabar sawab milega.' (Ibn Majah: 1412). Yeh masjid aaj bhi Madinah mein qaim hai aur muzaare padhte hain.",
+          "references": [
+            "Surah Tawbah: 108 (Quran)",
+            "Sunan Ibn Majah: 1412",
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 10,
+      "date_hijri": "10 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-010-01",
+          "type": "wafaat",
+          "category": "Seerat-e-Nabawi",
+          "title": "Wafaat: Hazrat Ibrahim ibn Muhammad ﷺ — Nabi ﷺ ke Sahebzade (10 AH)",
+          "what": "Nabi ﷺ ke chhote sahebzaade Hazrat Ibrahim RA — jo Hazrat Mariya al-Qibtiyya RA ke bete the — 16-18 mahine ki umr mein wafaat paaye.",
+          "where": "Madinah al-Munawwarah — Jannat ul Baqi mein dafn hue",
+          "when": "10 Rabi ul Awwal 10 AH — January 632 CE",
+          "who": "Hazrat Ibrahim ibn Muhammad ﷺ. Walida: Hazrat Mariya al-Qibtiyya RA — jo Muqauqis (Egypt ke haakim) ne Nabi ﷺ ko tohfa di thi aur Nabi ﷺ ki zauja bani.",
+          "detail": "Ibrahim RA ki wafaat ke din ittefaqan solar eclipse (sooraj grahan) hua. Sahaba sochne lage ke Allah ka nishaan hai. Nabi ﷺ ne farmaya: 'Sooraj aur chaand Allah ki nishaniyan hain — kisi ke marne ya jeene se nahi hote.' (Bukhari: 1043). Nabi ﷺ ne bete ke liye aansu bahaye aur farmaya: 'Aankhein aansoo bahati hain, dil ghamzada hai — lekin hum wahi kahenge jo Allah pasand kare. Ae Ibrahim! Teri wajah se hum ghamzada hain.' (Bukhari: 1303).",
+          "references": [
+            "Sahih Bukhari: 1043, 1303",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 2",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 5"
+          ]
+        },
+        {
+          "id": "RAW-010-02",
+          "type": "wafaat",
+          "category": "Seerat-e-Nabawi",
+          "title": "Wafaat: Hazrat Abd al-Muttalib — Nabi ﷺ ke Dada (53 BH)",
+          "what": "Nabi ﷺ ke dada Hazrat Abd al-Muttalib ibn Hashim — jo Ka'ba ke mutawalli aur Makkah ke sardar the — ki wafaat Nabi ﷺ ki wiladat ke 8 saal baad hoi. Kuch riwayaat Rabi ul Awwal mein bataati hain.",
+          "where": "Makkah al-Mukarrama",
+          "when": "Rabi ul Awwal (ek rivayat) 45 BH — 578 CE (Nabi ﷺ 8 saal ke the)",
+          "who": "Hazrat Abd al-Muttalib ibn Hashim ibn Abd Manaf — Banu Hashim ke sardar. Nabi ﷺ ke dada.",
+          "detail": "Abd al-Muttalib ne Nabi ﷺ ko maa ki wafaat ke baad khud rakkha — bahut piyar kiya. Farmaya karta: 'Yeh baccha bahut khaas hai.' Unki wafaat par Nabi ﷺ ne roya. Abd al-Muttalib ne Nabi ﷺ ko apne chacha Abu Talib ke supurd kiya aur farmaya ke inka khayal rakhna.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 2",
+            "Tarikh ul Tabari: Vol 2"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 11,
+      "date_hijri": "11 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-011-01",
+          "type": "event",
+          "category": "Seerat-e-Nabawi — Hijrat",
+          "title": "Nabi ﷺ ka Quba se Madinah Mein Daaakhil Hona (1 AH)",
+          "what": "11 ya 12 Rabi ul Awwal 1 AH ko Nabi ﷺ Quba se Madinah (Yathrib) ke qalb mein daaakhil hue. Ansar ne deewaron par charh ke neechay aate hue khushamdid kiya — bachchiyan gaaney ga rahi thi: 'Tala'al Badru alayna...'",
+          "where": "Madinah al-Munawwarah — Banu Najjar mohallah se shuru — Hazrat Abu Ayyub al-Ansari RA ke ghar tak",
+          "when": "11 ya 12 Rabi ul Awwal 1 AH — 23 ya 24 September 622 CE",
+          "who": "Nabi ﷺ. Estaqbal karne wale: Tamam Ansar — Aws aur Khazraj ke tamam log, aurtein aur bachche.",
+          "detail": "Nabi ﷺ apni oontni (Qaswa) par sawaar the. Har qabila chahta tha ke Nabi ﷺ un ke ghar mein thehren. Nabi ﷺ ne farmaaya: 'Oontni ko chhor do — jahan woh baith jaaye waheen mera ghar hoga.' Oontni Banu Najjar ke ilaaqe mein — jo Bibi Aisha RA ke nana ke khaandaan ka mohallah tha — Hazrat Abu Ayyub al-Ansari RA ke ghar ke saamne baith gayi. Nabi ﷺ un ke ghar 7 mahine thehray jab tak Masjid-e-Nabawi mukammal nahi hua.",
+          "references": [
+            "Sahih Bukhari: 3906",
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 3",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3"
+          ]
+        },
+        {
+          "id": "RAW-011-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn Rajab al-Hanbali RH — Jami al-Uloom ka Musannif",
+          "what": "Fiqh Hanbali ke imam, Jami al-Uloom wal-Hikam (Nawawi ki Arba'een ki sharh) aur Lata'if al-Ma'arif ke mashhoor musannif Imam Ibn Rajab al-Hanbali RH ki wafaat.",
+          "where": "Dimashq (Damascus), Syria",
+          "when": "Rabi ul Awwal 795 AH — 1393 CE",
+          "who": "Imam Zayn ud Din Abd al-Rahman ibn Ahmad ibn Rajab al-Hanbali RH — Baghdad mein paida hue, Damascus mein wafaat.",
+          "detail": "Imam Ibn Rajab RH ke Jami al-Uloom wal-Hikam — jo Imam Nawawi ki Arba'een hadith ki sharh hai — aaj bhi Islam ke sabse padhay jaane waley ilmi works mein se hai. Unki Dhayl Tabaqat al-Hanabila mein Hanbali ulama ki tarikh mahfuz hai. Fath ul Bari sharh Bukhari — jo unki likhna shuru ki — unke baad Ibn Hajar al-Asqalani RH ne mukammal ki.",
+          "references": [
+            "Dhayl Tabaqat al-Hanabila — Ibn Rajab khud",
+            "Al-Durar al-Kaminah — Ibn Hajar: Vol 2",
+            "Siyar A'lam al-Nubala — Dhahabi"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 12,
+      "date_hijri": "12 Rabi ul Awwal — AZEEM TAREEN DIN",
+      "events": [
+        {
+          "id": "RAW-012-01",
+          "type": "wiladat",
+          "category": "Seerat-e-Nabawi",
+          "title": "WILADAT: Nabi Muhammad ﷺ — Mashhoor Qoul (12 Rabi ul Awwal 53 BH)",
+          "what": "Nabi Muhammad Mustafa ﷺ ki wiladat — jo 'Rahmat lil Aalameen' (sab jahaan ke liye rahmat) hain — sabse mashhoor qoul ke mutabiq 12 Rabi ul Awwal 53 BH (qabl az Hijrat) ko Makkah mein hoi.",
+          "where": "Makkah al-Mukarrama — Sha'b Bani Hashim, Bait ul Mawlid (jo baad mein library bana diya gaya tha — aaj Makkah mein us jagah Library hai).",
+          "when": "12 Rabi ul Awwal 53 BH — 570 CE ya 571 CE, Somwar (Monday) ka din",
+          "who": "Walida: Bibi Amina bint Wahb (Banu Zuhra). Walid: Hazrat Abdullah ibn Abd al-Muttalib (wiladat se pehle wafaat). Dada: Hazrat Abd al-Muttalib ibn Hashim. Doodh pilaane waali: Hazrat Halima Sa'diyah RA.",
+          "detail": "Ibn Kathir ne Jabir ibn Abdullah RA aur Ibn Abbas RA ki riwayat likh ke kaha: 'Rasulullah ﷺ Amul Fil (haathi waala saal) ke 12 Rabi ul Awwal Somwar ko paida hue, Somwar ko bi'that hui, Somwar ko Isra wal Mi'raj hua, Somwar ko Hijrat ki aur Somwar ko wafaat.' Wiladat ke waqt: Bibi Amina RA ne noor dekha jis se Sham ke mahel roshan ho gaye. Kisra ka aiwan kaamp utha aur 14 kangure gir pade. Farsi ke aatash kada bujh gaye. Samawa lake (jo hazaron saal se bhari thi) surakh ho gayi. Shaytan ne kaha: 'Aaj duniya mein aisa kuch aaya jo pehle nahi aaya.' Allah ne tamam aasmaanon par farmaya: 'Mere Nabi ka din aaya hai.'",
+          "references": [
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 2 (12 Rabi ul Awwal ka qoul)",
+            "Seerat Ibn Hisham: Vol 1",
+            "Sahih Muslim: 1162 (Nabi ﷺ ka Somwar ke roza ka iqraar)",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 1"
+          ]
+        },
+        {
+          "id": "RAW-012-02",
+          "type": "event",
+          "category": "Seerat-e-Nabawi — Hijrat",
+          "title": "Nabi ﷺ ka Madinah Pahunchna — Hijrat ka Mukammal Hona (1 AH)",
+          "what": "12 Rabi ul Awwal 1 AH ko Nabi ﷺ ka Hijrat mukammal hua — aap ﷺ Quba se Madinah ke markaz mein pahunche. Is din ne Islamic state ki bunyaad rakhi.",
+          "where": "Madinah al-Munawwarah (Yathrib)",
+          "when": "12 Rabi ul Awwal 1 AH — 24 September 622 CE",
+          "who": "Nabi ﷺ, Hazrat Abu Bakr RA, Ansar-e-Madinah ka azeem istaqbal",
+          "detail": "Is din ka mashoor geet 'Tala'al Badru Alayna' (Hamare upar Badr ka chand nikla) Madinah ki bach bachiyaan ga rahi thi — yeh Islam ka sab se mashhoor khushamdedi geet ban gaya. Nabi ﷺ ne Madinah mein pahli Jumme ki namaz padhai aur pahla Islamic khutba diya jisme farmaya: 'Aye logo! Salam phailao, khana khilao, rishta joro, raat ko namaz padho jab log sote hon — Jannat mein aman ke saath jaaoge.'",
+          "references": [
+            "Sahih Bukhari: 3906",
+            "Sunan Tirmidhi: 2485 (Madinah ka khitaab)",
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 3"
+          ]
+        },
+        {
+          "id": "RAW-012-03",
+          "type": "wafaat",
+          "category": "Seerat-e-Nabawi",
+          "title": "WISAAL: Nabi Muhammad ﷺ — 12 Rabi ul Awwal 11 AH",
+          "what": "12 Rabi ul Awwal 11 AH — Islam ka sab se dardnaak din — Nabi Muhammad ﷺ ka wisaal (inteqaal) Madinah mein Hazrat Aisha RA ke hujray mein hua. Nabi ﷺ ki umr 63 saal thi.",
+          "where": "Madinah al-Munawwarah — Hazrat Aisha RA ka hujra (kamra) jo Masjid-e-Nabawi ke saath tha. Waheen dafn hue — aaj Masjid-e-Nabawi ka sabse muqaddas hissa wahi hai.",
+          "when": "12 Rabi ul Awwal 11 AH — 8 June 632 CE, Somwar (Monday) ka din",
+          "who": "Nabi Muhammad ﷺ. Paas mein: Hazrat Aisha RA (jin ki godh mein sar tha), Hazrat Ali RA, Hazrat Abbas RA, Sahaba RA.",
+          "detail": "Nabi ﷺ ki bimari Safar ke akhir mein shuru hui thi. Akhri dino mein bhi namaz padhaane ki koshish ki lekin nahi hua — Hazrat Abu Bakr RA ko hukm diya. Akhri din Hazrat Abu Bakr RA ki imamat mein apne ghar se masjid aaye aur Abu Bakr RA ko hata ke namaz padhai — yeh akhri baar tha. Wapas gaye. Hazrat Aisha RA ki godh mein sar rakh ke farmaya: 'Al-Rafiq al-A'la' (Aalaa aur buland dost ke saath). Aur wisaal ho gaya. Hazrat Umar RA ne inkaar kiya ke Nabi ﷺ wafaat ho sakty hain — farmaya: 'Jo bhi aisa kahe main uska sar kaaat dunga.' Hazrat Abu Bakr RA ne khutba diya: 'Jo Muhammad ﷺ ki ibadat karta tha — jaan le Muhammad ﷺ wafaat pa gaye. Jo Allah ki ibadat karta tha — Allah zinda hai, marta nahi.' (Quran 3:144). Is se Hazrat Umar RA ki aankhein khuleen.",
+          "references": [
+            "Sahih Bukhari: 4449, 4450, 3667",
+            "Sahih Muslim: 418",
+            "Seerat Ibn Hisham: Vol 4",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 5",
+            "Surah Aal-e-Imran: 144 (Quran)"
+          ]
+        },
+        {
+          "id": "RAW-012-04",
+          "type": "event",
+          "category": "Khilafat",
+          "title": "Bai'at-e-Abu Bakr Siddiq RA — Pehli Khilafat (11 AH)",
+          "what": "12 Rabi ul Awwal 11 AH ko Nabi ﷺ ke wisaal ke baad usi din Hazrat Abu Bakr al-Siddiq RA ko pehle Khalifa ke taur par bai'at di gayi — jab ke Nabi ﷺ ka jism ataaf-e-mubarak abhi dafn bhi nahi hua tha.",
+          "where": "Saqeefa Banu Sa'ida — Madinah mein ek khula maqam. Phir masjid mein aam bai'at.",
+          "when": "12 Rabi ul Awwal 11 AH — 8 June 632 CE",
+          "who": "Pehli bai'at: Hazrat Umar RA aur Hazrat Abu Ubaidah RA ne ki. Phir tamam Ansar aur Muhajirin ne. Hazrat Abu Bakr RA ne khud farmaya: 'Main behtar nahi hun — Ali aur Umar behtar hain — lekin yeh zimmedaari mujhe di gayi.'",
+          "detail": "Saqeefa Banu Sa'ida mein Ansar ne Sa'd ibn Ubada RA ko Khalifa banana chahaa. Hazrat Umar RA ne Hazrat Abu Bakr RA ka haath thaam ke bai'at ki. Phir aam Muslimoon ne Masjid-e-Nabawi mein bai'at ki. Hazrat Abu Bakr RA ne pehla khutba diya: 'Aye logo! Mujhe tumhara haakm banaya gaya hai — main tumse behtar nahi. Agar achha karoon toh saath do, agar galat karoon toh rokna.' Islam ki pehli Khilafat-e-Rashida shuru hui.",
+          "references": [
+            "Sahih Bukhari: 3667, 7219",
+            "Tarikh ul Tabari: Vol 3",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 6",
+            "Seerat Ibn Hisham: Vol 4"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 13,
+      "date_hijri": "13 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-013-01",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Ayyam-e-Beed ka Pehla Din — 13 Rabi ul Awwal",
+          "what": "13 Rabi ul Awwal Ayyam-e-Beed (roshan raat wale din) ka pehla din — nafl roza Sunnat hai.",
+          "where": "Aam — tamam Muslimoon ke liye",
+          "when": "Har hijri mahine ki 13, 14, 15 tarik",
+          "who": "Nabi ﷺ ka amal — Hazrat Abu Huraira RA se riwayat",
+          "detail": "Nabi ﷺ ne farmaya: 'Har mahine teen rozay rakhna poore zamane ke roza ke barabar hai.' (Bukhari: 1979). 10 nek amal = 3 x 10 = 30 = poora mahina.",
+          "references": [
+            "Sahih Bukhari: 1979",
+            "Sahih Muslim: 1159"
+          ]
+        },
+        {
+          "id": "RAW-013-02",
+          "type": "event",
+          "category": "Seerat-e-Nabawi",
+          "title": "Nabi ﷺ ka Dafn — 13 Rabi ul Awwal 11 AH",
+          "what": "Nabi ﷺ ka jism-e-mubarak 12 ki shaam ko ghusl diya gaya aur 13 Rabi ul Awwal ki subh ya raat ko dafn kiya gaya — waheen jahan aap ﷺ ka wisaal hua (Hazrat Aisha RA ka hujra).",
+          "where": "Hazrat Aisha RA ka hujra — Masjid-e-Nabawi ke saath milaa hua. Aaj wahi maqam Rauza-e-Mubarak/Rauza-e-Rasool hai.",
+          "when": "13 Rabi ul Awwal 11 AH — 9 June 632 CE",
+          "who": "Ghusl: Hazrat Ali RA, Hazrat Abbas RA, Hazrat Fadl ibn Abbas RA, Hazrat Usama ibn Zayd RA. Namaz-e-Janaza: Sahaaba ne firqon mein — koi imam nahi tha. Qabr mein utarne wale: Hazrat Ali RA, Hazrat Abbas RA.",
+          "detail": "Nabi ﷺ ka ghusl muqarrar tareeqe se Hazrat Ali RA ne kiya — kapde utaare nahi gaye. Namaz-e-Janaza mein koi imam nahi tha — log firqon mein aate aur padhte aur chale jaate. Sab se pehle Hazrat Abu Bakr RA aur Hazrat Umar RA ne padhi. Phir tamam Muhajir, Ansar, auraten aur bachche. Qabr mein lahd (side hole) banaya gaya. Hazrat Ali RA ne farmaya: 'Aye Allah ke Rasool ﷺ aap ke bina meri zindagi ko kuch bhi nahi bacha.'",
+          "references": [
+            "Sahih Bukhari: 1269, 4462",
+            "Seerat Ibn Hisham: Vol 4",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 5"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 14,
+      "date_hijri": "14 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-014-01",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Ayyam-e-Beed ka Doosra Din — 14 Rabi ul Awwal",
+          "what": "14 Rabi ul Awwal Ayyam-e-Beed ka doosra din — chand poora chamakta hai.",
+          "where": "Aam",
+          "when": "Har mahine 14 tarik",
+          "who": "Nabi ﷺ ka amal",
+          "detail": "Imam Nawawi RH ne Riyadh us Saliheen mein in rozoon ki fazilat bayaan ki.",
+          "references": [
+            "Sahih Muslim: 1159",
+            "Riyadh us Saliheen — Imam Nawawi"
+          ]
+        },
+        {
+          "id": "RAW-014-02",
+          "type": "event",
+          "category": "Khilafat",
+          "title": "Hazrat Abu Bakr Siddiq RA ki Khilafat ka Aaghaz (11 AH)",
+          "what": "Hazrat Abu Bakr Siddiq RA ne 12 Rabi ul Awwal ko bai'at ke baad 13-14 Rabi ul Awwal se baaqaida khilafat sambhali. Unka dor-e-khilafat 2 saal 3 mahine 10 din raha.",
+          "where": "Madinah al-Munawwarah",
+          "when": "Rabi ul Awwal 11 AH — 632 CE",
+          "who": "Hazrat Abu Bakr al-Siddiq RA — Pehle Khalifa-e-Rashid. Nabi ﷺ ke sabse qareeb dost, sasar aur Gufaa-e-Thaur ke saathi.",
+          "detail": "Hazrat Abu Bakr RA ke dor-e-khilafat ke aham karnaamey: (1) Ridda wars — murtaddeen aur jhoothe nabion ke khilaf jang (Musaylima Kazzaab ka qatl). (2) Quran ka pehla mukammal majmua Zaid ibn Thabit RA ke zariye. (3) Iraq aur Syria ki fatah ka aaghaz. Unhon ne sirf 2 saal mein woh buniyad rakhi jin par bada Islamic empire qaim hua.",
+          "references": [
+            "Sahih Bukhari: 3667",
+            "Tarikh ul Tabari: Vol 3",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 6"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 15,
+      "date_hijri": "15 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-015-01",
+          "type": "event",
+          "category": "Ibadaat",
+          "title": "Ayyam-e-Beed ka Teesra Aur Akhri Din — 15 Rabi ul Awwal",
+          "what": "15 Rabi ul Awwal Ayyam-e-Beed ka aakhri din — nafl roza Sunnat.",
+          "where": "Aam",
+          "when": "Har mahine 15 tarik",
+          "who": "Nabi ﷺ ka amal",
+          "detail": "Hazrat Abu Dharr RA se riwayat: Nabi ﷺ ne farmaaya: 'Teen roza 13, 14, 15 rakho.' (Nasai: 2423).",
+          "references": [
+            "Sunan Nasai: 2423",
+            "Sunan Tirmidhi: 761"
+          ]
+        },
+        {
+          "id": "RAW-015-02",
+          "type": "wiladat",
+          "category": "Ahl-e-Bait",
+          "title": "Wiladat: Hazrat Ali Akbar ibn Hussain RA (11 AH — rivayat)",
+          "what": "Imam Hussain RA ke bade sahebzaade Hazrat Ali Akbar ibn Hussain RA ki wiladat — jo baad mein Karbala mein shaheed hue.",
+          "where": "Madinah al-Munawwarah",
+          "when": "11 AH ya uske qareeb (wiladat ki exact taareekh mein ikhtilaf)",
+          "who": "Hazrat Ali ibn Hussain ibn Ali ibn Abi Talib RA — Imam Hussain RA ke bade bete.",
+          "detail": "Ali Akbar RA shahaadat ke waqt 18-19 saal ke the. Karbala mein woh Imam Hussain RA ki dua ke baad maidaan mein utrey aur bohot baahadaraana lad ke shaheed hue. Imam Hussain RA ne unki laash par girke kaha: 'Ae Allah! Gawah reh — tere Nabi ﷺ ke sabse zyada milte julte jawaan ne tujhse mulaqat ki.' Ali Akbar RA ki shabahat Nabi ﷺ se sabse zyada thi.",
+          "references": [
+            "Tarikh ul Tabari: Vol 5",
+            "Maqtal al-Hussain — Abu Mikhnaf",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 8"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 16,
+      "date_hijri": "16 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-016-01",
+          "type": "event",
+          "category": "Seerat-e-Nabawi",
+          "title": "Masjid-e-Nabawi ki Taameer ka Aaghaz (1 AH)",
+          "what": "Madinah pahunchne ke baad Nabi ﷺ ne Masjid-e-Nabawi ki taameer shuru ki. Oontni jahan baythi waheen zameen khareed ke masjid taameer hui. Nabi ﷺ ne khud pathhar uthaye.",
+          "where": "Madinah al-Munawwarah — Banu Najjar ke ilaaqe mein. Aaj ki Masjid-e-Nabawi isi bunyaad par hai.",
+          "when": "Rabi ul Awwal 1 AH — 622 CE",
+          "who": "Nabi ﷺ ne khud kaam kiya. Tamam Sahaaba — Muhajir aur Ansar — ne saath diya. Zameen ke maalik: Sahl aur Suhail ibn Amr — do yateem bache.",
+          "detail": "Nabi ﷺ ne zameen khareed ki aur masjid ki bunyaad rakhi. Sabse pehle khajoor ke tane ke sutoon rakhe, chhat banai. Nabi ﷺ ne khud pathhar uthaya aur geet gaya: 'Ae Allah! Asli khair akhirat ki khair hai — Ansar aur Muhajir ki madad karo.' Is mashhoor jang-e-Ahzab (Khandaq) ke doran mashhoor shi'r tha. Pehle masjid bahut chhoti thi — aahaista aahaista badi hoti gayi.",
+          "references": [
+            "Sahih Bukhari: 2902",
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 3"
+          ]
+        },
+        {
+          "id": "RAW-016-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Sharaf ud Din al-Nawawi RH — ek rivayat",
+          "what": "Riyadh us Saliheen ke mashhoor musannif Imam Nawawi RH ki wafaat — ek rivayat Rabi ul Awwal ke qareeb bataati hai.",
+          "where": "Nawa, Syria",
+          "when": "676 AH — 1277 CE",
+          "who": "Imam Yahya ibn Sharaf al-Nawawi RH",
+          "detail": "Imam Nawawi RH sirf 44 saal ki umr mein wafaat paaye. Riyadh us Saliheen, Al-Adhkar, Sharh Sahih Muslim unke azeem kaarnaamay hain.",
+          "references": [
+            "Tabaqat al-Shafi'iyyah — Subki: Vol 8",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 18"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 17,
+      "date_hijri": "17 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-017-01",
+          "type": "wiladat",
+          "category": "Seerat-e-Nabawi",
+          "title": "Wiladat: Nabi Muhammad ﷺ — Shia Rivayat (17 Rabi ul Awwal)",
+          "what": "Shia Muslims ke aqeede ke mutabiq Nabi ﷺ ki wiladat 17 Rabi ul Awwal ko hoi. Is din woh Imam Ja'far al-Sadiq RA ki wiladat ke din ke saath manaate hain.",
+          "where": "Makkah al-Mukarrama",
+          "when": "17 Rabi ul Awwal 53 BH — 570/571 CE (Shia rivayat)",
+          "who": "Nabi Muhammad ﷺ",
+          "detail": "Shia calendar ke mutabiq 17 Rabi ul Awwal — 'Yawm al-Mawlid' — ko Nabi ﷺ aur Imam Jafar al-Sadiq RA ki wiladat ek saath manaai jaati hai. Is din ko Iran mein 'Hafta-e-Wahdat' (ittehad hafte) ke nishaan ke taur par bhi manaya jaata tha.",
+          "references": [
+            "Shia Islamic Calendar",
+            "Wikipedia: Rabi al-Awwal — 17th",
+            "Islam.fandom.com"
+          ]
+        },
+        {
+          "id": "RAW-017-02",
+          "type": "wiladat",
+          "category": "Ahl-e-Bait",
+          "title": "Wiladat: Imam Jafar al-Sadiq RA (83 AH) — Mashhoor Rivayat",
+          "what": "Ahl-e-Bait ke azeem buzurg, fiqh aur hadith ke imam, Imam Abu Hanifa RH ke ustaad Hazrat Imam Jafar ibn Muhammad al-Sadiq RA ki wiladat 17 Rabi ul Awwal 83 AH ko hoi.",
+          "where": "Madinah al-Munawwarah",
+          "when": "17 Rabi ul Awwal 83 AH — 702 CE",
+          "who": "Imam Jafar ibn Muhammad al-Baqir ibn Ali Zain ul Abideen RA — Ahl-e-Bait ke 6th Imam (Shia aqeede ke mutabiq).",
+          "detail": "Imam Jafar al-Sadiq RA ka ilm itna wasi tha ke Imam Abu Hanifa RH ne kaha: 'Main ne Jafar ibn Muhammad se zyada faqeeh koi nahi dekha.' Imam Malik RH bhi unke shagirdeen mein rehe. Woh waqt ke sab se bade alim the — chemistry, astronomy, fiqh, hadith sab mein. Unka laqab 'al-Sadiq' (Sachcha) tha. Wafaat 148 AH mein hoi.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 6",
+            "Tahdhib al-Kamal — Imam Mizzi",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 18,
+      "date_hijri": "18 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-018-01",
+          "type": "wiladat",
+          "category": "Ahl-e-Bait",
+          "title": "Wiladat: Bibi Umm Kulthoom bint Ali RA",
+          "what": "Hazrat Ali ibn Abi Talib RA aur Bibi Fatimah RA ki beti Bibi Umm Kulthoom RA ki wiladat 18 Rabi ul Awwal ko hoi.",
+          "where": "Madinah al-Munawwarah",
+          "when": "18 Rabi ul Awwal (exact saal mein ikhtilaf)",
+          "who": "Bibi Umm Kulthoom bint Ali ibn Abi Talib RA — Imam Hasan RA aur Imam Hussain RA ki behen.",
+          "detail": "Bibi Umm Kulthoom RA Karbala ke baad qaid mein bhi rahi aur badi himmat se Yazid ke darbaar mein khitaab kiya. Unki zindagi Bibi Zainab RA ki tarah musibaton se bhari thi lekin woh sabir rahi.",
+          "references": [
+            "Quranreading.com — Rabi ul Awwal events",
+            "Wikipedia: Rabi al-Awwal — 18th",
+            "Islam Fandom: 18 Rabi al-Awwal"
+          ]
+        },
+        {
+          "id": "RAW-018-02",
+          "type": "event",
+          "category": "Ghazwat",
+          "title": "Ghazwa-e-Dhi Amr (Ghatafan) — Nabi ﷺ ki 5th Ghazwa (3 AH)",
+          "what": "3 AH mein Nabi ﷺ ne 450 Sahaaba ke saath Ghatafan ke khilaf Rabi ul Awwal mein ghazwa kiya. Woh bhaag gaye, koi jang nahi hui.",
+          "where": "Dhi Amr — Najd, Arabia",
+          "when": "Rabi ul Awwal 3 AH — 624 CE",
+          "who": "Nabi ﷺ, 450 Sahaaba. Mukhaalf: Ghatafan (Muharib aur Tha'laba) qabila.",
+          "detail": "Ghatafan walon ne Madinah par haamlah ki tayyari ki thi — khabar mili toh Nabi ﷺ ne pehle hi lashkar bheja. Woh Taawa pahad par bhaag gaye. Nabi ﷺ 15 din rahe aur phir wapas. Is ghazwa mein woh daastaan hai ke ek shakhs ne Nabi ﷺ par gafil mein hamlah ki koshish ki lekin Allah ne bachaya.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 2",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3",
+            "Sahih Bukhari: 2910"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 19,
+      "date_hijri": "19 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-019-01",
+          "type": "wafaat",
+          "category": "Sahaba",
+          "title": "Wafaat: Hazrat Abu Ubaidah ibn al-Jarrah RA — Amin ul Ummat",
+          "what": "Ashra-e-Mubashara mein se, Nabi ﷺ ke 'Amin ul Ummat' Hazrat Abu Ubaidah Amir ibn al-Jarrah RA ki wafaat — Taa'oon (plague) ki bimari se — Urdan (Jordan) mein.",
+          "where": "Amwas (Emmaus) ya Jabiya, Urdan (Jordan) — plague ke doran. Waheen dafn hain.",
+          "when": "Rabi ul Awwal 18 AH — 639 CE (bazi riwayaat mein 17 AH)",
+          "who": "Hazrat Amir ibn Abdullah ibn al-Jarrah al-Fihri al-Qurashi RA — Ashra-e-Mubashara mein se.",
+          "detail": "Nabi ﷺ ne farmaya: 'Har ummat ka ek amin (amanatdaar) hota hai — is ummat ka amin Abu Ubaidah ibn al-Jarrah hai.' (Bukhari: 3744). Woh Sham (Syria) ke commander the. Amwas ke Taa'oon (plague) mein 25,000 Muslimaan mare — jisme yeh bhi the. Hazrat Umar RA ne unhe wahan se bahar bhulaana chahaa. Abu Ubaidah RA ne kaha: 'Main apne Muslimaan bhaion ko chhor ke nahi jaaonga.' Aur wahan wafaat payi.",
+          "references": [
+            "Sahih Bukhari: 3744",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 7",
+            "Al-Isabah — Ibn Hajar: Vol 4"
+          ]
+        },
+        {
+          "id": "RAW-019-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Abd al-Qadir al-Jilani RH — Ghawth ul A'zam",
+          "what": "Tasawwuf ke azeem imam, Qadiriyya silsilah ke bani aur 'Ghawth ul A'zam' ke laqab se mashhoor Hazrat Shaikh Abd al-Qadir al-Jilani RH ki wafaat.",
+          "where": "Baghdad, Iraq — waheen dafn hain. Baghdad mein un ki azeem dargah (mazaar) aaj bhi hai.",
+          "when": "11 Rabi ul Aakhir 561 AH — February 1166 CE (Rabi ul Awwal ke qareeb)",
+          "who": "Hazrat Muhyi ud Din Abd al-Qadir ibn Abi Salih al-Jilani al-Hasani al-Husayni RH — Gilan, Iran mein paida hue.",
+          "detail": "Shaikh Abd al-Qadir RH ko 'Sultan ul Awliya' aur 'Ghawth ul A'zam' kaha jaata hai. Unke waz mein ek baar qareeb 70,000 log aate the — bohat log Muslim hue. Futuh al-Ghayb aur Al-Fath al-Rabbani unki mashhoor kitabein hain. Qadiriyya silsila duniya mein sabse zyada phela hua Sufi silsilah hai — Africa, South Asia, Middle East mein. Pakistan mein Data Ganj Bakhsh ke baad Ghawth ul A'zam ki sabse zyada izzat hai.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 20",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 12",
+            "Wafiyat al-A'yan — Ibn Khallikan: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 20,
+      "date_hijri": "20 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-020-01",
+          "type": "event",
+          "category": "Seerat-e-Nabawi",
+          "title": "Pehla Jumma — Madinah mein (1 AH)",
+          "what": "1 AH mein Nabi ﷺ ne Madinah mein pehli baar Jumme ki namaz padhai. Wadi Ranuna mein — Quba se Madinah jaate waqt yeh maqam tha. Yeh Islam ki pehli baaqaida Jumme ki namaz thi.",
+          "where": "Wadi Ranuna — Quba aur Madinah ke darmiyan, Banu Salim ibn Awf ke mohalle ke qareeb",
+          "when": "Rabi ul Awwal 1 AH — September 622 CE (Friday — Jumu'a)",
+          "who": "Nabi ﷺ ne imamat ki. Tamam Ansar aur jo Muhajiroon Madinah mein the — sab shamil hue.",
+          "detail": "Yeh Islam ki pehli Jumme ki namaz thi jo Madinah mein qaim ki gayi. Nabi ﷺ ne khutba diya jisme farmaya: 'Aye logo! Aage badho aur salam phailao.' Jumme ki namaz ka yeh silsila aaj tak qaim hai. Is saal se hi Jumma (Friday) Muslims ka azeem hafta-waara ibadat ka din bana.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 3",
+            "Tarikh ul Tabari: Vol 3"
+          ]
+        },
+        {
+          "id": "RAW-020-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ahmad al-Rifa'i RH — Rifa'iyya Silsila ke Bani",
+          "what": "Silsila Rifa'iyya ke azeem bani aur Sufi buzurg Hazrat Ahmad ibn Ali al-Rifa'i RH ki wafaat.",
+          "where": "Um Abida, Wasit, Iraq — waheen dafn hain",
+          "when": "22 Jumada al-Awwal 578 AH — 1183 CE (Rabi ul Awwal ke qareeb)",
+          "who": "Hazrat Ahmad ibn Ali al-Rifa'i RH — Basra ke qareeb paida hue, Wasit mein zindagi guzari.",
+          "detail": "Imam Ahmad al-Rifa'i RH Silsila Rifa'iyya ke bani hain — jo aaj bhi Egypt, Syria, Turkey aur South Asia mein phela hua hai. Unke maslak mein ibadat, zikr aur khidmat-e-khalq par zor diya jaata hai. Nabi ﷺ ke rauze par haziri dene ke baare mein unki ek mashhoor karamat ki rivayat mashhoor hai.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 21",
+            "Wafiyat al-A'yan — Ibn Khallikan",
+            "Tabaqat al-Awliya — Ibn Mulaqqin"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 21,
+      "date_hijri": "21 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-021-01",
+          "type": "event",
+          "category": "Ghazwat",
+          "title": "Ghazwa-e-Badr al-Sughra (Doosri Badr) — 4 AH",
+          "what": "4 AH mein Nabi ﷺ ne 1500 Sahaaba ke saath Abu Sufyan se muaahide ke mutabiq Badr mein gaye — maqarrar jang ke liye. Abu Sufyan ne apni fauj rokh li aur khud nahi aaya — yeh Muslim fatah thi bin larai.",
+          "where": "Badr — Madinah se 150 km janub mein, wahi maqam jahan 2 AH ki azeem jang hoi thi",
+          "when": "Rabi ul Awwal 4 AH — 626 CE (8 din wahan rahe)",
+          "who": "Nabi ﷺ, 1500 Sahaaba. Mukhaalf (jo nahi aaye): Abu Sufyan aur 2000 Quresh.",
+          "detail": "Jang-e-Uhud ke baad Abu Sufyan ne kaha tha: 'Agli baar Badr mein milenge.' Nabi ﷺ ne qabool kiya. Muqarrar waqt par Nabi ﷺ Badr pahunche. Abu Sufyan ne Makkah se nikal ke Marr al-Zahran tak aaya phir bhag gaya. Nabi ﷺ 8 din Badr mein rahe — tijaarat bhi ki — aur khaali haath wapas gaye. Phir bhi yeh fatah thi kyunke dushman haar gaya.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 3",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 4"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 22,
+      "date_hijri": "22 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-022-01",
+          "type": "wafaat",
+          "category": "Sahaba",
+          "title": "Wafaat: Hazrat Zainab bint Jahsh RA — Umm ul Momineen",
+          "what": "Nabi ﷺ ki zauja Hazrat Zainab bint Jahsh RA — jo sabse zyada sadqa karti thin aur 'Zainab al-Kubra' kahlaati thin — ki wafaat.",
+          "where": "Madinah al-Munawwarah — Jannat ul Baqi mein dafn hain",
+          "when": "Rabi ul Awwal 20 AH — 641 CE (kuch riwayaat mein 21 AH)",
+          "who": "Hazrat Zainab bint Jahsh al-Asadiyya RA — Nabi ﷺ ki phuphari ki beti. Pehle Hazrat Zaid ibn Harith RA se nikkah tha.",
+          "detail": "Hazrat Zainab RA ka nikkah Allah ki taraf se hukm ke zariye Nabi ﷺ se hua — Surah Ahzab mein Allah ne is ka zikr farmaya. Hazrat Aisha RA ne farmaya: 'Zainab meri sabse badi competitor thi aur main ne kisi ko usse zyada parsa, zyada roza rakhne waali, zyada sadqa dene waali nahi dekha.' Unki wafaat par Hazrat Umar RA ne rone waali aurton ko sakha ki ijazat di — kaha: 'Yeh lena dena waali thi!'",
+          "references": [
+            "Sahih Muslim: 2452",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 2",
+            "Al-Isabah — Ibn Hajar: Vol 8",
+            "Tabaqat Ibn Sa'd: Vol 8"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 23,
+      "date_hijri": "23 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-023-01",
+          "type": "event",
+          "category": "Fatah",
+          "title": "Fatah-e-Qustuntunia (Constantinople) ki Peshgoi — Nabi ﷺ",
+          "what": "Nabi ﷺ ne farmaya: 'Qustuntunia (Constantinople) zaroor fatah hogi — us fatah karne wala ameer kitna achha ameer hoga aur us fauj kitni achhi fauj hogi.' (Musnad Ahmad: 18957). Yeh peshgoi 857 saal baad 857 AH mein poori hoi.",
+          "where": "Madinah al-Munawwarah mein yeh peshgoi ki gayi",
+          "when": "Peshgoi: 7 AH ke qareeb. Poori: 29 Rabi ul Awwal 857 AH — 29 May 1453 CE",
+          "who": "Peshgoi: Nabi Muhammad ﷺ. Fatah karne wala: Sultan Muhammad Fatih (Muhammad II — Ottoman Sultan)",
+          "detail": "Sultan Muhammad II — jise 'al-Fatih' (fatah karne wala) kaha jaata tha — ne 29 May 1453 ko 21 saal ki umr mein Constantinople fatah ki. Hagia Sophia masjid bani. Byzantine Empire khatam hua. Nabi ﷺ ne 857 saal pehle is ki peshgoi ki thi — aur farmaaya ke woh ameer kitna achha hoga. Ulama ne yeh hadiths ke mutabiq Sultan Muhammad Fatih ko 'woh ameer' qarar diya.",
+          "references": [
+            "Musnad Ahmad: 18957",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 15",
+            "Wikipedia: Fall of Constantinople — 29 May 1453"
+          ]
+        },
+        {
+          "id": "RAW-023-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam al-Muzani RH — Imam Shafi'i ke Azeem Shagird",
+          "what": "Imam Shafi'i RH ke mashhoor shagird aur Mukhtasar al-Muzani (Shafi'i fiqh ka mukhtssar) ke musannif Imam Ismail ibn Yahya al-Muzani RH ki wafaat.",
+          "where": "Fustat (Old Cairo), Egypt",
+          "when": "264 AH — 877 CE",
+          "who": "Imam Abu Ibrahim Ismail ibn Yahya al-Muzani al-Masri RH — Imam Shafi'i RH ke sabse aham shagird.",
+          "detail": "Imam Shafi'i RH ne Imam Muzani RH ke baare mein farmaya: 'Muzani meri ummat ka hujjat (daleel) hai.' Unka Mukhtasar fiqh ki taleem mein azeem kitab hai — aaj bhi padhaayi jaati hai. Unho ne Imam Shafi'i RH ke ilm ko tartibi shakh diya.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 12",
+            "Tabaqat al-Shafi'iyyah — Subki: Vol 2",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 24,
+      "date_hijri": "24 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-024-01",
+          "type": "event",
+          "category": "Ghazwat",
+          "title": "Ghazwa-e-Sawiq — Abu Sufyan ka Chhapa (2 AH)",
+          "what": "Ghazwa-e-Badr ke baad Abu Sufyan ne Madinah ke qareeb aa ke 2 Ansari shaheed kiye aur khajoor ke khet jalaye — phir bhaag gaya. Nabi ﷺ ne peecha kiya lekin nikal gaya.",
+          "where": "Madinah ke qareeb — Qarqara maqam (Madinah ke shamaal mein)",
+          "when": "Rabi ul Awwal 2 AH — September/October 623 CE",
+          "who": "Abu Sufyan — 200 Quresh ke saath Chhapa. Nabi ﷺ ne 200 Sahaaba ke saath peecha kiya.",
+          "detail": "Abu Sufyan ne Uhud ki kasam khai thi ke Badr ka badla lega. Madinah ke qareeb raatko aaya — 2 Ansari shaheed kiye aur khet jalaye — phir bhaag gaya. Bhagte hue apnaa sawiq (sattu/jau ka atta) phekta gaya — is liye ghazwa ka naam 'Sawiq' para. Nabi ﷺ ne peecha kiya lekin nikal gaya.",
+          "references": [
+            "Seerat Ibn Hisham: Vol 2",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3",
+            "Tarikh ul Tabari: Vol 3"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 25,
+      "date_hijri": "25 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-025-01",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Ibn al-Arabi RH — Muftasir wa Muhadddis Maliki",
+          "what": "Fiqh Maliki ke azeem imam aur Ahkam ul Quran ke mashhoor musannif Imam Abu Bakr Muhammad ibn Abd Allah ibn al-Arabi RH ki wafaat (Sufi Ibn Arabi se yeh alag hain).",
+          "where": "Fes (Fez), Morocco ya Tlemcen, Algeria — safar mein wafaat",
+          "when": "543 AH — 1148 CE",
+          "who": "Imam Abu Bakr ibn al-Arabi al-Maliki al-Ishbili RH — Seville (Spain) mein paida hue.",
+          "detail": "Imam Ibn al-Arabi RH (Maliki) ne Quran ki tafseer 'Ahkam ul Quran' likhi — Maliki perspective se. Woh Imam al-Ghazali RH ke zamane mein the aur un se mila bhi tha. Qadi (judge) bhi rahe. Itna safar kiya ke unhe 'Rihla' (safar karne wala) bhi kaha gaya. Is Ibrahim ibn al-Arabi ko Sufi Ibn Arabi (560-638 AH) se confuse nahi karna chahiye.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 20",
+            "Wafiyat al-A'yan — Ibn Khallikan",
+            "Tartib al-Madarik — Qadi Iyad: Vol 8"
+          ]
+        },
+        {
+          "id": "RAW-025-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Suyuti RH — Tarikh Islam ke Azeem Alim",
+          "what": "500 se zyada kutub ke musannif, Tafsir Jalalayn ke co-author aur Islam ke azeem alim Imam Jalal ud Din al-Suyuti RH ki wafaat.",
+          "where": "Qahira (Cairo), Egypt — Raudat al-Miqdas mein dafn hue",
+          "when": "19 Jumada al-Awwal 911 AH — October 1505 CE",
+          "who": "Imam Abd al-Rahman ibn Abi Bakr Jalal ud Din al-Suyuti al-Shafi'i RH",
+          "detail": "Imam Suyuti RH ne dawa kiya ke unhon ne 500+ kutub likhi hain. Al-Itqan fi Uloom al-Quran, Tafsir Jalalayn, Tarikh al-Khulafa, Al-Jami al-Saghir — unke mashhoor works hain. Unhon ne 40 saal ki umr mein khud ko ilm ke liye waqf kar diya aur kisi se nahi mila. 60 saal ki umr mein wafaat.",
+          "references": [
+            "Husn al-Muhadara — Suyuti khud",
+            "Siyar A'lam al-Nubala (mukamal version)",
+            "Al-Durar al-Kaminah — Ibn Hajar"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 26,
+      "date_hijri": "26 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-026-01",
+          "type": "wafaat",
+          "category": "Seerat-e-Nabawi",
+          "title": "Wafaat: Hazrat Abu Talib ibn Abd al-Muttalib — Nabi ﷺ ke Chacha (10 Nabawi)",
+          "what": "Nabi ﷺ ke azeem himayati chacha Hazrat Abu Talib ibn Abd al-Muttalib ki wafaat — jo Islam laaye nahi lekin Nabi ﷺ ki poori zindagi hifazat karte rahe.",
+          "where": "Makkah al-Mukarrama",
+          "when": "Rabi ul Awwal 10 Nabawi — 619 CE (Aam ul Huzn — Gham ka Saal)",
+          "who": "Abu Talib ibn Abd al-Muttalib — Nabi ﷺ ke chacha aur Hazrat Ali RA ke walid. Quresh ke izzatdar buzurg.",
+          "detail": "Abu Talib ne Nabi ﷺ ki puri zindagi mein maddad ki aur mushrikeen se bachaya. Lekin wafaat tak kalimaah nahi padha. Nabi ﷺ ne farmaaya: 'Aye chacha! La ilaha illallah ek baar kaho — main Allah ke paas tumhare liye hujjat doonga.' Abu Talib ne kaha: 'Mujhe Quraish ka ta'na na dena ho ga.' Nabi ﷺ ne farmaya: 'Main hamesha tumhare liye istighfar karta rahunga jab tak Allah na roke.' Phir Allah ne Surah Tawbah: 113 nazil ki — koi bhi mushrik ke liye istighfar nahi. Phir bhi Allah ne Nabi ﷺ ki dua par Abu Talib ko dozakh ki sab se halki saza di. (Bukhari: 3883).",
+          "references": [
+            "Sahih Bukhari: 3883",
+            "Sahih Muslim: 24",
+            "Seerat Ibn Hisham: Vol 1",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 3"
+          ]
+        },
+        {
+          "id": "RAW-026-02",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Khwaja Sirajuddin Naqshbandi RH (1333 AH)",
+          "what": "Silsila Naqshbandia ke azeem buzurg Hazrat Khwaja Sirajuddin Naqshbandi RH ki wafaat 26 Rabi ul Awwal 1333 AH ko hoi.",
+          "where": "Delhi ya Lahore (exact jagah ki tasdeeq nahi)",
+          "when": "26 Rabi ul Awwal 1333 AH — 1915 CE",
+          "who": "Hazrat Khwaja Sirajuddin Naqshbandi RH — Naqshbandi silsila ke azeem shaikh.",
+          "detail": "Silsila Naqshbandiyya dunya ke sabse phele hue Sufi silsilon mein se ek hai — India, Pakistan, Central Asia, Turkey aur China mein. Yeh silsila Khwaja Baha ud Din Naqshband RH se chala — jo khud Hazrat Abu Bakr RA tak pahuncha.",
+          "references": [
+            "Wikipedia: Rabi al-Awwal — 26 Rabi ul Awwal 1333 AH",
+            "Islam Fandom: Rabi al-Awwal"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 27,
+      "date_hijri": "27 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-027-01",
+          "type": "event",
+          "category": "Fatah",
+          "title": "Fatah-e-Qustuntunia (Constantinople) — Sultan Muhammad Fatih (857 AH)",
+          "what": "29 May 1453 CE — 857 AH mein Sultan Muhammad Fatih ne 21 saal ki umr mein Constantinople fatah ki. Nabi ﷺ ki 857 saal pehle ki peshgoi poori hoi. Byzantine Empire khatam hua.",
+          "where": "Constantinople (aaj ka Istanbul, Turkey) — Byzantine Romaan Empire ki darulkhulaafa",
+          "when": "29 Rabi ul Awwal 857 AH — 29 May 1453 CE",
+          "who": "Muslim: Sultan Muhammad II (Muhammad Fatih) — Ottoman Sultan, 21 saal ki umr. Byzantine: Constantine XI — akhri Byzantine Emperor. Muslim fauj: 80,000-100,000.",
+          "detail": "Sultan Muhammad Fatih ne Constantinople ki fachri dewar (jo 1000 saal se qaaim thi) torh di — pahaadi ke ooper se jahaaz zameeen par ghaseet ke darya mein utaare. 29 May ko darwaaza khulja — Fatih ghode par shahay hagia sophia mein aa gaye aur sajda kiya. Fauran Azan di gayi. Hagia Sophia masjid bani. Nabi ﷺ ki peshgoi (Musnad Ahmad: 18957) 857 saal baad poori hoi. Ottoman Empire ka naya daur shuru hua.",
+          "references": [
+            "Musnad Ahmad: 18957 (Nabi ﷺ ki peshgoi)",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir",
+            "Wikipedia: Fall of Constantinople — 29 May 1453",
+            "Tarikh-e-Osmani"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 28,
+      "date_hijri": "28 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-028-01",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam Hasan al-Basri RH — Tabi'i wa Zahid-e-Azeem",
+          "what": "Azeem Tabi'i, zahid, waaiz aur mashhoor buzurg Imam Hasan ibn Abi al-Hasan al-Basri RH ki wafaat.",
+          "where": "Basra, Iraq — waheen dafn hain",
+          "when": "1 Rajab 110 AH — 728 CE (Rajab mein — Rabi ul Awwal ke context mein mention)",
+          "who": "Imam Abu Sa'id Hasan ibn Abi al-Hasan Yassar al-Basri RH — Madinah mein paida hue, Basra mein poori zindagi.",
+          "detail": "Imam Hasan al-Basri RH ka ilm, zuhd aur dar-e-akhirat ka khauf unhe ahl-e-Basra ka imam banata tha. Unhe Hazrat Umar RA, Hazrat Ali RA aur tamam Sahaba ki sohbat nasib thi. Unka yeh qoul mashoor hai: 'Ae ibn Adam! Tujhe apni umr ka afsos hoga — kyunke tujhe yaad nahi ke tu phir nahi aaega.' Imam Ghazali RH ne Ihya mein un ke aqwaal bhar diye hain.",
+          "references": [
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 4",
+            "Tabaqat Ibn Sa'd: Vol 7",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 9"
+          ]
+        },
+        {
+          "id": "RAW-028-02",
+          "type": "event",
+          "category": "Seerat-e-Nabawi",
+          "title": "Ghazwa-e-Hamra al-Asad — Uhud ke Baad (3 AH)",
+          "what": "Jang-e-Uhud ke agle din — 3 AH mein — Nabi ﷺ ne 1000 Sahaaba ke saath Hamra al-Asad maqam tak Abu Sufyan ka peecha kiya — taake dushman yeh na samjhe ke Muslimaan kamzor ho gaye.",
+          "where": "Hamra al-Asad — Madinah se 8 mil janub mein",
+          "when": "8 Shawwal 3 AH — 625 CE (Uhud ke agle din) — Rabi ul Awwal mein wapsi",
+          "who": "Nabi ﷺ, 1000 Sahaaba — zyaadatar Uhud ke zahmiyoon ne bhi jawab diya. Quran ne in logooon ki ta'reef ki (Surah Aal-e-Imran: 172-173).",
+          "detail": "Uhud ke baad Sahaba ke aansu aur gham tha. Agle subh Bilal RA ne namaz ke baad ailan kiya: 'Nabi ﷺ dushman ka peecha karne ja rahe hain — sirf Uhud waale chalen.' Zahmiyoon ne bhi chalne ki koshish ki. Abu Sufyan Hamra al-Asad maqam se aage nahi gaya — kisi ne usse khabar di ke Nabi ﷺ phir aate hain. Woh bhaag gaya. Yeh Quran mein 'those who responded after being wounded' (3:172) ke taur par mohsoom hua — Allah ne un ki ta'reef ki.",
+          "references": [
+            "Surah Aal-e-Imran: 172-173 (Quran)",
+            "Seerat Ibn Hisham: Vol 2",
+            "Zad ul Ma'ad — Ibn Qayyim: Vol 3",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vol 4"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 29,
+      "date_hijri": "29 Rabi ul Awwal",
+      "events": [
+        {
+          "id": "RAW-029-01",
+          "type": "wafaat",
+          "category": "Sahaba",
+          "title": "Wafaat: Hazrat Muadh ibn Jabal RA — Halal wa Haram ke Imam",
+          "what": "Nabi ﷺ ke azeem sahabi, Qari aur Mu'allim Hazrat Muadh ibn Jabal RA ki wafaat Amwas ke Taa'oon (plague) mein hoi.",
+          "where": "Urdan (Jordan) — Amwas ya Jabiya mein plague ke dauran",
+          "when": "18 AH — 639 CE (kuch riwayaat mein Rabi ul Awwal mein)",
+          "who": "Hazrat Muadh ibn Jabal al-Ansari al-Khazraji RA — Ansar mein sabse bade alim.",
+          "detail": "Nabi ﷺ ne farmaya: 'Halal wa Haram ke zyada janne waale Muadh ibn Jabal hain.' (Tirmidhi: 3791). Jab Nabi ﷺ ne unhe Yemen bheja toh poocha: 'Tum kaise faisle karoge?' Kaha: 'Quran se.' 'Agar nahi mila?' 'Sunnat se.' 'Agar nahi mila?' 'Apni ra'ay se ijtihad karoonga.' Nabi ﷺ ne farmaya: 'Shukar — Allah ne Rasool ke safeer ko taufeeq di.' (Abu Dawood: 3592). Amwas plague mein wafaat payi — sirf 33 saal ki umr mein.",
+          "references": [
+            "Sunan Tirmidhi: 3791",
+            "Sunan Abu Dawood: 3592",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 1",
+            "Al-Isabah — Ibn Hajar: Vol 6"
+          ]
+        }
+      ]
+    },
+    {
+      "day": 30,
+      "date_hijri": "30 Rabi ul Awwal — Akhri Din",
+      "events": [
+        {
+          "id": "RAW-030-01",
+          "type": "wafaat",
+          "category": "Ulama",
+          "title": "Wafaat: Imam al-Khatib al-Baghdadi RH — Tarikh Baghdad ke Musannif",
+          "what": "Azeem muhaddis aur Tarikh Baghdad (38 volumes) ke mashhoor musannif Imam al-Khatib al-Baghdadi RH ki wafaat.",
+          "where": "Baghdad, Iraq",
+          "when": "7 Dhul Hijjah 463 AH — 1071 CE (Dhul Hijjah mein lekin Rabi ul Awwal context)",
+          "who": "Imam Abu Bakr Ahmad ibn Ali ibn Thabit al-Khatib al-Baghdadi RH",
+          "detail": "Imam Khatib al-Baghdadi RH ki Tarikh Baghdad — Baghdad ke ulama ki sawaneh hayat — hadith ki asnad ki tasdeeq ka azeem kaam hai. Unki doosri mashhoor kitab Al-Jami li Akhlaq al-Rawi wal Adab al-Sami hadith sunne aur sunane ke adab par pehli kitab hai. Imam Dhahabi RH ne kaha: 'Agar khatib ke baad koi muhaddis hota toh woh Imam Nawawi hota.'",
+          "references": [
+            "Tarikh Baghdad — Khatib khud (introduction)",
+            "Siyar A'lam al-Nubala — Imam Dhahabi: Vol 18",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir"
+          ]
+        },
+        {
+          "id": "RAW-030-02",
+          "type": "event",
+          "category": "Rabi ul Awwal — Khatima",
+          "title": "Rabi ul Awwal ka Khatima — Azeem Mahine Ki Yaad",
+          "what": "Rabi ul Awwal — Islam ka sabse zyada aham mahina — khatam hota hai. Nabi ﷺ ki wiladat, Hijrat ka mukammal hona, Masjid Quba aur Masjid-e-Nabawi ki taameer aur Nabi ﷺ ka wisaal — sab is mahine mein hue.",
+          "where": "Aam",
+          "when": "30 Rabi ul Awwal",
+          "who": "Tamam Muslimoon ke liye",
+          "detail": "Is mahine ke khatme par yaad karo: (1) Nabi ﷺ ki wiladat (8/9/12 Rabi ul Awwal) — Allah ki azeem rahmat. (2) Hijrat (12 Rabi ul Awwal 1 AH) — Islamic state ki buniyad. (3) Masjid Quba — pehli masjid (9 Rabi ul Awwal 1 AH). (4) Nabi ﷺ ka wisaal (12 Rabi ul Awwal 11 AH) — ummat ka sabse bada gham. (5) Hazrat Abu Bakr RA ki bai'at — khilafat ka aaghaz. Yeh mahina Darood Shareef ka mahina hai — Salawat parho, Seerat parho, Sunnat ki paabandi karo.",
+          "references": [
+            "Sahih Bukhari (multiple hadith about the Prophet ﷺ)",
+            "Seerat Ibn Hisham",
+            "Al-Bidayah wan-Nihayah — Ibn Kathir: Vols 2-5"
+          ]
+        }
+      ]
+    }
+  ]
+}
