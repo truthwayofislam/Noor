@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../services/offline_quran_service.dart';
 
 class MushafQuranScreen extends StatefulWidget {
   const MushafQuranScreen({super.key});
@@ -12,13 +11,19 @@ class MushafQuranScreen extends StatefulWidget {
 
 class _MushafQuranScreenState extends State<MushafQuranScreen> {
   int _currentPage = 1;
-  final Map<int, List<String>> _cachedPages = {};
   late PageController _pageController;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadLastRead();
+    _initQuran();
+  }
+
+  Future<void> _initQuran() async {
+    await OfflineQuranService.loadQuran();
+    await _loadLastRead();
+    setState(() => _isLoading = false);
   }
 
   Future<void> _loadLastRead() async {
@@ -34,30 +39,18 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
     await prefs.setInt('mushaf_last_page', page);
   }
 
-  Future<List<String>> _loadPage(int page) async {
-    if (_cachedPages.containsKey(page)) {
-      return _cachedPages[page]!;
-    }
-
-    try {
-      final response = await http.get(
-        Uri.parse('https://api.alquran.cloud/v1/page/$page/quran-uthmani'),
-      );
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        final ayahs = data['data']['ayahs'] as List;
-        final lines = ayahs.map((a) => a['text'].toString()).toList();
-        _cachedPages[page] = lines;
-        return lines;
-      }
-    } catch (e) {
-      // Return empty on error
-    }
-    return [];
+  List<Map<String, dynamic>> _getPageData(int page) {
+    return OfflineQuranService.getPage(page);
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Mushaf - Page $_currentPage/604'),
@@ -82,71 +75,63 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
             final page = index + 1;
             setState(() => _currentPage = page);
             _saveLastRead(page);
-            _loadPage(page);
           },
           itemCount: 604,
           itemBuilder: (context, index) {
             final page = index + 1;
-            return FutureBuilder<List<String>>(
-              future: _loadPage(page),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-
-                final lines = snapshot.data!;
-                return Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 8,
-                                spreadRadius: 2,
-                              ),
-                            ],
+            final ayahs = _getPageData(page);
+            
+            return Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8,
+                            spreadRadius: 2,
                           ),
-                          child: ListView.builder(
-                            itemCount: lines.length,
-                            itemBuilder: (context, i) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 10),
-                                child: Text(
-                                  lines[i],
-                                  textAlign: TextAlign.center,
-                                  textDirection: TextDirection.rtl,
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    height: 2.5,
-                                    fontFamily: 'Amiri',
-                                    letterSpacing: 0.3,
-                                  ),
+                        ],
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: ayahs.map((ayah) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: Text(
+                                ayah['text'],
+                                textAlign: TextAlign.center,
+                                textDirection: TextDirection.rtl,
+                                style: const TextStyle(
+                                  fontSize: 22,
+                                  height: 2.2,
+                                  fontFamily: 'Amiri',
+                                  letterSpacing: 0.3,
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          }).toList(),
                         ),
                       ),
-                      const SizedBox(height: 15),
-                      Text(
-                        'Page $page',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.brown.shade700,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                );
-              },
+                  const SizedBox(height: 15),
+                  Text(
+                    'Page $page',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.brown.shade700,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),
