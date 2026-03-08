@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class OfflineQuranService {
@@ -14,7 +15,7 @@ class OfflineQuranService {
       _quranData = json.decode(jsonString);
       _isLoaded = true;
     } catch (e) {
-      print('Error loading Quran: $e');
+      if (kDebugMode) print('Error loading Quran: $e');
     }
   }
 

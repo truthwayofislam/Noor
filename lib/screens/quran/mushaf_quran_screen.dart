@@ -31,7 +31,6 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
     final lastPage = prefs.getInt('mushaf_last_page') ?? 1;
     _pageController = PageController(initialPage: lastPage - 1);
     setState(() => _currentPage = lastPage);
-    _loadPage(lastPage);
   }
 
   Future<void> _saveLastRead(int page) async {
