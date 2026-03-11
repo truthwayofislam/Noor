@@ -24,17 +24,26 @@ class OfflineQuranService {
     if (!_isLoaded || _quranData == null) return [];
     
     try {
-      final ayahs = _quranData!['data']['ayahs'] as List;
-      return ayahs
-          .where((ayah) => ayah['page'] == pageNumber)
-          .map((ayah) => {
-                'text': ayah['text'],
-                'surah': ayah['surah']['number'],
-                'ayah': ayah['numberInSurah'],
-                'juz': ayah['juz'],
-              })
-          .toList();
+      final surahs = _quranData!['data']['surahs'] as List;
+      List<Map<String, dynamic>> pageAyahs = [];
+      
+      for (var surah in surahs) {
+        final ayahs = surah['ayahs'] as List;
+        for (var ayah in ayahs) {
+          if (ayah['page'] == pageNumber) {
+            pageAyahs.add({
+              'text': ayah['text'],
+              'surah': surah['number'],
+              'ayah': ayah['numberInSurah'],
+              'juz': ayah['juz'],
+            });
+          }
+        }
+      }
+      
+      return pageAyahs;
     } catch (e) {
+      if (kDebugMode) print('Error getting page: $e');
       return [];
     }
   }
@@ -44,19 +53,20 @@ class OfflineQuranService {
     if (!_isLoaded || _quranData == null) return null;
     
     try {
-      final ayahs = _quranData!['data']['ayahs'] as List;
-      final firstAyah = ayahs.firstWhere(
-        (ayah) => ayah['surah']['number'] == surahNumber,
+      final surahs = _quranData!['data']['surahs'] as List;
+      final surah = surahs.firstWhere(
+        (s) => s['number'] == surahNumber,
       );
       return {
-        'number': firstAyah['surah']['number'],
-        'name': firstAyah['surah']['name'],
-        'englishName': firstAyah['surah']['englishName'],
-        'englishNameTranslation': firstAyah['surah']['englishNameTranslation'],
-        'numberOfAyahs': firstAyah['surah']['numberOfAyahs'],
-        'revelationType': firstAyah['surah']['revelationType'],
+        'number': surah['number'],
+        'name': surah['name'],
+        'englishName': surah['englishName'],
+        'englishNameTranslation': surah['englishNameTranslation'],
+        'numberOfAyahs': surah['ayahs'].length,
+        'revelationType': surah['revelationType'],
       };
     } catch (e) {
+      if (kDebugMode) print('Error getting surah info: $e');
       return null;
     }
   }
@@ -66,9 +76,12 @@ class OfflineQuranService {
     if (!_isLoaded || _quranData == null) return [];
     
     try {
-      final ayahs = _quranData!['data']['ayahs'] as List;
+      final surahs = _quranData!['data']['surahs'] as List;
+      final surah = surahs.firstWhere(
+        (s) => s['number'] == surahNumber,
+      );
+      final ayahs = surah['ayahs'] as List;
       return ayahs
-          .where((ayah) => ayah['surah']['number'] == surahNumber)
           .map((ayah) => {
                 'text': ayah['text'],
                 'numberInSurah': ayah['numberInSurah'],
@@ -77,6 +90,7 @@ class OfflineQuranService {
               })
           .toList();
     } catch (e) {
+      if (kDebugMode) print('Error getting surah: $e');
       return [];
     }
   }
@@ -86,12 +100,14 @@ class OfflineQuranService {
     if (!_isLoaded || _quranData == null) return 1;
     
     try {
-      final ayahs = _quranData!['data']['ayahs'] as List;
-      final firstAyah = ayahs.firstWhere(
-        (ayah) => ayah['surah']['number'] == surahNumber,
+      final surahs = _quranData!['data']['surahs'] as List;
+      final surah = surahs.firstWhere(
+        (s) => s['number'] == surahNumber,
       );
-      return firstAyah['page'] ?? 1;
+      final ayahs = surah['ayahs'] as List;
+      return ayahs.isNotEmpty ? ayahs[0]['page'] ?? 1 : 1;
     } catch (e) {
+      if (kDebugMode) print('Error getting page for surah: $e');
       return 1;
     }
   }
