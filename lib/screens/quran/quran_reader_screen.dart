@@ -67,62 +67,93 @@ class _QuranReaderScreenState extends State<QuranReaderScreen> {
             return Center(child: Text(provider.error!));
           }
           
+          if (provider.verses.isEmpty) {
+            return const Center(
+              child: Text('No verses found'),
+            );
+          }
+          
           return ListView.builder(
             controller: _scrollController,
             itemCount: provider.verses.length,
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             itemBuilder: (context, index) {
               final verse = provider.verses[index];
-              return Card(
-                margin: const EdgeInsets.only(bottom: 16),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Verse number
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          'آیت ${verse.number}',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold,
+              return Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 12),
+                child: Card(
+                  elevation: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Verse number
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              'آیت ${verse.number}',
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      
-                      // Arabic text
-                      Text(
-                        verse.text,
-                        textAlign: TextAlign.right,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          height: 2,
+                        const SizedBox(height: 20),
+                        
+                        // Arabic text
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor.withOpacity(0.05),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            verse.text,
+                            textAlign: TextAlign.right,
+                            textDirection: TextDirection.rtl,
+                            style: const TextStyle(
+                              fontSize: 28,
+                              height: 2.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
-                      ),
-                      
-                      const Divider(height: 32),
-                      
-                      // Urdu translation
-                      Text(
-                        verse.translation,
-                        textAlign: TextAlign.right,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          height: 1.8,
+                        
+                        const SizedBox(height: 16),
+                        const Divider(),
+                        const SizedBox(height: 16),
+                        
+                        // Urdu translation
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(12),
+                          child: Text(
+                            verse.translation,
+                            textAlign: TextAlign.right,
+                            textDirection: TextDirection.rtl,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              height: 1.8,
+                              color: Colors.black87,
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );

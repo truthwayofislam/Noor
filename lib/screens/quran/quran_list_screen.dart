@@ -49,9 +49,15 @@ class _QuranListScreenState extends State<QuranListScreen> {
             );
           }
           
+          if (provider.surahs.isEmpty) {
+            return const Center(
+              child: Text('No Surahs found. Please check your internet connection.'),
+            );
+          }
+          
           return ListView.builder(
             itemCount: provider.surahs.length,
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             itemBuilder: (context, index) {
               final surah = provider.surahs[index];
               return Card(
