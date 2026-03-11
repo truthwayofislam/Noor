@@ -80,13 +80,23 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
             final page = index + 1;
             final ayahs = _getPageData(page);
             
+            if (ayahs.isEmpty) {
+              return Center(
+                child: Text(
+                  'Page data not available',
+                  style: TextStyle(fontSize: 18, color: Colors.brown.shade700),
+                ),
+              );
+            }
+            
             return Padding(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
                   Expanded(
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
@@ -99,20 +109,20 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
                         ],
                       ),
                       child: SingleChildScrollView(
-                        child: Column(
+                        child: Wrap(
+                          alignment: WrapAlignment.end,
+                          textDirection: TextDirection.rtl,
+                          spacing: 8,
+                          runSpacing: 12,
                           children: ayahs.map((ayah) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8),
-                              child: Text(
-                                ayah['text'],
-                                textAlign: TextAlign.center,
-                                textDirection: TextDirection.rtl,
-                                style: const TextStyle(
-                                  fontSize: 22,
-                                  height: 2.2,
-                                  fontFamily: 'Amiri',
-                                  letterSpacing: 0.3,
-                                ),
+                            return Text(
+                              '${ayah['text']} ۝${ayah['ayah']}۞ ',
+                              textDirection: TextDirection.rtl,
+                              style: const TextStyle(
+                                fontSize: 24,
+                                height: 2.0,
+                                fontFamily: 'Amiri',
+                                letterSpacing: 0.5,
                               ),
                             );
                           }).toList(),
@@ -120,13 +130,20 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 15),
-                  Text(
-                    'Page $page',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.brown.shade700,
-                      fontWeight: FontWeight.bold,
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.brown.shade100,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      'صفحہ $page',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.brown.shade800,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
