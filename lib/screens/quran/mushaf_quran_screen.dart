@@ -109,23 +109,23 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
                         ],
                       ),
                       child: SingleChildScrollView(
-                        child: Wrap(
-                          alignment: WrapAlignment.end,
+                        child: RichText(
+                          textAlign: TextAlign.justify,
                           textDirection: TextDirection.rtl,
-                          spacing: 8,
-                          runSpacing: 12,
-                          children: ayahs.map((ayah) {
-                            return Text(
-                              '${ayah['text']} ۝${ayah['ayah']}۞ ',
-                              textDirection: TextDirection.rtl,
-                              style: const TextStyle(
-                                fontSize: 24,
-                                height: 2.0,
-                                fontFamily: 'Amiri',
-                                letterSpacing: 0.5,
-                              ),
-                            );
-                          }).toList(),
+                          text: TextSpan(
+                            style: const TextStyle(
+                              fontSize: 24,
+                              height: 2.0,
+                              fontFamily: 'Amiri',
+                              letterSpacing: 0.5,
+                              color: Colors.black87,
+                            ),
+                            children: ayahs.map((ayah) {
+                              return TextSpan(
+                                text: '${ayah['text']} ۝${ayah['ayah']}۞ ',
+                              );
+                            }).toList(),
+                          ),
                         ),
                       ),
                     ),
