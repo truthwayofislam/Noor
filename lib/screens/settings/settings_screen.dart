@@ -164,12 +164,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: const Text('Get notified at each prayer time'),
                   value: _prayerNotifEnabled,
                   onChanged: (val) async {
+                    final messenger = ScaffoldMessenger.of(context);
                     final prefs = await SharedPreferences.getInstance();
                     await prefs.setBool('prayer_notifications_enabled', val);
                     setState(() => _prayerNotifEnabled = val);
                     if (!val) await PrayerNotificationService.cancelAll();
-                    if (!mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
+                    messenger.showSnackBar(
                       SnackBar(
                         content: Text(val ? 'Prayer alerts enabled!' : 'Prayer alerts disabled'),
                       ),
@@ -186,6 +186,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: const Text('Daily dua reminder notification'),
                   value: _dailyReminderEnabled,
                   onChanged: (val) async {
+                    final messenger = ScaffoldMessenger.of(context);
                     setState(() => _dailyReminderEnabled = val);
                     if (val) {
                       await DailyReminderService.enableReminder(
@@ -193,8 +194,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     } else {
                       await DailyReminderService.disableReminder();
                     }
-                    if (!mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
+                    messenger.showSnackBar(
                       SnackBar(content: Text(val ? 'Reminder enabled!' : 'Reminder disabled')),
                     );
                   },
@@ -208,6 +208,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     subtitle: Text(_reminderTime.format(context)),
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                     onTap: () async {
+                      final messenger = ScaffoldMessenger.of(context);
                       final time = await showTimePicker(
                         context: context,
                         initialTime: _reminderTime,
@@ -215,8 +216,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       if (time != null) {
                         setState(() => _reminderTime = time);
                         await DailyReminderService.enableReminder(time.hour, time.minute);
-                        if (!mounted) return;
-                        ScaffoldMessenger.of(context).showSnackBar(
+                        messenger.showSnackBar(
                           SnackBar(content: Text('Reminder set to ${time.format(context)}')),
                         );
                       }
