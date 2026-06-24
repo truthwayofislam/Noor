@@ -53,7 +53,7 @@ class TursoClient:
 
     async def create_user(self, email: str, password: str, username: str, country: str, level: str) -> Dict:
         conn = get_conn()
-        existing = conn.execute("SELECT id FROM users WHERE email = ?", [email]).fetchone()
+        existing = conn.execute("SELECT id FROM users WHERE email = ?", (email,)).fetchone()
         if existing:
             raise Exception("Email already exists")
 
@@ -63,14 +63,25 @@ class TursoClient:
 
         conn.execute(
             "INSERT INTO users VALUES (?,?,?,?,?,?,0,0,0.0,0,0,'',?,?)",
-            [user_id, email, hashed, username, country, level, now, now]
+            (user_id, email, hashed, username, country, level, now, now)
         )
         conn.commit()
-        return row_to_user(conn.execute("SELECT * FROM users WHERE id = ?", [user_id]).fetchone())
+
+        row = conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
+        if row is None:
+            # fallback: return manually constructed dict
+            return {
+                'id': user_id, 'email': email, 'password': hashed,
+                'username': username, 'country': country, 'level': level,
+                'points': 0, 'streak_days': 0, 'quran_progress': 0.0,
+                'prayers_logged': 0, 'lessons_completed': 0,
+                'avatar': '', 'created': now, 'updated': now
+            }
+        return row_to_user(row)
 
     async def authenticate_user(self, email: str, password: str) -> Optional[Dict]:
         conn = get_conn()
-        row = conn.execute("SELECT * FROM users WHERE email = ?", [email]).fetchone()
+        row = conn.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
         if not row:
             return None
         user = row_to_user(row)
@@ -80,14 +91,14 @@ class TursoClient:
 
     async def get_user(self, user_id: str) -> Optional[Dict]:
         conn = get_conn()
-        row = conn.execute("SELECT * FROM users WHERE id = ?", [user_id]).fetchone()
+        row = conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
         return row_to_user(row) if row else None
 
     async def update_user(self, user_id: str, data: Dict) -> Dict:
         conn = get_conn()
         data['updated'] = datetime.utcnow().isoformat()
         sets = ', '.join([f"{k} = ?" for k in data.keys()])
-        values = list(data.values()) + [user_id]
+        values = tuple(data.values()) + (user_id,)
         conn.execute(f"UPDATE users SET {sets} WHERE id = ?", values)
         conn.commit()
         return await self.get_user(user_id)
@@ -97,8 +108,8 @@ class TursoClient:
         conn = get_conn()
         conn.execute(
             "INSERT INTO activities VALUES (?,?,?,?,?,?)",
-            [str(uuid.uuid4()), user_id, activity_type, points,
-             json.dumps(metadata or {}), datetime.utcnow().isoformat()]
+            (str(uuid.uuid4()), user_id, activity_type, points,
+             json.dumps(metadata or {}), datetime.utcnow().isoformat())
         )
 
         update = {"points": (await self.get_user(user_id))['points'] + points}
@@ -120,12 +131,12 @@ class TursoClient:
         if country:
             rows = conn.execute(
                 "SELECT id,username,country,points,avatar FROM users WHERE country = ? ORDER BY points DESC LIMIT ?",
-                [country, limit]
+                (country, limit)
             ).fetchall()
         else:
             rows = conn.execute(
                 "SELECT id,username,country,points,avatar FROM users ORDER BY points DESC LIMIT ?",
-                [limit]
+                (limit,)
             ).fetchall()
 
         return [
@@ -140,7 +151,7 @@ class TursoClient:
             raise Exception("User not found")
         conn = get_conn()
         count = conn.execute(
-            "SELECT COUNT(*) FROM users WHERE points > ?", [user['points']]
+            "SELECT COUNT(*) FROM users WHERE points > ?", (user['points'],)
         ).fetchone()[0]
         return {"rank": count + 1, "points": user['points'], "username": user['username']}
 

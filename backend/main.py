@@ -8,11 +8,18 @@ import os
 load_dotenv()
 
 # Import routes
+from contextlib import asynccontextmanager
 from routes import auth, users, leaderboard
 from utils.turso_client import init_db
 
+@asynccontextmanager
+async def lifespan(app):
+    init_db()
+    yield
+
 # Create FastAPI app
 app = FastAPI(
+    lifespan=lifespan,
     title="Noor API",
     description="""
     🌙 Noor - Islamic Companion App Backend
@@ -57,11 +64,6 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(leaderboard.router)
-
-# Initialize DB tables on startup
-@app.on_event("startup")
-async def startup():
-    init_db()
 
 @app.get("/")
 async def root():
