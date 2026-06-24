@@ -235,7 +235,8 @@ class _WuduGamePlayState extends State<WuduGamePlay> {
                     itemCount: _userSteps.length,
                     itemBuilder: (context, index) {
                       return DragTarget<Map<String, dynamic>>(
-                        onAccept: (step) {
+                        onAcceptWithDetails: (details) {
+                          final step = details.data;
                           SoundService.playCardFlip();
                           setState(() {
                             _userSteps[index] = step;

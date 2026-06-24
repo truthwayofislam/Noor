@@ -132,7 +132,7 @@ class _NamesPuzzleLevelsState extends State<NamesPuzzleLevels> {
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: Colors.white.withOpacity(0.3)),
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _ModeBadge(color: Colors.purple, label: '1-33\nScramble'),

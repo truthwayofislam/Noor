@@ -143,14 +143,13 @@ class DailyAdhkarScreen extends StatelessWidget {
       metadata: {'dua': duaTitle},
     );
     
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Adhkar completed! +5 points'),
-          backgroundColor: Colors.green,
-        ),
-      );
-    }
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Adhkar completed! +5 points'),
+        backgroundColor: Colors.green,
+      ),
+    );
   }
 
   static final List<Map<String, String>> _morningAdhkar = [
