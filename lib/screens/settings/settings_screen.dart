@@ -216,8 +216,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       if (time != null) {
                         setState(() => _reminderTime = time);
                         await DailyReminderService.enableReminder(time.hour, time.minute);
+                        final timeStr = '${time.hour.toString().padLeft(2,'0')}:${time.minute.toString().padLeft(2,'0')}';
                         messenger.showSnackBar(
-                          SnackBar(content: Text('Reminder set to ${time.format(context)}')),
+                          SnackBar(content: Text('Reminder set to $timeStr')),
                         );
                       }
                     },
