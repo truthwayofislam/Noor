@@ -168,13 +168,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     await prefs.setBool('prayer_notifications_enabled', val);
                     setState(() => _prayerNotifEnabled = val);
                     if (!val) await PrayerNotificationService.cancelAll();
-                    if (mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(val ? 'Prayer alerts enabled!' : 'Prayer alerts disabled'),
-                        ),
-                      );
-                    }
+                    if (!mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(val ? 'Prayer alerts enabled!' : 'Prayer alerts disabled'),
+                      ),
+                    );
                   },
                 ),
 
@@ -194,11 +193,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     } else {
                       await DailyReminderService.disableReminder();
                     }
-                    if (mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(val ? 'Reminder enabled!' : 'Reminder disabled')),
-                      );
-                    }
+                    if (!mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(val ? 'Reminder enabled!' : 'Reminder disabled')),
+                    );
                   },
                 ),
 
@@ -217,11 +215,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       if (time != null) {
                         setState(() => _reminderTime = time);
                         await DailyReminderService.enableReminder(time.hour, time.minute);
-                        if (mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Reminder set to ${time.format(context)}')),
-                          );
-                        }
+                        if (!mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Reminder set to ${time.format(context)}')),
+                        );
                       }
                     },
                   ),

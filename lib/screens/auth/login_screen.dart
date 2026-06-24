@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           decoration: InputDecoration(
                             hintText: 'user123@temp.com',
                             hintStyle: TextStyle(color: hintColor),
-                            prefixIcon: Icon(Icons.email_outlined, color: const Color(0xFF2E7D32)),
+                            prefixIcon: const Icon(Icons.email_outlined, color: Color(0xFF2E7D32)),
                             filled: true,
                             fillColor: inputFill,
                             border: OutlineInputBorder(
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           decoration: InputDecoration(
                             hintText: '••••••••',
                             hintStyle: TextStyle(color: hintColor),
-                            prefixIcon: Icon(Icons.lock_outline, color: const Color(0xFF2E7D32)),
+                            prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF2E7D32)),
                             filled: true,
                             fillColor: inputFill,
                             border: OutlineInputBorder(

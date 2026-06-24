@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/quran_provider.dart';
 import '../../widgets/error_view.dart';
+import 'quran_reader_screen.dart';
 import 'enhanced_quran_reader_screen.dart';
 
 class QuranListScreen extends StatefulWidget {
