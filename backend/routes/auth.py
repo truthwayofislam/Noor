@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from models.schemas import UserRegister, UserLogin, Token, UserProfile
 from utils.auth import get_password_hash, create_access_token, decode_token
-from utils.mock_storage import mock_storage as pb_client
+from utils.turso_client import turso_client as pb_client
 from datetime import timedelta
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])

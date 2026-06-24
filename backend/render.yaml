@@ -9,11 +9,9 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: POCKETBASE_URL
+      - key: TURSO_DATABASE_URL
         sync: false
-      - key: POCKETBASE_ADMIN_EMAIL
-        sync: false
-      - key: POCKETBASE_ADMIN_PASSWORD
+      - key: TURSO_AUTH_TOKEN
         sync: false
       - key: SECRET_KEY
         generateValue: true

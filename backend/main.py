@@ -9,6 +9,7 @@ load_dotenv()
 
 # Import routes
 from routes import auth, users, leaderboard
+from utils.turso_client import init_db
 
 # Create FastAPI app
 app = FastAPI(
@@ -56,6 +57,11 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(leaderboard.router)
+
+# Initialize DB tables on startup
+@app.on_event("startup")
+async def startup():
+    init_db()
 
 @app.get("/")
 async def root():
