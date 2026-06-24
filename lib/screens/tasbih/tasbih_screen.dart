@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../providers/tasbih_provider.dart';
+import '../../providers/user_provider.dart';
 
 class TasbihScreen extends StatelessWidget {
   const TasbihScreen({super.key});
@@ -96,7 +97,12 @@ class TasbihScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             HapticFeedback.mediumImpact();
+                            final previousCount = provider.count;
                             provider.increment();
+                            
+                            if (previousCount < provider.target && provider.count == provider.target) {
+                              _awardPoints(context, provider.target, provider.currentTasbih);
+                            }
                           },
                           child: Container(
                             width: 150,
@@ -164,6 +170,28 @@ class TasbihScreen extends StatelessWidget {
         },
       ),
     );
+  }
+  
+  Future<void> _awardPoints(BuildContext context, int target, String tasbihType) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    if (!userProvider.isAuthenticated) return;
+    
+    final points = target == 33 ? 5 : target == 99 || target == 100 ? 10 : target == 500 ? 25 : 50;
+    
+    await userProvider.logActivity(
+      activityType: 'tasbih_completed',
+      points: points,
+      metadata: {'count': target, 'tasbih': tasbihType},
+    );
+    
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Tasbih completed! +$points points'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
   }
   
   void _showSettings(BuildContext context) {

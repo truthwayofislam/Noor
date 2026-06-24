@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 import '../../models/story_model.dart';
+import '../../providers/user_provider.dart';
 
 class StoryDetailScreen extends StatefulWidget {
   final IslamicStory story;
@@ -35,6 +37,18 @@ class _StoryDetailScreenState extends State<StoryDetailScreen> {
     await prefs.setBool('story_${widget.story.id}', true);
     
     setState(() => _isRead = true);
+    
+    // Award points via backend
+    if (mounted) {
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      if (userProvider.isAuthenticated) {
+        await userProvider.logActivity(
+          activityType: 'story_read',
+          points: 15,
+          metadata: {'story_id': widget.story.id, 'story_title': widget.story.title},
+        );
+      }
+    }
     
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(

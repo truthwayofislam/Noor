@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:provider/provider.dart';
 import '../../services/sound_service.dart';
+import '../../providers/user_provider.dart';
 
 class MemoryGamePlay extends StatefulWidget {
   final int level;
@@ -94,6 +96,19 @@ class _MemoryGamePlayState extends State<MemoryGamePlay> with TickerProviderStat
 
   void _showWinDialog() {
     final stars = _moves <= _getPairsCount() * 2 ? 3 : _moves <= _getPairsCount() * 3 ? 2 : 1;
+    final points = stars == 3 ? 30 : stars == 2 ? 20 : 10;
+    
+    // Award points
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      if (userProvider.isAuthenticated) {
+        userProvider.logActivity(
+          activityType: 'game_completed',
+          points: points,
+          metadata: {'game': 'memory_game', 'level': widget.level, 'moves': _moves, 'stars': stars},
+        );
+      }
+    });
     
     showDialog(
       context: context,
@@ -113,6 +128,8 @@ class _MemoryGamePlayState extends State<MemoryGamePlay> with TickerProviderStat
             ),
             const SizedBox(height: 16),
             Text('Moves: $_moves', style: const TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            Text('+$points points', style: const TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.bold)),
           ],
         ),
         actions: [

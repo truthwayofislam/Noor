@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../services/sound_service.dart';
+import '../../providers/user_provider.dart';
 
 class PrayerQuizPlay extends StatefulWidget {
   final int level;
@@ -39,6 +41,20 @@ class _PrayerQuizPlayState extends State<PrayerQuizPlay> {
 
   void _showResult() {
     final stars = _score == 5 ? 3 : _score >= 3 ? 2 : 1;
+    final points = _score == 5 ? 25 : _score >= 3 ? 15 : 5;
+    
+    // Award points
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      if (userProvider.isAuthenticated) {
+        userProvider.logActivity(
+          activityType: 'game_completed',
+          points: points,
+          metadata: {'game': 'prayer_quiz', 'level': widget.level, 'score': _score},
+        );
+      }
+    });
+    
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -53,6 +69,8 @@ class _PrayerQuizPlayState extends State<PrayerQuizPlay> {
             ),
             const SizedBox(height: 16),
             Text('Score: $_score/5', style: const TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            Text('+$points points', style: const TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.bold)),
           ],
         ),
         actions: [

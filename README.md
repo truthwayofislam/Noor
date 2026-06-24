@@ -12,6 +12,18 @@ A beautiful Flutter app for Muslims to maintain their daily Islamic practices.
 3. **Schedule Builder** - Create custom Islamic routines with notifications
 4. **Ramadan Timer** - Sehri/Iftar countdown (auto-hides after Ramadan)
 5. **Dark/Light Theme** - Beautiful Islamic-themed UI
+6. **Points System** - Earn points by reading Quran, logging prayers, and learning
+7. **Leaderboard** - Global and country-wise rankings
+8. **Learning Hub** - Islamic education with rewards
+
+### 🎯 Points System
+Earn points for your Islamic activities:
+- 📖 **10 points** - Complete a Surah
+- 🤲 **5 points** - Log each prayer (25 points daily max)
+- 📚 **20 points** - Complete a learning lesson
+- 🤲 **15 points** - Learn a Dua
+
+See [POINTS_SYSTEM.md](POINTS_SYSTEM.md) for complete details.
 
 ## 🚀 Getting Started
 

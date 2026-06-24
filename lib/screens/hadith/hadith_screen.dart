@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../services/hadith_service.dart';
 import '../../models/hadith_model.dart';
-
+import '../../providers/user_provider.dart';
 import '../../widgets/error_view.dart';
 
 class HadithScreen extends StatefulWidget {
@@ -88,26 +89,36 @@ class _HadithScreenState extends State<HadithScreen> {
                     final hadith = _hadiths[index];
                     return Card(
                       margin: const EdgeInsets.only(bottom: 16),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColor.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(20),
+                      child: InkWell(
+                        onTap: () => _markAsRead(hadith.hadithNumber),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                      decoration: BoxDecoration(
+                                        color: Theme.of(context).primaryColor.withOpacity(0.1),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: Text(
+                                        '${_books[_selectedBook]} - ${hadith.hadithNumber}',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Icon(Icons.touch_app, size: 20, color: Colors.green),
+                                ],
                               ),
-                              child: Text(
-                                '${_books[_selectedBook]} - ${hadith.hadithNumber}',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
                             const SizedBox(height: 16),
                             Text(
                               hadith.arabicText,
@@ -133,9 +144,30 @@ class _HadithScreenState extends State<HadithScreen> {
                           ],
                         ),
                       ),
+                    ),
                     );
                   },
                 ),
     );
+  }
+
+  Future<void> _markAsRead(String hadithNumber) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    if (!userProvider.isAuthenticated) return;
+    
+    await userProvider.logActivity(
+      activityType: 'hadith_read',
+      points: 10,
+      metadata: {'book': _selectedBook, 'hadith_number': hadithNumber},
+    );
+    
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Hadith read! +10 points'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
   }
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../providers/user_provider.dart';
 
 class DailyAdhkarScreen extends StatelessWidget {
   const DailyAdhkarScreen({super.key});
@@ -44,18 +47,28 @@ class DailyAdhkarScreen extends StatelessWidget {
         final dua = duas[index];
         return Card(
           margin: const EdgeInsets.only(bottom: 16),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  dua['title']!,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+          child: InkWell(
+            onTap: () => _markAsRead(dua['title']!),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          dua['title']!,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const Icon(Icons.touch_app, size: 20, color: Colors.green),
+                    ],
                   ),
-                ),
                 const SizedBox(height: 12),
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -108,9 +121,36 @@ class DailyAdhkarScreen extends StatelessWidget {
               ],
             ),
           ),
+        ),
         );
       },
     );
+  }
+
+  Future<void> _markAsRead(String duaTitle) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    if (!userProvider.isAuthenticated) return;
+    
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'adhkar_$duaTitle';
+    
+    if (prefs.getBool(key) == true) return;
+    await prefs.setBool(key, true);
+    
+    await userProvider.logActivity(
+      activityType: 'adhkar_completed',
+      points: 5,
+      metadata: {'dua': duaTitle},
+    );
+    
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Adhkar completed! +5 points'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
   }
 
   static final List<Map<String, String>> _morningAdhkar = [
