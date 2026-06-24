@@ -3,9 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../providers/user_provider.dart';
 
-class DailyAdhkarScreen extends StatelessWidget {
+class DailyAdhkarScreen extends StatefulWidget {
   const DailyAdhkarScreen({super.key});
 
+  @override
+  State<DailyAdhkarScreen> createState() => _DailyAdhkarScreenState();
+}
+
+class _DailyAdhkarScreenState extends State<DailyAdhkarScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
