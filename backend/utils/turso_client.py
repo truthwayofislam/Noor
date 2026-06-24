@@ -12,6 +12,8 @@ def get_conn():
 
 def init_db():
     conn = get_conn()
+    conn.execute("DROP TABLE IF EXISTS activities")
+    conn.execute("DROP TABLE IF EXISTS users")
     conn.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY,
@@ -19,13 +21,13 @@ def init_db():
             password TEXT NOT NULL,
             username TEXT NOT NULL,
             country TEXT NOT NULL,
-            level TEXT DEFAULT 'Beginner',
-            points INTEGER DEFAULT 0,
-            streak_days INTEGER DEFAULT 0,
-            quran_progress REAL DEFAULT 0.0,
-            prayers_logged INTEGER DEFAULT 0,
-            lessons_completed INTEGER DEFAULT 0,
-            avatar TEXT DEFAULT '',
+            level TEXT NOT NULL,
+            points INTEGER NOT NULL DEFAULT 0,
+            streak_days INTEGER NOT NULL DEFAULT 0,
+            quran_progress REAL NOT NULL DEFAULT 0.0,
+            prayers_logged INTEGER NOT NULL DEFAULT 0,
+            lessons_completed INTEGER NOT NULL DEFAULT 0,
+            avatar TEXT NOT NULL DEFAULT '',
             created TEXT NOT NULL,
             updated TEXT NOT NULL
         )
@@ -36,9 +38,8 @@ def init_db():
             user_id TEXT NOT NULL,
             activity_type TEXT NOT NULL,
             points INTEGER NOT NULL,
-            metadata TEXT DEFAULT '{}',
-            created TEXT NOT NULL,
-            FOREIGN KEY (user_id) REFERENCES users(id)
+            metadata TEXT NOT NULL DEFAULT '{}',
+            created TEXT NOT NULL
         )
     """)
     conn.commit()

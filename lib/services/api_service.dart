@@ -3,8 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  // 🔴 Replace with your Render URL after deployment
-  static const String baseUrl = 'https://your-render-url.onrender.com'; // Production
+  static const String baseUrl = 'https://alot-yarn-earth-chorus.trycloudflare.com';
   
   String? _token;
   
@@ -56,12 +55,12 @@ class ApiService {
         }),
       );
       
+      final data = json.decode(response.body);
       if (response.statusCode == 201) {
-        final data = json.decode(response.body);
         await _saveToken(data['access_token']);
         return data;
       } else {
-        throw Exception(json.decode(response.body)['detail']);
+        throw Exception(data['detail'] ?? 'Registration failed');
       }
     } catch (e) {
       throw Exception('Registration failed: $e');
@@ -82,12 +81,12 @@ class ApiService {
         }),
       );
       
+      final data = json.decode(response.body);
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
         await _saveToken(data['access_token']);
         return data;
       } else {
-        throw Exception(json.decode(response.body)['detail']);
+        throw Exception(data['detail'] ?? 'Login failed');
       }
     } catch (e) {
       throw Exception('Login failed: $e');
