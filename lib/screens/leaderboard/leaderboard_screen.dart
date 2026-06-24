@@ -30,6 +30,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
     final user = Provider.of<UserProvider>(context, listen: false).currentUser;
     if (user != null) _selectedCountry = user.country;
     _loadLeaderboards();
+    // Reload when tab becomes active
+    _tabController.addListener(() {
+      if (_tabController.indexIsChanging) return;
+    });
   }
 
   @override

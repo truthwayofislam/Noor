@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 import '../models/user_model.dart';
 import '../services/api_service.dart';
 
@@ -14,14 +16,46 @@ class UserProvider extends ChangeNotifier {
   String? get error => _error;
   bool get isAuthenticated => _currentUser != null;
 
+  Future<void> _saveUserData(User user) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user_data', json.encode(user.toJson()));
+  }
+
+  Future<User?> _loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userData = prefs.getString('user_data');
+    if (userData != null) {
+      return User.fromJson(json.decode(userData));
+    }
+    return null;
+  }
+
+  Future<void> _clearUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('user_data');
+  }
+
   Future<bool> tryAutoLogin() async {
+    // First try loading from local storage
+    _currentUser = await _loadUserData();
+    if (_currentUser != null) {
+      notifyListeners();
+    }
+    
+    // Then try to refresh from API
     try {
       final response = await _apiService.getProfile();
       _currentUser = User.fromJson(response);
+      await _saveUserData(_currentUser!);
       notifyListeners();
       return true;
     } catch (e) {
+      // If API fails but we have local data, still return true
+      if (_currentUser != null) {
+        return true;
+      }
       await _apiService.clearToken();
+      await _clearUserData();
       return false;
     }
   }
@@ -47,6 +81,7 @@ class UserProvider extends ChangeNotifier {
       );
       
       _currentUser = User.fromJson(response['user']);
+      await _saveUserData(_currentUser!);
       _isLoading = false;
       notifyListeners();
       return true;
@@ -73,6 +108,7 @@ class UserProvider extends ChangeNotifier {
       );
       
       _currentUser = User.fromJson(response['user']);
+      await _saveUserData(_currentUser!);
       _isLoading = false;
       notifyListeners();
       return true;
@@ -91,6 +127,7 @@ class UserProvider extends ChangeNotifier {
     try {
       final response = await _apiService.getProfile();
       _currentUser = User.fromJson(response);
+      await _saveUserData(_currentUser!);
       _isLoading = false;
       notifyListeners();
     } catch (e) {
@@ -116,6 +153,7 @@ class UserProvider extends ChangeNotifier {
       );
       
       _currentUser = User.fromJson(response);
+      await _saveUserData(_currentUser!);
       _isLoading = false;
       notifyListeners();
       return true;
@@ -135,15 +173,36 @@ class UserProvider extends ChangeNotifier {
     if (_currentUser == null) return;
     
     try {
-      await _apiService.logActivity(
+      final response = await _apiService.logActivity(
         userId: _currentUser!.id,
         activityType: activityType,
         points: points,
         metadata: metadata,
       );
       
-      // Reload profile to get updated points
-      await loadProfile();
+      // Update points locally immediately without waiting for full profile reload
+      final newPoints = response['total_points'] as int? ?? (_currentUser!.points + points);
+      _currentUser = User(
+        id: _currentUser!.id,
+        email: _currentUser!.email,
+        username: _currentUser!.username,
+        country: _currentUser!.country,
+        level: _currentUser!.level,
+        points: newPoints,
+        streakDays: _currentUser!.streakDays,
+        quranProgress: _currentUser!.quranProgress,
+        prayersLogged: activityType == 'prayer_logged'
+            ? _currentUser!.prayersLogged + 1
+            : _currentUser!.prayersLogged,
+        lessonsCompleted: activityType == 'lesson_completed'
+            ? _currentUser!.lessonsCompleted + 1
+            : _currentUser!.lessonsCompleted,
+        avatar: _currentUser!.avatar,
+        createdAt: _currentUser!.createdAt,
+        updatedAt: DateTime.now(),
+      );
+      await _saveUserData(_currentUser!);
+      notifyListeners();
     } catch (e) {
       _error = e.toString();
       notifyListeners();
@@ -152,6 +211,7 @@ class UserProvider extends ChangeNotifier {
   
   Future<void> logout() async {
     await _apiService.clearToken();
+    await _clearUserData();
     _currentUser = null;
     notifyListeners();
   }

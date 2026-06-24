@@ -12,8 +12,6 @@ def get_conn():
 
 def init_db():
     conn = get_conn()
-    conn.execute("DROP TABLE IF EXISTS activities")
-    conn.execute("DROP TABLE IF EXISTS users")
     conn.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY,
@@ -107,25 +105,42 @@ class TursoClient:
     async def log_activity(self, user_id: str, activity_type: str, points: int, metadata: Optional[Dict] = None) -> Dict:
         import json
         conn = get_conn()
+
+        # Insert activity log
         conn.execute(
             "INSERT INTO activities VALUES (?,?,?,?,?,?)",
             (str(uuid.uuid4()), user_id, activity_type, points,
              json.dumps(metadata or {}), datetime.utcnow().isoformat())
         )
 
-        update = {"points": (await self.get_user(user_id))['points'] + points}
+        # Update points and counters in same connection
+        now = datetime.utcnow().isoformat()
         if activity_type == "quran_read":
-            user = await self.get_user(user_id)
-            update['quran_progress'] = min(100.0, user['quran_progress'] + 0.88)
+            conn.execute(
+                "UPDATE users SET points = points + ?, quran_progress = MIN(100.0, quran_progress + 0.88), updated = ? WHERE id = ?",
+                (points, now, user_id)
+            )
         elif activity_type == "prayer_logged":
-            user = await self.get_user(user_id)
-            update['prayers_logged'] = user['prayers_logged'] + 1
+            conn.execute(
+                "UPDATE users SET points = points + ?, prayers_logged = prayers_logged + 1, updated = ? WHERE id = ?",
+                (points, now, user_id)
+            )
         elif activity_type == "lesson_completed":
-            user = await self.get_user(user_id)
-            update['lessons_completed'] = user['lessons_completed'] + 1
+            conn.execute(
+                "UPDATE users SET points = points + ?, lessons_completed = lessons_completed + 1, updated = ? WHERE id = ?",
+                (points, now, user_id)
+            )
+        else:
+            conn.execute(
+                "UPDATE users SET points = points + ?, updated = ? WHERE id = ?",
+                (points, now, user_id)
+            )
 
         conn.commit()
-        return await self.update_user(user_id, update)
+
+        # Return updated user
+        row = conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
+        return row_to_user(row)
 
     async def get_leaderboard(self, limit: int = 100, country: Optional[str] = None) -> List[Dict]:
         conn = get_conn()
