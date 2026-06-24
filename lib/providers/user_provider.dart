@@ -13,6 +13,18 @@ class UserProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get error => _error;
   bool get isAuthenticated => _currentUser != null;
+
+  Future<bool> tryAutoLogin() async {
+    try {
+      final response = await _apiService.getProfile();
+      _currentUser = User.fromJson(response);
+      notifyListeners();
+      return true;
+    } catch (e) {
+      await _apiService.clearToken();
+      return false;
+    }
+  }
   
   Future<bool> register({
     required String email,

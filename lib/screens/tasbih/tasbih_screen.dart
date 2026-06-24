@@ -60,7 +60,9 @@ class TasbihScreen extends StatelessWidget {
                               child: CircularProgressIndicator(
                                 value: progress > 1 ? 1 : progress,
                                 strokeWidth: 15,
-                                backgroundColor: Colors.grey[200],
+                                backgroundColor: Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.grey[700]
+                                    : Colors.grey[200],
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                   isComplete ? Colors.green : Theme.of(context).primaryColor,
                                 ),

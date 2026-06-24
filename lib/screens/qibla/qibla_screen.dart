@@ -3,6 +3,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:math';
 
+import '../../widgets/error_view.dart';
+
 class QiblaScreen extends StatefulWidget {
   const QiblaScreen({super.key});
 
@@ -103,31 +105,11 @@ class _QiblaScreenState extends State<QiblaScreen> {
         child: _isLoading
             ? const Center(child: CircularProgressIndicator())
             : _error != null
-                ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(32),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.location_off, size: 80, color: Colors.red),
-                          const SizedBox(height: 24),
-                          Text(
-                            _error!,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                          const SizedBox(height: 24),
-                          ElevatedButton.icon(
-                            onPressed: _calculateQibla,
-                            icon: const Icon(Icons.refresh),
-                            label: const Text('Try Again'),
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                ? ErrorView(
+                    error: _error,
+                    onRetry: _calculateQibla,
+                    title: 'Location Required',
+                    icon: Icons.location_off_rounded,
                   )
                 : SingleChildScrollView(
                     child: Column(

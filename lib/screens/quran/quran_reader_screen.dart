@@ -4,6 +4,7 @@ import '../../providers/quran_provider.dart';
 import '../../providers/user_provider.dart';
 import '../../models/quran_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../widgets/error_view.dart';
 
 class QuranReaderScreen extends StatefulWidget {
   final Surah surah;
@@ -64,12 +65,19 @@ class _QuranReaderScreenState extends State<QuranReaderScreen> {
           }
           
           if (provider.error != null) {
-            return Center(child: Text(provider.error!));
+            return ErrorView(
+              error: provider.error,
+              onRetry: () => Provider.of<QuranProvider>(context, listen: false)
+                  .loadVerses(widget.surah.number),
+              title: 'Could not load verses',
+              icon: Icons.menu_book_outlined,
+            );
           }
           
           if (provider.verses.isEmpty) {
-            return const Center(
-              child: Text('No verses found'),
+            return const EmptyView(
+              message: 'No verses found.',
+              icon: Icons.menu_book_outlined,
             );
           }
           
@@ -145,10 +153,12 @@ class _QuranReaderScreenState extends State<QuranReaderScreen> {
                             verse.translation,
                             textAlign: TextAlign.right,
                             textDirection: TextDirection.rtl,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 18,
                               height: 1.8,
-                              color: Colors.black87,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.white70
+                                  : Colors.black87,
                             ),
                           ),
                         ),

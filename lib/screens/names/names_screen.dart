@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../services/names_service.dart';
 
+import '../../widgets/error_view.dart';
+
 class NamesScreen extends StatefulWidget {
   const NamesScreen({super.key});
 
@@ -47,19 +49,18 @@ class _NamesScreenState extends State<NamesScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _error != null
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.error, size: 64, color: Colors.red),
-                      const SizedBox(height: 16),
-                      Text(_error!),
-                      const SizedBox(height: 16),
-                      ElevatedButton(onPressed: _loadNames, child: const Text('Retry')),
-                    ],
-                  ),
+              ? ErrorView(
+                  error: _error,
+                  onRetry: _loadNames,
+                  title: 'Could not load Names',
+                  icon: Icons.auto_awesome_outlined,
                 )
-              : ListView.builder(
+              : _names.isEmpty
+                  ? const EmptyView(
+                      message: 'No names found.',
+                      icon: Icons.auto_awesome_outlined,
+                    )
+                  : ListView.builder(
                   itemCount: _names.length,
                   padding: const EdgeInsets.all(16),
                   itemBuilder: (context, index) {

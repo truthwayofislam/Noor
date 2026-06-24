@@ -19,13 +19,15 @@ class PrayerTimes {
 
   factory PrayerTimes.fromJson(Map<String, dynamic> json) {
     final timings = json['data']['timings'];
+    // Strip timezone suffix e.g. "04:32 (PKT)" -> "04:32"
+    String clean(String t) => t.split(' ')[0].trim();
     return PrayerTimes(
-      fajr: timings['Fajr'],
-      sunrise: timings['Sunrise'],
-      dhuhr: timings['Dhuhr'],
-      asr: timings['Asr'],
-      maghrib: timings['Maghrib'],
-      isha: timings['Isha'],
+      fajr: clean(timings['Fajr']),
+      sunrise: clean(timings['Sunrise']),
+      dhuhr: clean(timings['Dhuhr']),
+      asr: clean(timings['Asr']),
+      maghrib: clean(timings['Maghrib']),
+      isha: clean(timings['Isha']),
       date: json['data']['date']['readable'],
     );
   }

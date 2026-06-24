@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/quran_provider.dart';
-import 'quran_reader_screen.dart';
+import '../../widgets/error_view.dart';
 import 'enhanced_quran_reader_screen.dart';
 
 class QuranListScreen extends StatefulWidget {
@@ -32,26 +32,17 @@ class _QuranListScreenState extends State<QuranListScreen> {
           }
           
           if (provider.error != null) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.error_outline, size: 64, color: Colors.red),
-                  const SizedBox(height: 16),
-                  Text(provider.error!),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () => provider.loadSurahs(),
-                    child: const Text('Retry'),
-                  ),
-                ],
-              ),
+            return ErrorView(
+              error: provider.error,
+              onRetry: () => provider.loadSurahs(),
+              title: 'Could not load Surahs',
             );
           }
           
           if (provider.surahs.isEmpty) {
-            return const Center(
-              child: Text('No Surahs found. Please check your internet connection.'),
+            return const EmptyView(
+              message: 'No Surahs found.\nPlease check your internet connection.',
+              icon: Icons.menu_book_outlined,
             );
           }
           

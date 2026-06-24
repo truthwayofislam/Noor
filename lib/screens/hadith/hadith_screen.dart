@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../services/hadith_service.dart';
 import '../../models/hadith_model.dart';
 
+import '../../widgets/error_view.dart';
+
 class HadithScreen extends StatefulWidget {
   const HadithScreen({super.key});
 
@@ -68,19 +70,18 @@ class _HadithScreenState extends State<HadithScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _error != null
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.error, size: 64, color: Colors.red),
-                      const SizedBox(height: 16),
-                      Text(_error!),
-                      const SizedBox(height: 16),
-                      ElevatedButton(onPressed: _loadHadiths, child: const Text('Retry')),
-                    ],
-                  ),
+              ? ErrorView(
+                  error: _error,
+                  onRetry: _loadHadiths,
+                  title: 'Could not load Hadiths',
+                  icon: Icons.book_outlined,
                 )
-              : ListView.builder(
+              : _hadiths.isEmpty
+                  ? const EmptyView(
+                      message: 'No hadiths found.',
+                      icon: Icons.book_outlined,
+                    )
+                  : ListView.builder(
                   itemCount: _hadiths.length,
                   padding: const EdgeInsets.all(16),
                   itemBuilder: (context, index) {

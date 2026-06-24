@@ -6,7 +6,7 @@ import 'dart:convert';
 import '../../models/prayer_times_model.dart';
 import '../../services/prayer_times_service.dart';
 import '../../services/prayer_notification_service.dart';
-import '../../providers/user_provider.dart';
+import '../../widgets/error_view.dart';
 
 class PrayerTimesScreen extends StatefulWidget {
   const PrayerTimesScreen({super.key});
@@ -163,20 +163,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   }
 
   Widget _buildErrorState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.location_off, size: 64, color: Colors.grey),
-          const SizedBox(height: 16),
-          const Text('Location permission required'),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: _loadPrayerTimes,
-            child: const Text('Enable Location'),
-          ),
-        ],
-      ),
+    return ErrorView(
+      error: 'Location permission required',
+      onRetry: _loadPrayerTimes,
+      title: 'Location Required',
+      icon: Icons.location_off_rounded,
     );
   }
 

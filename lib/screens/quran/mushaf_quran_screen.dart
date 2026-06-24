@@ -63,7 +63,9 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.brown.shade50, Colors.amber.shade50],
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? [const Color(0xFF1A1208), const Color(0xFF0D0A04)]
+                : [Colors.brown.shade50, Colors.amber.shade50],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -98,7 +100,7 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
                       width: double.infinity,
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: const [
                           BoxShadow(
@@ -113,12 +115,14 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
                           textAlign: TextAlign.justify,
                           textDirection: TextDirection.rtl,
                           text: TextSpan(
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 24,
                               height: 2.0,
                               fontFamily: 'Amiri',
                               letterSpacing: 0.5,
-                              color: Colors.black87,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black87,
                             ),
                             children: ayahs.map((ayah) {
                               return TextSpan(
@@ -134,14 +138,18 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.brown.shade100,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.brown.shade900
+                          : Colors.brown.shade100,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
                       'صفحہ $page',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.brown.shade800,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.brown.shade200
+                            : Colors.brown.shade800,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

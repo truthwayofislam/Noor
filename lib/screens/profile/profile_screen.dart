@@ -132,10 +132,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           value: user.points.toString(),
                           color: Colors.amber,
                         ),
-                        const _StatItem(
+                        _StatItem(
                           icon: Icons.local_fire_department,
                           label: 'Streak',
-                          value: '0 days',
+                          value: '${user.streakDays} days',
                           color: Colors.orange,
                         ),
                       ],
@@ -160,22 +160,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       value: '${user.quranProgress.toStringAsFixed(1)}%',
                       color: Colors.green,
                     ),
-                    const _StatsCard(
+                    _StatsCard(
                       icon: Icons.self_improvement,
                       title: 'Prayers Logged',
-                      value: '0',
+                      value: user.prayersLogged.toString(),
                       color: Colors.blue,
                     ),
-                    const _StatsCard(
+                    _StatsCard(
                       icon: Icons.school,
                       title: 'Lessons Done',
-                      value: '0',
+                      value: user.lessonsCompleted.toString(),
                       color: Colors.purple,
                     ),
-                    const _StatsCard(
+                    _StatsCard(
                       icon: Icons.emoji_events,
-                      title: 'Rank',
-                      value: 'Loading...',
+                      title: 'Level',
+                      value: user.level,
                       color: Colors.amber,
                     ),
                   ],

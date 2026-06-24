@@ -290,12 +290,16 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
       
       // Schedule notification
       if (_hasAlarm) {
-        await NotificationService().scheduleNotification(
-          id: widget.index ?? DateTime.now().millisecondsSinceEpoch ~/ 1000,
-          title: schedule.title,
-          body: schedule.description,
-          scheduledTime: scheduleTime,
-        );
+        try {
+          await NotificationService().scheduleNotification(
+            id: widget.index ?? DateTime.now().millisecondsSinceEpoch ~/ 1000,
+            title: schedule.title,
+            body: schedule.description,
+            scheduledTime: scheduleTime,
+          );
+        } catch (e) {
+          debugPrint('Notification error: $e');
+        }
       }
       
       if (mounted) {

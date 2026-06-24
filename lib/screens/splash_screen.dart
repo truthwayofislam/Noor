@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../navigation/main_navigation_screen.dart';
+import '../providers/user_provider.dart';
 import 'onboarding/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,22 +23,36 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 1500));
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
     _controller.forward();
+    _init();
+  }
+
+  Future<void> _init() async {
+    await Future.delayed(const Duration(seconds: 2));
     
-    Timer(const Duration(seconds: 3), () async {
-      final prefs = await SharedPreferences.getInstance();
-      final onboardingComplete = prefs.getBool('onboarding_complete') ?? false;
-      
+    final prefs = await SharedPreferences.getInstance();
+    final onboardingComplete = prefs.getBool('onboarding_complete') ?? false;
+
+    if (!onboardingComplete) {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (_) => onboardingComplete 
-                ? const MainNavigationScreen()
-                : const OnboardingScreen(),
-          ),
+          MaterialPageRoute(builder: (_) => const OnboardingScreen()),
         );
       }
-    });
+      return;
+    }
+
+    // Try to auto-login with saved token
+    if (mounted) {
+      await Provider.of<UserProvider>(context, listen: false).tryAutoLogin();
+    }
+
+    if (mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const MainNavigationScreen()),
+      );
+    }
   }
 
   @override

@@ -105,9 +105,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               // Content
               Expanded(
                 child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
                   ),
                   child: _currentStep == 0 
                       ? _buildLanguageStep() 

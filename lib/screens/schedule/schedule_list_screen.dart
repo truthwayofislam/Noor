@@ -29,14 +29,14 @@ class ScheduleListScreen extends StatelessWidget {
                   Icon(
                     Icons.schedule,
                     size: 100,
-                    color: Colors.grey[300],
+                    color: Colors.grey[500],
                   ),
                   const SizedBox(height: 16),
                   Text(
                     'No schedules yet',
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.grey[600],
+                      color: Colors.grey[500],
                     ),
                   ),
                   const SizedBox(height: 8),

@@ -79,7 +79,9 @@ class _RamadanHomeScreenState extends State<RamadanHomeScreen> {
           children: [
             // Sehri Timer
             Card(
-              color: Colors.purple[50],
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.purple.shade900.withOpacity(0.4)
+                  : Colors.purple[50],
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(
@@ -120,7 +122,9 @@ class _RamadanHomeScreenState extends State<RamadanHomeScreen> {
             
             // Iftar Timer
             Card(
-              color: Colors.orange[50],
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.orange.shade900.withOpacity(0.4)
+                  : Colors.orange[50],
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(

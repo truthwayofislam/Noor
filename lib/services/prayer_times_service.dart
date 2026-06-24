@@ -95,7 +95,9 @@ class PrayerTimesService {
   }
 
   DateTime _parseTime(String time) {
-    final parts = time.split(':');
+    // Remove timezone suffix e.g. "04:32 (PKT)" -> "04:32"
+    final clean = time.split(' ')[0].trim();
+    final parts = clean.split(':');
     final now = DateTime.now();
     return DateTime(
       now.year,
