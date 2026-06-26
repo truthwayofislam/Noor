@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import '../../models/prayer_times_model.dart';
 import '../../services/prayer_times_service.dart';
 import '../../services/prayer_notification_service.dart';
@@ -42,11 +43,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     setState(() => _isLoading = true);
     
     try {
-      print('🔍 Getting location...');
+      if (kDebugMode) print('🔍 Getting location...');
       final position = await _service.getCurrentLocation();
       
       if (position == null) {
-        print('❌ Location is null');
+        if (kDebugMode) print('❌ Location is null');
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -59,8 +60,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
         return;
       }
       
-      print('✅ Location: ${position.latitude}, ${position.longitude}');
-      print('🔍 Fetching prayer times...');
+      if (kDebugMode) print('✅ Location: ${position.latitude}, ${position.longitude}');
+      if (kDebugMode) print('🔍 Fetching prayer times...');
       
       final times = await _service.getPrayerTimes(
         latitude: position.latitude,
@@ -68,7 +69,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
       );
       
       if (times != null) {
-        print('✅ Prayer times received');
+        if (kDebugMode) print('✅ Prayer times received');
         await PrayerNotificationService.schedulePrayerNotifications(times);
         
         if (mounted) {
@@ -80,7 +81,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           });
         }
       } else {
-        print('❌ Prayer times API returned null');
+        if (kDebugMode) print('❌ Prayer times API returned null');
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -92,7 +93,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
         }
       }
     } catch (e) {
-      print('❌ Error: $e');
+      if (kDebugMode) print('❌ Error: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

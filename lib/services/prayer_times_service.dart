@@ -13,7 +13,7 @@ class PrayerTimesService {
   }) async {
     try {
       final url = '$_baseUrl/timings?latitude=$latitude&longitude=$longitude&method=2';
-      print('📡 API Request: $url');
+      if (kDebugMode) print('📡 API Request: $url');
       
       final response = await http.get(Uri.parse(url)).timeout(
         const Duration(seconds: 15),
@@ -22,17 +22,17 @@ class PrayerTimesService {
         },
       );
 
-      print('📡 API Response: ${response.statusCode}');
+      if (kDebugMode) print('📡 API Response: ${response.statusCode}');
       
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        print('✅ API Data received');
+        if (kDebugMode) print('✅ API Data received');
         return PrayerTimes.fromJson(data);
       } else {
-        print('❌ API Error: ${response.statusCode}');
+        if (kDebugMode) print('❌ API Error: ${response.statusCode}');
       }
     } catch (e) {
-      print('❌ Exception in getPrayerTimes: $e');
+      if (kDebugMode) print('❌ Exception in getPrayerTimes: $e');
     }
     return null;
   }
