@@ -8,6 +8,9 @@ from utils.auth import get_password_hash, verify_password
 def get_conn():
     url = os.getenv("TURSO_DATABASE_URL")
     token = os.getenv("TURSO_AUTH_TOKEN")
+    # Convert libsql:// to https:// for libsql-client
+    if url.startswith("libsql://"):
+        url = url.replace("libsql://", "https://")
     return libsql_client.create_client(url=url, auth_token=token)
 
 async def init_db():
