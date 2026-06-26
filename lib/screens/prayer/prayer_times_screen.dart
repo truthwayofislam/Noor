@@ -53,8 +53,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           setState(() => _isLoading = false);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Row(
-                children: const [
+              content: const Row(
+                children: [
                   Icon(Icons.location_off, color: Colors.white),
                   SizedBox(width: 12),
                   Expanded(
@@ -98,16 +98,16 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           });
           
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Row(
-                children: const [
+                children: [
                   Icon(Icons.check_circle, color: Colors.white),
                   SizedBox(width: 12),
                   Text('Prayer times updated successfully'),
                 ],
               ),
               backgroundColor: Colors.green,
-              duration: const Duration(seconds: 2),
+              duration: Duration(seconds: 2),
             ),
           );
         }
@@ -117,8 +117,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           setState(() => _isLoading = false);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Row(
-                children: const [
+              content: const Row(
+                children: [
                   Icon(Icons.cloud_off, color: Colors.white),
                   SizedBox(width: 12),
                   Expanded(
