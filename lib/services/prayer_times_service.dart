@@ -61,8 +61,7 @@ class PrayerTimesService {
 
       return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.medium,
-        timeLimit: const Duration(seconds: 10),
-      );
+      ).timeout(const Duration(seconds: 10));
     } catch (e) {
       if (kDebugMode) print('Error getting location: $e');
       return null;

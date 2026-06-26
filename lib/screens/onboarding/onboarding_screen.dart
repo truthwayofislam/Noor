@@ -25,9 +25,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   ];
 
   final List<String> _countries = [
-    'Pakistan', 'Saudi Arabia', 'UAE', 'USA', 'UK', 'Canada',
-    'Malaysia', 'Indonesia', 'Turkey', 'Egypt', 'India', 'Bangladesh'
+    'Afghanistan', 'Albania', 'Algeria', 'Australia', 'Austria',
+    'Bahrain', 'Bangladesh', 'Belgium', 'Bosnia', 'Brunei',
+    'Canada', 'China', 'Denmark', 'Egypt', 'Ethiopia',
+    'France', 'Germany', 'India', 'Indonesia', 'Iran',
+    'Iraq', 'Ireland', 'Italy', 'Japan', 'Jordan',
+    'Kazakhstan', 'Kenya', 'Kuwait', 'Lebanon', 'Libya',
+    'Malaysia', 'Maldives', 'Morocco', 'Netherlands', 'New Zealand',
+    'Nigeria', 'Norway', 'Oman', 'Pakistan', 'Palestine',
+    'Philippines', 'Qatar', 'Russia', 'Saudi Arabia', 'Senegal',
+    'Singapore', 'Somalia', 'South Africa', 'Spain', 'Sri Lanka',
+    'Sudan', 'Sweden', 'Switzerland', 'Syria', 'Tanzania',
+    'Thailand', 'Tunisia', 'Turkey', 'UAE', 'Uganda',
+    'UK', 'USA', 'Uzbekistan', 'Yemen',
   ];
+
+  String _countrySearchQuery = '';
 
   Future<void> _completeOnboarding() async {
     final prefs = await SharedPreferences.getInstance();
@@ -231,6 +244,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget _buildCountryStep() {
+    final filteredCountries = _countries
+        .where((country) => country.toLowerCase().contains(_countrySearchQuery.toLowerCase()))
+        .toList();
+
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -269,51 +286,105 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
+          
+          // Search Bar
+          TextField(
+            onChanged: (value) {
+              setState(() {
+                _countrySearchQuery = value;
+              });
+            },
+            decoration: InputDecoration(
+              hintText: 'Search country...',
+              prefixIcon: const Icon(Icons.search),
+              suffixIcon: _countrySearchQuery.isNotEmpty
+                  ? IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        setState(() {
+                          _countrySearchQuery = '';
+                        });
+                      },
+                    )
+                  : null,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              filled: true,
+              fillColor: Colors.grey[100],
+            ),
+          ),
+          
+          const SizedBox(height: 16),
+          
+          Text(
+            '${filteredCountries.length} countries',
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.grey,
+            ),
+          ),
+          
+          const SizedBox(height: 12),
           
           Expanded(
-            child: ListView.builder(
-              itemCount: _countries.length,
-              itemBuilder: (context, index) {
-                final country = _countries[index];
-                final isSelected = _selectedCountry == country;
-                
-                return Card(
-                  margin: const EdgeInsets.only(bottom: 12),
-                  elevation: isSelected ? 4 : 1,
-                  color: isSelected ? const Color(0xFF2E7D32).withOpacity(0.1) : null,
-                  child: ListTile(
-                    onTap: () {
-                      setState(() {
-                        _selectedCountry = country;
-                      });
+            child: filteredCountries.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.search_off, size: 64, color: Colors.grey[400]),
+                        const SizedBox(height: 16),
+                        Text(
+                          'No countries found',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
+                      ],
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: filteredCountries.length,
+                    itemBuilder: (context, index) {
+                      final country = filteredCountries[index];
+                      final isSelected = _selectedCountry == country;
+                      
+                      return Card(
+                        margin: const EdgeInsets.only(bottom: 12),
+                        elevation: isSelected ? 4 : 1,
+                        color: isSelected ? const Color(0xFF2E7D32).withOpacity(0.1) : null,
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              _selectedCountry = country;
+                            });
+                          },
+                          leading: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: isSelected ? const Color(0xFF2E7D32) : Colors.grey[200],
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Icon(
+                              Icons.location_on,
+                              color: isSelected ? Colors.white : Colors.grey[700],
+                            ),
+                          ),
+                          title: Text(
+                            country,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            ),
+                          ),
+                          trailing: isSelected
+                              ? const Icon(Icons.check_circle, color: Color(0xFF2E7D32))
+                              : null,
+                        ),
+                      );
                     },
-                    leading: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: isSelected ? const Color(0xFF2E7D32) : Colors.grey[200],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(
-                        Icons.location_on,
-                        color: isSelected ? Colors.white : Colors.grey[700],
-                      ),
-                    ),
-                    title: Text(
-                      country,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      ),
-                    ),
-                    trailing: isSelected
-                        ? const Icon(Icons.check_circle, color: Color(0xFF2E7D32))
-                        : null,
                   ),
-                );
-              },
-            ),
           ),
           
           const SizedBox(height: 20),

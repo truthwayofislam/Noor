@@ -151,25 +151,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 1.5,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 1.4,
                   children: [
                     _StatsCard(
                       icon: Icons.menu_book,
-                      title: 'Quran Progress',
+                      title: 'Quran',
                       value: '${user.quranProgress.toStringAsFixed(1)}%',
                       color: Colors.green,
                     ),
                     _StatsCard(
                       icon: Icons.self_improvement,
-                      title: 'Prayers Logged',
+                      title: 'Prayers',
                       value: user.prayersLogged.toString(),
                       color: Colors.blue,
                     ),
                     _StatsCard(
                       icon: Icons.school,
-                      title: 'Lessons Done',
+                      title: 'Lessons',
                       value: user.lessonsCompleted.toString(),
                       color: Colors.purple,
                     ),
@@ -367,25 +367,30 @@ class _StatsCard extends StatelessWidget {
     return Card(
       elevation: 2,
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: color, size: 32),
+            Icon(icon, color: color, size: 28),
             const SizedBox(height: 8),
-            Text(
-              value,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(height: 4),
             Text(
               title,
               textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 11,
                 color: Colors.grey[600],
               ),
             ),
