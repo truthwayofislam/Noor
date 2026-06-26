@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 import os
 
@@ -66,8 +67,8 @@ app.include_router(users.router)
 app.include_router(leaderboard.router)
 app.include_router(telegram.router)
 
-@app.get("/")
-async def root():
+@app.get("/api")
+async def api_root():
     """API root endpoint"""
     return {
         "message": "Noor API - Islamic Companion App",
@@ -84,6 +85,9 @@ async def health_check():
         "status": "healthy",
         "pocketbase_url": os.getenv("POCKETBASE_URL", "not_configured")
     }
+
+# Serve static website files (must be last)
+app.mount("/", StaticFiles(directory="../website", html=True), name="website")
 
 # Error handlers
 @app.exception_handler(404)
