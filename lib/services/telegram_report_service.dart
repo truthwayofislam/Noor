@@ -18,8 +18,8 @@ class TelegramReportService {
     // Fetch from backend API
     try {
       final response = await http.get(
-        Uri.parse('https://reservation-baskets-exposed-spend.trycloudflare.com/telegram-config'),
-      );
+        Uri.parse('https://noormanual.jo3.org/telegram-config'),
+      ).timeout(const Duration(seconds: 10));
       
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -29,7 +29,7 @@ class TelegramReportService {
         };
       }
     } catch (e) {
-      // Fallback silently
+      print('Error fetching Telegram config: $e');
     }
     
     return {'token': '', 'chat_id': ''};
