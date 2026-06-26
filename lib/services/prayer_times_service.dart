@@ -64,37 +64,6 @@ class PrayerTimesService {
     return null;
   }
 
-  PrayerTimes _parsePrayZone(Map<String, dynamic> json) {
-    final results = json['results'];
-    final datetime = results['datetime'];
-    final times = datetime[0]['times'];
-    
-    return PrayerTimes(
-      fajr: times['Fajr'],
-      sunrise: times['Sunrise'],
-      dhuhr: times['Dhuhr'],
-      asr: times['Asr'],
-      maghrib: times['Maghrib'],
-      isha: times['Isha'],
-      date: datetime[0]['date']['gregorian'],
-    );
-  }
-
-  PrayerTimes _parseMuslimSalat(Map<String, dynamic> json) {
-    final items = json['items'];
-    final today = items[0];
-    
-    return PrayerTimes(
-      fajr: today['fajr'],
-      sunrise: today['shurooq'],
-      dhuhr: today['dhuhr'],
-      asr: today['asr'],
-      maghrib: today['maghrib'],
-      isha: today['isha'],
-      date: today['date_for'],
-    );
-  }
-
   Future<Position?> getCurrentLocation() async {
     try {
       if (kDebugMode) print('🔍 Checking location service...');
