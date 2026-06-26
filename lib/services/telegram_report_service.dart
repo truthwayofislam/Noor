@@ -29,7 +29,7 @@ class TelegramReportService {
         };
       }
     } catch (e) {
-      print('Error fetching Telegram config: $e');
+      // Silently handle error
     }
     
     return {'token': '', 'chat_id': ''};

@@ -16,73 +16,48 @@ class PrayerTimesService {
     required double latitude,
     required double longitude,
   }) async {
+    if (kDebugMode) print('🌍 Lat: $latitude, Lng: $longitude');
+    
     // Try Aladhan API first
     try {
       final url = '${_apiEndpoints[0]}/timings?latitude=$latitude&longitude=$longitude&method=2';
-      if (kDebugMode) print('📡 Trying Aladhan API: $url');
+      if (kDebugMode) print('📡 Aladhan: $url');
       
       final response = await http.get(Uri.parse(url)).timeout(
-        const Duration(seconds: 10),
-        onTimeout: () {
-          throw Exception('Aladhan API timeout');
-        },
+        const Duration(seconds: 15),
       );
 
-      if (kDebugMode) print('📡 Aladhan Response: ${response.statusCode}');
+      if (kDebugMode) print('📡 Aladhan: ${response.statusCode}');
       
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        if (kDebugMode) print('✅ Aladhan API success');
+        if (kDebugMode) print('✅ Aladhan success');
+        final times = PrayerTimes.fromJson(data);
+        if (kDebugMode) print('✅ Times: Fajr=${times.fajr}, Dhuhr=${times.dhuhr}');
+        return times;
+      }
+    } catch (e) {
+      if (kDebugMode) print('❌ Aladhan: $e');
+    }
+
+    // Fallback to direct HTTP (no HTTPS issues)
+    try {
+      final url = 'http://api.aladhan.com/v1/timings?latitude=$latitude&longitude=$longitude&method=2';
+      if (kDebugMode) print('📡 Aladhan HTTP: $url');
+      
+      final response = await http.get(Uri.parse(url)).timeout(
+        const Duration(seconds: 15),
+      );
+
+      if (kDebugMode) print('📡 HTTP: ${response.statusCode}');
+      
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (kDebugMode) print('✅ HTTP success');
         return PrayerTimes.fromJson(data);
       }
     } catch (e) {
-      if (kDebugMode) print('❌ Aladhan API failed: $e');
-    }
-
-    // Fallback to PrayZone API
-    try {
-      final url = '${_apiEndpoints[1]}/times/today.json?latitude=$latitude&longitude=$longitude';
-      if (kDebugMode) print('📡 Trying PrayZone API: $url');
-      
-      final response = await http.get(Uri.parse(url)).timeout(
-        const Duration(seconds: 10),
-        onTimeout: () {
-          throw Exception('PrayZone API timeout');
-        },
-      );
-
-      if (kDebugMode) print('📡 PrayZone Response: ${response.statusCode}');
-      
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        if (kDebugMode) print('✅ PrayZone API success');
-        return _parsePrayZone(data);
-      }
-    } catch (e) {
-      if (kDebugMode) print('❌ PrayZone API failed: $e');
-    }
-
-    // Fallback to MuslimSalat API
-    try {
-      final url = '${_apiEndpoints[2]}/$latitude/$longitude/daily.json?key=free';
-      if (kDebugMode) print('📡 Trying MuslimSalat API: $url');
-      
-      final response = await http.get(Uri.parse(url)).timeout(
-        const Duration(seconds: 10),
-        onTimeout: () {
-          throw Exception('MuslimSalat API timeout');
-        },
-      );
-
-      if (kDebugMode) print('📡 MuslimSalat Response: ${response.statusCode}');
-      
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        if (kDebugMode) print('✅ MuslimSalat API success');
-        return _parseMuslimSalat(data);
-      }
-    } catch (e) {
-      if (kDebugMode) print('❌ MuslimSalat API failed: $e');
+      if (kDebugMode) print('❌ HTTP: $e');
     }
 
     if (kDebugMode) print('❌ All APIs failed');

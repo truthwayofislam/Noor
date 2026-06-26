@@ -41,36 +41,39 @@ jobs:
           build/app/outputs/flutter-apk/app-release.apk
           build/app/outputs/bundle/release/app-release.aab
         body: |
-          ## Noor App - نور
+          ## Noor App - نور v${{ github.ref_name }}
           
-          ### Download
+          ### 📥 Download
           - **APK**: Direct installation on Android devices
           - **AAB**: For Google Play Store submission
           
-          ### Installation
-          1. Download APK file
-          2. Enable "Unknown Sources" in Settings
-          3. Install and enjoy!
+          ### 🔧 Installation
+          1. Download APK file below
+          2. Enable "Unknown Sources" in Settings → Security
+          3. Open downloaded APK and tap Install
+          4. Launch Noor and enjoy!
           
-          ### Features
-          - **Quran Learning**: Audio recitation, Transliteration, Word-by-Word translation
-          - **Arabic Alphabet**: Learn 28 letters with Harakat and Interactive Quiz
-          - **Quran Reader**: Complete Quran with Urdu translation
-          - **Mushaf**: Page-by-page Arabic Quran (604 pages)
-          - **Tasbih Counter**: Digital Dhikr counter
-          - **Schedule Builder**: Custom Islamic routines with alarms
-          - **Prayer Times**: Location-based Salah timings
-          - **Qibla Direction**: Compass to find Kaaba
-          - **Hadith Collection**: Bukhari, Muslim, Abu Dawud
-          - **Dua Collection**: Daily supplications
-          - **99 Names of Allah**: Asma ul Husna
-          - **Kids Zone**: 219+ Islamic game levels
-          - **Ramadan Features**: Sehri/Iftar timer
-          - **Bottom Navigation**: Organized app structure
+          ### ✨ Features
+          - 📚 **Quran Reader**: Complete Quran with Urdu translation
+          - 🕊 **Prayer Times**: Accurate timings based on location
+          - 📿 **Tasbih Counter**: Digital Dhikr counter
+          - 📅 **Schedule Builder**: Custom Islamic routines
+          - 🌙 **Ramadan Timer**: Sehri/Iftar countdown
+          - 📜 **Hadith & Duas**: Islamic knowledge library
+          - 🎮 **Kids Zone**: 219+ educational game levels
+          - 🏆 **Leaderboard**: Earn points and compete
+          - 🌐 **Multi-language**: 6 languages supported
           
-          ### Website
-          Visit: https://noor-app.netlify.app
+          ### 🔗 Links
+          - **Website**: https://noormanual.jo3.org
+          - **Backend API**: https://noormanual.jo3.org/health
+          - **Report Issues**: In-app Telegram bot
           
-          بسم اللہ الرحمن الرحیم
+          ### 🔒 Privacy
+          - No ads, completely free
+          - Minimal data collection
+          - Privacy policy: https://noormanual.jo3.org/privacy.html
+          
+          بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحيمِ
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
