@@ -17,6 +17,7 @@ import '../leaderboard/leaderboard_screen.dart';
 import '../tasks/daily_tasks_screen.dart';
 import '../auth/login_screen.dart';
 import '../stories/stories_home_screen.dart';
+import '../settings/report_issue_screen.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
@@ -233,6 +234,16 @@ class MoreScreen extends StatelessWidget {
           const SizedBox(height: 24),
           
           const _SectionHeader(title: 'Settings', icon: Icons.settings),
+          _FeatureTile(
+            title: 'Report Issue',
+            subtitle: 'Bug report, feedback & suggestions',
+            icon: Icons.bug_report,
+            color: Colors.redAccent,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ReportIssueScreen()),
+            ),
+          ),
           _FeatureTile(
             title: 'App Settings',
             subtitle: 'Preferences & configurations',

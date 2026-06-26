@@ -9,7 +9,7 @@ load_dotenv()
 
 # Import routes
 from contextlib import asynccontextmanager
-from routes import auth, users, leaderboard
+from routes import auth, users, leaderboard, telegram
 from utils.turso_client import init_db
 
 @asynccontextmanager
@@ -64,6 +64,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(leaderboard.router)
+app.include_router(telegram.router)
 
 @app.get("/")
 async def root():

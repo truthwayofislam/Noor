@@ -15,6 +15,7 @@ A beautiful Flutter app for Muslims to maintain their daily Islamic practices.
 6. **Points System** - Earn points by reading Quran, logging prayers, and learning
 7. **Leaderboard** - Global and country-wise rankings
 8. **Learning Hub** - Islamic education with rewards
+9. **Report Issue** - Direct Telegram bot integration for user feedback
 
 ### 🎯 Points System
 Earn points for your Islamic activities:

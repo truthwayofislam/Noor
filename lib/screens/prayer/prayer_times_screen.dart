@@ -42,8 +42,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   Future<void> _loadPrayerTimes() async {
     setState(() => _isLoading = true);
     
-    final position = await _service.getCurrentLocation();
-    if (position != null) {
+    try {
+      final position = await _service.getCurrentLocation();
+      
+      if (position == null) {
+        setState(() => _isLoading = false);
+        return;
+      }
+      
       final times = await _service.getPrayerTimes(
         latitude: position.latitude,
         longitude: position.longitude,
@@ -52,15 +58,23 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
       if (times != null) {
         await PrayerNotificationService.schedulePrayerNotifications(times);
         
-        setState(() {
-          _prayerTimes = times;
-          _nextPrayer = _service.getNextPrayer(times);
-          _timeUntilNext = _service.getTimeUntilNext(times);
-          _isLoading = false;
-        });
+        if (mounted) {
+          setState(() {
+            _prayerTimes = times;
+            _nextPrayer = _service.getNextPrayer(times);
+            _timeUntilNext = _service.getTimeUntilNext(times);
+            _isLoading = false;
+          });
+        }
+      } else {
+        if (mounted) {
+          setState(() => _isLoading = false);
+        }
       }
-    } else {
-      setState(() => _isLoading = false);
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
   }
 
@@ -163,11 +177,47 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   }
 
   Widget _buildErrorState() {
-    return ErrorView(
-      error: 'Location permission required',
-      onRetry: _loadPrayerTimes,
-      title: 'Location Required',
-      icon: Icons.location_off_rounded,
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.location_off_rounded,
+              size: 80,
+              color: Colors.grey,
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Location Required',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              'Please enable location services to view prayer times for your area.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[600],
+              ),
+            ),
+            const SizedBox(height: 32),
+            ElevatedButton.icon(
+              onPressed: _loadPrayerTimes,
+              icon: const Icon(Icons.refresh),
+              label: const Text('Try Again'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                backgroundColor: const Color(0xFF2E7D32),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

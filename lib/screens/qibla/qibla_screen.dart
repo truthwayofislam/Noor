@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'dart:math';
 
 import '../../widgets/error_view.dart';
@@ -31,27 +30,47 @@ class _QiblaScreenState extends State<QiblaScreen> {
     });
 
     try {
-      final status = await Permission.location.request();
-      if (!status.isGranted) {
-        throw Exception('Location permission required');
+      // Check if location services are enabled
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        throw Exception('Please enable location services');
       }
 
+      // Check and request permission
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          throw Exception('Location permission denied');
+        }
+      }
+
+      if (permission == LocationPermission.deniedForever) {
+        throw Exception('Location permission permanently denied. Please enable in settings.');
+      }
+
+      // Get current position with timeout
       final position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
+        desiredAccuracy: LocationAccuracy.medium,
+        timeLimit: const Duration(seconds: 10),
       );
       
       final qibla = _getQiblaDirection(position.latitude, position.longitude);
 
-      setState(() {
-        _qiblaDirection = qibla;
-        _locationName = '${position.latitude.toStringAsFixed(2)}°, ${position.longitude.toStringAsFixed(2)}°';
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _qiblaDirection = qibla;
+          _locationName = '${position.latitude.toStringAsFixed(2)}°, ${position.longitude.toStringAsFixed(2)}°';
+          _isLoading = false;
+        });
+      }
     } catch (e) {
-      setState(() {
-        _error = 'Unable to get location. Please enable GPS and grant permission.';
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _error = e.toString().replaceAll('Exception: ', '');
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -105,11 +124,47 @@ class _QiblaScreenState extends State<QiblaScreen> {
         child: _isLoading
             ? const Center(child: CircularProgressIndicator())
             : _error != null
-                ? ErrorView(
-                    error: _error,
-                    onRetry: _calculateQibla,
-                    title: 'Location Required',
-                    icon: Icons.location_off_rounded,
+                ? Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.location_off_rounded,
+                            size: 80,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(height: 24),
+                          const Text(
+                            'Location Required',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Text(
+                            _error!,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                          const SizedBox(height: 32),
+                          ElevatedButton.icon(
+                            onPressed: _calculateQibla,
+                            icon: const Icon(Icons.refresh),
+                            label: const Text('Try Again'),
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                              backgroundColor: Colors.teal,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   )
                 : SingleChildScrollView(
                     child: Column(
