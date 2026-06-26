@@ -3,7 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://reservation-baskets-exposed-spend.trycloudflare.com';
+  // TODO: Update this URL after Render deployment
+  static const String baseUrl = 'https://noor-backend.onrender.com';
   
   String? _token;
   
