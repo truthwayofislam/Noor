@@ -1,4 +1,4 @@
-import libsql_experimental as libsql
+import libsql_client
 import os
 import uuid
 from datetime import datetime
@@ -8,7 +8,7 @@ from utils.auth import get_password_hash, verify_password
 def get_conn():
     url = os.getenv("TURSO_DATABASE_URL")
     token = os.getenv("TURSO_AUTH_TOKEN")
-    return libsql.connect(database=url, auth_token=token)
+    return libsql_client.create_client(url=url, auth_token=token)
 
 def init_db():
     conn = get_conn()
