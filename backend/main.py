@@ -17,6 +17,8 @@ from utils.turso_client import init_db
 async def lifespan(app):
     await init_db()
     yield
+    # Cleanup on shutdown
+    # Note: libsql_client auto-manages connections
 
 # Create FastAPI app
 app = FastAPI(
