@@ -7,7 +7,6 @@ import '../../models/prayer_times_model.dart';
 import '../../services/prayer_times_service.dart';
 import '../../services/prayer_notification_service.dart';
 import '../../providers/user_provider.dart';
-import '../../widgets/error_view.dart';
 
 class PrayerTimesScreen extends StatefulWidget {
   const PrayerTimesScreen({super.key});

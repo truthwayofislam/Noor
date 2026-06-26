@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:math';
 
-import '../../widgets/error_view.dart';
-
 class QiblaScreen extends StatefulWidget {
   const QiblaScreen({super.key});
 
