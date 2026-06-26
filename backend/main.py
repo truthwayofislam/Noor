@@ -14,7 +14,7 @@ from utils.turso_client import init_db
 
 @asynccontextmanager
 async def lifespan(app):
-    init_db()
+    await init_db()
     yield
 
 # Create FastAPI app

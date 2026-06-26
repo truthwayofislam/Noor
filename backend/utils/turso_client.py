@@ -10,9 +10,9 @@ def get_conn():
     token = os.getenv("TURSO_AUTH_TOKEN")
     return libsql_client.create_client(url=url, auth_token=token)
 
-def init_db():
+async def init_db():
     conn = get_conn()
-    conn.execute("""
+    await conn.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id TEXT PRIMARY KEY,
             email TEXT UNIQUE NOT NULL,
@@ -30,7 +30,7 @@ def init_db():
             updated TEXT NOT NULL
         )
     """)
-    conn.execute("""
+    await conn.execute("""
         CREATE TABLE IF NOT EXISTS activities (
             id TEXT PRIMARY KEY,
             user_id TEXT NOT NULL,
@@ -40,7 +40,6 @@ def init_db():
             created TEXT NOT NULL
         )
     """)
-    conn.commit()
 
 def row_to_user(row) -> Dict:
     keys = ['id','email','password','username','country','level','points',
@@ -52,23 +51,21 @@ class TursoClient:
 
     async def create_user(self, email: str, password: str, username: str, country: str, level: str) -> Dict:
         conn = get_conn()
-        existing = conn.execute("SELECT id FROM users WHERE email = ?", (email,)).fetchone()
-        if existing:
+        result = await conn.execute("SELECT id FROM users WHERE email = ?", [email])
+        if result.rows:
             raise Exception("Email already exists")
 
         user_id = str(uuid.uuid4())
         now = datetime.utcnow().isoformat()
         hashed = get_password_hash(password)
 
-        conn.execute(
+        await conn.execute(
             "INSERT INTO users VALUES (?,?,?,?,?,?,0,0,0.0,0,0,'',?,?)",
-            (user_id, email, hashed, username, country, level, now, now)
+            [user_id, email, hashed, username, country, level, now, now]
         )
-        conn.commit()
 
-        row = conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
-        if row is None:
-            # fallback: return manually constructed dict
+        result = await conn.execute("SELECT * FROM users WHERE id = ?", [user_id])
+        if not result.rows:
             return {
                 'id': user_id, 'email': email, 'password': hashed,
                 'username': username, 'country': country, 'level': level,
@@ -76,30 +73,29 @@ class TursoClient:
                 'prayers_logged': 0, 'lessons_completed': 0,
                 'avatar': '', 'created': now, 'updated': now
             }
-        return row_to_user(row)
+        return row_to_user(result.rows[0])
 
     async def authenticate_user(self, email: str, password: str) -> Optional[Dict]:
         conn = get_conn()
-        row = conn.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
-        if not row:
+        result = await conn.execute("SELECT * FROM users WHERE email = ?", [email])
+        if not result.rows:
             return None
-        user = row_to_user(row)
+        user = row_to_user(result.rows[0])
         if not verify_password(password, user['password']):
             return None
         return user
 
     async def get_user(self, user_id: str) -> Optional[Dict]:
         conn = get_conn()
-        row = conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
-        return row_to_user(row) if row else None
+        result = await conn.execute("SELECT * FROM users WHERE id = ?", [user_id])
+        return row_to_user(result.rows[0]) if result.rows else None
 
     async def update_user(self, user_id: str, data: Dict) -> Dict:
         conn = get_conn()
         data['updated'] = datetime.utcnow().isoformat()
         sets = ', '.join([f"{k} = ?" for k in data.keys()])
-        values = tuple(data.values()) + (user_id,)
-        conn.execute(f"UPDATE users SET {sets} WHERE id = ?", values)
-        conn.commit()
+        values = list(data.values()) + [user_id]
+        await conn.execute(f"UPDATE users SET {sets} WHERE id = ?", values)
         return await self.get_user(user_id)
 
     async def log_activity(self, user_id: str, activity_type: str, points: int, metadata: Optional[Dict] = None) -> Dict:
@@ -107,58 +103,56 @@ class TursoClient:
         conn = get_conn()
 
         # Insert activity log
-        conn.execute(
+        await conn.execute(
             "INSERT INTO activities VALUES (?,?,?,?,?,?)",
-            (str(uuid.uuid4()), user_id, activity_type, points,
-             json.dumps(metadata or {}), datetime.utcnow().isoformat())
+            [str(uuid.uuid4()), user_id, activity_type, points,
+             json.dumps(metadata or {}), datetime.utcnow().isoformat()]
         )
 
-        # Update points and counters in same connection
+        # Update points and counters
         now = datetime.utcnow().isoformat()
         if activity_type == "quran_read":
-            conn.execute(
+            await conn.execute(
                 "UPDATE users SET points = points + ?, quran_progress = MIN(100.0, quran_progress + 0.88), updated = ? WHERE id = ?",
-                (points, now, user_id)
+                [points, now, user_id]
             )
         elif activity_type == "prayer_logged":
-            conn.execute(
+            await conn.execute(
                 "UPDATE users SET points = points + ?, prayers_logged = prayers_logged + 1, updated = ? WHERE id = ?",
-                (points, now, user_id)
+                [points, now, user_id]
             )
         elif activity_type == "lesson_completed":
-            conn.execute(
+            await conn.execute(
                 "UPDATE users SET points = points + ?, lessons_completed = lessons_completed + 1, updated = ? WHERE id = ?",
-                (points, now, user_id)
+                [points, now, user_id]
             )
         else:
-            conn.execute(
+            await conn.execute(
                 "UPDATE users SET points = points + ?, updated = ? WHERE id = ?",
-                (points, now, user_id)
+                [points, now, user_id]
             )
 
-        conn.commit()
-
         # Return updated user
-        row = conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
-        return row_to_user(row)
+        result = await conn.execute("SELECT * FROM users WHERE id = ?", [user_id])
+        return row_to_user(result.rows[0])
 
     async def get_leaderboard(self, limit: int = 100, country: Optional[str] = None) -> List[Dict]:
         conn = get_conn()
         if country:
-            rows = conn.execute(
+            result = await conn.execute(
                 "SELECT id,username,country,points,avatar FROM users WHERE country = ? ORDER BY points DESC LIMIT ?",
-                (country, limit)
-            ).fetchall()
+                [country, limit]
+            )
         else:
-            rows = conn.execute(
+            result = await conn.execute(
                 "SELECT id,username,country,points,avatar FROM users ORDER BY points DESC LIMIT ?",
-                (limit,)
-            ).fetchall()
+                [limit]
+            )
 
         return [
             {"rank": i+1, "user_id": r[0], "username": r[1],
              "country": r[2], "points": r[3], "avatar": r[4] or ""}
-            for i, r in enumerate(rows)
+            for i, r in enumerate(result.rows)
         ]
 
     async def get_user_rank(self, user_id: str) -> Dict:
@@ -166,9 +160,10 @@ class TursoClient:
         if not user:
             raise Exception("User not found")
         conn = get_conn()
-        count = conn.execute(
-            "SELECT COUNT(*) FROM users WHERE points > ?", (user['points'],)
-        ).fetchone()[0]
+        result = await conn.execute(
+            "SELECT COUNT(*) FROM users WHERE points > ?", [user['points']]
+        )
+        count = result.rows[0][0]
         return {"rank": count + 1, "points": user['points'], "username": user['username']}
 
 
