@@ -12,15 +12,27 @@ class PrayerTimesService {
     required double longitude,
   }) async {
     try {
-      final response = await http.get(
-        Uri.parse('$_baseUrl/timings?latitude=$latitude&longitude=$longitude&method=2'),
+      final url = '$_baseUrl/timings?latitude=$latitude&longitude=$longitude&method=2';
+      print('📡 API Request: $url');
+      
+      final response = await http.get(Uri.parse(url)).timeout(
+        const Duration(seconds: 15),
+        onTimeout: () {
+          throw Exception('API request timeout');
+        },
       );
 
+      print('📡 API Response: ${response.statusCode}');
+      
       if (response.statusCode == 200) {
-        return PrayerTimes.fromJson(json.decode(response.body));
+        final data = json.decode(response.body);
+        print('✅ API Data received');
+        return PrayerTimes.fromJson(data);
+      } else {
+        print('❌ API Error: ${response.statusCode}');
       }
     } catch (e) {
-      if (kDebugMode) print('Error fetching prayer times: $e');
+      print('❌ Exception in getPrayerTimes: $e');
     }
     return null;
   }

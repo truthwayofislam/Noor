@@ -42,12 +42,25 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     setState(() => _isLoading = true);
     
     try {
+      print('🔍 Getting location...');
       final position = await _service.getCurrentLocation();
       
       if (position == null) {
+        print('❌ Location is null');
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Failed to get location. Please check permissions.'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
         setState(() => _isLoading = false);
         return;
       }
+      
+      print('✅ Location: ${position.latitude}, ${position.longitude}');
+      print('🔍 Fetching prayer times...');
       
       final times = await _service.getPrayerTimes(
         latitude: position.latitude,
@@ -55,6 +68,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
       );
       
       if (times != null) {
+        print('✅ Prayer times received');
         await PrayerNotificationService.schedulePrayerNotifications(times);
         
         if (mounted) {
@@ -66,12 +80,26 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           });
         }
       } else {
+        print('❌ Prayer times API returned null');
         if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Failed to fetch prayer times. Try again.'),
+              backgroundColor: Colors.red,
+            ),
+          );
           setState(() => _isLoading = false);
         }
       }
     } catch (e) {
+      print('❌ Error: $e');
       if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: ${e.toString()}'),
+            backgroundColor: Colors.red,
+          ),
+        );
         setState(() => _isLoading = false);
       }
     }
