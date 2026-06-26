@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import '../models/user_model.dart';
 import '../services/api_service.dart';
+import '../services/notification_service.dart';
 
 class UserProvider extends ChangeNotifier {
   final ApiService _apiService = ApiService();
@@ -82,6 +83,10 @@ class UserProvider extends ChangeNotifier {
       
       _currentUser = User.fromJson(response['user']);
       await _saveUserData(_currentUser!);
+      
+      // Send welcome notification
+      await _sendWelcomeNotification(username);
+      
       _isLoading = false;
       notifyListeners();
       return true;
@@ -109,6 +114,15 @@ class UserProvider extends ChangeNotifier {
       
       _currentUser = User.fromJson(response['user']);
       await _saveUserData(_currentUser!);
+      
+      // Check if first login and send welcome notification
+      final prefs = await SharedPreferences.getInstance();
+      final hasSeenWelcome = prefs.getBool('has_seen_welcome_\${_currentUser!.id}') ?? false;
+      if (!hasSeenWelcome) {
+        await _sendWelcomeNotification(_currentUser!.username);
+        await prefs.setBool('has_seen_welcome_\${_currentUser!.id}', true);
+      }
+      
       _isLoading = false;
       notifyListeners();
       return true;
@@ -214,5 +228,17 @@ class UserProvider extends ChangeNotifier {
     await _clearUserData();
     _currentUser = null;
     notifyListeners();
+  }
+
+  Future<void> _sendWelcomeNotification(String username) async {
+    try {
+      await NotificationService().showInstantNotification(
+        id: 1000,
+        title: '🌙 Assalamu Alaikum, $username!',
+        body: 'Welcome to Noor! May Allah bless your journey. Start by reading Quran, tracking prayers, and earning rewards. جزاك الله خيرا',
+      );
+    } catch (e) {
+      // Silently fail if notification fails
+    }
   }
 }
