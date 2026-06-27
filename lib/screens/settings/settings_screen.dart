@@ -6,6 +6,8 @@ import '../../services/daily_reminder_service.dart';
 import '../../services/notification_service.dart';
 import '../../services/prayer_notification_service.dart';
 import '../../services/prayer_times_service.dart';
+import '../../services/islamic_reminders_service.dart';
+import '../../services/islamic_reminders_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -16,6 +18,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _dailyReminderEnabled = false;
+  bool _islamicRemindersEnabled = true;
   bool _prayerNotifEnabled = true;
   bool _hasNotifPermission = false;
   TimeOfDay _reminderTime = const TimeOfDay(hour: 9, minute: 0);
@@ -40,6 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final hasPermission = await NotificationService().hasPermission();
     setState(() {
       _dailyReminderEnabled = prefs.getBool('daily_reminder_enabled') ?? false;
+      _islamicRemindersEnabled = prefs.getBool('islamic_reminders_enabled') ?? true;
       _prayerNotifEnabled = prefs.getBool('prayer_notifications_enabled') ?? true;
       _hasNotifPermission = hasPermission;
       final hour = prefs.getInt('daily_reminder_hour') ?? 9;
@@ -189,6 +193,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       content: Text(val
                           ? 'Prayer alerts enabled!'
                           : 'Prayer alerts disabled'),
+                    ));
+                  },
+                ),
+
+                const Divider(height: 1),
+
+                // Islamic daily & weekly reminders
+                SwitchListTile(
+                  secondary: const Icon(Icons.auto_awesome, color: Color(0xFF2E7D32)),
+                  title: const Text('Islamic Daily Reminders'),
+                  subtitle: const Text('Morning/Evening Adhkar, weekly Surah Kahf & more'),
+                  value: _islamicRemindersEnabled,
+                  onChanged: (val) async {
+                    final messenger = ScaffoldMessenger.of(context);
+                    setState(() => _islamicRemindersEnabled = val);
+                    if (val) {
+                      await IslamicRemindersService.enable();
+                    } else {
+                      await IslamicRemindersService.disable();
+                    }
+                    messenger.showSnackBar(SnackBar(
+                      content: Text(val
+                          ? '✅ Islamic reminders enabled!'
+                          : 'Islamic reminders disabled'),
                     ));
                   },
                 ),

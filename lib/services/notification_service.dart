@@ -9,6 +9,7 @@ class NotificationService {
   static const _scheduleChannel = 'noor_schedules';
   static const _prayerChannel = 'prayer_times';
   static const _reminderChannel = 'daily_reminder';
+  static const _islamicChannel = 'islamic_reminders';
   static const _generalChannel = 'general';
 
   Future<void> init() async {
@@ -50,6 +51,16 @@ class NotificationService {
           channelDescription: 'General notifications',
           importance: NotificationImportance.High,
           defaultColor: const Color(0xFF2E7D32),
+          playSound: true,
+          enableVibration: true,
+        ),
+        NotificationChannel(
+          channelKey: _islamicChannel,
+          channelName: 'Islamic Reminders',
+          channelDescription: 'Daily & weekly Islamic reminders',
+          importance: NotificationImportance.High,
+          defaultColor: const Color(0xFF2E7D32),
+          ledColor: const Color(0xFFFFD700),
           playSound: true,
           enableVibration: true,
         ),
@@ -151,6 +162,35 @@ class NotificationService {
         wakeUpScreen: true,
       ),
       schedule: NotificationCalendar(
+        hour: hour,
+        minute: minute,
+        second: 0,
+        repeats: true,
+        allowWhileIdle: true,
+        preciseAlarm: true,
+      ),
+    );
+  }
+
+  Future<void> scheduleIslamicReminder({
+    required int id,
+    required String title,
+    required String body,
+    required int hour,
+    required int minute,
+    int? weekday, // 1=Mon ... 7=Sun, null = every day
+  }) async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: id,
+        channelKey: _islamicChannel,
+        title: title,
+        body: body,
+        notificationLayout: NotificationLayout.Default,
+        wakeUpScreen: false,
+      ),
+      schedule: NotificationCalendar(
+        weekday: weekday,
         hour: hour,
         minute: minute,
         second: 0,
