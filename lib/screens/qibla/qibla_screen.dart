@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:math';
+import 'dart:async';
 
 class QiblaScreen extends StatefulWidget {
   const QiblaScreen({super.key});
@@ -12,11 +13,14 @@ class QiblaScreen extends StatefulWidget {
 
 class _QiblaScreenState extends State<QiblaScreen>
     with SingleTickerProviderStateMixin {
-  double? _qiblaAngle; // angle from North to Qibla
+  double? _qiblaAngle;
+  double _deviceHeading = 0;
   bool _isLoading = true;
+  bool _hasCompass = true;
   String? _error;
   String? _coords;
   late AnimationController _pulseController;
+  StreamSubscription<CompassEvent>? _compassSub;
 
   @override
   void initState() {
@@ -28,8 +32,28 @@ class _QiblaScreenState extends State<QiblaScreen>
     _getLocationAndCalculate();
   }
 
+  void _startCompass() {
+    _compassSub?.cancel();
+    _compassSub = FlutterCompass.events?.listen((event) {
+      if (event.heading == null) {
+        if (mounted) setState(() => _hasCompass = false);
+        return;
+      }
+      if (mounted) {
+        setState(() {
+          _deviceHeading = event.heading!;
+          _hasCompass = true;
+        });
+      }
+    });
+    if (_compassSub == null) {
+      setState(() => _hasCompass = false);
+    }
+  }
+
   @override
   void dispose() {
+    _compassSub?.cancel();
     _pulseController.dispose();
     super.dispose();
   }
@@ -68,6 +92,7 @@ class _QiblaScreenState extends State<QiblaScreen>
               '${position!.latitude.toStringAsFixed(3)}°, ${position.longitude.toStringAsFixed(3)}°';
           _isLoading = false;
         });
+        _startCompass();
       }
     } catch (e) {
       if (mounted) {
@@ -160,26 +185,9 @@ class _QiblaScreenState extends State<QiblaScreen>
   }
 
   Widget _buildCompass() {
-    return StreamBuilder<CompassEvent>(
-      stream: FlutterCompass.events,
-      builder: (context, snapshot) {
-        double deviceHeading = 0;
-        bool hasCompass = true;
+    final arrowAngle = ((_qiblaAngle! - _deviceHeading) * pi / 180);
 
-        if (snapshot.hasError ||
-            !snapshot.hasData ||
-            snapshot.data!.heading == null) {
-          hasCompass = false;
-        } else {
-          deviceHeading = snapshot.data!.heading!;
-        }
-
-        // Arrow should point to qibla relative to current device heading
-        // qiblaAngle is from North, deviceHeading is current North direction
-        final arrowAngle =
-            ((_qiblaAngle! - deviceHeading) * pi / 180);
-
-        return SingleChildScrollView(
+    return SingleChildScrollView(
           child: Column(
             children: [
               const SizedBox(height: 32),
@@ -249,7 +257,7 @@ class _QiblaScreenState extends State<QiblaScreen>
                       children: [
                         // Compass markings — rotate opposite to device heading to stay fixed
                         Transform.rotate(
-                          angle: -deviceHeading * pi / 180,
+                          angle: -_deviceHeading * pi / 180,
                           child: CustomPaint(
                             size: const Size(260, 260),
                             painter: _CompassPainter(),
@@ -327,7 +335,7 @@ class _QiblaScreenState extends State<QiblaScreen>
 
               const SizedBox(height: 32),
 
-              if (!hasCompass)
+              if (!_hasCompass)
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 24),
                   padding: const EdgeInsets.all(12),
@@ -421,8 +429,6 @@ class _QiblaScreenState extends State<QiblaScreen>
             ],
           ),
         );
-      },
-    );
   }
 
   String _compassLabel(double angle) {
@@ -495,12 +501,10 @@ class _CompassPainter extends CustomPainter {
     final tickPaint = Paint()
       ..color = Colors.white30
       ..strokeWidth = 1.5;
-
     final majorTickPaint = Paint()
       ..color = Colors.white60
       ..strokeWidth = 2;
 
-    // Draw tick marks every 30 degrees
     for (int i = 0; i < 360; i += 10) {
       final angle = i * pi / 180;
       final isMajor = i % 30 == 0;
@@ -516,7 +520,6 @@ class _CompassPainter extends CustomPainter {
       canvas.drawLine(outer, inner, isMajor ? majorTickPaint : tickPaint);
     }
 
-    // Draw N S E W labels
     final labels = {'N': 0.0, 'E': 90.0, 'S': 180.0, 'W': 270.0};
     for (final entry in labels.entries) {
       final angle = entry.value * pi / 180;
@@ -535,11 +538,10 @@ class _CompassPainter extends CustomPainter {
         ),
         textDirection: TextDirection.ltr,
       )..layout();
-      tp.paint(
-          canvas, Offset(pos.dx - tp.width / 2, pos.dy - tp.height / 2));
+      tp.paint(canvas, Offset(pos.dx - tp.width / 2, pos.dy - tp.height / 2));
     }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }

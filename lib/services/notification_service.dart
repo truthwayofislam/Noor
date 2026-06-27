@@ -15,6 +15,17 @@ class NotificationService {
 
   Future<void> init() async {
     tz.initializeTimeZones();
+    // Set local timezone
+    try {
+      final String localTz = DateTime.now().timeZoneName;
+      // Try to find matching timezone, fallback to UTC
+      final locations = tz.timeZoneDatabase.locations;
+      if (locations.containsKey(localTz)) {
+        tz.setLocalLocation(tz.getLocation(localTz));
+      }
+    } catch (_) {
+      // Keep default UTC if timezone detection fails
+    }
 
     const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings(
@@ -29,7 +40,6 @@ class NotificationService {
     );
 
     await _notifications.initialize(initSettings);
-    // Don't request permissions on init - wait for user to create schedule
   }
 
   Future<bool> requestPermission() async {
@@ -90,12 +100,22 @@ class NotificationService {
       ),
     );
 
+    // Safe TZDateTime conversion — always use UTC offset instead of named timezone
+    final tzTime = tz.TZDateTime(
+      tz.local,
+      scheduledTime.year,
+      scheduledTime.month,
+      scheduledTime.day,
+      scheduledTime.hour,
+      scheduledTime.minute,
+    );
+
     if (isRecurring) {
       await _notifications.zonedSchedule(
         id,
         title,
         body,
-        tz.TZDateTime.from(scheduledTime, tz.local),
+        tzTime,
         details,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
@@ -107,7 +127,7 @@ class NotificationService {
         id,
         title,
         body,
-        tz.TZDateTime.from(scheduledTime, tz.local),
+        tzTime,
         details,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,

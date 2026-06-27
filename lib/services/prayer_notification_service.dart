@@ -67,13 +67,19 @@ class PrayerNotificationService {
           prayer['id'] as int,
           '🕌 ${prayer['name']} Prayer',
           'It\'s time for ${prayer['name']} - الصلاة خير من النوم',
-          tz.TZDateTime.from(scheduledTime, tz.local),
+          tz.TZDateTime(
+            tz.local,
+            scheduledTime.year,
+            scheduledTime.month,
+            scheduledTime.day,
+            scheduledTime.hour,
+            scheduledTime.minute,
+          ),
           _details,
           androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
           uiLocalNotificationDateInterpretation:
               UILocalNotificationDateInterpretation.absoluteTime,
         );
-        
         if (kDebugMode) print('✅ Scheduled ${prayer['name']} at $scheduledTime');
       } catch (e) {
         if (kDebugMode) print('❌ Failed to schedule ${prayer['name']}: $e');
@@ -96,7 +102,15 @@ class PrayerNotificationService {
         _midnightRefreshId,
         '🌙 Prayer Times Updated',
         'Prayer times for today have been refreshed',
-        tz.TZDateTime.from(midnight, tz.local),
+        tz.TZDateTime(
+          tz.local,
+          midnight.year,
+          midnight.month,
+          midnight.day,
+          midnight.hour,
+          midnight.minute,
+          midnight.second,
+        ),
         _details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:

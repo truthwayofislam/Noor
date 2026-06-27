@@ -50,7 +50,15 @@ class PrayerRefreshService {
         _refreshTriggerId,
         '🌙 Prayer Times',
         'Updating for new day...',
-        tz.TZDateTime.from(midnight, tz.local),
+        tz.TZDateTime(
+          tz.local,
+          midnight.year,
+          midnight.month,
+          midnight.day,
+          midnight.hour,
+          midnight.minute,
+          midnight.second,
+        ),
         details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
