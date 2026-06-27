@@ -112,27 +112,44 @@ class TursoClient:
              json.dumps(metadata or {}), datetime.utcnow().isoformat()]
         )
 
-        # Update points and counters
-        now = datetime.utcnow().isoformat()
+        # Calculate streak
+        user = await self.get_user(user_id)
+        now = datetime.utcnow()
+        today = now.date().isoformat()
+        last_updated = user['updated'][:10] if user else None  # YYYY-MM-DD
+        current_streak = user.get('streak_days', 0) if user else 0
+
+        if last_updated == today:
+            # Already active today, keep streak
+            new_streak = current_streak
+        elif last_updated == (now.date() - __import__('datetime').timedelta(days=1)).isoformat():
+            # Active yesterday, increment streak
+            new_streak = current_streak + 1
+        else:
+            # Streak broken or first activity
+            new_streak = 1
+
+        # Update points, counters, and streak
+        now_str = now.isoformat()
         if activity_type == "quran_read":
             await conn.execute(
-                "UPDATE users SET points = points + ?, quran_progress = MIN(100.0, quran_progress + 0.88), updated = ? WHERE id = ?",
-                [points, now, user_id]
+                "UPDATE users SET points = points + ?, quran_progress = MIN(100.0, quran_progress + 0.88), streak_days = ?, updated = ? WHERE id = ?",
+                [points, new_streak, now_str, user_id]
             )
         elif activity_type == "prayer_logged":
             await conn.execute(
-                "UPDATE users SET points = points + ?, prayers_logged = prayers_logged + 1, updated = ? WHERE id = ?",
-                [points, now, user_id]
+                "UPDATE users SET points = points + ?, prayers_logged = prayers_logged + 1, streak_days = ?, updated = ? WHERE id = ?",
+                [points, new_streak, now_str, user_id]
             )
         elif activity_type == "lesson_completed":
             await conn.execute(
-                "UPDATE users SET points = points + ?, lessons_completed = lessons_completed + 1, updated = ? WHERE id = ?",
-                [points, now, user_id]
+                "UPDATE users SET points = points + ?, lessons_completed = lessons_completed + 1, streak_days = ?, updated = ? WHERE id = ?",
+                [points, new_streak, now_str, user_id]
             )
         else:
             await conn.execute(
-                "UPDATE users SET points = points + ?, updated = ? WHERE id = ?",
-                [points, now, user_id]
+                "UPDATE users SET points = points + ?, streak_days = ?, updated = ? WHERE id = ?",
+                [points, new_streak, now_str, user_id]
             )
 
         # Return updated user

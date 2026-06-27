@@ -269,7 +269,7 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
         debugPrint('Notification error: $e');
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('⚠️ Failed to schedule notification'), backgroundColor: Colors.orange),
+            SnackBar(content: Text('⚠️ Failed: $e'), backgroundColor: Colors.orange),
           );
         }
       }

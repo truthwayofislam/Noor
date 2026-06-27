@@ -148,7 +148,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     subtitle: const Text('Tap to enable notification permission'),
                     trailing: ElevatedButton(
                       onPressed: () async {
-                        await NotificationService().init();
+                        await NotificationService().requestPermission();
                         await _loadSettings();
                       },
                       child: const Text('Enable'),

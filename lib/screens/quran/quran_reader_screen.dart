@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../providers/quran_provider.dart';
 import '../../providers/user_provider.dart';
 import '../../models/quran_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../widgets/error_view.dart';
 
 class QuranReaderScreen extends StatefulWidget {
@@ -181,6 +181,17 @@ class _QuranReaderScreenState extends State<QuranReaderScreen> {
   }
 
   Future<void> _markAsCompleted(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'surah_done_${widget.surah.number}';
+    if (prefs.getBool(key) == true) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Already completed! Points already awarded.'), backgroundColor: Colors.blue),
+        );
+      }
+      return;
+    }
+    await prefs.setBool(key, true);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     if (userProvider.isAuthenticated) {
       await userProvider.logActivity(
@@ -191,22 +202,15 @@ class _QuranReaderScreenState extends State<QuranReaderScreen> {
           'surah_name': widget.surah.englishName,
         },
       );
-      
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Surah completed! +10 points'),
-            backgroundColor: Colors.green,
-          ),
+          const SnackBar(content: Text('Surah completed! +10 points'), backgroundColor: Colors.green),
         );
       }
     } else {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Login to earn points!'),
-            backgroundColor: Colors.orange,
-          ),
+          const SnackBar(content: Text('Login to earn points!'), backgroundColor: Colors.orange),
         );
       }
     }

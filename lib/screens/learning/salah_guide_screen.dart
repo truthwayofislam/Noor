@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../providers/user_provider.dart';
 
 class SalahGuideScreen extends StatelessWidget {
@@ -212,7 +213,16 @@ class SalahGuideScreen extends StatelessWidget {
     );
   }
 
-  void _markAsCompleted(BuildContext context) {
+  void _markAsCompleted(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'lesson_done_salah_guide';
+    if (prefs.getBool(key) == true) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Already completed! Points already awarded.'), backgroundColor: Colors.blue),
+      );
+      return;
+    }
+    await prefs.setBool(key, true);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     if (userProvider.isAuthenticated) {
       userProvider.logActivity(
@@ -220,12 +230,8 @@ class SalahGuideScreen extends StatelessWidget {
         points: 20,
         metadata: {'lesson': 'How to Pray (Salah)'},
       );
-      
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Lesson completed! +20 points'),
-          backgroundColor: Colors.green,
-        ),
+        const SnackBar(content: Text('Lesson completed! +20 points'), backgroundColor: Colors.green),
       );
     }
   }

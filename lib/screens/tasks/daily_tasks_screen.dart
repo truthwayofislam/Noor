@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../providers/user_provider.dart';
 
 class DailyTasksScreen extends StatefulWidget {
   const DailyTasksScreen({super.key});
@@ -82,12 +84,22 @@ class _DailyTasksScreenState extends State<DailyTasksScreen> {
     });
   }
 
-  Future<void> _toggleTask(String taskId, bool value) async {
+  Future<void> _toggleTask(String taskId, int points, bool value) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(taskId, value);
-    setState(() {
-      _completedTasks[taskId] = value;
-    });
+    setState(() => _completedTasks[taskId] = value);
+
+    // Only award points when completing (not unchecking)
+    if (value && mounted) {
+      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      if (userProvider.isAuthenticated) {
+        await userProvider.logActivity(
+          activityType: 'task_completed',
+          points: points,
+          metadata: {'task_id': taskId, 'date': _todayDate},
+        );
+      }
+    }
   }
 
   int _getTotalPoints() {
@@ -231,7 +243,7 @@ class _DailyTasksScreenState extends State<DailyTasksScreen> {
                       final isCompleted = _completedTasks[task.id] ?? false;
                       return CheckboxListTile(
                         value: isCompleted,
-                        onChanged: (value) => _toggleTask(task.id, value ?? false),
+                        onChanged: (value) => _toggleTask(task.id, task.points, value ?? false),
                         title: Text(
                           task.name,
                           style: TextStyle(

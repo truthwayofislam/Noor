@@ -2,10 +2,11 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math';
 import 'package:timezone/timezone.dart' as tz;
+import 'notification_service.dart';
 
 class DailyReminderService {
-  static final FlutterLocalNotificationsPlugin _notifications =
-      FlutterLocalNotificationsPlugin();
+  static FlutterLocalNotificationsPlugin get _notifications =>
+      NotificationService().plugin;
 
   static const _channelId = 'daily_reminder';
   static const _notifId = 999;
@@ -24,12 +25,7 @@ class DailyReminderService {
   );
 
   static Future<void> init() async {
-    const android = AndroidInitializationSettings('@mipmap/ic_launcher');
-    const settings = InitializationSettings(
-      android: android,
-      iOS: DarwinInitializationSettings(),
-    );
-    await _notifications.initialize(settings);
+    // Initialization handled by NotificationService singleton
   }
 
   static Future<void> scheduleDailyReminder() async {

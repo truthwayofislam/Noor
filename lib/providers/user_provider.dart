@@ -194,8 +194,9 @@ class UserProvider extends ChangeNotifier {
         metadata: metadata,
       );
       
-      // Update points locally immediately without waiting for full profile reload
+      // Update points, streak, and counters locally immediately
       final newPoints = response['total_points'] as int? ?? (_currentUser!.points + points);
+      final newStreak = response['streak_days'] as int? ?? _currentUser!.streakDays;
       _currentUser = User(
         id: _currentUser!.id,
         email: _currentUser!.email,
@@ -203,7 +204,7 @@ class UserProvider extends ChangeNotifier {
         country: _currentUser!.country,
         level: _currentUser!.level,
         points: newPoints,
-        streakDays: _currentUser!.streakDays,
+        streakDays: newStreak,
         quranProgress: _currentUser!.quranProgress,
         prayersLogged: activityType == 'prayer_logged'
             ? _currentUser!.prayersLogged + 1

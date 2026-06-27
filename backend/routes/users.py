@@ -95,7 +95,8 @@ async def log_activity(
         return {
             "message": "Activity logged successfully",
             "points_earned": activity.points,
-            "total_points": updated_user["points"]
+            "total_points": updated_user["points"],
+            "streak_days": updated_user["streak_days"]
         }
     except HTTPException:
         raise

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../services/update_service.dart';
+import '../../services/hijri_calendar_service.dart';
 import '../../providers/user_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../screens/quran/quran_list_screen.dart';
@@ -181,6 +182,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             
             const SizedBox(height: 24),
+
+            // Hijri Date Card
+            _HijriDateCard(),
+
+            const SizedBox(height: 24),
             
             Text(
               'Quick Access',
@@ -350,6 +356,106 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _HijriDateCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final hijri = HijriDate.today();
+    final now = DateTime.now();
+    final months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    final gregorianStr = '${now.day} ${months[now.month - 1]} ${now.year}';
+    final specialDay = hijri.specialDay;
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF1A3A2A), Color(0xFF0D2B1A)],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFF2E7D32).withOpacity(0.6)),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF2E7D32).withOpacity(0.15),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.calendar_month, color: Color(0xFFFFD700), size: 22),
+              const SizedBox(width: 8),
+              const Text(
+                'Islamic Date',
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontSize: 13,
+                  letterSpacing: 0.5,
+                ),
+              ),
+              const Spacer(),
+              Text(
+                gregorianStr,
+                style: const TextStyle(color: Colors.white38, fontSize: 12),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text(
+            hijri.fullArabic,
+            style: const TextStyle(
+              color: Color(0xFFFFD700),
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              height: 1.4,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            hijri.fullEnglish,
+            style: const TextStyle(
+              color: Colors.white70,
+              fontSize: 14,
+            ),
+          ),
+          if (specialDay != null) ...[
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFD700).withOpacity(0.15),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: const Color(0xFFFFD700).withOpacity(0.4)),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.star, color: Color(0xFFFFD700), size: 14),
+                  const SizedBox(width: 6),
+                  Flexible(
+                    child: Text(
+                      specialDay,
+                      style: const TextStyle(
+                        color: Color(0xFFFFD700),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ],
       ),
     );
   }
