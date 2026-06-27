@@ -6,6 +6,7 @@ class PrayerTimes {
   final String maghrib;
   final String isha;
   final String date;
+  final String sunset;
 
   PrayerTimes({
     required this.fajr,
@@ -15,11 +16,11 @@ class PrayerTimes {
     required this.maghrib,
     required this.isha,
     required this.date,
+    this.sunset = '',
   });
 
   factory PrayerTimes.fromJson(Map<String, dynamic> json) {
     final timings = json['data']['timings'];
-    // Strip timezone suffix e.g. "04:32 (PKT)" -> "04:32"
     String clean(String t) => t.split(' ')[0].trim();
     return PrayerTimes(
       fajr: clean(timings['Fajr']),
@@ -29,8 +30,16 @@ class PrayerTimes {
       maghrib: clean(timings['Maghrib']),
       isha: clean(timings['Isha']),
       date: json['data']['date']['readable'],
+      sunset: clean(timings['Sunset'] ?? timings['Maghrib']),
     );
   }
+
+  // End times: each prayer ends when next begins
+  String get fajrEnd => sunrise;
+  String get dhuhrEnd => asr;
+  String get asrEnd => sunset.isNotEmpty ? sunset : maghrib;
+  String get maghribEnd => isha;
+  String get ishaEnd => fajr; // ends at next Fajr
 }
 
 class PrayerLog {

@@ -424,18 +424,19 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
 
   Widget _buildPrayersList() {
     final prayers = [
-      {'name': 'Fajr', 'time': _prayerTimes!.fajr, 'icon': Icons.wb_twilight},
-      {'name': 'Sunrise', 'time': _prayerTimes!.sunrise, 'icon': Icons.wb_sunny, 'noLog': true},
-      {'name': 'Dhuhr', 'time': _prayerTimes!.dhuhr, 'icon': Icons.wb_sunny},
-      {'name': 'Asr', 'time': _prayerTimes!.asr, 'icon': Icons.wb_cloudy},
-      {'name': 'Maghrib', 'time': _prayerTimes!.maghrib, 'icon': Icons.nights_stay},
-      {'name': 'Isha', 'time': _prayerTimes!.isha, 'icon': Icons.bedtime},
+      {'name': 'Fajr', 'time': _prayerTimes!.fajr, 'end': _prayerTimes!.fajrEnd, 'icon': Icons.wb_twilight},
+      {'name': 'Sunrise', 'time': _prayerTimes!.sunrise, 'end': '', 'icon': Icons.wb_sunny, 'noLog': true},
+      {'name': 'Dhuhr', 'time': _prayerTimes!.dhuhr, 'end': _prayerTimes!.dhuhrEnd, 'icon': Icons.wb_sunny},
+      {'name': 'Asr', 'time': _prayerTimes!.asr, 'end': _prayerTimes!.asrEnd, 'icon': Icons.wb_cloudy},
+      {'name': 'Maghrib', 'time': _prayerTimes!.maghrib, 'end': _prayerTimes!.maghribEnd, 'icon': Icons.nights_stay},
+      {'name': 'Isha', 'time': _prayerTimes!.isha, 'end': _prayerTimes!.ishaEnd, 'icon': Icons.bedtime},
     ];
 
     return Column(
       children: prayers.map((prayer) {
         final isLogged = _isPrayerLogged(prayer['name'] as String);
         final noLog = prayer['noLog'] == true;
+        final endTime = prayer['end'] as String;
 
         return Card(
           margin: const EdgeInsets.only(bottom: 12),
@@ -454,12 +455,17 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
             ),
             title: Text(
               prayer['name'] as String,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            subtitle: Text(prayer['time'] as String),
+            subtitle: endTime.isNotEmpty
+                ? Text(
+                    '${prayer['time']}  →  $endTime',
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 13,
+                    ),
+                  )
+                : Text(prayer['time'] as String),
             trailing: noLog
                 ? null
                 : isLogged

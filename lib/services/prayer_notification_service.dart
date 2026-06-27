@@ -76,7 +76,7 @@ class PrayerNotificationService {
             scheduledTime.minute,
           ),
           _details,
-          androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+          androidScheduleMode: AndroidScheduleMode.alarmClock,
           uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
         );
         if (kDebugMode) print('✅ Scheduled ${prayer['name']} at $scheduledTime');

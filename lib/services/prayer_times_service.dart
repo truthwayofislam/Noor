@@ -61,6 +61,7 @@ class PrayerTimesService {
         'asr': times.asr,
         'maghrib': times.maghrib,
         'isha': times.isha,
+        'sunset': times.sunset,
         'readable_date': times.date,
       };
       
@@ -92,6 +93,7 @@ class PrayerTimesService {
           maghrib: data['maghrib'],
           isha: data['isha'],
           date: data['readable_date'],
+          sunset: data['sunset'] ?? data['maghrib'],
         );
       }
       
