@@ -100,8 +100,6 @@ class PrayerTimesService {
     }
   }
 
-import 'package:flutter/foundation.dart';
-
   Future<Position?> getCurrentLocation() async {
     try {
       if (kDebugMode) print('🔍 Step 1: Checking location service...');
