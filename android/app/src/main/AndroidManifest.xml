@@ -47,20 +47,22 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/prayer_times_widget_info" />
         </receiver>
-        
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2" />
 
-        <!-- Reschedule notifications after device reboot -->
+        <!-- awesome_notifications -->
         <receiver
-            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+            android:name="me.carda.awesome_notifications.core.broadcasters.receivers.NotificationRetentionReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
             </intent-filter>
         </receiver>
+        
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
     </application>
 </manifest>

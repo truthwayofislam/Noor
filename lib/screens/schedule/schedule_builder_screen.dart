@@ -239,7 +239,6 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
     if (_hasAlarm) {
       try {
         await NotificationService().requestPermission();
-        await NotificationService().ensureExactAlarmPermission();
 
         // Safe ID: hash of title + time, fits in 32-bit int
         final baseId = (_titleController.text.hashCode.abs() +

@@ -1,83 +1,80 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_timezone/flutter_timezone.dart';
-import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
   factory NotificationService() => _instance;
   NotificationService._internal();
 
-  final FlutterLocalNotificationsPlugin _notifications =
-      FlutterLocalNotificationsPlugin();
-
-  FlutterLocalNotificationsPlugin get plugin => _notifications;
+  static const _scheduleChannel = 'noor_schedules';
+  static const _prayerChannel = 'prayer_times';
+  static const _reminderChannel = 'daily_reminder';
+  static const _generalChannel = 'general';
 
   Future<void> init() async {
-    tz.initializeTimeZones();
-    try {
-      final String tzName = await FlutterTimezone.getLocalTimezone();
-      tz.setLocalLocation(tz.getLocation(tzName));
-    } catch (_) {
-      tz.setLocalLocation(tz.getLocation('Asia/Karachi'));
-    }
-
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
-    const iosSettings = DarwinInitializationSettings(
-      requestAlertPermission: false,
-      requestBadgePermission: false,
-      requestSoundPermission: false,
+    await AwesomeNotifications().initialize(
+      null, // null = default app icon
+      [
+        NotificationChannel(
+          channelKey: _scheduleChannel,
+          channelName: 'Schedule Reminders',
+          channelDescription: 'Islamic schedule reminders',
+          importance: NotificationImportance.High,
+          defaultColor: const Color(0xFF2E7D32),
+          ledColor: const Color(0xFF2E7D32),
+          playSound: true,
+          enableVibration: true,
+        ),
+        NotificationChannel(
+          channelKey: _prayerChannel,
+          channelName: 'Prayer Times',
+          channelDescription: 'Azan notifications for daily prayers',
+          importance: NotificationImportance.Max,
+          defaultColor: const Color(0xFF2E7D32),
+          ledColor: const Color(0xFF2E7D32),
+          playSound: true,
+          enableVibration: true,
+        ),
+        NotificationChannel(
+          channelKey: _reminderChannel,
+          channelName: 'Daily Reminders',
+          channelDescription: 'Daily Islamic reminders',
+          importance: NotificationImportance.High,
+          defaultColor: const Color(0xFF2E7D32),
+          playSound: true,
+          enableVibration: true,
+        ),
+        NotificationChannel(
+          channelKey: _generalChannel,
+          channelName: 'General',
+          channelDescription: 'General notifications',
+          importance: NotificationImportance.High,
+          defaultColor: const Color(0xFF2E7D32),
+          playSound: true,
+          enableVibration: true,
+        ),
+      ],
+      debug: false,
     );
-
-    const initSettings = InitializationSettings(
-      android: androidSettings,
-      iOS: iosSettings,
-    );
-
-    await _notifications.initialize(initSettings);
   }
 
   Future<bool> requestPermission() async {
-    final androidImpl = _notifications
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
-
-    if (androidImpl != null) {
-      // Request notification permission (Android 13+)
-      await androidImpl.requestNotificationsPermission();
-      // Request exact alarm permission (Android 12+)
-      await androidImpl.requestExactAlarmsPermission();
+    final allowed = await AwesomeNotifications().isNotificationAllowed();
+    if (!allowed) {
+      return await AwesomeNotifications().requestPermissionToSendNotifications();
     }
-
-    // iOS
-    final iosImpl = _notifications
-        .resolvePlatformSpecificImplementation<
-            IOSFlutterLocalNotificationsPlugin>();
-    await iosImpl?.requestPermissions(alert: true, badge: true, sound: true);
-
-    // Check actual status after requesting
-    return await hasPermission();
+    return true;
   }
 
   Future<bool> hasPermission() async {
-    final androidImpl = _notifications
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
-    return await androidImpl?.areNotificationsEnabled() ?? true;
+    return await AwesomeNotifications().isNotificationAllowed();
   }
 
   Future<void> ensureExactAlarmPermission() async {
-    final androidImpl = _notifications
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
-    if (androidImpl == null) return;
-    final canSchedule = await androidImpl.canScheduleExactNotifications() ?? true;
-    if (!canSchedule) {
-      await androidImpl.requestExactAlarmsPermission();
-    }
+    // awesome_notifications handles this internally
   }
 
+  /// Schedule a one-time or recurring notification
   Future<void> scheduleNotification({
     required int id,
     required String title,
@@ -85,72 +82,83 @@ class NotificationService {
     required DateTime scheduledTime,
     bool isRecurring = false,
   }) async {
-    const androidDetails = AndroidNotificationDetails(
-      'noor_schedules',
-      'Schedule Reminders',
-      channelDescription: 'Islamic schedule reminders',
-      importance: Importance.max,
-      priority: Priority.high,
-      playSound: true,
-      enableVibration: true,
-      enableLights: true,
-      color: Color(0xFF2E7D32),
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: id,
+        channelKey: _scheduleChannel,
+        title: title,
+        body: body,
+        notificationLayout: NotificationLayout.Default,
+        wakeUpScreen: true,
+      ),
+      schedule: isRecurring
+          ? NotificationCalendar(
+              hour: scheduledTime.hour,
+              minute: scheduledTime.minute,
+              second: 0,
+              repeats: true,
+              allowWhileIdle: true,
+              preciseAlarm: true,
+            )
+          : NotificationCalendar.fromDate(
+              date: scheduledTime,
+              allowWhileIdle: true,
+              preciseAlarm: true,
+            ),
     );
+  }
 
-    const details = NotificationDetails(
-      android: androidDetails,
-      iOS: DarwinNotificationDetails(
-        presentAlert: true,
-        presentBadge: true,
-        presentSound: true,
+  /// Schedule prayer notification at exact time
+  Future<void> schedulePrayerNotification({
+    required int id,
+    required String title,
+    required String body,
+    required DateTime scheduledTime,
+  }) async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: id,
+        channelKey: _prayerChannel,
+        title: title,
+        body: body,
+        notificationLayout: NotificationLayout.Default,
+        wakeUpScreen: true,
+        category: NotificationCategory.Alarm,
+      ),
+      schedule: NotificationCalendar.fromDate(
+        date: scheduledTime,
+        allowWhileIdle: true,
+        preciseAlarm: true,
       ),
     );
+  }
 
-    // Safe TZDateTime conversion — always use UTC offset instead of named timezone
-    final tzTime = tz.TZDateTime(
-      tz.local,
-      scheduledTime.year,
-      scheduledTime.month,
-      scheduledTime.day,
-      scheduledTime.hour,
-      scheduledTime.minute,
+  /// Schedule daily recurring reminder
+  Future<void> scheduleDailyReminder({
+    required int id,
+    required String title,
+    required String body,
+    required int hour,
+    required int minute,
+  }) async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: id,
+        channelKey: _reminderChannel,
+        title: title,
+        body: body,
+        notificationLayout: NotificationLayout.Default,
+        wakeUpScreen: true,
+      ),
+      schedule: NotificationCalendar(
+        hour: hour,
+        minute: minute,
+        second: 0,
+        repeats: true,
+        allowWhileIdle: true,
+        preciseAlarm: true,
+      ),
     );
-
-    if (isRecurring) {
-      await _notifications.zonedSchedule(
-        id, title, body, tzTime, details,
-        androidScheduleMode: AndroidScheduleMode.alarmClock,
-        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-        matchDateTimeComponents: DateTimeComponents.time,
-      );
-    } else {
-      await _notifications.zonedSchedule(
-        id, title, body, tzTime, details,
-        androidScheduleMode: AndroidScheduleMode.alarmClock,
-        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-      );
-    }
-  }
-
-  Future<void> cancelMultipleNotifications(List<int> ids) async {
-    for (final id in ids) {
-      await _notifications.cancel(id);
-    }
-  }
-
-  static int generateUniqueId(String title, DateTime time, {int? dayOffset}) {
-    final baseHash = title.hashCode;
-    final timeHash = time.millisecondsSinceEpoch ~/ 1000;
-    final offset = dayOffset ?? 0;
-    return (baseHash + timeHash + offset).abs() % 2147483647;
-  }
-
-  Future<void> cancelNotification(int id) async {
-    await _notifications.cancel(id);
-  }
-
-  Future<void> cancelAllNotifications() async {
-    await _notifications.cancelAll();
   }
 
   Future<void> showInstantNotification({
@@ -158,34 +166,28 @@ class NotificationService {
     required String title,
     required String body,
   }) async {
-    const androidDetails = AndroidNotificationDetails(
-      'welcome_channel',
-      'Welcome Messages',
-      channelDescription: 'Welcome and informational notifications',
-      importance: Importance.max,
-      priority: Priority.high,
-      playSound: true,
-      enableVibration: true,
-      enableLights: true,
-      color: Color(0xFF2E7D32),
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: id,
+        channelKey: _generalChannel,
+        title: title,
+        body: body,
+        notificationLayout: NotificationLayout.Default,
+      ),
     );
+  }
 
-    const iosDetails = DarwinNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-    );
+  Future<void> cancelNotification(int id) async {
+    await AwesomeNotifications().cancel(id);
+  }
 
-    const details = NotificationDetails(
-      android: androidDetails,
-      iOS: iosDetails,
-    );
+  Future<void> cancelMultipleNotifications(List<int> ids) async {
+    for (final id in ids) {
+      await AwesomeNotifications().cancel(id);
+    }
+  }
 
-    await _notifications.show(
-      id,
-      title,
-      body,
-      details,
-    );
+  Future<void> cancelAllNotifications() async {
+    await AwesomeNotifications().cancelAll();
   }
 }

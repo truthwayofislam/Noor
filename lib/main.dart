@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:timezone/data/latest.dart' as tz;
-import 'package:flutter_timezone/flutter_timezone.dart';
-import 'package:timezone/timezone.dart' as tz_zone;
 import 'screens/splash_screen.dart';
 import 'providers/theme_provider.dart';
 import 'providers/quran_provider.dart';
@@ -18,20 +15,12 @@ import 'models/schedule_model.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  tz.initializeTimeZones();
-  try {
-    final String tzName = await FlutterTimezone.getLocalTimezone();
-    tz_zone.setLocalLocation(tz_zone.getLocation(tzName));
-  } catch (_) {
-    tz_zone.setLocalLocation(tz_zone.getLocation('Asia/Karachi'));
-  }
-  
   await Hive.initFlutter();
   Hive.registerAdapter(ScheduleAdapter());
   
-  // Initialize notification service WITHOUT requesting permissions
   final notificationService = NotificationService();
   await notificationService.init();
+  await notificationService.requestPermission();
   
   await DailyReminderService.init();
   await DailyReminderService.scheduleDailyReminder();
