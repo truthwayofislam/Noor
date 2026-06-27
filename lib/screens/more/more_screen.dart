@@ -19,6 +19,7 @@ import '../auth/login_screen.dart';
 import '../stories/stories_home_screen.dart';
 import '../settings/report_issue_screen.dart';
 import 'travel_mode_screen.dart';
+import 'halal_scanner_screen.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
@@ -177,10 +178,20 @@ class MoreScreen extends StatelessWidget {
             title: 'Muslim Travel Mode',
             subtitle: 'Prayer times, Qibla & duas for travelers',
             icon: Icons.flight_takeoff,
-            color: Colors.indigo.shade300,
+            color: Colors.indigo,
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const TravelModeScreen()),
+            ),
+          ),
+          _FeatureTile(
+            title: 'Halal Food Scanner',
+            subtitle: 'Scan barcode or check E-numbers',
+            icon: Icons.qr_code_scanner,
+            color: Colors.green,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HalalScannerScreen()),
             ),
           ),
           

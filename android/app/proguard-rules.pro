@@ -10,6 +10,17 @@
 -keep class com.dexterous.** { *; }
 -keepclassmembers class com.dexterous.** { *; }
 
+# mobile_scanner / ML Kit
+-keep class com.google.mlkit.** { *; }
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.mlkit.**
+-dontwarn com.google.android.gms.**
+
+# mobile_scanner
+-keep class com.google.mlkit.** { *; }
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.mlkit.**
+
 # Hive
 -keep class ** extends com.google.flatbuffers.Table { *; }
 -keep class * implements com.google.flatbuffers.FlatBufferBuilder { *; }

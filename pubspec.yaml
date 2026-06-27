@@ -36,6 +36,9 @@ dependencies:
   permission_handler: ^11.2.0
   flutter_compass: ^0.8.0
   
+  # Barcode Scanner
+  mobile_scanner: ^5.2.3
+  
   # Charts
   fl_chart: ^0.66.2
   
