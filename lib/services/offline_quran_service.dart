@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 class OfflineQuranService {
   static Map<String, dynamic>? _quranData;
   static bool _isLoaded = false;
+  static final Map<int, List<Map<String, dynamic>>> _pageCache = {};
 
   /// Load Quran data once
   static Future<void> loadQuran() async {
@@ -22,6 +23,11 @@ class OfflineQuranService {
   /// Get specific page (1-604)
   static List<Map<String, dynamic>> getPage(int pageNumber) {
     if (!_isLoaded || _quranData == null) return [];
+    
+    // Return from cache if available
+    if (_pageCache.containsKey(pageNumber)) {
+      return _pageCache[pageNumber]!;
+    }
     
     try {
       final surahs = _quranData!['data']['surahs'] as List;
@@ -41,6 +47,8 @@ class OfflineQuranService {
         }
       }
       
+      // Cache the result
+      _pageCache[pageNumber] = pageAyahs;
       return pageAyahs;
     } catch (e) {
       if (kDebugMode) print('Error getting page: $e');

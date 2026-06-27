@@ -286,46 +286,59 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
       );
       
       final provider = Provider.of<ScheduleProvider>(context, listen: false);
-      
-      if (widget.schedule == null) {
-        await provider.addSchedule(schedule);
-      } else {
-        await provider.updateSchedule(widget.index!, schedule);
-      }
+      final List<int> notificationIds = [];
       
       // Schedule notification
       if (_hasAlarm) {
         try {
           // Request permission first
-          final hasPermission = await NotificationService().requestPermission();
+          final hasPermission = await NotificationService().hasPermission();
           if (!hasPermission) {
-            if (mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Notification permission required for alarms')),
-              );
+            final granted = await NotificationService().requestPermission();
+            if (!granted) {
+              if (mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('⚠️ Notification permission required for alarms'),
+                    backgroundColor: Colors.orange,
+                    duration: Duration(seconds: 3),
+                  ),
+                );
+              }
+              return;
             }
-            return;
           }
           
-          final notificationId = widget.index ?? DateTime.now().millisecondsSinceEpoch ~/ 1000;
-          
           if (_isRecurring && _selectedDays.isNotEmpty) {
-            // Schedule for each selected day
+            // Schedule for each selected day with unique IDs
             for (int day in _selectedDays) {
               final nextDate = _getNextDateForDay(day, _selectedTime);
+              final notificationId = NotificationService.generateUniqueId(
+                schedule.title,
+                nextDate,
+                dayOffset: day,
+              );
+              notificationIds.add(notificationId);
+              
               await NotificationService().scheduleNotification(
-                id: notificationId + day,
-                title: schedule.title,
+                id: notificationId,
+                title: '🕌 ${schedule.title}',
                 body: schedule.description,
                 scheduledTime: nextDate,
                 isRecurring: true,
               );
             }
           } else {
-            // One-time notification
+            // One-time notification with unique ID
+            final notificationId = NotificationService.generateUniqueId(
+              schedule.title,
+              scheduleTime,
+            );
+            notificationIds.add(notificationId);
+            
             await NotificationService().scheduleNotification(
               id: notificationId,
-              title: schedule.title,
+              title: '🕌 ${schedule.title}',
               body: schedule.description,
               scheduledTime: scheduleTime,
               isRecurring: false,
@@ -333,12 +346,31 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
           }
         } catch (e) {
           debugPrint('Notification error: $e');
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('⚠️ Failed to schedule notification: $e'),
+                backgroundColor: Colors.red,
+              ),
+            );
+            return;
+          }
         }
+      }
+      
+      // Save schedule with notification IDs
+      if (widget.schedule == null) {
+        await provider.addSchedule(schedule, notificationIds);
+      } else {
+        await provider.updateSchedule(widget.index!, schedule, notificationIds);
       }
       
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(widget.schedule == null ? 'Schedule created!' : 'Schedule updated!')),
+          SnackBar(
+            content: Text(widget.schedule == null ? '✅ Schedule created!' : '✅ Schedule updated!'),
+            backgroundColor: Colors.green,
+          ),
         );
         Navigator.pop(context);
       }
@@ -356,10 +388,15 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
     final now = DateTime.now();
     var nextDate = DateTime(now.year, now.month, now.day, time.hour, time.minute);
     
-    // Calculate days until target weekday
-    int daysToAdd = (weekday - nextDate.weekday) % 7;
-    if (daysToAdd == 0 && nextDate.isBefore(now)) {
-      daysToAdd = 7; // Next week if today's time passed
+    // Calculate days until target weekday (1=Mon to 7=Sun)
+    int currentWeekday = now.weekday;
+    int daysToAdd = (weekday - currentWeekday) % 7;
+    
+    // If it's today but time has passed, schedule for next week
+    if (daysToAdd == 0) {
+      if (nextDate.isBefore(now) || nextDate.isAtSameMomentAs(now)) {
+        daysToAdd = 7;
+      }
     }
     
     return nextDate.add(Duration(days: daysToAdd));

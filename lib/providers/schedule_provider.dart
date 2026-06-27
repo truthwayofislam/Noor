@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../models/schedule_model.dart';
+import '../services/notification_service.dart';
 
 class ScheduleProvider extends ChangeNotifier {
   List<Schedule> _schedules = [];
+  final Map<int, List<int>> _scheduleNotificationIds = {};
   
   List<Schedule> get schedules => _schedules;
   
@@ -17,17 +19,38 @@ class ScheduleProvider extends ChangeNotifier {
     notifyListeners();
   }
   
-  Future<void> addSchedule(Schedule schedule) async {
+  Future<void> addSchedule(Schedule schedule, List<int> notificationIds) async {
     final box = await Hive.openBox<Schedule>('schedules');
-    await box.add(schedule);
+    final index = await box.add(schedule);
     _schedules.add(schedule);
+    _scheduleNotificationIds[index] = notificationIds;
     notifyListeners();
   }
   
   Future<void> deleteSchedule(int index) async {
+    // Cancel all notifications for this schedule
+    final notificationIds = _scheduleNotificationIds[index];
+    if (notificationIds != null && notificationIds.isNotEmpty) {
+      await NotificationService().cancelMultipleNotifications(notificationIds);
+    }
+    
     final box = await Hive.openBox<Schedule>('schedules');
     await box.deleteAt(index);
     _schedules.removeAt(index);
+    _scheduleNotificationIds.remove(index);
+    
+    // Re-index notification IDs
+    final updatedMap = <int, List<int>>{};
+    _scheduleNotificationIds.forEach((key, value) {
+      if (key > index) {
+        updatedMap[key - 1] = value;
+      } else {
+        updatedMap[key] = value;
+      }
+    });
+    _scheduleNotificationIds.clear();
+    _scheduleNotificationIds.addAll(updatedMap);
+    
     notifyListeners();
   }
   
@@ -41,10 +64,17 @@ class ScheduleProvider extends ChangeNotifier {
     notifyListeners();
   }
   
-  Future<void> updateSchedule(int index, Schedule schedule) async {
+  Future<void> updateSchedule(int index, Schedule schedule, List<int> notificationIds) async {
+    // Cancel old notifications
+    final oldNotificationIds = _scheduleNotificationIds[index];
+    if (oldNotificationIds != null && oldNotificationIds.isNotEmpty) {
+      await NotificationService().cancelMultipleNotifications(oldNotificationIds);
+    }
+    
     final box = await Hive.openBox<Schedule>('schedules');
     await box.putAt(index, schedule);
     _schedules[index] = schedule;
+    _scheduleNotificationIds[index] = notificationIds;
     notifyListeners();
   }
   

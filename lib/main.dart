@@ -10,6 +10,7 @@ import 'providers/schedule_provider.dart';
 import 'providers/user_provider.dart';
 import 'services/notification_service.dart';
 import 'services/daily_reminder_service.dart';
+import 'services/prayer_refresh_service.dart';
 import 'models/schedule_model.dart';
 
 void main() async {
@@ -26,6 +27,12 @@ void main() async {
   
   await DailyReminderService.init();
   await DailyReminderService.scheduleDailyReminder();
+  
+  // Initialize prayer refresh service
+  await PrayerRefreshService.init();
+  
+  // Check if prayer times need refresh on app start
+  await PrayerRefreshService.checkAndRefresh();
   
   runApp(const NoorApp());
 }

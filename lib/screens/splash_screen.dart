@@ -27,12 +27,13 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 2));
-    
+    // Start loading data immediately
     final prefs = await SharedPreferences.getInstance();
     final onboardingComplete = prefs.getBool('onboarding_complete') ?? false;
 
     if (!onboardingComplete) {
+      // Wait minimum 2 seconds for splash animation
+      await Future.delayed(const Duration(seconds: 2));
       if (mounted) {
         Navigator.pushReplacement(
           context,
@@ -42,10 +43,13 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       return;
     }
 
-    // Try to auto-login with saved token
+    // Try to auto-login while splash is showing
     if (mounted) {
       await Provider.of<UserProvider>(context, listen: false).tryAutoLogin();
     }
+
+    // Ensure minimum 2 seconds splash display
+    await Future.delayed(const Duration(seconds: 2));
 
     if (mounted) {
       Navigator.pushReplacement(

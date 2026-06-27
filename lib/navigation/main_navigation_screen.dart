@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/home/new_muslim_home_screen.dart';
 import '../screens/quran/quran_list_screen.dart';
 import '../screens/learning/learning_hub_screen.dart';
 import '../screens/more/more_screen.dart';
+import '../providers/user_provider.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -23,10 +25,23 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     _loadUserLevel();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Update user level when returning to navigation
+    _loadUserLevel();
+  }
+
   Future<void> _loadUserLevel() async {
     final prefs = await SharedPreferences.getInstance();
+    final storedLevel = prefs.getString('user_level');
+    
+    // Also check UserProvider for authenticated users
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final userFromProvider = userProvider.currentUser?.level;
+    
     setState(() {
-      _userLevel = prefs.getString('user_level') ?? 'Beginner';
+      _userLevel = userFromProvider ?? storedLevel ?? 'Beginner';
     });
   }
 

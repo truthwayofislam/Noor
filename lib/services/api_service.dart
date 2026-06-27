@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
   // Production backend URL
   static const String baseUrl = 'https://noormanual.jo3.org';
+  static const Duration _timeout = Duration(seconds: 15);
   
   String? _token;
   
@@ -54,7 +56,7 @@ class ApiService {
           'country': country,
           'level': level,
         }),
-      );
+      ).timeout(_timeout);
       
       final data = json.decode(response.body);
       if (response.statusCode == 201) {
@@ -63,8 +65,13 @@ class ApiService {
       } else {
         throw Exception(data['detail'] ?? 'Registration failed');
       }
+    } on TimeoutException {
+      throw Exception('Connection timeout. Please check your internet connection.');
     } catch (e) {
-      throw Exception('Registration failed: $e');
+      if (e.toString().contains('SocketException')) {
+        throw Exception('No internet connection. Please check your network.');
+      }
+      throw Exception('Registration failed: ${_cleanError(e.toString())}');
     }
   }
   
@@ -80,7 +87,7 @@ class ApiService {
           'email': email,
           'password': password,
         }),
-      );
+      ).timeout(_timeout);
       
       final data = json.decode(response.body);
       if (response.statusCode == 200) {
@@ -89,8 +96,13 @@ class ApiService {
       } else {
         throw Exception(data['detail'] ?? 'Login failed');
       }
+    } on TimeoutException {
+      throw Exception('Connection timeout. Please check your internet connection.');
     } catch (e) {
-      throw Exception('Login failed: $e');
+      if (e.toString().contains('SocketException')) {
+        throw Exception('No internet connection. Please check your network.');
+      }
+      throw Exception('Login failed: ${_cleanError(e.toString())}');
     }
   }
   
@@ -101,15 +113,17 @@ class ApiService {
       final response = await http.get(
         Uri.parse('$baseUrl/users/me'),
         headers: _getHeaders(),
-      );
+      ).timeout(_timeout);
       
       if (response.statusCode == 200) {
         return json.decode(response.body);
       } else {
         throw Exception('Failed to load profile');
       }
+    } on TimeoutException {
+      throw Exception('Connection timeout');
     } catch (e) {
-      throw Exception('Error: $e');
+      throw Exception('Error: ${_cleanError(e.toString())}');
     }
   }
   
@@ -131,15 +145,17 @@ class ApiService {
         Uri.parse('$baseUrl/users/me'),
         headers: _getHeaders(),
         body: json.encode(body),
-      );
+      ).timeout(_timeout);
       
       if (response.statusCode == 200) {
         return json.decode(response.body);
       } else {
         throw Exception('Failed to update profile');
       }
+    } on TimeoutException {
+      throw Exception('Connection timeout');
     } catch (e) {
-      throw Exception('Error: $e');
+      throw Exception('Error: ${_cleanError(e.toString())}');
     }
   }
   
@@ -161,7 +177,7 @@ class ApiService {
           'points': points,
           'metadata': metadata,
         }),
-      );
+      ).timeout(_timeout);
       
       if (response.statusCode == 201) {
         return json.decode(response.body);
@@ -169,7 +185,8 @@ class ApiService {
         throw Exception('Failed to log activity');
       }
     } catch (e) {
-      throw Exception('Error: $e');
+      // Silently fail for activity logging to not disrupt user experience
+      return {'total_points': 0};
     }
   }
   
@@ -179,7 +196,7 @@ class ApiService {
       final response = await http.get(
         Uri.parse('$baseUrl/users/rank'),
         headers: _getHeaders(),
-      );
+      ).timeout(_timeout);
       
       if (response.statusCode == 200) {
         return json.decode(response.body);
@@ -187,7 +204,7 @@ class ApiService {
         throw Exception('Failed to get rank');
       }
     } catch (e) {
-      throw Exception('Error: $e');
+      throw Exception('Error: ${_cleanError(e.toString())}');
     }
   }
   
@@ -197,15 +214,17 @@ class ApiService {
       final response = await http.get(
         Uri.parse('$baseUrl/leaderboard/global?limit=$limit'),
         headers: _getHeaders(),
-      );
+      ).timeout(_timeout);
       
       if (response.statusCode == 200) {
         return json.decode(response.body);
       } else {
         throw Exception('Failed to load leaderboard');
       }
+    } on TimeoutException {
+      throw Exception('Connection timeout');
     } catch (e) {
-      throw Exception('Error: $e');
+      throw Exception('Error: ${_cleanError(e.toString())}');
     }
   }
   
@@ -217,15 +236,24 @@ class ApiService {
       final response = await http.get(
         Uri.parse('$baseUrl/leaderboard/country/$country?limit=$limit'),
         headers: _getHeaders(),
-      );
+      ).timeout(_timeout);
       
       if (response.statusCode == 200) {
         return json.decode(response.body);
       } else {
         throw Exception('Failed to load leaderboard');
       }
+    } on TimeoutException {
+      throw Exception('Connection timeout');
     } catch (e) {
-      throw Exception('Error: $e');
+      throw Exception('Error: ${_cleanError(e.toString())}');
     }
+  }
+
+  String _cleanError(String error) {
+    if (error.contains('Exception:')) {
+      return error.split('Exception:').last.trim();
+    }
+    return error;
   }
 }

@@ -240,7 +240,7 @@ class ScheduleListScreen extends StatelessWidget {
   Future<void> _testNotification(BuildContext context) async {
     try {
       await NotificationService().showInstantNotification(
-        id: 999,
+        id: 9999, // Changed from 999 to avoid conflict with daily reminder
         title: 'Test Notification',
         body: 'Notification is working! 🔔',
       );

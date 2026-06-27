@@ -23,6 +23,7 @@ class QuranProvider extends ChangeNotifier {
     try {
       _surahs = await _quranService.getSurahs();
       _isLoading = false;
+      _error = null;
       notifyListeners();
     } catch (e) {
       _error = e.toString();
@@ -39,6 +40,7 @@ class QuranProvider extends ChangeNotifier {
     try {
       _verses = await _quranService.getVerses(surahNumber);
       _isLoading = false;
+      _error = null;
       notifyListeners();
     } catch (e) {
       _error = e.toString();
@@ -46,4 +48,17 @@ class QuranProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-}
+  
+  // Retry methods
+  Future<void> retrySurahs() async {
+    await loadSurahs();
+  }
+  
+  Future<void> retryVerses(int surahNumber) async {
+    await loadVerses(surahNumber);
+  }
+  
+  void clearError() {
+    _error = null;
+    notifyListeners();
+  }

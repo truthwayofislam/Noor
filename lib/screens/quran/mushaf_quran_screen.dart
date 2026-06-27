@@ -116,17 +116,19 @@ class _MushafQuranScreenState extends State<MushafQuranScreen> {
                           textDirection: TextDirection.rtl,
                           text: TextSpan(
                             style: TextStyle(
-                              fontSize: 24,
-                              height: 2.0,
+                              fontSize: 28,
+                              height: 1.8,
                               fontFamily: 'Amiri',
-                              letterSpacing: 0.5,
+                              fontFamilyFallback: const ['Arial', 'sans-serif'],
+                              letterSpacing: 0.3,
+                              wordSpacing: 2.0,
                               color: Theme.of(context).brightness == Brightness.dark
                                   ? Colors.white
                                   : Colors.black87,
                             ),
                             children: ayahs.map((ayah) {
                               return TextSpan(
-                                text: '${ayah['text']} ۝${ayah['ayah']}۞ ',
+                                text: '${ayah['text']} \u06dd${ayah['ayah']} ',
                               );
                             }).toList(),
                           ),

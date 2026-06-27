@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/prayer_times_model.dart';
 
 class PrayerTimesService {
@@ -9,8 +10,18 @@ class PrayerTimesService {
   Future<PrayerTimes?> getPrayerTimes({
     required double latitude,
     required double longitude,
+    bool forceRefresh = false,
   }) async {
     if (kDebugMode) print('🌍 Lat: $latitude, Lng: $longitude');
+    
+    // Try to get cached prayer times first
+    if (!forceRefresh) {
+      final cached = await _getCachedPrayerTimes();
+      if (cached != null) {
+        if (kDebugMode) print('✅ Using cached prayer times');
+        return cached;
+      }
+    }
     
     // Try Aladhan API
     try {
@@ -31,6 +42,10 @@ class PrayerTimesService {
         
         final times = PrayerTimes.fromJson(data);
         if (kDebugMode) print('✅ Prayer times: Fajr=${times.fajr}, Dhuhr=${times.dhuhr}, Asr=${times.asr}');
+        
+        // Cache the prayer times
+        await _cachePrayerTimes(times);
+        
         return times;
       } else {
         if (kDebugMode) print('❌ Bad status code: ${response.statusCode}');
@@ -38,10 +53,71 @@ class PrayerTimesService {
     } catch (e, stackTrace) {
       if (kDebugMode) print('❌ API Error: $e');
       if (kDebugMode) print('❌ StackTrace: $stackTrace');
+      
+      // Try to return cached times on error
+      final cached = await _getCachedPrayerTimes();
+      if (cached != null) {
+        if (kDebugMode) print('⚠️ API failed, using cached times');
+        return cached;
+      }
     }
 
-    if (kDebugMode) print('❌ API failed');
+    if (kDebugMode) print('❌ API failed and no cache available');
     return null;
+  }
+
+  Future<void> _cachePrayerTimes(PrayerTimes times) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final today = DateTime.now().toIso8601String().split('T')[0];
+      
+      final data = {
+        'date': today,
+        'fajr': times.fajr,
+        'sunrise': times.sunrise,
+        'dhuhr': times.dhuhr,
+        'asr': times.asr,
+        'maghrib': times.maghrib,
+        'isha': times.isha,
+        'readable_date': times.date,
+      };
+      
+      await prefs.setString('cached_prayer_times', json.encode(data));
+      if (kDebugMode) print('✅ Prayer times cached');
+    } catch (e) {
+      if (kDebugMode) print('❌ Failed to cache prayer times: $e');
+    }
+  }
+
+  Future<PrayerTimes?> _getCachedPrayerTimes() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final cachedStr = prefs.getString('cached_prayer_times');
+      
+      if (cachedStr == null) return null;
+      
+      final data = json.decode(cachedStr);
+      final cachedDate = data['date'] as String;
+      final today = DateTime.now().toIso8601String().split('T')[0];
+      
+      // Only use cache if it's from today
+      if (cachedDate == today) {
+        return PrayerTimes(
+          fajr: data['fajr'],
+          sunrise: data['sunrise'],
+          dhuhr: data['dhuhr'],
+          asr: data['asr'],
+          maghrib: data['maghrib'],
+          isha: data['isha'],
+          date: data['readable_date'],
+        );
+      }
+      
+      return null;
+    } catch (e) {
+      if (kDebugMode) print('❌ Failed to get cached prayer times: $e');
+      return null;
+    }
   }
 
   Future<Position?> getCurrentLocation() async {

@@ -1,4 +1,5 @@
 import 'package:home_widget/home_widget.dart';
+import 'package:flutter/foundation.dart';
 import '../models/prayer_times_model.dart';
 
 class HomeWidgetService {
@@ -18,8 +19,10 @@ class HomeWidgetService {
         androidName: 'PrayerTimesWidget',
         iOSName: 'PrayerTimesWidget',
       );
+      
+      if (kDebugMode) print('✅ Prayer times widget updated');
     } catch (e) {
-      // Silently fail
+      if (kDebugMode) print('❌ Widget update failed: $e');
     }
   }
 
@@ -32,8 +35,10 @@ class HomeWidgetService {
         androidName: 'QuoteWidget',
         iOSName: 'QuoteWidget',
       );
+      
+      if (kDebugMode) print('✅ Quote widget updated');
     } catch (e) {
-      // Silently fail
+      if (kDebugMode) print('❌ Quote widget update failed: $e');
     }
   }
 
@@ -42,8 +47,9 @@ class HomeWidgetService {
       await HomeWidget.registerInteractivityCallback(
         _backgroundCallback,
       );
+      if (kDebugMode) print('✅ Widget interactivity registered');
     } catch (e) {
-      // Silently fail
+      if (kDebugMode) print('❌ Widget interactivity registration failed: $e');
     }
   }
 }

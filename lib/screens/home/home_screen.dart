@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../services/update_service.dart';
+import '../../providers/user_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../screens/quran/quran_list_screen.dart';
 import '../../screens/quran/mushaf_quran_screen.dart';
@@ -80,6 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+    final currentUser = userProvider.currentUser;
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -95,29 +100,75 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Card(
               color: Theme.of(context).primaryColor,
-              child: const Padding(
-                padding: EdgeInsets.all(20),
+              child: Padding(
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.wb_sunny, color: Colors.white, size: 32),
-                        SizedBox(width: 12),
+                        const Icon(Icons.wb_sunny, color: Colors.white, size: 32),
+                        const SizedBox(width: 12),
                         Expanded(
-                          child: Text(
-                            'السلام علیکم',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'السلام علیکم',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              if (currentUser != null) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  currentUser.username,
+                                  style: const TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ],
                           ),
                         ),
+                        if (currentUser != null) ...[
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 4,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(Icons.star, color: Colors.white, size: 18),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '${currentUser.points}',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ],
                     ),
-                    SizedBox(height: 8),
-                    Text(
+                    const SizedBox(height: 8),
+                    const Text(
                       'Welcome to Noor - Your Islamic Companion',
                       style: TextStyle(
                         color: Colors.white70,

@@ -205,6 +205,29 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ],
                         ),
+                        
+                        const SizedBox(height: 8),
+                        Center(
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (_) => const MainNavigationScreen()),
+                              );
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(Icons.arrow_forward, color: hintColor, size: 16),
+                                const SizedBox(width: 6),
+                                Text(
+                                  'Continue as Guest',
+                                  style: TextStyle(color: hintColor, fontSize: 14),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),

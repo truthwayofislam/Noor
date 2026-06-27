@@ -62,6 +62,12 @@ class NotificationService {
     required DateTime scheduledTime,
     bool isRecurring = false,
   }) async {
+    // Check permission first
+    final hasPermission = await this.hasPermission();
+    if (!hasPermission) {
+      throw Exception('Notification permission not granted');
+    }
+
     const androidDetails = AndroidNotificationDetails(
       'noor_schedules',
       'Schedule Reminders',
@@ -69,7 +75,6 @@ class NotificationService {
       importance: Importance.max,
       priority: Priority.high,
       playSound: true,
-      sound: RawResourceAndroidNotificationSound('notification_sound'),
       enableVibration: true,
       enableLights: true,
       color: Color(0xFF2E7D32),
@@ -94,7 +99,7 @@ class NotificationService {
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-        matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
+        matchDateTimeComponents: DateTimeComponents.time,
       );
     } else {
       await _notifications.zonedSchedule(
@@ -108,6 +113,19 @@ class NotificationService {
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       );
     }
+  }
+
+  Future<void> cancelMultipleNotifications(List<int> ids) async {
+    for (final id in ids) {
+      await _notifications.cancel(id);
+    }
+  }
+
+  static int generateUniqueId(String title, DateTime time, {int? dayOffset}) {
+    final baseHash = title.hashCode;
+    final timeHash = time.millisecondsSinceEpoch ~/ 1000;
+    final offset = dayOffset ?? 0;
+    return (baseHash + timeHash + offset).abs() % 2147483647;
   }
 
   Future<void> cancelNotification(int id) async {
@@ -130,7 +148,6 @@ class NotificationService {
       importance: Importance.max,
       priority: Priority.high,
       playSound: true,
-      sound: RawResourceAndroidNotificationSound('notification_sound'),
       enableVibration: true,
       enableLights: true,
       color: Color(0xFF2E7D32),

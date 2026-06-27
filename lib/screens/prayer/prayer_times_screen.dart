@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import '../../models/prayer_times_model.dart';
 import '../../services/prayer_times_service.dart';
 import '../../services/prayer_notification_service.dart';
+import '../../services/prayer_refresh_service.dart';
 import '../../services/home_widget_service.dart';
 import '../../providers/user_provider.dart';
 
@@ -32,7 +33,16 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     super.initState();
     _loadPrayerTimes();
     _loadTodayLogs();
+    _checkAndRefreshIfNeeded();
     _timer = Timer.periodic(const Duration(seconds: 1), (_) => _updateCountdown());
+  }
+
+  Future<void> _checkAndRefreshIfNeeded() async {
+    final needsRefresh = await PrayerNotificationService.needsRefresh();
+    if (needsRefresh) {
+      if (kDebugMode) print('🔄 Prayer times need refresh for new day');
+      _loadPrayerTimes();
+    }
   }
 
   @override
@@ -84,10 +94,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
       final times = await _service.getPrayerTimes(
         latitude: position.latitude,
         longitude: position.longitude,
+        forceRefresh: false, // Use cache if available
       );
       
       if (times != null) {
         if (kDebugMode) print('✅ Prayer times received');
+        
+        // Save location for automatic refresh
+        await PrayerRefreshService.saveLocation(
+          position.latitude,
+          position.longitude,
+        );
+        
         await PrayerNotificationService.schedulePrayerNotifications(times);
         
         // Update home widget

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 import '../../services/api_service.dart';
 import '../../models/user_model.dart';
 import '../../providers/user_provider.dart';
@@ -45,18 +47,108 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
   Future<void> _loadLeaderboards() async {
     setState(() { _isLoading = true; _error = null; });
     try {
+      // Try to load from cache first
+      await _loadFromCache();
+      
+      // Then fetch fresh data
       final global = await _apiService.getGlobalLeaderboard(limit: 100);
       final country = await _apiService.getCountryLeaderboard(
         country: _selectedCountry, limit: 100,
       );
+      
       setState(() {
         _globalLeaderboard = global.map((e) => LeaderboardEntry.fromJson(e)).toList();
         _countryLeaderboard = country.map((e) => LeaderboardEntry.fromJson(e)).toList();
         _isLoading = false;
       });
+      
+      // Save to cache
+      await _saveToCache();
     } catch (e) {
-      setState(() { _isLoading = false; _error = e.toString(); });
+      // If error and no cached data, show error
+      if (_globalLeaderboard.isEmpty && _countryLeaderboard.isEmpty) {
+        setState(() { _isLoading = false; _error = e.toString(); });
+      } else {
+        // Have cached data, just stop loading
+        setState(() { _isLoading = false; });
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Showing cached data: ${_cleanError(e.toString())}'),
+              backgroundColor: Colors.orange,
+              duration: const Duration(seconds: 3),
+            ),
+          );
+        }
+      }
     }
+  }
+
+  Future<void> _loadFromCache() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final globalCache = prefs.getString('leaderboard_global');
+      final countryCache = prefs.getString('leaderboard_country_\$_selectedCountry');
+      
+      if (globalCache != null) {
+        final List<dynamic> globalData = json.decode(globalCache);
+        _globalLeaderboard = globalData.map((e) => LeaderboardEntry.fromJson(e)).toList();
+      }
+      
+      if (countryCache != null) {
+        final List<dynamic> countryData = json.decode(countryCache);
+        _countryLeaderboard = countryData.map((e) => LeaderboardEntry.fromJson(e)).toList();
+      }
+      
+      if (_globalLeaderboard.isNotEmpty || _countryLeaderboard.isNotEmpty) {
+        setState(() {});
+      }
+    } catch (e) {
+      // Ignore cache errors
+    }
+  }
+
+  Future<void> _saveToCache() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      
+      if (_globalLeaderboard.isNotEmpty) {
+        final globalJson = json.encode(
+          _globalLeaderboard.map((e) => {
+            'rank': e.rank,
+            'user_id': e.userId,
+            'username': e.username,
+            'country': e.country,
+            'points': e.points,
+            'avatar': e.avatar,
+          }).toList(),
+        );
+        await prefs.setString('leaderboard_global', globalJson);
+      }
+      
+      if (_countryLeaderboard.isNotEmpty) {
+        final countryJson = json.encode(
+          _countryLeaderboard.map((e) => {
+            'rank': e.rank,
+            'user_id': e.userId,
+            'username': e.username,
+            'country': e.country,
+            'points': e.points,
+            'avatar': e.avatar,
+          }).toList(),
+        );
+        await prefs.setString('leaderboard_country_\$_selectedCountry', countryJson);
+      }
+    } catch (e) {
+      // Ignore cache save errors
+    }
+  }
+
+  String _cleanError(String error) {
+    if (error.contains('Exception:')) {
+      return error.split('Exception:').last.trim();
+    }
+    return error;
   }
 
   @override
@@ -152,8 +244,14 @@ class _LeaderboardScreenState extends State<LeaderboardScreen>
                 : TabBarView(
                 controller: _tabController,
                 children: [
-                  _buildList(_globalLeaderboard, currentUser, isDark),
-                  _buildList(_countryLeaderboard, currentUser, isDark),
+                  RefreshIndicator(
+                    onRefresh: _loadLeaderboards,
+                    child: _buildList(_globalLeaderboard, currentUser, isDark),
+                  ),
+                  RefreshIndicator(
+                    onRefresh: _loadLeaderboards,
+                    child: _buildList(_countryLeaderboard, currentUser, isDark),
+                  ),
                 ],
               ),
       ),

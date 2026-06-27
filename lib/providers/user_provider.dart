@@ -85,7 +85,7 @@ class UserProvider extends ChangeNotifier {
       await _saveUserData(_currentUser!);
       
       // Send welcome notification
-      await _sendWelcomeNotification(username);
+      await _sendWelcomeNotification(_currentUser!.username, _currentUser!.id);
       
       _isLoading = false;
       notifyListeners();
@@ -117,10 +117,10 @@ class UserProvider extends ChangeNotifier {
       
       // Check if first login and send welcome notification
       final prefs = await SharedPreferences.getInstance();
-      final hasSeenWelcome = prefs.getBool('has_seen_welcome_\${_currentUser!.id}') ?? false;
+      final hasSeenWelcome = prefs.getBool('has_seen_welcome_${_currentUser!.id}') ?? false;
       if (!hasSeenWelcome) {
-        await _sendWelcomeNotification(_currentUser!.username);
-        await prefs.setBool('has_seen_welcome_\${_currentUser!.id}', true);
+        await _sendWelcomeNotification(_currentUser!.username, _currentUser!.id);
+        await prefs.setBool('has_seen_welcome_${_currentUser!.id}', true);
       }
       
       _isLoading = false;
@@ -230,10 +230,13 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _sendWelcomeNotification(String username) async {
+  Future<void> _sendWelcomeNotification(String username, String userId) async {
     try {
+      // Generate unique ID based on user ID
+      final notificationId = 1000 + userId.hashCode.abs() % 9000; // Range: 1000-9999
+      
       await NotificationService().showInstantNotification(
-        id: 1000,
+        id: notificationId,
         title: '🌙 Assalamu Alaikum, $username!',
         body: 'Welcome to Noor! May Allah bless your journey. Start by reading Quran, tracking prayers, and earning rewards. جزاك الله خيرا',
       );
