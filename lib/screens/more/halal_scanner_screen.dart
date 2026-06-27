@@ -16,7 +16,6 @@ class _HalalScannerScreenState extends State<HalalScannerScreen>
   final TextEditingController _manualController = TextEditingController();
   final TextEditingController _barcodeController = TextEditingController();
 
-  bool _isScanning = true;
   bool _isLoading = false;
   bool _torchOn = false;
   ProductResult? _result;
@@ -45,7 +44,6 @@ class _HalalScannerScreenState extends State<HalalScannerScreen>
 
     setState(() {
       _isLoading = true;
-      _isScanning = false;
       _error = null;
       _result = null;
     });
@@ -79,7 +77,6 @@ class _HalalScannerScreenState extends State<HalalScannerScreen>
       _result = null;
       _error = null;
       _lastScanned = null;
-      _isScanning = true;
       _isLoading = false;
     });
   }
