@@ -239,17 +239,7 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
     if (_hasAlarm) {
       try {
         await NotificationService().requestPermission();
-
-        // Check if exact alarms are allowed (Android 12+)
-        final androidImpl = NotificationService().plugin
-            .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin>();
-        final canSchedule =
-            await androidImpl?.canScheduleExactNotifications() ?? true;
-        if (!canSchedule) {
-          // Open exact alarm settings
-          await androidImpl?.requestExactAlarmsPermission();
-        }
+        await NotificationService().ensureExactAlarmPermission();
 
         // Safe ID: hash of title + time, fits in 32-bit int
         final baseId = (_titleController.text.hashCode.abs() +

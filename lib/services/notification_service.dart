@@ -64,8 +64,18 @@ class NotificationService {
     final androidImpl = _notifications
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>();
-    // areNotificationsEnabled returns true on Android < 13 by default
     return await androidImpl?.areNotificationsEnabled() ?? true;
+  }
+
+  Future<void> ensureExactAlarmPermission() async {
+    final androidImpl = _notifications
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+    if (androidImpl == null) return;
+    final canSchedule = await androidImpl.canScheduleExactNotifications() ?? true;
+    if (!canSchedule) {
+      await androidImpl.requestExactAlarmsPermission();
+    }
   }
 
   Future<void> scheduleNotification({
