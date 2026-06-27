@@ -37,9 +37,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final storedLevel = prefs.getString('user_level');
     
     // Also check UserProvider for authenticated users
+    if (!mounted) return;
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     final userFromProvider = userProvider.currentUser?.level;
     
+    if (!mounted) return;
     setState(() {
       _userLevel = userFromProvider ?? storedLevel ?? 'Beginner';
     });

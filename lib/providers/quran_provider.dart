@@ -62,3 +62,4 @@ class QuranProvider extends ChangeNotifier {
     _error = null;
     notifyListeners();
   }
+}
