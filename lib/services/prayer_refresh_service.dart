@@ -81,7 +81,6 @@ class PrayerRefreshService {
           final times = await service.getPrayerTimes(
             latitude: lat,
             longitude: lng,
-            forceRefresh: true,
           );
           
           if (times != null) {

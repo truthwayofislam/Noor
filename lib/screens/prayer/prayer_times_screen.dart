@@ -94,7 +94,6 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
       final times = await _service.getPrayerTimes(
         latitude: position.latitude,
         longitude: position.longitude,
-        forceRefresh: false, // Use cache if available
       );
       
       if (times != null) {
