@@ -178,15 +178,15 @@ class ApiService {
           'metadata': metadata,
         }),
       ).timeout(_timeout);
-      
+
       if (response.statusCode == 201) {
         return json.decode(response.body);
       } else {
-        throw Exception('Failed to log activity');
+        // Return null signals to use local calculation
+        return {};
       }
     } catch (e) {
-      // Silently fail for activity logging to not disrupt user experience
-      return {'total_points': 0};
+      return {};
     }
   }
   

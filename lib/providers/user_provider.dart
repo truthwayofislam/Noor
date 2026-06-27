@@ -195,8 +195,14 @@ class UserProvider extends ChangeNotifier {
       );
       
       // Update points, streak, and counters locally immediately
-      final newPoints = response['total_points'] as int? ?? (_currentUser!.points + points);
-      final newStreak = response['streak_days'] as int? ?? _currentUser!.streakDays;
+      final serverPoints = response['total_points'];
+      final serverStreak = response['streak_days'];
+      final newPoints = (serverPoints != null && serverPoints > 0)
+          ? serverPoints as int
+          : _currentUser!.points + points;
+      final newStreak = serverStreak != null
+          ? serverStreak as int
+          : _currentUser!.streakDays;
       _currentUser = User(
         id: _currentUser!.id,
         email: _currentUser!.email,
@@ -218,6 +224,16 @@ class UserProvider extends ChangeNotifier {
       );
       await _saveUserData(_currentUser!);
       notifyListeners();
+
+      // Refresh from server to get accurate points
+      try {
+        final profile = await _apiService.getProfile();
+        _currentUser = User.fromJson(profile);
+        await _saveUserData(_currentUser!);
+        notifyListeners();
+      } catch (_) {
+        // Keep local data if refresh fails
+      }
     } catch (e) {
       _error = e.toString();
       notifyListeners();

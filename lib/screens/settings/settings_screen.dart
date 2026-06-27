@@ -7,7 +7,6 @@ import '../../services/notification_service.dart';
 import '../../services/prayer_notification_service.dart';
 import '../../services/prayer_times_service.dart';
 import '../../services/islamic_reminders_service.dart';
-import '../../services/islamic_reminders_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -25,11 +24,48 @@ class _SettingsScreenState extends State<SettingsScreen> {
   String _quranEdition = 'ur.jalandhry';
 
   final Map<String, String> _quranEditions = {
-    'ur.jalandhry': 'Urdu - Jalandhry',
-    'ur.ahmedali': 'Urdu - Ahmed Ali',
-    'en.sahih': 'English - Sahih',
-    'en.pickthall': 'English - Pickthall',
-    'ar.muyassar': 'Arabic - Muyassar',
+    // Urdu
+    'ur.jalandhry': '🇵🇰 Urdu — Jalandhry',
+    'ur.ahmedali': '🇵🇰 Urdu — Ahmed Ali',
+    'ur.najafi': '🇵🇰 Urdu — Najafi',
+    // English
+    'en.sahih': '🇬🇧 English — Sahih International',
+    'en.pickthall': '🇬🇧 English — Pickthall',
+    'en.yusufali': '🇬🇧 English — Yusuf Ali',
+    'en.hilali': '🇬🇧 English — Hilali & Khan',
+    // Hindi
+    'hi.hindi': '🇮🇳 Hindi — हिंदी',
+    // Bengali
+    'bn.bengali': '🇧🇩 Bengali — বাংলা',
+    'bn.hoque': '🇧🇩 Bengali — Hoque',
+    // Indonesian / Malay
+    'id.indonesian': '🇮🇩 Indonesian — Bahasa',
+    'ms.basmeih': '🇲🇾 Malay — Basmeih',
+    // Turkish
+    'tr.diyanet': '🇹🇷 Turkish — Diyanet',
+    'tr.transliteration': '🇹🇷 Turkish — Transliteration',
+    // Persian / Farsi
+    'fa.makarem': '🇮🇷 Persian — Makarem',
+    'fa.fooladvand': '🇮🇷 Persian — Fooladvand',
+    // French
+    'fr.hamidullah': '🇫🇷 French — Hamidullah',
+    // German
+    'de.bubenheim': '🇩🇪 German — Bubenheim',
+    // Russian
+    'ru.kuliev': '🇷🇺 Russian — Kuliev',
+    'ru.transliteration': '🇷🇺 Russian — Transliteration',
+    // Spanish
+    'es.garcia': '🇪🇸 Spanish — Garcia',
+    // Chinese
+    'zh.majian': '🇨🇳 Chinese — Ma Jian',
+    // Hausa
+    'ha.gumi': '🌍 Hausa — Gumi',
+    // Swahili
+    'sw.barrawi': '🌍 Swahili — Barrawi',
+    // Arabic tafseer
+    'ar.muyassar': '🕌 Arabic — Muyassar',
+    // Transliteration (Roman)
+    'en.transliteration': '🔤 Transliteration — Roman English',
   };
 
   @override
@@ -364,41 +400,64 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void _showEditionPicker() {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-      builder: (_) => Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Select Translation',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 16),
-            ..._quranEditions.entries.map((e) => ListTile(
-                  title: Text(e.value),
-                  leading: Radio<String>(
-                    value: e.key,
-                    groupValue: _quranEdition,
-                    activeColor: const Color(0xFF2E7D32),
-                    onChanged: (val) {
-                      _saveQuranEdition(val!);
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Translation changed to ${e.value}')),
-                      );
-                    },
+      builder: (_) => DraggableScrollableSheet(
+        initialChildSize: 0.7,
+        maxChildSize: 0.95,
+        minChildSize: 0.4,
+        expand: false,
+        builder: (_, scrollController) => Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 40, height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(2),
                   ),
-                  trailing: _quranEdition == e.key
-                      ? const Icon(Icons.check_circle, color: Color(0xFF2E7D32))
-                      : null,
-                  onTap: () {
-                    _saveQuranEdition(e.key);
-                    Navigator.pop(context);
-                  },
-                )),
-            const SizedBox(height: 8),
-          ],
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Text('Select Language',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 4),
+              Text('Arabic text always shown with your chosen translation',
+                  style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+              const SizedBox(height: 12),
+              Expanded(
+                child: ListView(
+                  controller: scrollController,
+                  children: _quranEditions.entries.map((e) => ListTile(
+                    title: Text(e.value),
+                    leading: Radio<String>(
+                      value: e.key,
+                      groupValue: _quranEdition,
+                      activeColor: const Color(0xFF2E7D32),
+                      onChanged: (val) {
+                        _saveQuranEdition(val!);
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Changed to ${e.value}')),
+                        );
+                      },
+                    ),
+                    trailing: _quranEdition == e.key
+                        ? const Icon(Icons.check_circle, color: Color(0xFF2E7D32))
+                        : null,
+                    onTap: () {
+                      _saveQuranEdition(e.key);
+                      Navigator.pop(context);
+                    },
+                  )).toList(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
