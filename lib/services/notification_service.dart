@@ -33,28 +33,33 @@ class NotificationService {
   }
 
   Future<bool> requestPermission() async {
-    // Android 13+
     final androidImpl = _notifications
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>();
-    final androidGranted = await androidImpl?.requestNotificationsPermission() ?? false;
-    await androidImpl?.requestExactAlarmsPermission();
+
+    if (androidImpl != null) {
+      // Request notification permission (Android 13+)
+      await androidImpl.requestNotificationsPermission();
+      // Request exact alarm permission (Android 12+)
+      await androidImpl.requestExactAlarmsPermission();
+    }
 
     // iOS
     final iosImpl = _notifications
         .resolvePlatformSpecificImplementation<
             IOSFlutterLocalNotificationsPlugin>();
-    final iosGranted = await iosImpl?.requestPermissions(alert: true, badge: true, sound: true) ?? false;
-    
-    return androidGranted || iosGranted;
+    await iosImpl?.requestPermissions(alert: true, badge: true, sound: true);
+
+    // Check actual status after requesting
+    return await hasPermission();
   }
 
   Future<bool> hasPermission() async {
     final androidImpl = _notifications
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>();
-    final granted = await androidImpl?.areNotificationsEnabled();
-    return granted ?? false;
+    // areNotificationsEnabled returns true on Android < 13 by default
+    return await androidImpl?.areNotificationsEnabled() ?? true;
   }
 
   Future<void> scheduleNotification({

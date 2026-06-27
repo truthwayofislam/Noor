@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import '../../models/prayer_times_model.dart';
 import '../../services/prayer_times_service.dart';
 import '../../services/prayer_notification_service.dart';
@@ -33,16 +32,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     super.initState();
     _loadPrayerTimes();
     _loadTodayLogs();
-    _checkAndRefreshIfNeeded();
     _timer = Timer.periodic(const Duration(seconds: 1), (_) => _updateCountdown());
-  }
-
-  Future<void> _checkAndRefreshIfNeeded() async {
-    final needsRefresh = await PrayerNotificationService.needsRefresh();
-    if (needsRefresh) {
-      if (kDebugMode) print('🔄 Prayer times need refresh for new day');
-      _loadPrayerTimes();
-    }
   }
 
   @override
@@ -56,36 +46,22 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
     setState(() => _isLoading = true);
     
     try {
-      if (kDebugMode) print('🔍 Getting location...');
+      // First try cached prayer times without needing location
+      final cached = await _service.getCachedPrayerTimes();
+      if (cached != null && mounted) {
+        setState(() {
+          _prayerTimes = cached;
+          _nextPrayer = _service.getNextPrayer(cached);
+          _timeUntilNext = _service.getTimeUntilNext(cached);
+          _isLoading = false;
+        });
+        return;
+      }
+
       final position = await _service.getCurrentLocation();
-      
+
       if (position == null) {
-        if (kDebugMode) print('❌ Location is null');
-        if (mounted) {
-          setState(() => _isLoading = false);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: const Row(
-                children: [
-                  Icon(Icons.location_off, color: Colors.white),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: Text('Location access denied. Please enable location in settings.'),
-                  ),
-                ],
-              ),
-              backgroundColor: Colors.orange,
-              duration: const Duration(seconds: 4),
-              action: SnackBarAction(
-                label: 'Settings',
-                textColor: Colors.white,
-                onPressed: () async {
-                  await Geolocator.openLocationSettings();
-                },
-              ),
-            ),
-          );
-        }
+        if (mounted) setState(() => _isLoading = false);
         return;
       }
       

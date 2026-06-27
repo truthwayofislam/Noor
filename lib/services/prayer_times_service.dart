@@ -46,6 +46,8 @@ class PrayerTimesService {
     return null;
   }
 
+  Future<PrayerTimes?> getCachedPrayerTimes() async => _getCachedPrayerTimes();
+
   Future<void> _cachePrayerTimes(PrayerTimes times) async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -102,59 +104,36 @@ class PrayerTimesService {
 
   Future<Position?> getCurrentLocation() async {
     try {
-      if (kDebugMode) print('🔍 Step 1: Checking location service...');
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (kDebugMode) print('📍 Location service enabled: $serviceEnabled');
-      if (!serviceEnabled) {
-        if (kDebugMode) print('❌ Location service disabled');
-        return null;
-      }
+      if (!serviceEnabled) return null;
 
-      if (kDebugMode) print('🔍 Step 2: Checking location permission...');
       LocationPermission permission = await Geolocator.checkPermission();
-      if (kDebugMode) print('📍 Current permission: $permission');
-      
-      // If permission is whileInUse or always, proceed
-      if (permission == LocationPermission.whileInUse || 
-          permission == LocationPermission.always) {
-        if (kDebugMode) print('✅ Step 3: Permission OK, getting location...');
-        final position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.medium,
-        ).timeout(const Duration(seconds: 10));
-        
-        if (kDebugMode) print('✅ Step 4: Location: ${position.latitude}, ${position.longitude}');
-        return position;
-      }
-      
+
       if (permission == LocationPermission.denied) {
-        if (kDebugMode) print('⚠️ Permission denied, requesting...');
         permission = await Geolocator.requestPermission();
-        if (kDebugMode) print('📍 Permission after request: $permission');
-        
-        if (permission == LocationPermission.denied) {
-          if (kDebugMode) print('❌ Permission still denied');
-          return null;
-        }
-        
-        if (permission == LocationPermission.whileInUse || 
-            permission == LocationPermission.always) {
-          if (kDebugMode) print('✅ Permission granted, getting location...');
-          final position = await Geolocator.getCurrentPosition(
-            desiredAccuracy: LocationAccuracy.medium,
-          ).timeout(const Duration(seconds: 10));
-          
-          if (kDebugMode) print('✅ Location: ${position.latitude}, ${position.longitude}');
-          return position;
-        }
       }
 
-      if (permission == LocationPermission.deniedForever) {
-        if (kDebugMode) print('❌ Permission denied forever');
+      if (permission == LocationPermission.deniedForever ||
+          permission == LocationPermission.denied) {
         return null;
       }
 
-      if (kDebugMode) print('❌ Unknown permission state: $permission');
-      return null;
+      // Try last known position first (fast)
+      try {
+        final last = await Geolocator.getLastKnownPosition();
+        if (last != null) {
+          if (kDebugMode) print('✅ Using last known location: ${last.latitude}, ${last.longitude}');
+          return last;
+        }
+      } catch (_) {}
+
+      // Fall back to current position with longer timeout
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.low,
+      ).timeout(const Duration(seconds: 30));
+
+      if (kDebugMode) print('✅ Location: ${position.latitude}, ${position.longitude}');
+      return position;
     } catch (e) {
       if (kDebugMode) print('❌ Error in getCurrentLocation: $e');
       return null;

@@ -237,15 +237,7 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
     
     if (_hasAlarm) {
       try {
-        final hasPermission = await NotificationService().requestPermission();
-        if (!hasPermission) {
-          if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('⚠️ Notification permission required'), backgroundColor: Colors.orange),
-            );
-          }
-          return;
-        }
+        await NotificationService().requestPermission();
         
         final baseId = DateTime.now().millisecondsSinceEpoch ~/ 1000;
         
