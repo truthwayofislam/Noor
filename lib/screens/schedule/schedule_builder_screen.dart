@@ -208,20 +208,20 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
   
   void _saveSchedule() async {
     if (!_formKey.currentState!.validate()) return;
-    
+
     if (_isRecurring && _selectedDays.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please select at least one day')),
       );
       return;
     }
-    
+
     final now = DateTime.now();
     var scheduleTime = DateTime(now.year, now.month, now.day, _selectedTime.hour, _selectedTime.minute);
     if (scheduleTime.isBefore(now)) {
       scheduleTime = scheduleTime.add(const Duration(days: 1));
     }
-    
+
     final schedule = Schedule(
       title: _titleController.text,
       description: _descriptionController.text,
@@ -232,67 +232,80 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
       hasAlarm: _hasAlarm,
       completionCount: widget.schedule?.completionCount ?? 0,
     );
-    
+
     final List<int> notificationIds = [];
-    
+    bool notifFailed = false;
+
     if (_hasAlarm) {
       try {
         await NotificationService().requestPermission();
-        
-        final baseId = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-        
+
+        // Safe ID: hash of title + time, fits in 32-bit int
+        final baseId = (_titleController.text.hashCode.abs() +
+                scheduleTime.millisecondsSinceEpoch ~/ 60000) %
+            100000;
+
         if (_isRecurring && _selectedDays.isNotEmpty) {
           for (int day in _selectedDays) {
             final nextDate = _getNextDateForDay(day, _selectedTime);
-            final notifId = baseId + day;
+            final notifId = (baseId + day) % 100000;
             notificationIds.add(notifId);
-            
             await NotificationService().scheduleNotification(
               id: notifId,
-              title: '🕌 ${schedule.title}',
-              body: schedule.description.isEmpty ? 'Time for ${schedule.title}' : schedule.description,
+              title: '\u{1F54C} ${schedule.title}',
+              body: schedule.description.isEmpty
+                  ? 'Time for ${schedule.title}'
+                  : schedule.description,
               scheduledTime: nextDate,
               isRecurring: true,
             );
           }
         } else {
-          notificationIds.add(baseId);
+          final notifId = baseId % 100000;
+          notificationIds.add(notifId);
           await NotificationService().scheduleNotification(
-            id: baseId,
-            title: '🕌 ${schedule.title}',
-            body: schedule.description.isEmpty ? 'Time for ${schedule.title}' : schedule.description,
+            id: notifId,
+            title: '\u{1F54C} ${schedule.title}',
+            body: schedule.description.isEmpty
+                ? 'Time for ${schedule.title}'
+                : schedule.description,
             scheduledTime: scheduleTime,
             isRecurring: false,
           );
         }
       } catch (e) {
         debugPrint('Notification error: $e');
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('⚠️ Failed: $e'), backgroundColor: Colors.orange),
-          );
-        }
+        notifFailed = true;
       }
     }
-    
+
     if (!mounted) return;
     final provider = Provider.of<ScheduleProvider>(context, listen: false);
-    
+
     if (widget.schedule == null) {
       await provider.addSchedule(schedule, notificationIds);
     } else {
       await provider.updateSchedule(widget.index!, schedule, notificationIds);
     }
-    
-    if (mounted) {
+
+    if (!mounted) return;
+    if (notifFailed) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('\u26A0\uFE0F Schedule saved but notification failed. Check notification permission.'),
+          backgroundColor: Colors.orange,
+          duration: Duration(seconds: 4),
+        ),
+      );
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(widget.schedule == null ? '✅ Schedule created!' : '✅ Schedule updated!'),
+          content: Text(widget.schedule == null ? '\u2705 Schedule created!' : '\u2705 Schedule updated!'),
           backgroundColor: Colors.green,
         ),
       );
-      Navigator.pop(context);
     }
+    Navigator.pop(context);
   }
   
   @override

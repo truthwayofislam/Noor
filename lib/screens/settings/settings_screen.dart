@@ -5,6 +5,7 @@ import '../../providers/theme_provider.dart';
 import '../../services/daily_reminder_service.dart';
 import '../../services/notification_service.dart';
 import '../../services/prayer_notification_service.dart';
+import '../../services/prayer_times_service.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -168,12 +169,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     final prefs = await SharedPreferences.getInstance();
                     await prefs.setBool('prayer_notifications_enabled', val);
                     setState(() => _prayerNotifEnabled = val);
-                    if (!val) await PrayerNotificationService.cancelAll();
-                    messenger.showSnackBar(
-                      SnackBar(
-                        content: Text(val ? 'Prayer alerts enabled!' : 'Prayer alerts disabled'),
-                      ),
-                    );
+                    if (!val) {
+                      await PrayerNotificationService.cancelAll();
+                    } else {
+                      // Re-schedule using saved location
+                      final lat = prefs.getDouble('last_location_lat');
+                      final lng = prefs.getDouble('last_location_lng');
+                      if (lat != null && lng != null) {
+                        final service = PrayerTimesService();
+                        final times = await service.getPrayerTimes(
+                          latitude: lat, longitude: lng);
+                        if (times != null) {
+                          await PrayerNotificationService
+                              .schedulePrayerNotifications(times);
+                        }
+                      }
+                    }
+                    messenger.showSnackBar(SnackBar(
+                      content: Text(val
+                          ? 'Prayer alerts enabled!'
+                          : 'Prayer alerts disabled'),
+                    ));
                   },
                 ),
 
