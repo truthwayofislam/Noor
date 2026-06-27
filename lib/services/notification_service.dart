@@ -47,21 +47,6 @@ class NotificationService {
     return androidGranted || iosGranted;
   }
 
-  Future<void> _requestPermissions() async {
-    // Android 13+
-    final androidImpl = _notifications
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
-    await androidImpl?.requestNotificationsPermission();
-    await androidImpl?.requestExactAlarmsPermission();
-
-    // iOS
-    final iosImpl = _notifications
-        .resolvePlatformSpecificImplementation<
-            IOSFlutterLocalNotificationsPlugin>();
-    await iosImpl?.requestPermissions(alert: true, badge: true, sound: true);
-  }
-
   Future<bool> hasPermission() async {
     final androidImpl = _notifications
         .resolvePlatformSpecificImplementation<
