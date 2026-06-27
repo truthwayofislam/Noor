@@ -2,13 +2,14 @@
 -keep class io.flutter.** { *; }
 -keep class io.flutter.plugins.** { *; }
 
-# Google Play Core (required by Flutter)
+# Google Play Core
 -keep class com.google.android.play.core.** { *; }
 -dontwarn com.google.android.play.core.**
 
-# flutter_local_notifications
--keep class com.dexterous.** { *; }
--keepclassmembers class com.dexterous.** { *; }
+# awesome_notifications
+-keep class me.carda.** { *; }
+-keepclassmembers class me.carda.** { *; }
+-dontwarn me.carda.**
 
 # mobile_scanner / ML Kit
 -keep class com.google.mlkit.** { *; }
@@ -16,16 +17,18 @@
 -dontwarn com.google.mlkit.**
 -dontwarn com.google.android.gms.**
 
-# awesome_notifications
--keep class me.carda.** { *; }
--keepclassmembers class me.carda.** { *; }
--dontwarn me.carda.**
+# Google Guava — fixes SHARED_PREFERENCES_NOT_AVAILABLE
+-keep class com.google.common.** { *; }
+-dontwarn com.google.common.**
+-keepattributes Signature
+-keepattributes *Annotation*
+-keepattributes EnclosingMethod
+-keepattributes InnerClasses
 
-# SharedPreferences — prevent obfuscation
+# SharedPreferences
 -keep class android.app.SharedPreferencesImpl { *; }
 -keep class android.content.SharedPreferences { *; }
 -keep class android.content.SharedPreferences$Editor { *; }
--keepclassmembers class * implements android.content.SharedPreferences { *; }
 
 # Hive
 -keep class ** extends com.google.flatbuffers.Table { *; }
@@ -35,15 +38,13 @@
 -keep class com.baseflow.geolocator.** { *; }
 
 # Gson
--keepattributes Signature
--keepattributes *Annotation*
 -dontwarn sun.misc.**
 -keep class com.google.gson.** { *; }
 -keep class * implements com.google.gson.TypeAdapterFactory { *; }
 -keep class * implements com.google.gson.JsonSerializer { *; }
 -keep class * implements com.google.gson.JsonDeserializer { *; }
 
-# App model classes
+# App
 -keep class com.noor.app.** { *; }
 
 # Kotlin
