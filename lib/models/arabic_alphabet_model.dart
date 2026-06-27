@@ -86,69 +86,6 @@ class QuranicLesson {
   });
 }
 
-// Letter in 4 positions
-class LetterForms {
-  final String name;
-  final String isolated;   // alone: ب
-  final String initial;    // start: بـ
-  final String medial;     // middle: ـبـ
-  final String final_;     // end: ـب
-  final String transliteration;
-  final bool joinsNext;    // does it join next letter?
-
-  const LetterForms({
-    required this.name,
-    required this.isolated,
-    required this.initial,
-    required this.medial,
-    required this.final_,
-    required this.transliteration,
-    required this.joinsNext,
-  });
-}
-
-// A Quranic word with breakdown
-class QuranicWord {
-  final String arabic;
-  final String transliteration;
-  final String meaning;
-  final String urdu;
-  final List<String> letterBreakdown; // each letter separately
-
-  const QuranicWord({
-    required this.arabic,
-    required this.transliteration,
-    required this.meaning,
-    required this.urdu,
-    required this.letterBreakdown,
-  });
-}
-
-// A verse with word-by-word breakdown
-class QuranicLesson {
-  final String surahName;
-  final String surahNameUrdu;
-  final int surahNumber;
-  final int ayahNumber;
-  final String fullArabic;
-  final String transliteration;
-  final String translation;
-  final String urdu;
-  final List<QuranicWord> words;
-
-  const QuranicLesson({
-    required this.surahName,
-    required this.surahNameUrdu,
-    required this.surahNumber,
-    required this.ayahNumber,
-    required this.fullArabic,
-    required this.transliteration,
-    required this.translation,
-    required this.urdu,
-    required this.words,
-  });
-}
-
 class ArabicAlphabetData {
   static final List<ArabicLetter> letters = [
     ArabicLetter(arabic: 'ا', name: 'Alif', transliteration: 'A', pronunciation: 'aa', examples: ['أَسَد', 'إِبْرَة']),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/arabic_alphabet_model.dart';
 import '../../providers/user_provider.dart';
-import 'dart:math';
 
 class ArabicAlphabetScreen extends StatefulWidget {
   const ArabicAlphabetScreen({super.key});
@@ -47,9 +46,9 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen>
       body: TabBarView(
         controller: _tabController,
         children: [
-          _LettersTab(),
-          _HarakatTab(),
-          _LetterFormsTab(),
+          const _LettersTab(),
+          const _HarakatTab(),
+          const _LetterFormsTab(),
           _LessonTab(
             lessons: ArabicAlphabetData.fatihaLessons,
             surahName: 'Surah Al-Fatiha',
