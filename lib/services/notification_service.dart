@@ -112,25 +112,13 @@ class NotificationService {
 
     if (isRecurring) {
       await _notifications.zonedSchedule(
-        id,
-        title,
-        body,
-        tzTime,
-        details,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
+        id, title, body, tzTime, details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         matchDateTimeComponents: DateTimeComponents.time,
       );
     } else {
       await _notifications.zonedSchedule(
-        id,
-        title,
-        body,
-        tzTime,
-        details,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
+        id, title, body, tzTime, details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       );
     }

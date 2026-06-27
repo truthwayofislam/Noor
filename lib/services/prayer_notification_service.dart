@@ -77,8 +77,6 @@ class PrayerNotificationService {
           ),
           _details,
           androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-          uiLocalNotificationDateInterpretation:
-              UILocalNotificationDateInterpretation.absoluteTime,
         );
         if (kDebugMode) print('✅ Scheduled ${prayer['name']} at $scheduledTime');
       } catch (e) {
@@ -113,8 +111,6 @@ class PrayerNotificationService {
         ),
         _details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
       );
       
       if (kDebugMode) print('✅ Scheduled midnight refresh at $midnight');
