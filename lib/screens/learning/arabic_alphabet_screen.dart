@@ -46,9 +46,9 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen>
       body: TabBarView(
         controller: _tabController,
         children: [
-          const _LettersTab(),
-          const _HarakatTab(),
-          const _LetterFormsTab(),
+          _LettersTab(),
+          _HarakatTab(),
+          _LetterFormsTab(),
           _LessonTab(
             lessons: ArabicAlphabetData.fatihaLessons,
             surahName: 'Surah Al-Fatiha',
