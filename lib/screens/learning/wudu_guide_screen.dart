@@ -263,6 +263,7 @@ class WuduGuideScreen extends StatelessWidget {
   void _markAsCompleted(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     const key = 'lesson_done_wudu_guide';
+    if (!context.mounted) return;
     if (prefs.getBool(key) == true) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Already completed! Points already awarded.'), backgroundColor: Colors.blue),
@@ -270,6 +271,7 @@ class WuduGuideScreen extends StatelessWidget {
       return;
     }
     await prefs.setBool(key, true);
+    if (!context.mounted) return;
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     if (userProvider.isAuthenticated) {
       userProvider.logActivity(

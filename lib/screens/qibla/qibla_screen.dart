@@ -228,10 +228,10 @@ class _QiblaScreenState extends State<QiblaScreen>
                     height: 280,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      gradient: RadialGradient(
+                      gradient: const RadialGradient(
                         colors: [
-                          const Color(0xFF1A3A2A),
-                          const Color(0xFF0D1B2A),
+                          Color(0xFF1A3A2A),
+                          Color(0xFF0D1B2A),
                         ],
                       ),
                       border: Border.all(

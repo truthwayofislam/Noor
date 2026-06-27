@@ -183,15 +183,15 @@ class _QuranReaderScreenState extends State<QuranReaderScreen> {
   Future<void> _markAsCompleted(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'surah_done_${widget.surah.number}';
+    if (!context.mounted) return;
     if (prefs.getBool(key) == true) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Already completed! Points already awarded.'), backgroundColor: Colors.blue),
-        );
-      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Already completed! Points already awarded.'), backgroundColor: Colors.blue),
+      );
       return;
     }
     await prefs.setBool(key, true);
+    if (!context.mounted) return;
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     if (userProvider.isAuthenticated) {
       await userProvider.logActivity(
@@ -208,11 +208,9 @@ class _QuranReaderScreenState extends State<QuranReaderScreen> {
         );
       }
     } else {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Login to earn points!'), backgroundColor: Colors.orange),
-        );
-      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Login to earn points!'), backgroundColor: Colors.orange),
+      );
     }
   }
 }
