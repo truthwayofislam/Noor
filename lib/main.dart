@@ -17,32 +17,56 @@ import 'services/islamic_reminders_service.dart';
 import 'models/schedule_model.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  
-  await Hive.initFlutter();
-  Hive.registerAdapter(ScheduleAdapter());
-  
-  final notificationService = NotificationService();
-  await notificationService.init();
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    
+    // Initialize Hive
+    try {
+      await Hive.initFlutter();
+      Hive.registerAdapter(ScheduleAdapter());
+    } catch (e) {
+      debugPrint('Hive init error: $e');
+    }
+    
+    // Initialize notifications
+    try {
+      final notificationService = NotificationService();
+      await notificationService.init();
 
-  // Set notification listeners
-  AwesomeNotifications().setListeners(
-    onActionReceivedMethod: NotificationController.onActionReceivedMethod,
-  );
-  
-  await DailyReminderService.init();
-  await DailyReminderService.scheduleDailyReminder();
+      AwesomeNotifications().setListeners(
+        onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+      );
+    } catch (e) {
+      debugPrint('Notification init error: $e');
+    }
+    
+    // Initialize services with error handling
+    try {
+      await DailyReminderService.init();
+      await DailyReminderService.scheduleDailyReminder();
+    } catch (e) {
+      debugPrint('DailyReminder init error: $e');
+    }
 
-  // Schedule Islamic daily & weekly reminders
-  await IslamicRemindersService.scheduleAll();
-  
-  // Initialize prayer refresh service
-  await PrayerRefreshService.init();
-  
-  // Check if prayer times need refresh on app start
-  await PrayerRefreshService.checkAndRefresh();
-  
-  runApp(const NoorApp());
+    try {
+      await IslamicRemindersService.scheduleAll();
+    } catch (e) {
+      debugPrint('IslamicReminders init error: $e');
+    }
+    
+    try {
+      await PrayerRefreshService.init();
+      await PrayerRefreshService.checkAndRefresh();
+    } catch (e) {
+      debugPrint('PrayerRefresh init error: $e');
+    }
+    
+    runApp(const NoorApp());
+  } catch (e, stackTrace) {
+    debugPrint('Error in main: $e');
+    debugPrint('StackTrace: $stackTrace');
+    runApp(const ErrorApp());
+  }
 }
 
 class NoorApp extends StatelessWidget {
@@ -116,3 +140,49 @@ class NotificationController {
 }
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+class ErrorApp extends StatelessWidget {
+  const ErrorApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF2E7D32), Color(0xFF1B5E20)],
+            ),
+          ),
+          child: const Center(
+            child: Padding(
+              padding: EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.error_outline, size: 64, color: Colors.white),
+                  SizedBox(height: 16),
+                  Text(
+                    'Failed to start Noor',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Please restart the app or clear app data',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
