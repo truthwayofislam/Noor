@@ -52,6 +52,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
   }
 
   Future<void> _loadPrayerTimes() async {
+    if (!mounted) return;
     setState(() => _isLoading = true);
     
     try {

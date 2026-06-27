@@ -11,55 +11,38 @@ class PrayerTimesService {
     required double latitude,
     required double longitude,
   }) async {
-    if (kDebugMode) print('🌍 Lat: $latitude, Lng: $longitude');
+    if (kDebugMode) print('🌍 Prayer Times: Lat=$latitude, Lng=$longitude');
     
-    // Try to get cached prayer times first
+    // Try cached first
     final cached = await _getCachedPrayerTimes();
     if (cached != null) {
       if (kDebugMode) print('✅ Using cached prayer times');
       return cached;
     }
     
-    // Try Aladhan API
+    // Fetch from API
     try {
       final url = 'https://api.aladhan.com/v1/timings?latitude=$latitude&longitude=$longitude&method=2';
-      if (kDebugMode) print('📡 API: $url');
+      if (kDebugMode) print('📡 Fetching: $url');
       
       final response = await http.get(Uri.parse(url)).timeout(
-        const Duration(seconds: 10),
+        const Duration(seconds: 15),
       );
 
-      if (kDebugMode) print('📡 Status: ${response.statusCode}');
-      if (kDebugMode) print('📡 Body length: ${response.body.length}');
+      if (kDebugMode) print('📡 Response: ${response.statusCode}');
       
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        if (kDebugMode) print('✅ JSON parsed');
-        if (kDebugMode) print('📊 Data keys: ${data.keys}');
-        
         final times = PrayerTimes.fromJson(data);
-        if (kDebugMode) print('✅ Prayer times: Fajr=${times.fajr}, Dhuhr=${times.dhuhr}, Asr=${times.asr}');
+        if (kDebugMode) print('✅ Prayer times loaded: Fajr=${times.fajr}');
         
-        // Cache the prayer times
         await _cachePrayerTimes(times);
-        
         return times;
-      } else {
-        if (kDebugMode) print('❌ Bad status code: ${response.statusCode}');
       }
-    } catch (e, stackTrace) {
+    } catch (e) {
       if (kDebugMode) print('❌ API Error: $e');
-      if (kDebugMode) print('❌ StackTrace: $stackTrace');
-      
-      // Try to return cached times on error
-      final cached = await _getCachedPrayerTimes();
-      if (cached != null) {
-        if (kDebugMode) print('⚠️ API failed, using cached times');
-        return cached;
-      }
     }
 
-    if (kDebugMode) print('❌ API failed and no cache available');
     return null;
   }
 

@@ -62,12 +62,6 @@ class NotificationService {
     required DateTime scheduledTime,
     bool isRecurring = false,
   }) async {
-    // Check permission first
-    final hasPermission = await this.hasPermission();
-    if (!hasPermission) {
-      throw Exception('Notification permission not granted');
-    }
-
     const androidDetails = AndroidNotificationDetails(
       'noor_schedules',
       'Schedule Reminders',
