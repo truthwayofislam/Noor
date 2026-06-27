@@ -31,7 +31,13 @@ class ScheduleProvider extends ChangeNotifier {
     // Cancel all notifications for this schedule
     final notificationIds = _scheduleNotificationIds[index];
     if (notificationIds != null && notificationIds.isNotEmpty) {
-      await NotificationService().cancelMultipleNotifications(notificationIds);
+      try {
+        for (final id in notificationIds) {
+          await NotificationService().cancelNotification(id);
+        }
+      } catch (e) {
+        debugPrint('Error canceling notifications: $e');
+      }
     }
     
     final box = await Hive.openBox<Schedule>('schedules');
@@ -68,7 +74,13 @@ class ScheduleProvider extends ChangeNotifier {
     // Cancel old notifications
     final oldNotificationIds = _scheduleNotificationIds[index];
     if (oldNotificationIds != null && oldNotificationIds.isNotEmpty) {
-      await NotificationService().cancelMultipleNotifications(oldNotificationIds);
+      try {
+        for (final id in oldNotificationIds) {
+          await NotificationService().cancelNotification(id);
+        }
+      } catch (e) {
+        debugPrint('Error canceling old notifications: $e');
+      }
     }
     
     final box = await Hive.openBox<Schedule>('schedules');
