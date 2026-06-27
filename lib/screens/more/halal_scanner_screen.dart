@@ -126,7 +126,8 @@ class _HalalScannerScreenState extends State<HalalScannerScreen>
               MobileScanner(
                 controller: _scannerController,
                 onDetect: (capture) {
-                  final barcode = capture.barcodes.firstOrNull?.rawValue;
+                  if (capture.barcodes.isEmpty) return;
+                  final barcode = capture.barcodes.first.rawValue;
                   if (barcode != null) _checkBarcode(barcode);
                 },
               ),
