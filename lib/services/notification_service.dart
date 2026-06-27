@@ -72,9 +72,7 @@ class NotificationService {
       sound: RawResourceAndroidNotificationSound('notification_sound'),
       enableVibration: true,
       enableLights: true,
-      ledColor: Color(0xFF2E7D32),
-      ledOnMs: 1000,
-      ledOffMs: 500,
+      color: Color(0xFF2E7D32),
     );
 
     const details = NotificationDetails(
@@ -135,7 +133,7 @@ class NotificationService {
       sound: RawResourceAndroidNotificationSound('notification_sound'),
       enableVibration: true,
       enableLights: true,
-      ledColor: Color(0xFF2E7D32),
+      color: Color(0xFF2E7D32),
     );
 
     const iosDetails = DarwinNotificationDetails(

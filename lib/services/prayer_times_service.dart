@@ -5,12 +5,6 @@ import 'package:flutter/foundation.dart';
 import '../models/prayer_times_model.dart';
 
 class PrayerTimesService {
-  // Multiple API endpoints for fallback
-  static const List<String> _apiEndpoints = [
-    'https://api.aladhan.com/v1',
-    'https://api.pray.zone/v2',
-    'https://muslimsalat.com',
-  ];
 
   Future<PrayerTimes?> getPrayerTimes({
     required double latitude,
@@ -18,49 +12,35 @@ class PrayerTimesService {
   }) async {
     if (kDebugMode) print('🌍 Lat: $latitude, Lng: $longitude');
     
-    // Try Aladhan API first
+    // Try Aladhan API
     try {
-      final url = '${_apiEndpoints[0]}/timings?latitude=$latitude&longitude=$longitude&method=2';
-      if (kDebugMode) print('📡 Aladhan: $url');
+      final url = 'https://api.aladhan.com/v1/timings?latitude=$latitude&longitude=$longitude&method=2';
+      if (kDebugMode) print('📡 API: $url');
       
       final response = await http.get(Uri.parse(url)).timeout(
-        const Duration(seconds: 15),
+        const Duration(seconds: 10),
       );
 
-      if (kDebugMode) print('📡 Aladhan: ${response.statusCode}');
+      if (kDebugMode) print('📡 Status: ${response.statusCode}');
+      if (kDebugMode) print('📡 Body length: ${response.body.length}');
       
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        if (kDebugMode) print('✅ Aladhan success');
+        if (kDebugMode) print('✅ JSON parsed');
+        if (kDebugMode) print('📊 Data keys: ${data.keys}');
+        
         final times = PrayerTimes.fromJson(data);
-        if (kDebugMode) print('✅ Times: Fajr=${times.fajr}, Dhuhr=${times.dhuhr}');
+        if (kDebugMode) print('✅ Prayer times: Fajr=${times.fajr}, Dhuhr=${times.dhuhr}, Asr=${times.asr}');
         return times;
+      } else {
+        if (kDebugMode) print('❌ Bad status code: ${response.statusCode}');
       }
-    } catch (e) {
-      if (kDebugMode) print('❌ Aladhan: $e');
+    } catch (e, stackTrace) {
+      if (kDebugMode) print('❌ API Error: $e');
+      if (kDebugMode) print('❌ StackTrace: $stackTrace');
     }
 
-    // Fallback to direct HTTP (no HTTPS issues)
-    try {
-      final url = 'http://api.aladhan.com/v1/timings?latitude=$latitude&longitude=$longitude&method=2';
-      if (kDebugMode) print('📡 Aladhan HTTP: $url');
-      
-      final response = await http.get(Uri.parse(url)).timeout(
-        const Duration(seconds: 15),
-      );
-
-      if (kDebugMode) print('📡 HTTP: ${response.statusCode}');
-      
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        if (kDebugMode) print('✅ HTTP success');
-        return PrayerTimes.fromJson(data);
-      }
-    } catch (e) {
-      if (kDebugMode) print('❌ HTTP: $e');
-    }
-
-    if (kDebugMode) print('❌ All APIs failed');
+    if (kDebugMode) print('❌ API failed');
     return null;
   }
 
