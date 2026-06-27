@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'dart:math';
 import '../../services/prayer_times_service.dart';
 import '../../services/prayer_notification_service.dart';
 import '../../services/prayer_refresh_service.dart';
@@ -122,9 +120,6 @@ class _TravelModeScreenState extends State<TravelModeScreen> {
       );
     }
   }
-
-  // Qasr calculation — distance from home
-  double _getQasrDistance() => 80.0; // km threshold for qasr
 
   String _getDistanceInfo() {
     // Just show the threshold info
