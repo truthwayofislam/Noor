@@ -2,6 +2,10 @@
 -keep class io.flutter.** { *; }
 -keep class io.flutter.plugins.** { *; }
 
+# Google Play Core (required by Flutter)
+-keep class com.google.android.play.core.** { *; }
+-dontwarn com.google.android.play.core.**
+
 # flutter_local_notifications
 -keep class com.dexterous.** { *; }
 -keepclassmembers class com.dexterous.** { *; }
@@ -13,7 +17,7 @@
 # Geolocator
 -keep class com.baseflow.geolocator.** { *; }
 
-# Gson (used internally by some plugins)
+# Gson
 -keepattributes Signature
 -keepattributes *Annotation*
 -dontwarn sun.misc.**
@@ -22,7 +26,7 @@
 -keep class * implements com.google.gson.JsonSerializer { *; }
 -keep class * implements com.google.gson.JsonDeserializer { *; }
 
-# Keep all model classes
+# App model classes
 -keep class com.noor.app.** { *; }
 
 # Kotlin
