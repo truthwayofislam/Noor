@@ -286,60 +286,49 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
       );
       
       final provider = Provider.of<ScheduleProvider>(context, listen: false);
-      final List<int> notificationIds = [];
       
-      // Schedule notification
+      // Save schedule
+      if (widget.schedule == null) {
+        await provider.addSchedule(schedule);
+      } else {
+        await provider.updateSchedule(widget.index!, schedule);
+      }
       if (_hasAlarm) {
         try {
           // Request permission first
-          final hasPermission = await NotificationService().hasPermission();
+          final hasPermission = await NotificationService().requestPermission();
           if (!hasPermission) {
-            final granted = await NotificationService().requestPermission();
-            if (!granted) {
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('⚠️ Notification permission required for alarms'),
-                    backgroundColor: Colors.orange,
-                    duration: Duration(seconds: 3),
-                  ),
-                );
-              }
-              return;
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('⚠️ Notification permission required for alarms'),
+                  backgroundColor: Colors.orange,
+                ),
+              );
             }
+            return;
           }
           
+          final baseId = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+          
           if (_isRecurring && _selectedDays.isNotEmpty) {
-            // Schedule for each selected day with unique IDs
+            // Schedule for each selected day
             for (int day in _selectedDays) {
               final nextDate = _getNextDateForDay(day, _selectedTime);
-              final notificationId = NotificationService.generateUniqueId(
-                schedule.title,
-                nextDate,
-                dayOffset: day,
-              );
-              notificationIds.add(notificationId);
-              
               await NotificationService().scheduleNotification(
-                id: notificationId,
+                id: baseId + day,
                 title: '🕌 ${schedule.title}',
-                body: schedule.description,
+                body: schedule.description.isEmpty ? 'Time for ${schedule.title}' : schedule.description,
                 scheduledTime: nextDate,
                 isRecurring: true,
               );
             }
           } else {
-            // One-time notification with unique ID
-            final notificationId = NotificationService.generateUniqueId(
-              schedule.title,
-              scheduleTime,
-            );
-            notificationIds.add(notificationId);
-            
+            // One-time notification
             await NotificationService().scheduleNotification(
-              id: notificationId,
+              id: baseId,
               title: '🕌 ${schedule.title}',
-              body: schedule.description,
+              body: schedule.description.isEmpty ? 'Time for ${schedule.title}' : schedule.description,
               scheduledTime: scheduleTime,
               isRecurring: false,
             );
@@ -348,21 +337,23 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
           debugPrint('Notification error: $e');
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('⚠️ Failed to schedule notification: $e'),
-                backgroundColor: Colors.red,
+              const SnackBar(
+                content: Text('⚠️ Failed to schedule notification'),
+                backgroundColor: Colors.orange,
               ),
             );
-            return;
           }
+          // Continue to save schedule even if notification fails
         }
       }
       
-      // Save schedule with notification IDs
+      final provider = Provider.of<ScheduleProvider>(context, listen: false);
+      
+      // Save schedule
       if (widget.schedule == null) {
-        await provider.addSchedule(schedule, notificationIds);
+        await provider.addSchedule(schedule);
       } else {
-        await provider.updateSchedule(widget.index!, schedule, notificationIds);
+        await provider.updateSchedule(widget.index!, schedule);
       }
       
       if (mounted) {

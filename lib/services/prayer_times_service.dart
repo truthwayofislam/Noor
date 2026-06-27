@@ -10,17 +10,14 @@ class PrayerTimesService {
   Future<PrayerTimes?> getPrayerTimes({
     required double latitude,
     required double longitude,
-    bool forceRefresh = false,
   }) async {
     if (kDebugMode) print('🌍 Lat: $latitude, Lng: $longitude');
     
     // Try to get cached prayer times first
-    if (!forceRefresh) {
-      final cached = await _getCachedPrayerTimes();
-      if (cached != null) {
-        if (kDebugMode) print('✅ Using cached prayer times');
-        return cached;
-      }
+    final cached = await _getCachedPrayerTimes();
+    if (cached != null) {
+      if (kDebugMode) print('✅ Using cached prayer times');
+      return cached;
     }
     
     // Try Aladhan API
