@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'screens/splash_screen.dart';
 import 'providers/theme_provider.dart';
 import 'providers/quran_provider.dart';
@@ -20,7 +21,11 @@ void main() async {
   
   final notificationService = NotificationService();
   await notificationService.init();
-  await notificationService.requestPermission();
+
+  // Set notification listeners
+  AwesomeNotifications().setListeners(
+    onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+  );
   
   await DailyReminderService.init();
   await DailyReminderService.scheduleDailyReminder();
@@ -72,5 +77,12 @@ class NoorApp extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class NotificationController {
+  @pragma('vm:entry-point')
+  static Future<void> onActionReceivedMethod(ReceivedAction action) async {
+    // Handle notification tap — app opens normally
   }
 }

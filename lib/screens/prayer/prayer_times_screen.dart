@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'dart:async';
 import 'dart:convert';
 import '../../models/prayer_times_model.dart';
+import '../../services/notification_service.dart';
 import '../../services/prayer_times_service.dart';
 import '../../services/prayer_notification_service.dart';
 import '../../services/prayer_refresh_service.dart';
@@ -82,7 +83,9 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           position.latitude,
           position.longitude,
         );
-        
+
+        // Request permission before scheduling
+        await NotificationService().requestPermission();
         await PrayerNotificationService.schedulePrayerNotifications(times);
         
         // Update home widget
