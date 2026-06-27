@@ -49,17 +49,17 @@ class _ArabicAlphabetScreenState extends State<ArabicAlphabetScreen>
           _LettersTab(),
           _HarakatTab(),
           _LetterFormsTab(),
-          _LessonTab(
+          const _LessonTab(
             lessons: ArabicAlphabetData.fatihaLessons,
             surahName: 'Surah Al-Fatiha',
             surahNameArabic: 'سُورَةُ الْفَاتِحَة',
-            color: Colors.green,
+            color: Color(0xFF4CAF50),
           ),
-          _LessonTab(
+          const _LessonTab(
             lessons: ArabicAlphabetData.shortSurahLessons,
             surahName: 'Short Surahs',
             surahNameArabic: 'قِصَار السُّوَر',
-            color: Colors.purple,
+            color: Color(0xFF9C27B0),
           ),
         ],
       ),
