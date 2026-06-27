@@ -30,7 +30,12 @@ class TasbihProvider extends ChangeNotifier {
   }
   
   Future<void> increment() async {
-    _count++;
+    if (_count >= _target) {
+      // Auto reset when target reached
+      _count = 1;
+    } else {
+      _count++;
+    }
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('tasbih_count', _count);
     notifyListeners();

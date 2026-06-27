@@ -261,13 +261,18 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
       }
       
       final now = DateTime.now();
-      final scheduleTime = DateTime(
+      var scheduleTime = DateTime(
         now.year,
         now.month,
         now.day,
         _selectedTime.hour,
         _selectedTime.minute,
       );
+      
+      // If time is in the past, schedule for next day
+      if (scheduleTime.isBefore(now)) {
+        scheduleTime = scheduleTime.add(const Duration(days: 1));
+      }
       
       final schedule = Schedule(
         title: _titleController.text,
@@ -291,12 +296,41 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
       // Schedule notification
       if (_hasAlarm) {
         try {
-          await NotificationService().scheduleNotification(
-            id: widget.index ?? DateTime.now().millisecondsSinceEpoch ~/ 1000,
-            title: schedule.title,
-            body: schedule.description,
-            scheduledTime: scheduleTime,
-          );
+          // Request permission first
+          final hasPermission = await NotificationService().requestPermission();
+          if (!hasPermission) {
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Notification permission required for alarms')),
+              );
+            }
+            return;
+          }
+          
+          final notificationId = widget.index ?? DateTime.now().millisecondsSinceEpoch ~/ 1000;
+          
+          if (_isRecurring && _selectedDays.isNotEmpty) {
+            // Schedule for each selected day
+            for (int day in _selectedDays) {
+              final nextDate = _getNextDateForDay(day, _selectedTime);
+              await NotificationService().scheduleNotification(
+                id: notificationId + day,
+                title: schedule.title,
+                body: schedule.description,
+                scheduledTime: nextDate,
+                isRecurring: true,
+              );
+            }
+          } else {
+            // One-time notification
+            await NotificationService().scheduleNotification(
+              id: notificationId,
+              title: schedule.title,
+              body: schedule.description,
+              scheduledTime: scheduleTime,
+              isRecurring: false,
+            );
+          }
         } catch (e) {
           debugPrint('Notification error: $e');
         }
@@ -316,5 +350,18 @@ class _ScheduleBuilderScreenState extends State<ScheduleBuilderScreen> {
     _titleController.dispose();
     _descriptionController.dispose();
     super.dispose();
+  }
+  
+  DateTime _getNextDateForDay(int weekday, TimeOfDay time) {
+    final now = DateTime.now();
+    var nextDate = DateTime(now.year, now.month, now.day, time.hour, time.minute);
+    
+    // Calculate days until target weekday
+    int daysToAdd = (weekday - nextDate.weekday) % 7;
+    if (daysToAdd == 0 && nextDate.isBefore(now)) {
+      daysToAdd = 7; // Next week if today's time passed
+    }
+    
+    return nextDate.add(Duration(days: daysToAdd));
   }
 }

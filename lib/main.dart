@@ -20,7 +20,10 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ScheduleAdapter());
   
-  await NotificationService().init();
+  // Initialize notification service WITHOUT requesting permissions
+  final notificationService = NotificationService();
+  await notificationService.init();
+  
   await DailyReminderService.init();
   await DailyReminderService.scheduleDailyReminder();
   
@@ -42,6 +45,18 @@ class NoorApp extends StatelessWidget {
       ],
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
+          if (themeProvider.isLoading) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: themeProvider.lightTheme,
+              home: const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(color: Color(0xFF2E7D32)),
+                ),
+              ),
+            );
+          }
+          
           return MaterialApp(
             title: 'Noor - نور',
             debugShowCheckedModeBanner: false,

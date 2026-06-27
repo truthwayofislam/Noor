@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/schedule_provider.dart';
+import '../../services/notification_service.dart';
 import 'schedule_builder_screen.dart';
 import 'package:intl/intl.dart';
 
@@ -13,6 +14,11 @@ class ScheduleListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('My Schedule - میرا شیڈول'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () => _testNotification(context),
+            tooltip: 'Test Notification',
+          ),
           IconButton(
             icon: const Icon(Icons.bar_chart),
             onPressed: () => _showStats(context),
@@ -229,5 +235,32 @@ class ScheduleListScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+  
+  Future<void> _testNotification(BuildContext context) async {
+    try {
+      await NotificationService().showInstantNotification(
+        id: 999,
+        title: 'Test Notification',
+        body: 'Notification is working! 🔔',
+      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Test notification sent!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 }

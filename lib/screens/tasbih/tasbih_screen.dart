@@ -98,10 +98,23 @@ class TasbihScreen extends StatelessWidget {
                           onTap: () {
                             HapticFeedback.mediumImpact();
                             final previousCount = provider.count;
+                            final wasComplete = previousCount >= provider.target;
                             provider.increment();
                             
+                            // Award points only once when completing target
                             if (previousCount < provider.target && provider.count == provider.target) {
                               _awardPoints(context, provider.target, provider.currentTasbih);
+                              HapticFeedback.heavyImpact();
+                            }
+                            
+                            // Show restart message when auto-reset happens
+                            if (wasComplete) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Starting new round!'),
+                                  duration: Duration(milliseconds: 1000),
+                                ),
+                              );
                             }
                           },
                           child: Container(

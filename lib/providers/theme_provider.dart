@@ -4,8 +4,10 @@ import '../theme/app_theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.light;
+  bool _isLoading = true;
   
   ThemeMode get themeMode => _themeMode;
+  bool get isLoading => _isLoading;
   ThemeData get lightTheme => AppTheme.lightTheme;
   ThemeData get darkTheme => AppTheme.darkTheme;
   
@@ -17,6 +19,7 @@ class ThemeProvider extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     final isDark = prefs.getBool('isDarkMode') ?? false;
     _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+    _isLoading = false;
     notifyListeners();
   }
   
