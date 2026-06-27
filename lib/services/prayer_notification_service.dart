@@ -3,10 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter/foundation.dart';
 import '../models/prayer_times_model.dart';
+import 'notification_service.dart';
 
 class PrayerNotificationService {
-  static final FlutterLocalNotificationsPlugin _notifications =
-      FlutterLocalNotificationsPlugin();
+  static FlutterLocalNotificationsPlugin get _notifications =>
+      NotificationService().plugin;
 
   static const _androidDetails = AndroidNotificationDetails(
     'prayer_times',

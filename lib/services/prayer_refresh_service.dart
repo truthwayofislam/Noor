@@ -2,13 +2,14 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter/foundation.dart';
+import 'notification_service.dart';
 import 'prayer_times_service.dart';
 import 'prayer_notification_service.dart';
 
 /// Service to handle automatic daily prayer times refresh
 class PrayerRefreshService {
-  static final FlutterLocalNotificationsPlugin _notifications =
-      FlutterLocalNotificationsPlugin();
+  static FlutterLocalNotificationsPlugin get _notifications =>
+      NotificationService().plugin;
 
   static const int _refreshTriggerId = 106;
 

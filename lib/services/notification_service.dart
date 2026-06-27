@@ -11,6 +11,8 @@ class NotificationService {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
 
+  FlutterLocalNotificationsPlugin get plugin => _notifications;
+
   Future<void> init() async {
     tz.initializeTimeZones();
 
