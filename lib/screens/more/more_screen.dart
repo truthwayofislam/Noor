@@ -18,6 +18,7 @@ import '../tasks/daily_tasks_screen.dart';
 import '../auth/login_screen.dart';
 import '../stories/stories_home_screen.dart';
 import '../settings/report_issue_screen.dart';
+import 'travel_mode_screen.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
@@ -170,6 +171,16 @@ class MoreScreen extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const QiblaScreen()),
+            ),
+          ),
+          _FeatureTile(
+            title: 'Muslim Travel Mode',
+            subtitle: 'Prayer times, Qibla & duas for travelers',
+            icon: Icons.flight_takeoff,
+            color: Colors.indigo.shade300,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TravelModeScreen()),
             ),
           ),
           
