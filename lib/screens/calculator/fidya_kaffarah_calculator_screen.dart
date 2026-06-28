@@ -142,7 +142,7 @@ class _FidyaKaffarahCalculatorScreenState extends State<FidyaKaffarahCalculatorS
                     controller: _wheatPriceController,
                     decoration: const InputDecoration(
                       labelText: 'Wheat Price (per kg)',
-                      prefixText: 'PKR ',
+                      prefixText: 'Price: ',
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.number,
@@ -326,7 +326,7 @@ class _FidyaKaffarahCalculatorScreenState extends State<FidyaKaffarahCalculatorS
                     controller: _wheatPriceController,
                     decoration: const InputDecoration(
                       labelText: 'Wheat Price (per kg)',
-                      prefixText: 'PKR ',
+                      prefixText: 'Price: ',
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.number,

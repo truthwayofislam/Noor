@@ -14,8 +14,24 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
   final _service = IslamicCalculatorService();
   final List<ZakatAsset> _assets = [];
   
-  final _goldPriceController = TextEditingController(text: '23000');
-  final _silverPriceController = TextEditingController(text: '280');
+  final _goldPriceController = TextEditingController(text: '2000');
+  final _silverPriceController = TextEditingController(text: '25');
+  String _selectedCurrency = 'USD';
+  
+  final Map<String, String> _currencies = {
+    'USD': '\$ (US Dollar)',
+    'EUR': '€ (Euro)',
+    'GBP': '£ (British Pound)',
+    'PKR': 'Rs (Pakistani Rupee)',
+    'INR': '₹ (Indian Rupee)',
+    'SAR': 'SR (Saudi Riyal)',
+    'AED': 'AED (UAE Dirham)',
+    'MYR': 'RM (Malaysian Ringgit)',
+    'IDR': 'Rp (Indonesian Rupiah)',
+    'TRY': '₺ (Turkish Lira)',
+    'EGP': 'E£ (Egyptian Pound)',
+    'BDT': '৳ (Bangladeshi Taka)',
+  };
   
   ZakatCalculation? _result;
 
@@ -56,7 +72,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
         assets: _assets,
         goldPricePerGram: goldPrice,
         silverPricePerGram: silverPrice,
-        currency: 'PKR',
+        currency: _selectedCurrency,
       );
     });
   }
@@ -128,12 +144,25 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
+            DropdownButtonFormField<String>(
+              value: _selectedCurrency,
+              decoration: const InputDecoration(
+                labelText: 'Currency',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.attach_money),
+              ),
+              items: _currencies.entries.map((e) {
+                return DropdownMenuItem(value: e.key, child: Text(e.value));
+              }).toList(),
+              onChanged: (val) => setState(() => _selectedCurrency = val!),
+            ),
+            const SizedBox(height: 16),
             TextField(
               controller: _goldPriceController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Gold Price (per gram)',
-                prefixText: 'PKR ',
-                border: OutlineInputBorder(),
+                prefixText: '$_selectedCurrency ',
+                border: const OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -141,10 +170,10 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
             const SizedBox(height: 12),
             TextField(
               controller: _silverPriceController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Silver Price (per gram)',
-                prefixText: 'PKR ',
-                border: OutlineInputBorder(),
+                prefixText: '$_selectedCurrency ',
+                border: const OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -198,7 +227,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'PKR ${asset.amount.toStringAsFixed(0)}',
+                        '$_selectedCurrency ${asset.amount.toStringAsFixed(0)}',
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       IconButton(
@@ -238,13 +267,13 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
               ),
             ),
             const SizedBox(height: 24),
-            _ResultRow('Total Wealth:', 'PKR ${_result!.totalWealth.toStringAsFixed(2)}'),
+            _ResultRow('Total Wealth:', '$_selectedCurrency ${_result!.totalWealth.toStringAsFixed(2)}'),
             const Divider(),
-            _ResultRow('Nisab (Silver):', 'PKR ${_result!.nisabAmount.toStringAsFixed(2)}'),
+            _ResultRow('Nisab (Silver):', '$_selectedCurrency ${_result!.nisabAmount.toStringAsFixed(2)}'),
             const Divider(),
             _ResultRow(
               'Zakat Due (2.5%):',
-              'PKR ${_result!.zakatDue.toStringAsFixed(2)}',
+              '$_selectedCurrency ${_result!.zakatDue.toStringAsFixed(2)}',
               highlight: true,
             ),
             if (_result!.reachedNisab) ...[
@@ -401,7 +430,7 @@ class _AddAssetDialogState extends State<_AddAssetDialog> {
           const SizedBox(height: 12),
           TextField(
             controller: _amountController,
-            decoration: const InputDecoration(labelText: 'Amount (PKR)', border: OutlineInputBorder()),
+            decoration: InputDecoration(labelText: 'Amount ($_selectedCurrency)', border: const OutlineInputBorder()),
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),

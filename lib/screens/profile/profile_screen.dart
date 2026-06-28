@@ -295,6 +295,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               
               if (context.mounted) {
                 Navigator.pop(context);
+                if (success) {
+                  // Reload profile to get updated data
+                  await Provider.of<UserProvider>(context, listen: false).loadProfile();
+                }
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(success ? 'Profile updated!' : 'Update failed'),

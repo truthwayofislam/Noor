@@ -156,7 +156,7 @@ class _ReportIssueScreenState extends State<ReportIssueScreen> {
                     selectedColor: type['color'] as Color,
                     backgroundColor: (type['color'] as Color).withOpacity(0.1),
                     labelStyle: TextStyle(
-                      color: isSelected ? Colors.white : Colors.black87,
+                      color: isSelected ? Colors.white : (Theme.of(context).brightness == Brightness.dark ? Colors.white70 : Colors.black87),
                       fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                     ),
                     onSelected: (selected) {
@@ -184,10 +184,22 @@ class _ReportIssueScreenState extends State<ReportIssueScreen> {
                 controller: _descriptionController,
                 maxLines: 8,
                 maxLength: 500,
+                style: TextStyle(
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white
+                      : Colors.black87,
+                ),
                 decoration: InputDecoration(
                   hintText: 'Please provide details about the issue...\n\nFor bugs: Steps to reproduce\nFor features: What you\'d like to see\nFor feedback: Your thoughts',
+                  hintStyle: TextStyle(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white38
+                        : Colors.grey[600],
+                  ),
                   filled: true,
-                  fillColor: Colors.grey[100],
+                  fillColor: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[800]
+                      : Colors.grey[100],
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide.none,

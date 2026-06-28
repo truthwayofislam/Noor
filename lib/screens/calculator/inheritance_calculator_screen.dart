@@ -141,7 +141,7 @@ class _InheritanceCalculatorScreenState extends State<InheritanceCalculatorScree
               controller: _estateController,
               decoration: const InputDecoration(
                 labelText: 'Estate Amount',
-                prefixText: 'PKR ',
+                prefixText: 'Amount: ',
                 border: OutlineInputBorder(),
                 helperText: 'After deducting debts & funeral expenses',
               ),
@@ -180,7 +180,7 @@ class _InheritanceCalculatorScreenState extends State<InheritanceCalculatorScree
                 controller: _willController,
                 decoration: const InputDecoration(
                   labelText: 'Will Amount',
-                  prefixText: 'PKR ',
+                  prefixText: 'Amount: ',
                   border: OutlineInputBorder(),
                   helperText: 'Maximum 1/3 of estate allowed',
                 ),
@@ -275,7 +275,7 @@ class _InheritanceCalculatorScreenState extends State<InheritanceCalculatorScree
                     children: [
                       Expanded(child: Text(entry.key, style: const TextStyle(fontWeight: FontWeight.w600))),
                       Text(
-                        'PKR ${entry.value.toStringAsFixed(2)}',
+                        '${entry.value.toStringAsFixed(2)}',
                         style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00897B)),
                       ),
                     ],
