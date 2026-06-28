@@ -29,7 +29,7 @@ class IslamicCalculatorService {
     final reachedNisab = totalWealth >= nisabAmount;
 
     // Calculate Zakat (2.5%)
-    final zakatDue = reachedNisab ? totalWealth * 0.025 : 0;
+    final double zakatDue = reachedNisab ? totalWealth * 0.025 : 0.0;
 
     return ZakatCalculation(
       totalWealth: totalWealth,
