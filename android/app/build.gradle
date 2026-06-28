@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.noor.app"
+    namespace "com.noorislamic.app"
     compileSdk 34
     ndkVersion "25.1.8937393"
 
@@ -37,7 +37,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.noor.app"
+        applicationId "com.noorislamic.app"
         minSdk 23
         targetSdk 34
         versionCode flutterVersionCode.toInteger()
