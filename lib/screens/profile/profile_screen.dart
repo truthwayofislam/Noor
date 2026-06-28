@@ -270,49 +270,80 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _showEditDialog(BuildContext context, String currentUsername) {
-    final controller = TextEditingController(text: currentUsername);
+    final usernameController = TextEditingController(text: currentUsername);
+    final user = Provider.of<UserProvider>(context, listen: false).currentUser;
+    String selectedCountry = user?.country ?? 'Pakistan';
     
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Edit Username'),
-        content: TextField(
-          controller: controller,
-          decoration: const InputDecoration(
-            labelText: 'Username',
-            border: OutlineInputBorder(),
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: const Text('Edit Profile'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: usernameController,
+                decoration: const InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              DropdownButtonFormField<String>(
+                value: selectedCountry,
+                decoration: const InputDecoration(
+                  labelText: 'Country',
+                  border: OutlineInputBorder(),
+                ),
+                items: [
+                  'Pakistan', 'India', 'Bangladesh', 'Saudi Arabia', 'UAE',
+                  'Turkey', 'Egypt', 'Indonesia', 'Malaysia', 'USA', 'UK',
+                ].map((country) => DropdownMenuItem(
+                  value: country,
+                  child: Text(country),
+                )).toList(),
+                onChanged: (value) {
+                  if (value != null) {
+                    setState(() => selectedCountry = value);
+                  }
+                },
+              ),
+            ],
           ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              if (!context.mounted) return;
-              final success = await Provider.of<UserProvider>(context, listen: false)
-                  .updateProfile(username: controller.text);
-              
-              if (context.mounted) {
-                Navigator.pop(context);
-                if (success) {
-                  // Reload profile to get updated data
-                  await Provider.of<UserProvider>(context, listen: false).loadProfile();
-                }
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                if (!context.mounted) return;
+                final success = await Provider.of<UserProvider>(context, listen: false)
+                    .updateProfile(
+                      username: usernameController.text,
+                      country: selectedCountry,
+                    );
+                
                 if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(success ? 'Profile updated!' : 'Update failed'),
-                      backgroundColor: success ? Colors.green : Colors.red,
-                    ),
-                  );
+                  Navigator.pop(context);
+                  if (success) {
+                    await Provider.of<UserProvider>(context, listen: false).loadProfile();
+                  }
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(success ? 'Profile updated!' : 'Update failed'),
+                        backgroundColor: success ? Colors.green : Colors.red,
+                      ),
+                    );
+                  }
                 }
-              }
-            },
-            child: const Text('Save'),
-          ),
-        ],
+              },
+              child: const Text('Save'),
+            ),
+          ],
+        ),
       ),
     );
   }
