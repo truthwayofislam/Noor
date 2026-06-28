@@ -275,7 +275,7 @@ class _InheritanceCalculatorScreenState extends State<InheritanceCalculatorScree
                     children: [
                       Expanded(child: Text(entry.key, style: const TextStyle(fontWeight: FontWeight.w600))),
                       Text(
-                        '${entry.value.toStringAsFixed(2)}',
+                        entry.value.toStringAsFixed(2),
                         style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00897B)),
                       ),
                     ],

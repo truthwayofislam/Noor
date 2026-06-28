@@ -80,7 +80,10 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
   void _showAddAssetDialog() {
     showDialog(
       context: context,
-      builder: (context) => _AddAssetDialog(onAdd: _addAsset),
+      builder: (context) => _AddAssetDialog(
+        onAdd: _addAsset,
+        selectedCurrency: _selectedCurrency,
+      ),
     );
   }
 
@@ -395,8 +398,9 @@ class _ResultRow extends StatelessWidget {
 
 class _AddAssetDialog extends StatefulWidget {
   final Function(AssetType, String, double) onAdd;
+  final String selectedCurrency;
 
-  const _AddAssetDialog({required this.onAdd});
+  const _AddAssetDialog({required this.onAdd, required this.selectedCurrency});
 
   @override
   State<_AddAssetDialog> createState() => _AddAssetDialogState();
@@ -430,7 +434,7 @@ class _AddAssetDialogState extends State<_AddAssetDialog> {
           const SizedBox(height: 12),
           TextField(
             controller: _amountController,
-            decoration: InputDecoration(labelText: 'Amount ($_selectedCurrency)', border: const OutlineInputBorder()),
+            decoration: InputDecoration(labelText: 'Amount (${widget.selectedCurrency})', border: const OutlineInputBorder()),
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),

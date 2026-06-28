@@ -290,6 +290,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           ElevatedButton(
             onPressed: () async {
+              if (!context.mounted) return;
               final success = await Provider.of<UserProvider>(context, listen: false)
                   .updateProfile(username: controller.text);
               
@@ -299,12 +300,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   // Reload profile to get updated data
                   await Provider.of<UserProvider>(context, listen: false).loadProfile();
                 }
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(success ? 'Profile updated!' : 'Update failed'),
-                    backgroundColor: success ? Colors.green : Colors.red,
-                  ),
-                );
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(success ? 'Profile updated!' : 'Update failed'),
+                      backgroundColor: success ? Colors.green : Colors.red,
+                    ),
+                  );
+                }
               }
             },
             child: const Text('Save'),
