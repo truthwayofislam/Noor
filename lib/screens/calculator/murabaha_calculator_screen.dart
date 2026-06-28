@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../services/islamic_calculator_service.dart';
+import '../../models/zakat_model.dart';
 
 class MurabahaCalculatorScreen extends StatefulWidget {
   const MurabahaCalculatorScreen({super.key});
