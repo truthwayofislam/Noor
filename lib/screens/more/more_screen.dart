@@ -18,7 +18,9 @@ import '../tasks/daily_tasks_screen.dart';
 import '../auth/login_screen.dart';
 import '../stories/stories_home_screen.dart';
 import '../settings/report_issue_screen.dart';
+import '../calculator/islamic_calculator_screen.dart';
 import 'travel_mode_screen.dart';
+import '../calculator/islamic_calculator_screen.dart';
 import 'halal_scanner_screen.dart';
 
 class MoreScreen extends StatelessWidget {
@@ -192,6 +194,16 @@ class MoreScreen extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const HalalScannerScreen()),
+            ),
+          ),
+          _FeatureTile(
+            title: 'Islamic Calculator',
+            subtitle: 'Zakat, Inheritance, Fidya (Hanafi Fiqh)',
+            icon: Icons.calculate,
+            color: const Color(0xFF2E7D32),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const IslamicCalculatorScreen()),
             ),
           ),
           
