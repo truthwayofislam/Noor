@@ -1,4 +1,4 @@
-package com.noorislamic.app
+package com.noorislamiclearning.app
 
 import io.flutter.embedding.android.FlutterActivity
 
