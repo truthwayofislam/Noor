@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../widgets/error_view.dart';
 
 class AudioQuranScreen extends StatefulWidget {
   const AudioQuranScreen({super.key});
@@ -14,7 +13,6 @@ class _AudioQuranScreenState extends State<AudioQuranScreen> {
   final AudioPlayer _player = AudioPlayer();
   int? _currentSurah;
   bool _isLoading = false;
-  String? _error;
   String _selectedReciter = 'ar.alafasy';
 
   final Map<String, String> _reciters = {
@@ -85,7 +83,6 @@ class _AudioQuranScreenState extends State<AudioQuranScreen> {
       setState(() {
         _isLoading = true;
         _currentSurah = surahNumber;
-        _error = null;
       });
 
       final url = 'https://cdn.islamic.network/quran/audio/128/$_selectedReciter/$surahNumber.mp3';
@@ -96,7 +93,6 @@ class _AudioQuranScreenState extends State<AudioQuranScreen> {
     } catch (e) {
       setState(() {
         _isLoading = false;
-        _error = e.toString();
       });
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(

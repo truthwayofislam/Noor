@@ -20,7 +20,6 @@ import '../stories/stories_home_screen.dart';
 import '../settings/report_issue_screen.dart';
 import '../calculator/islamic_calculator_screen.dart';
 import 'travel_mode_screen.dart';
-import '../calculator/islamic_calculator_screen.dart';
 import 'halal_scanner_screen.dart';
 
 class MoreScreen extends StatelessWidget {

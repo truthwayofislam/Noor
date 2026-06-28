@@ -23,7 +23,7 @@ class IslamicCalculatorService {
 
     // Calculate Nisab (using silver - more beneficial for poor as per Hanafi)
     // 612.36 grams of silver
-    final nisabAmount = 612.36 * silverPricePerGram;
+    final double nisabAmount = 612.36 * silverPricePerGram;
 
     // Check if Nisab is reached
     final reachedNisab = totalWealth >= nisabAmount;

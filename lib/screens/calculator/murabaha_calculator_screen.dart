@@ -15,7 +15,7 @@ class _MurabahaCalculatorScreenState extends State<MurabahaCalculatorScreen> {
   final _profitController = TextEditingController();
   final _monthsController = TextEditingController(text: '12');
 
-  var _result;
+  MurabahaCalculation? _result;
 
   @override
   void dispose() {

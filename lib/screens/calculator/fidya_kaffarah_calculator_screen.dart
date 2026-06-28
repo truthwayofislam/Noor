@@ -17,11 +17,11 @@ class _FidyaKaffarahCalculatorScreenState extends State<FidyaKaffarahCalculatorS
   // Fidya
   final _missedFastsController = TextEditingController();
   final _wheatPriceController = TextEditingController(text: '150');
-  var _fidyaResult;
+  FidyaCalculation? _fidyaResult;
 
   // Kaffarah
   KaffarahType _selectedKaffarah = KaffarahType.fastingBroken;
-  var _kaffarahResult;
+  KaffarahCalculation? _kaffarahResult;
 
   @override
   void initState() {
@@ -228,17 +228,17 @@ class _FidyaKaffarahCalculatorScreenState extends State<FidyaKaffarahCalculatorS
           ],
 
           const SizedBox(height: 24),
-          Card(
+          const Card(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.info_outline, color: Color(0xFFD84315)),
-                      SizedBox(width: 8),
-                      Text('Important Notes', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const Icon(Icons.info_outline, color: Color(0xFFD84315)),
+                      const SizedBox(width: 8),
+                      const Text('Important Notes', style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   const SizedBox(height: 8),
