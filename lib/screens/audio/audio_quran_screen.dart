@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../widgets/error_view.dart';
 
 class AudioQuranScreen extends StatefulWidget {
   const AudioQuranScreen({super.key});
@@ -13,6 +14,7 @@ class _AudioQuranScreenState extends State<AudioQuranScreen> {
   final AudioPlayer _player = AudioPlayer();
   int? _currentSurah;
   bool _isLoading = false;
+  String? _error;
   String _selectedReciter = 'ar.alafasy';
 
   final Map<String, String> _reciters = {
@@ -83,6 +85,7 @@ class _AudioQuranScreenState extends State<AudioQuranScreen> {
       setState(() {
         _isLoading = true;
         _currentSurah = surahNumber;
+        _error = null;
       });
 
       final url = 'https://cdn.islamic.network/quran/audio/128/$_selectedReciter/$surahNumber.mp3';
@@ -91,13 +94,39 @@ class _AudioQuranScreenState extends State<AudioQuranScreen> {
       
       setState(() => _isLoading = false);
     } catch (e) {
-      setState(() => _isLoading = false);
+      setState(() {
+        _isLoading = false;
+        _error = e.toString();
+      });
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.error_outline, color: Colors.white),
+                const SizedBox(width: 12),
+                Expanded(child: Text('Could not play audio: ${_getErrorMessage(e)}')),
+              ],
+            ),
+            backgroundColor: Colors.red,
+            action: SnackBarAction(
+              label: 'Retry',
+              textColor: Colors.white,
+              onPressed: () => _playAudio(surahNumber),
+            ),
+          ),
         );
       }
     }
+  }
+
+  String _getErrorMessage(dynamic error) {
+    final errorStr = error.toString().toLowerCase();
+    if (errorStr.contains('timeout')) return 'Connection timeout';
+    if (errorStr.contains('socket') || errorStr.contains('network')) {
+      return 'Network error. Check internet connection';
+    }
+    return 'Unable to load audio';
   }
 
   String _formatDuration(Duration duration) {
